@@ -15,12 +15,28 @@ from __future__ import annotations
 
 import io
 import os
+import re
 import sys
 import zipfile
 from pathlib import Path
 
 import pandas as pd
 import requests
+
+
+def _normalize_url(url: str) -> str:
+    """Turn a normal Google Drive share link into a direct-download URL.
+
+    Accepts .../file/d/<id>/view, open?id=<id>, or uc?id=<id> and returns
+    https://drive.google.com/uc?export=download&id=<id>&confirm=t . Non-Drive
+    URLs are returned unchanged.
+    """
+    if "drive.google.com" not in url:
+        return url
+    m = re.search(r"/file/d/([A-Za-z0-9_-]+)", url) or re.search(r"[?&]id=([A-Za-z0-9_-]+)", url)
+    if m:
+        return f"https://drive.google.com/uc?export=download&id={m.group(1)}&confirm=t"
+    return url
 
 DATA = Path(__file__).with_name("data")
 # env var -> (destination file, name hint used to pick the right sheet from a zip)
@@ -60,17 +76,22 @@ def _to_dataframe(content: bytes, hint: str = "") -> pd.DataFrame:
 def main() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     did = 0
-    for env_var, dest in TARGETS.items():
+    for env_var, (dest, hint) in TARGETS.items():
         url = os.environ.get(env_var)
         if not url:
             print(f"skip {dest.name}: {env_var} not set")
             continue
         print(f"downloading {env_var} -> {dest.name}")
-        resp = requests.get(url, timeout=300)
+        resp = requests.get(_normalize_url(url), timeout=300, allow_redirects=True)
         resp.raise_for_status()
-        df = _to_dataframe(resp.content)
-        df.to_csv(dest, index=False)
-        print(f"  wrote {len(df):,} rows")
+        ctype = resp.headers.get("Content-Type", "")
+        if "text/html" in ctype or resp.content[:15].lstrip().lower().startswith(b"<!doctype html"):
+            print(f"  ERROR: {env_var} returned an HTML page, not a file. Check the link is a "
+                  "direct download and the file is shared 'Anyone with the link'.", file=sys.stderr)
+            return 1
+        df = _to_dataframe(resp.content, hint)
+        df.to_csv(dest, index=False)  # .gz extension -> pandas writes gzip
+        print(f"  wrote {len(df):,} rows -> {dest.name}")
         did += 1
     if did == 0:
         print("Nothing fetched. Set MATRIXIFY_ORDERS_URL and MATRIXIFY_PRODUCTS_URL.", file=sys.stderr)
