@@ -7,7 +7,7 @@ margin.py; this file is presentation only.
 """
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date  # noqa: F401  (used in type context / data_source)
 
 import pandas as pd
 import plotly.express as px
@@ -35,12 +35,11 @@ def _file_sig(cfg: dict) -> str:
 
 
 @st.cache_data(show_spinner="Loading Matrixify data…")
-def fetch_lineitems(orders_file: str, products_file: str, tz: str,
-                    since: date, until: date, sig: str):
-    """Cached load of the flattened line items. ``sig`` busts the cache when
-    the underlying export files change (or the Refresh button clears it)."""
+def fetch_lineitems(orders_file: str, products_file: str, tz: str, sig: str):
+    """Cached load of the FULL flattened line items (no date filter here).
+    ``sig`` busts the cache when the export files change / Refresh is pressed."""
     cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
-    return data_source.load_lineitems(cfg, since, until)
+    return data_source.load_lineitems(cfg)
 
 
 @st.cache_data(show_spinner=False)
@@ -50,16 +49,6 @@ def fetch_marketing(path: str):
 
 def sidebar_controls() -> tuple[dict, date, date, bool]:
     st.sidebar.title("⚙️ Controls")
-
-    days = int((BASE_CFG.get("date") or {}).get("default_days", 90))
-    today = date.today()
-    default_since = today - timedelta(days=days)
-    rng = st.sidebar.date_input(
-        "Date range (order date)",
-        value=(default_since, today),
-        help="Window pulled from Shopify. Cached per range.",
-    )
-    since, until = (rng if isinstance(rng, tuple) and len(rng) == 2 else (default_since, today))
 
     if st.sidebar.button("🔄 Refresh data (clear cache)"):
         st.cache_data.clear()
@@ -114,7 +103,7 @@ def sidebar_controls() -> tuple[dict, date, date, bool]:
         ov["scope"] = {"grain": grain}
 
     cfg = deep_merge(BASE_CFG, ov)
-    return cfg, since, until
+    return cfg
 
 
 def kpi_row(tot: dict, cfg: dict):
@@ -162,21 +151,31 @@ def render_table(agg: pd.DataFrame, cfg: dict):
 
 
 def main():
-    cfg, since, until = sidebar_controls()
+    cfg = sidebar_controls()
     st.title("📊 Shopify Product Margin Dashboard")
     st.caption("CM1 = Revenue − COGS · CM2 = − logistics/3PL − payment fees − packaging · "
                "CM3 = − allocated marketing")
 
     src = cfg["source"]
-    df, mode = fetch_lineitems(src["orders_file"], src["products_file"],
-                               cfg.get("timezone", "Europe/Berlin"), since, until,
-                               _file_sig(cfg))
+    df_all, mode = fetch_lineitems(src["orders_file"], src["products_file"],
+                                   cfg.get("timezone", "Europe/Berlin"), _file_sig(cfg))
     if mode == "sample":
         st.warning("**Sample mode** — Matrixify exports not found, showing the committed "
                    "sample. Drop `matrixify_orders.csv` + `matrixify_products.csv` in `data/` "
                    "(or let the scheduled fetch populate them) for live numbers.")
     elif mode == "matrixify":
         st.success("Data source: **Matrixify exports** (Orders + Products).")
+    if df_all.empty:
+        st.info("No data available.")
+        return
+
+    # Date filter defaults to the data's own span (so real exports aren't hidden
+    # by a stale 'last 90 days' window).
+    dmin, dmax = df_all["order_date"].dt.date.min(), df_all["order_date"].dt.date.max()
+    rng = st.sidebar.date_input("Date range (order date)", value=(dmin, dmax),
+                                min_value=dmin, max_value=dmax)
+    since, until = rng if isinstance(rng, tuple) and len(rng) == 2 else (dmin, dmax)
+    df = df_all[(df_all["order_date"].dt.date >= since) & (df_all["order_date"].dt.date <= until)]
     if df.empty:
         st.info("No orders in the selected window.")
         return

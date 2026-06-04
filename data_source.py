@@ -19,7 +19,8 @@ import matrixify_client
 SAMPLE_JSON = Path(__file__).with_name("data") / "sample_orders.json"
 
 
-def load_lineitems(cfg: dict, since: date, until: date) -> tuple[pd.DataFrame, str]:
+def load_lineitems(cfg: dict, since: date | None = None, until: date | None = None) -> tuple[pd.DataFrame, str]:
+    """Load the full flattened line-item frame. Optionally filter to a window."""
     src = cfg.get("source", {})
     orders_p = Path(src.get("orders_file", ""))
     products_p = Path(src.get("products_file", ""))
@@ -35,6 +36,6 @@ def load_lineitems(cfg: dict, since: date, until: date) -> tuple[pd.DataFrame, s
     else:
         return pd.DataFrame(), "empty"
 
-    if not df.empty:
+    if not df.empty and since and until:
         df = df[(df["order_date"].dt.date >= since) & (df["order_date"].dt.date <= until)]
     return df, mode
