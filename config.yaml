@@ -19,7 +19,7 @@ currency: EUR
 # JSON sample so the demo still runs. The files are kept fresh by the scheduled
 # GitHub Action (fetch_matrixify_export.py + .github/workflows/refresh_matrixify.yml).
 source:
-  orders_file: data/matrixify_orders.csv
+  orders_file: data/matrixify_orders.csv.gz
   products_file: data/matrixify_products.csv
 
 # --- Revenue definition (drives CM1) ----------------------------------------

@@ -24,7 +24,7 @@ import requests
 
 DATA = Path(__file__).with_name("data")
 TARGETS = {
-    "MATRIXIFY_ORDERS_URL": DATA / "matrixify_orders.csv",
+    "MATRIXIFY_ORDERS_URL": DATA / "matrixify_orders.csv.gz",
     "MATRIXIFY_PRODUCTS_URL": DATA / "matrixify_products.csv",
 }
 
