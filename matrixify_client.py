@@ -92,101 +92,97 @@ def load_products(path: Path | str) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berlin") -> pd.DataFrame:
+    """Parse a Matrixify Orders export into the flattened line-item frame.
+
+    Real Matrixify layout: each order spans several rows distinguished by
+    ``Line: Type`` — ``Line Item``, ``Shipping Line``, ``Discount``,
+    ``Transaction``, ``Refund Line``. Order-level fields sit on the ``Top Row``
+    and are blank below, so we forward-fill them. Refunds are negative
+    ``Refund Line`` rows (negative qty/total) matched to their SKU.
+    """
     df = _read(path)
 
     c_name = _col(df, "Name", "Order Name")
-    c_id = _col(df, "ID", "Order ID")
     c_created = _col(df, "Created At", "Processed At", "Created")
-    c_fin = _col(df, "Financial Status")
-    c_total = _col(df, "Total")
-    # line item
+    c_total = _col(df, "Price: Total", "Total", "Price: Current Total")
+    l_type = _col(df, "Line: Type")
     l_sku = _col(df, "Line: SKU", "Lineitem SKU")
     l_qty = _col(df, "Line: Quantity", "Lineitem quantity")
-    l_price = _col(df, "Line: Price", "Lineitem price")
-    l_disc = _col(df, "Line: Discount", "Lineitem discount")
     l_total = _col(df, "Line: Total", "Lineitem total")
-    l_title = _col(df, "Line: Title", "Lineitem name", "Line: Name")
-    l_type = _col(df, "Line: Type")
-    # transaction / refund
+    l_price = _col(df, "Line: Price", "Lineitem price")
+    l_disc = _col(df, "Line: Discount")
+    l_title = _col(df, "Line: Title", "Line: Name")
+    # gateway: prefer an explicit gateway column, else payment method
     t_gateway = _col(df, "Transaction: Gateway")
-    t_kind = _col(df, "Transaction: Kind")
-    r_sku = _col(df, "Refund: Line: SKU", "Refund Line Item: SKU", "Refund: Line Item: SKU")
-    r_qty = _col(df, "Refund: Line: Quantity", "Refund Line Item: Quantity", "Refund: Line Item: Quantity")
-    r_sub = _col(df, "Refund: Line: Subtotal", "Refund Line Item: Subtotal", "Refund: Line Item: Subtotal")
-
+    t_method = _col(df, "Transaction: Payment Method")
     if not c_name or not l_sku:
         raise ValueError("Orders export needs at least 'Name' and 'Line: SKU' columns.")
 
-    # Forward-fill order-level identity & fields across continuation rows.
-    ffill_cols = [c for c in (c_name, c_id, c_created, c_fin, c_total) if c]
-    df[ffill_cols] = df[ffill_cols].replace("", pd.NA).ffill()
+    order = df[c_name].ffill()
+    ltype = df[l_type].astype(str).str.strip() if l_type else pd.Series([""] * len(df))
+    sku = df[l_sku].astype(str).str.strip()
+    qty = _num(df[l_qty]) if l_qty else pd.Series(0.0, index=df.index)
+    if l_total:
+        tot = _num(df[l_total])
+    else:
+        tot = (_num(df[l_price]) if l_price else 0) * qty - (_num(df[l_disc]) if l_disc else 0)
 
-    rows: list[dict] = []
-    for name, block in df.groupby(c_name, sort=False):
-        created = block[c_created].iloc[0] if c_created else None
-        order_total = float(_num(pd.Series([block[c_total].iloc[0]])).iloc[0] or 0.0) if c_total else 0.0
+    is_li = ltype.eq("Line Item") if l_type else (sku != "")
+    is_rf = ltype.eq("Refund Line") if l_type else pd.Series(False, index=df.index)
 
-        # gateway: first SALE/CAPTURE transaction's gateway, else first non-null
-        gateway = "unknown"
-        if t_gateway:
-            gws = block[t_gateway].dropna()
-            gws = gws[gws.astype(str).str.strip() != ""]
-            if t_kind:
-                sale = block[block[t_kind].astype(str).str.lower().isin(["sale", "capture"])]
-                if t_gateway in sale and sale[t_gateway].notna().any():
-                    gateway = str(sale[t_gateway].dropna().iloc[0])
-                elif len(gws):
-                    gateway = str(gws.iloc[0])
-            elif len(gws):
-                gateway = str(gws.iloc[0])
-        gateway = _norm_gateway(gateway)
+    base = pd.DataFrame({"order": order.values, "sku": sku.values,
+                         "qty": qty.values, "rev": tot.values})
+    li = base[is_li.values & (base["sku"] != "") & (base["sku"] != "nan")] \
+        .groupby(["order", "sku"], as_index=False).agg(gross_qty=("qty", "sum"), gross_revenue=("rev", "sum"))
+    rf = base[is_rf.values & (base["sku"] != "") & (base["sku"] != "nan")] \
+        .groupby(["order", "sku"], as_index=False).agg(refunded_qty=("qty", "sum"), refunded_revenue=("rev", "sum"))
+    if not rf.empty:
+        rf["refunded_qty"] = -rf["refunded_qty"]      # negative rows -> positive refunded amounts
+        rf["refunded_revenue"] = -rf["refunded_revenue"]
 
-        # refunds aggregated by SKU within the order
-        ref_qty: dict[str, float] = {}
-        ref_rev: dict[str, float] = {}
-        if r_sku:
-            for _, rr in block.iterrows():
-                s = str(rr.get(r_sku) or "").strip()
-                if not s:
-                    continue
-                ref_qty[s] = ref_qty.get(s, 0.0) + float(_num(pd.Series([rr.get(r_qty)])).iloc[0] or 0.0) if r_qty else ref_qty.get(s, 0.0)
-                ref_rev[s] = ref_rev.get(s, 0.0) + float(_num(pd.Series([rr.get(r_sub)])).iloc[0] or 0.0) if r_sub else ref_rev.get(s, 0.0)
+    items = li.merge(rf, on=["order", "sku"], how="outer").fillna(
+        {"gross_qty": 0, "gross_revenue": 0, "refunded_qty": 0, "refunded_revenue": 0})
+    if items.empty:
+        return items
 
-        # line items: rows with a SKU and (no Line:Type or Type == Line Item)
-        for _, li in block.iterrows():
-            s = str(li.get(l_sku) or "").strip()
-            if not s:
-                continue
-            if l_type and str(li.get(l_type) or "").strip().lower() not in ("", "line item", "lineitem"):
-                continue
-            qty = float(_num(pd.Series([li.get(l_qty)])).iloc[0] or 0.0) if l_qty else 0.0
-            if l_total and pd.notna(li.get(l_total)):
-                gross = float(_num(pd.Series([li.get(l_total)])).iloc[0] or 0.0)
-            else:
-                price = float(_num(pd.Series([li.get(l_price)])).iloc[0] or 0.0) if l_price else 0.0
-                disc = float(_num(pd.Series([li.get(l_disc)])).iloc[0] or 0.0) if l_disc else 0.0
-                gross = price * qty - disc
-            prod = products.loc[s] if s in products.index else None
-            rows.append({
-                "order_name": name,
-                "order_date": created,
-                "gateway": gateway,
-                "order_total": order_total,
-                "sku": s,
-                "product_id": (prod["product_id"] if prod is not None else None),
-                "title": (li.get(l_title) if l_title and pd.notna(li.get(l_title))
-                          else (prod["title"] if prod is not None else s)),
-                "gross_qty": qty,
-                "gross_revenue": gross,
-                "refunded_qty": ref_qty.get(s, 0.0),
-                "refunded_revenue": ref_rev.get(s, 0.0),
-                "unit_cost": (float(prod["unit_cost"]) if prod is not None and pd.notna(prod["unit_cost"]) else None),
-                "weight_g": (float(prod["weight_g"]) if prod is not None else 0.0),
-            })
+    # order-level attributes
+    odf = pd.DataFrame({"order": order.values})
+    odf["created"] = df[c_created].ffill().values if c_created else None
+    odf["order_total"] = (_num(df[c_total]).ffill().values if c_total else 0.0)
+    olevel = odf.groupby("order", as_index=False).first()
 
-    out = pd.DataFrame(rows)
-    if out.empty:
-        return out
+    # gateway per order from transaction rows
+    gw_col = t_gateway or t_method
+    if gw_col:
+        gw = pd.DataFrame({"order": order.values, "gw": df[gw_col].astype(str).values})
+        gw = gw[gw["gw"].str.strip().ne("") & gw["gw"].str.lower().ne("nan")]
+        gwm = gw.groupby("order", as_index=False).first() if not gw.empty else pd.DataFrame(columns=["order", "gw"])
+    else:
+        gwm = pd.DataFrame(columns=["order", "gw"])
+
+    items = items.merge(olevel, on="order", how="left").merge(gwm, on="order", how="left")
+    items["gateway"] = items.get("gw", pd.Series(index=items.index, dtype=object)).map(_norm_gateway)
+
+    # join product cost / weight / title
+    prod = products.reindex(items["sku"])
+    out = pd.DataFrame({
+        "order_name": items["order"],
+        "order_date": items["created"],
+        "gateway": items["gateway"].fillna("unknown"),
+        "order_total": items["order_total"].fillna(0.0),
+        "sku": items["sku"],
+        "product_id": prod["product_id"].values if "product_id" in prod else None,
+        "title": prod["title"].values if "title" in prod else items["sku"],
+        "gross_qty": items["gross_qty"],
+        "gross_revenue": items["gross_revenue"],
+        "refunded_qty": items["refunded_qty"],
+        "refunded_revenue": items["refunded_revenue"],
+        "unit_cost": prod["unit_cost"].values if "unit_cost" in prod else None,
+        "weight_g": prod["weight_g"].values if "weight_g" in prod else 0.0,
+    })
+    # title fallback to SKU where product not found
+    out["title"] = out["title"].where(out["title"].notna(), out["sku"])
+
     parsed = pd.to_datetime(out["order_date"], errors="coerce", utc=True)
     try:
         local = parsed.dt.tz_convert(tz)
@@ -197,14 +193,25 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     return out
 
 
-def _norm_gateway(g: str) -> str:
-    """Map Matrixify gateway labels to the keys used in config payment_fees."""
+def _norm_gateway(g) -> str:
+    """Map Matrixify gateway / payment-method labels to config payment_fees keys.
+
+    Shopify Payments processes card + local methods (iDEAL, Bancontact, EPS,
+    Sofort, Apple/Google Pay) → 'shopify_payments'. Klarna and PayPal are
+    separate. Blank/missing → 'unknown' (uses default_rate).
+    """
     n = _norm(g)
+    if not n or n == "nan" or n == "none":
+        return "unknown"
     if "paypal" in n:
         return "paypal"
-    if "shopifypayment" in n or n in ("shopify", "shopifypayments"):
+    if "klarna" in n:
+        return "klarna"
+    shopify_methods = {"card", "creditcard", "ideal", "bancontact", "eps", "sofort",
+                       "giropay", "applepay", "googlepay", "shopify", "shopifypayments"}
+    if "shopifypayment" in n or n in shopify_methods:
         return "shopify_payments"
-    return g or "unknown"
+    return n
 
 
 def load(orders_path: Path | str, products_path: Path | str, tz: str = "Europe/Berlin") -> pd.DataFrame:

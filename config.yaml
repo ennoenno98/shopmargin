@@ -62,9 +62,10 @@ payment_fees:
   allocation: revenue        # split an order's fee across its lines by: revenue | units
   fixed_per_order: 0.0       # optional flat € component per order
   gateways:
-    shopify_payments: 0.016  # 1.6%
+    shopify_payments: 0.016  # 1.6% — card, iDEAL, Bancontact, EPS, etc.
     paypal: 0.0298           # 2.98%
-  default_rate: 0.0298       # used for any other / unknown gateway
+    klarna: 0.0299           # placeholder — confirm your Klarna rate
+  default_rate: 0.016        # used for blank/unknown payment method (card-dominant)
 
 # --- Marketing / ad spend (CM3) ---------------------------------------------
 # Source = per-channel/product spend file (provided separately). Until a file is
