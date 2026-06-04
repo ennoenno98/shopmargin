@@ -1,13 +1,17 @@
 name: Refresh Matrixify exports
 
-# Downloads the scheduled Matrixify Orders + Products exports and commits the
-# refreshed data/ files. Needs repo secrets MATRIXIFY_ORDERS_URL and
-# MATRIXIFY_PRODUCTS_URL (the cloud links Matrixify uploads each export to).
+# Downloads the scheduled Matrixify export(s) and commits the refreshed data/
+# files. Needs repo secrets MATRIXIFY_ORDERS_URL and MATRIXIFY_PRODUCTS_URL —
+# the stable links Matrixify uploads to (they may point at the same combined
+# export; the fetcher picks the right sheet from the zip by name).
 
 on:
   schedule:
     - cron: "0 6 * * *"   # daily 06:00 UTC (after Matrixify's scheduled run)
   workflow_dispatch: {}
+
+permissions:
+  contents: write          # allow the job to push the refreshed files
 
 jobs:
   refresh:
@@ -27,10 +31,10 @@ jobs:
         run: |
           git config user.name  "matrixify-export-bot"
           git config user.email "bot@users.noreply.github.com"
-          if ! git diff --quiet -- data/matrixify_orders.csv data/matrixify_products.csv; then
-            git add data/matrixify_orders.csv data/matrixify_products.csv
+          git add data/matrixify_orders.csv.gz data/matrixify_products.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
             git commit -m "chore: refresh Matrixify exports ($(date -u +%Y-%m-%d))"
             git push
-          else
-            echo "No changes."
           fi

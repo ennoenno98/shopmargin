@@ -23,30 +23,38 @@ import pandas as pd
 import requests
 
 DATA = Path(__file__).with_name("data")
+# env var -> (destination file, name hint used to pick the right sheet from a zip)
 TARGETS = {
-    "MATRIXIFY_ORDERS_URL": DATA / "matrixify_orders.csv.gz",
-    "MATRIXIFY_PRODUCTS_URL": DATA / "matrixify_products.csv",
+    "MATRIXIFY_ORDERS_URL": (DATA / "matrixify_orders.csv.gz", "order"),
+    "MATRIXIFY_PRODUCTS_URL": (DATA / "matrixify_products.csv", "product"),
 }
 
 
-def _to_dataframe(content: bytes) -> pd.DataFrame:
-    """Read CSV/XLSX bytes, transparently unzipping a Matrixify zip first."""
-    if content[:2] == b"PK":  # zip archive
-        with zipfile.ZipFile(io.BytesIO(content)) as zf:
-            member = next((n for n in zf.namelist() if n.lower().endswith((".csv", ".xlsx"))), None)
-            if not member:
-                raise ValueError("Zip contained no .csv/.xlsx file.")
-            inner = zf.read(member)
-            if member.lower().endswith(".xlsx"):
-                return pd.read_excel(io.BytesIO(inner))
-            return pd.read_csv(io.BytesIO(inner))
-    # not zipped
-    if content[:4] == b"PK\x03\x04" or content[:8].startswith(b"\xd0\xcf"):  # xlsx/xls magic
-        return pd.read_excel(io.BytesIO(content))
+def _read_bytes(b: bytes) -> pd.DataFrame:
+    if b[:2] == b"PK\x03\x04"[:2] and b[2:4] != b"\x03\x04":  # plain xlsx is also PK; handled below
+        pass
     try:
-        return pd.read_excel(io.BytesIO(content))  # .xlsx without obvious magic
+        return pd.read_excel(io.BytesIO(b))
     except Exception:
-        return pd.read_csv(io.BytesIO(content))
+        return pd.read_csv(io.BytesIO(b), low_memory=False)
+
+
+def _to_dataframe(content: bytes, hint: str = "") -> pd.DataFrame:
+    """Read CSV/XLSX bytes, unzipping a Matrixify zip and picking the member
+    whose filename matches ``hint`` (e.g. 'order'/'product') when present.
+    Works whether you make two separate exports or one combined zip."""
+    if content[:2] == b"PK":  # zip archive (xlsx is also PK, so try zip listing)
+        try:
+            zf = zipfile.ZipFile(io.BytesIO(content))
+            members = [n for n in zf.namelist() if n.lower().endswith((".csv", ".xlsx"))]
+            if members:
+                chosen = next((n for n in members if hint and hint in n.lower()), members[0])
+                inner = zf.read(chosen)
+                return (pd.read_excel(io.BytesIO(inner)) if chosen.lower().endswith(".xlsx")
+                        else pd.read_csv(io.BytesIO(inner), low_memory=False))
+        except zipfile.BadZipFile:
+            pass  # not a zip — fall through (e.g. a bare .xlsx)
+    return _read_bytes(content)
 
 
 def main() -> int:
