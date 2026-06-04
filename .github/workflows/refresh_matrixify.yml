@@ -1,13 +1,22 @@
 name: Refresh Matrixify exports
 
-# Downloads the scheduled Matrixify export(s) and commits the refreshed data/
-# files. Needs repo secrets MATRIXIFY_ORDERS_URL and MATRIXIFY_PRODUCTS_URL —
-# the stable links Matrixify uploads to (they may point at the same combined
-# export; the fetcher picks the right sheet from the zip by name).
+# Refreshes the dashboard's data/ files straight from the Matrixify MCP server.
+# Runs an MCP client (refresh_matrixify_mcp.py) that creates chunked order
+# exports + a products export, downloads them, stitches the orders, and commits.
+#
+# GitHub-hosted runners have open network access, so they can reach
+# mcp.matrixify.app and app.matrixify.app (a Claude Code web session cannot —
+# its egress allowlist blocks those hosts, which is why the refresh lives here).
+#
+# Required repo secret:
+#   MATRIXIFY_MCP_TOKEN  — Matrixify app -> Settings -> "AI Agent MCP Tokens"
+#                          -> Generate Token
+# Optional repo variable:
+#   ORDERS_SINCE         — first order month, YYYY-MM-DD (default 2025-07-01)
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # daily 06:00 UTC (after Matrixify's scheduled run)
+    - cron: "0 6 * * *"   # daily 06:00 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -22,11 +31,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements-export.txt
-      - name: Download Matrixify exports
+      - name: Refresh data from Matrixify MCP
         env:
-          MATRIXIFY_ORDERS_URL: ${{ secrets.MATRIXIFY_ORDERS_URL }}
-          MATRIXIFY_PRODUCTS_URL: ${{ secrets.MATRIXIFY_PRODUCTS_URL }}
-        run: python fetch_matrixify_export.py
+          MATRIXIFY_MCP_TOKEN: ${{ secrets.MATRIXIFY_MCP_TOKEN }}
+          ORDERS_SINCE: ${{ vars.ORDERS_SINCE }}
+        run: python refresh_matrixify_mcp.py
       - name: Commit if changed
         run: |
           git config user.name  "matrixify-export-bot"

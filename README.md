@@ -29,17 +29,36 @@ reads two Matrixify exports:
 If those files aren't present it falls back to a committed JSON **sample**
 (`data/sample_orders.json`) so the demo runs with zero setup.
 
-### Matrixify export setup
-Create two scheduled exports in Matrixify and have them upload to a cloud
-destination (S3 / Google Drive / Dropbox / FTP):
+### Matrixify refresh — via the Matrixify MCP server (no Drive/FTP)
 
-- **Products** — columns: `Variant SKU`, `Variant Cost`, `Variant Price`, `Variant Grams`, `Title`, `Status`, `Vendor`.
-- **Orders** — columns: `Name`, `Created At`, `Financial Status`, `Currency`, `Line: SKU`, `Line: Quantity`, `Line: Price`, `Line: Discount`, `Line: Total`, refund columns, `Transaction: Gateway`, `Transaction: Amount`.
+The data is refreshed straight from the **Matrixify MCP server**
+(`https://mcp.matrixify.app/mcp`) by `refresh_matrixify_mcp.py`, run daily by
+the `refresh_matrixify.yml` GitHub Action. It creates the exports, downloads
+them, and commits — no cloud-storage hop and no manual links.
 
-Then set repo secrets `MATRIXIFY_ORDERS_URL` and `MATRIXIFY_PRODUCTS_URL` to
-the upload links; the daily Action `refresh_matrixify.yml` downloads (unzips if
-needed) and commits the refreshed CSVs. Column names are matched tolerantly, so
-minor Matrixify naming differences are fine.
+**The 10k-orders-per-job cap:** a single Matrixify export is capped at the
+plan's order limit (Big plan = 10,000 orders/job), so one unfiltered export of a
+~17k-order store silently drops the overflow. The script avoids this by
+exporting orders in **monthly `created_at` chunks** and stitching them; if any
+month ever nears the cap the chunk is split in half and retried, so the result
+is always complete. Products (incl. **Variant Cost** = COGS) come from a single
+export. Column names are matched tolerantly downstream in `matrixify_client.py`.
+
+**One-time setup:** in the Matrixify app, go to **Settings → AI Agent MCP
+Tokens → Generate Token**, then add it as the repo secret
+**`MATRIXIFY_MCP_TOKEN`**. (Optional repo *variable* `ORDERS_SINCE`, default
+`2025-07-01`, sets the first order month.) That's it — the daily Action does the
+rest. Run it on demand from the Actions tab ("Run workflow") or locally:
+
+```bash
+pip install -r requirements-export.txt
+MATRIXIFY_MCP_TOKEN=… python refresh_matrixify_mcp.py
+python refresh_matrixify_mcp.py --self-test   # offline: chunking + stitch checks
+```
+
+> Note: this must run somewhere with open network (CI / your machine). A Claude
+> Code **web** session can drive the MCP but its egress allowlist blocks
+> `app.matrixify.app`, so it can't download the export files itself.
 
 ## Where the numbers come from
 
@@ -65,15 +84,17 @@ matrixify_client.py      # reads Matrixify Orders + Products exports
 data_source.py           # picks Matrixify files, else the JSON sample
 marketing.py             # Klar marketing ingestion & monthly aggregation
 config.py / config.yaml  # cost assumptions + sidebar override merge
-fetch_matrixify_export.py / fetch_klar_export.py   # automated downloads
+refresh_matrixify_mcp.py # refresh orders+products via the Matrixify MCP (chunked, stitched)
+fetch_matrixify_export.py / fetch_klar_export.py   # legacy URL fetch (Matrixify) / Klar download
 data/                    # matrixify_*.csv, klar_marketing.csv, sample_orders.json
 .github/workflows/refresh_matrixify.yml + refresh_klar.yml   # daily refresh
 ```
 
 ## Automating the data pulls
 
-- **Shopify data (Matrixify):** repo secrets `MATRIXIFY_ORDERS_URL` +
-  `MATRIXIFY_PRODUCTS_URL` → daily `refresh_matrixify.yml`.
+- **Shopify data (Matrixify):** repo secret `MATRIXIFY_MCP_TOKEN` → daily
+  `refresh_matrixify.yml` (runs `refresh_matrixify_mcp.py` against the Matrixify
+  MCP server; chunks orders to beat the 10k/job cap, then stitches + commits).
 - **Marketing (Klar):** repo secret `KLAR_MARKETING_EXPORT_URL` → daily
   `refresh_klar.yml` (see `fetch_klar_export.py` for how to get a stable link).
 
