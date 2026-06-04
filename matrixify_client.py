@@ -115,6 +115,8 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     # gateway: prefer an explicit gateway column, else payment method
     t_gateway = _col(df, "Transaction: Gateway")
     t_method = _col(df, "Transaction: Payment Method")
+    c_country = _col(df, "Shipping: Country Code", "Shipping: Country",
+                     "Send to Country", "Shipping Country", "Billing: Country Code")
     if not c_name or not l_sku:
         raise ValueError("Orders export needs at least 'Name' and 'Line: SKU' columns.")
 
@@ -149,6 +151,7 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     odf = pd.DataFrame({"order": order.values})
     odf["created"] = df[c_created].ffill().values if c_created else None
     odf["order_total"] = (_num(df[c_total]).ffill().values if c_total else 0.0)
+    odf["country"] = (df[c_country].ffill().astype(str).values if c_country else "Unknown")
     olevel = odf.groupby("order", as_index=False).first()
 
     # gateway per order from transaction rows
@@ -168,6 +171,7 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     out = pd.DataFrame({
         "order_name": items["order"],
         "order_date": items["created"],
+        "country": items["country"].fillna("Unknown") if "country" in items else "Unknown",
         "gateway": items["gateway"].fillna("unknown"),
         "order_total": items["order_total"].fillna(0.0),
         "sku": items["sku"],

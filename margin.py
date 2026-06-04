@@ -96,6 +96,8 @@ def flatten_orders(orders: list[dict], tz: str = "Europe/Berlin") -> pd.DataFram
     df = pd.DataFrame(rows)
     if df.empty:
         return df
+    if "country" not in df.columns:
+        df["country"] = "Unknown"
     parsed = pd.to_datetime(df["order_date"], errors="coerce", utc=True)
     try:
         local = parsed.dt.tz_convert(tz)
