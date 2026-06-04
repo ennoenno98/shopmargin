@@ -48,8 +48,10 @@ DATA = Path(__file__).with_name("data")
 ORDERS_OUT = DATA / "matrixify_orders.csv.gz"
 PRODUCTS_OUT = DATA / "matrixify_products.csv"
 
-MCP_URL = os.environ.get("MATRIXIFY_MCP_URL", "https://mcp.matrixify.app/mcp")
-ORDERS_SINCE = os.environ.get("ORDERS_SINCE", "2025-07-01")
+# Use `or` (not get's default) so an env var that is *set but empty* — e.g. the
+# workflow passing an unset ${{ vars.ORDERS_SINCE }} as "" — falls back too.
+MCP_URL = os.environ.get("MATRIXIFY_MCP_URL") or "https://mcp.matrixify.app/mcp"
+ORDERS_SINCE = os.environ.get("ORDERS_SINCE") or "2025-07-01"
 
 # Per-export Matrixify config (mirrors what the dashboard's matrixify_client reads).
 ORDERS_GROUPS = {g: {"include": True} for g in
