@@ -1,0 +1,4 @@
+# Dependencies for the scheduled Klar export job (fetch_klar_export.py).
+pandas>=2.2
+requests>=2.32
+openpyxl>=3.1

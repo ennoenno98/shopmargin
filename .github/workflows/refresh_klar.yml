@@ -1,0 +1,34 @@
+name: Refresh Klar marketing export
+
+# Automates downloading the Klar "Marketing Overview" export and committing
+# the refreshed data/klar_marketing.csv. Needs repo secret KLAR_MARKETING_EXPORT_URL.
+
+on:
+  schedule:
+    - cron: "0 5 * * *"   # daily 05:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-export.txt
+      - name: Download & normalise Klar export
+        env:
+          KLAR_MARKETING_EXPORT_URL: ${{ secrets.KLAR_MARKETING_EXPORT_URL }}
+        run: python fetch_klar_export.py
+      - name: Commit if changed
+        run: |
+          git config user.name  "klar-export-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if ! git diff --quiet -- data/klar_marketing.csv; then
+            git add data/klar_marketing.csv
+            git commit -m "chore: refresh Klar marketing export ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "No changes."
+          fi

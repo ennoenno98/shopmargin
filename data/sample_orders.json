@@ -1,0 +1,4440 @@
+[
+  {
+    "name": "#15015",
+    "createdAt": "2026-04-30T22:07:25Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "17.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "2.17"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "23.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-313",
+          "title": "Boswellia Extract Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "22.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778988314955"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.99"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 90,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15016",
+    "createdAt": "2026-04-30T22:21:07Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "9.32"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "14.22"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15017",
+    "createdAt": "2026-04-30T22:24:45Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "117.6"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "23.52"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "117.6"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-391",
+          "title": "Quercetin Complex Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "39.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/14895952363851"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.64"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 89,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-57-V",
+          "title": "Hyaluronic Acid Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "77.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996572491"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "16.88"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 147.6,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15018",
+    "createdAt": "2026-04-30T22:30:41Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "83.63"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "9.29"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "83.63"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-361",
+          "title": "Rapunzel Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "16.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779009286475"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.7"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 91.92,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-341",
+          "title": "Vitamin B12 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "15.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011350859"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 50,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-151",
+          "title": "Female Balance Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "23.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778994147659"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.35"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 98.46,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15019",
+    "createdAt": "2026-04-30T22:40:57Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "65.7"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "3.43"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "65.7"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-207",
+          "title": "Astragalus Extract Capsules Organic",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "65.7"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778987692363"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": null,
+              "measurement": {
+                "weight": {
+                  "value": 73.8,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15020",
+    "createdAt": "2026-04-30T22:43:39Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "22.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "1.5"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "28.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-297",
+          "title": "Beta Carotene Plus Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "22.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778988118347"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.22"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 66,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15021",
+    "createdAt": "2026-04-30T22:58:32Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "68.61"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "12.09"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "6.24"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "68.61"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "68.61"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15022",
+    "createdAt": "2026-04-30T23:00:21Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "19.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "2.35"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "25.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-266",
+          "title": "Moringa Oleifera Tablets Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10822223167819"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.94"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15023",
+    "createdAt": "2026-04-30T23:36:11Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "66.8"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "6.08"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "66.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "26.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-57-V",
+          "title": "Hyaluronic Acid Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "39.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996572491"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "16.88"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 147.6,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15024",
+    "createdAt": "2026-05-01T04:20:20Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "19.99"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "2.36"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "25.89"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-371",
+          "title": "Nattokinase Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001684299"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.86"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 63,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15025",
+    "createdAt": "2026-05-01T04:56:45Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "91.48"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "16.12"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "91.48"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 4,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "91.48"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15026",
+    "createdAt": "2026-05-01T05:44:08Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "25.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "30.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-264",
+          "title": "Mugwort Extract Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779000242507"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.4"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 129.6,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15027",
+    "createdAt": "2026-05-01T06:41:44Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "51.12"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "2.68"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "51.12"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "51.12"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15028",
+    "createdAt": "2026-05-01T07:00:47Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "48.33"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.37"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "53.23"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-116",
+          "title": "Natural Iodine Organic Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "53.7"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778980057419"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.32"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 48.6,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15029",
+    "createdAt": "2026-05-01T07:22:39Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "25.99"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "2.9"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "31.89"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-364",
+          "title": "Astaxanthin Oil Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779003388235"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.71"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 25.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15030",
+    "createdAt": "2026-05-01T07:33:59Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "19.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "1.35"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "25.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-371",
+          "title": "Nattokinase Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001684299"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.86"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 63,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15031",
+    "createdAt": "2026-05-01T07:42:05Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "193.98"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "50.06"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "17.63"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "193.98"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-248",
+          "title": "Oregano Oil Capsules Organic",
+          "quantity": 6,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "116.82"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779007320395"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.93"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 53.55,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 6,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "77.16"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15032",
+    "createdAt": "2026-05-01T07:43:49Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "93.12"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "29.22"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "8.46"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "93.12"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "36.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-158",
+          "title": "Glucosamine Complex Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "57.12"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996080971"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.76"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 146.16,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15033",
+    "createdAt": "2026-05-01T07:46:32Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "68.61"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "12.09"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "14.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "13.92"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "83.51"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "68.61"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15034",
+    "createdAt": "2026-05-01T07:50:35Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "52.98"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "4.81"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "52.98"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-88",
+          "title": "Chlorella & Spirulina Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "27.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779005780299"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.13"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 188.88,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-168",
+          "title": "Sun Care Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "24.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779010728267"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.69"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 99.36,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15035",
+    "createdAt": "2026-05-01T07:57:57Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "14.12"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "1.82"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "20.02"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-344",
+          "title": "Ashwagandha KSM-66 Extract Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.12"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779003289931"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.92"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 77.76,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15036",
+    "createdAt": "2026-05-01T08:07:17Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "9.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "29.9"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "14.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-266",
+          "title": "Moringa Oleifera Tablets Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10822223167819"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.94"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-266",
+          "title": "Moringa Oleifera Tablets Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10822223167819"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.94"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15037",
+    "createdAt": "2026-05-01T08:07:38Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "24.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "29.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-326",
+          "title": "Griffonia Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "24.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778987397451"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.81"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15038",
+    "createdAt": "2026-05-01T08:12:58Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "49.98"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.55"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "49.98"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-341",
+          "title": "Vitamin B12 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011350859"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 50,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.7"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.51"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15039",
+    "createdAt": "2026-05-01T08:29:00Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "82.84"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "15.92"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "82.84"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "23.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-338",
+          "title": "Turmeric Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779008237899"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.25"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 43.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-409",
+          "title": "Magnesium Citrate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "13.52"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15465197306187"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": null,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-158",
+          "title": "Glucosamine Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.52"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996080971"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.76"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 146.16,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15040",
+    "createdAt": "2026-05-01T08:42:17Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "36.18"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "3.83"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "42.08"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "15.19"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-319",
+          "title": "Chia Seed Oil Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "20.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779004961099"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.07"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 98.4,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15041",
+    "createdAt": "2026-05-01T08:59:58Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "57.42"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "6.38"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "5.22"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "57.42"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-94",
+          "title": "Pro Bio Capsules Organic",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "57.42"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779007451467"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "10.13"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 29.7,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15042",
+    "createdAt": "2026-05-01T09:19:12Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "63.12"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "63.12"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "53.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15043",
+    "createdAt": "2026-05-01T09:24:50Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "49.91"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "4.54"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "49.91"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-ALO-06",
+          "title": "MSM Powder",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.92"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10812462268747"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.5"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "29.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15044",
+    "createdAt": "2026-05-01T09:27:18Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "23.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "28.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-284",
+          "title": "Chaga Extract Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "23.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779004469579"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.77"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 64.8,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15045",
+    "createdAt": "2026-05-01T09:32:49Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "65.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "5.99"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "65.9"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-ALO-06",
+          "title": "MSM Powder",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.92"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10812462268747"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.5"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-364",
+          "title": "Astaxanthin Oil Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779003388235"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.71"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 25.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-90",
+          "title": "Beta Carotene Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778988085579"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.1"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 44.1,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15046",
+    "createdAt": "2026-05-01T09:36:11Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "74.97"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "6.81"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "74.97"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-364",
+          "title": "Astaxanthin Oil Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779003388235"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.71"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 25.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-222",
+          "title": "Black Cumin Seed Oil Capsules Organic",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779003650379"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 109.44,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "22.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15047",
+    "createdAt": "2026-05-01T10:17:26Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "16.9"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "1.19"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "22.8"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-383",
+          "title": "Vitamin K2 Tablets",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011907915"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.22"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 83.88,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15048",
+    "createdAt": "2026-05-01T10:29:36Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "53.82"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.98"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "4.89"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "53.82"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "53.82"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15049",
+    "createdAt": "2026-05-01T10:45:32Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "87.23"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "25.61"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "87.23"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-224",
+          "title": "Vegan Essentials Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779010924875"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.36"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-341",
+          "title": "Vitamin B12 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "15.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011350859"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 50,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-402",
+          "title": "Un-Bloat Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "24.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15439303508299"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": null,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15050",
+    "createdAt": "2026-05-01T10:46:42Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "82.92"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "18.94"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "7.53"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "82.92"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-320",
+          "title": "Vollagen + Hyaluronic Acid Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "23.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011940683"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.37"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 46.08,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-314",
+          "title": "Glycine Powder",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "31.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10812476981579"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "3.25"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "27.22"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15051",
+    "createdAt": "2026-05-01T10:51:41Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "98.0"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "41.14"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "8.91"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "98.0"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-333",
+          "title": "Electrolyte Plus Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "0.0"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778993557835"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.18"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 112.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-228",
+          "title": "Vitamin D3 + K2 Oil Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "61.2"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011744075"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 61.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-142",
+          "title": "Prostaid Complex Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "46.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779008991563"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.82"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 101.7,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15052",
+    "createdAt": "2026-05-01T11:02:44Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "18.39"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "2.21"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "24.29"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-86",
+          "title": "MSM Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "18.39"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779000111435"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 281.05,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15053",
+    "createdAt": "2026-05-01T11:24:25Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "34.02"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "3.78"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "38.92"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-341",
+          "title": "Vitamin B12 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "15.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011350859"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 50,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15054",
+    "createdAt": "2026-05-01T11:34:00Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "13.99"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "5.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "1.81"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "19.89"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-314",
+          "title": "Glycine Powder",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "18.99"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10812476981579"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "3.25"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15055",
+    "createdAt": "2026-05-01T12:22:22Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "61.2"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "10.77"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "5.56"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "61.2"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-297",
+          "title": "Beta Carotene Plus Oil Capsules",
+          "quantity": 3,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "61.2"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778988118347"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.22"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 66,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15056",
+    "createdAt": "2026-05-01T12:31:41Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "102.81"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "11.42"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "102.81"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-391",
+          "title": "Quercetin Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/14895952363851"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.64"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 89,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-410",
+          "title": "OPC Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15610398736715"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": null,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-341",
+          "title": "Vitamin B12 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011350859"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 50,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-342",
+          "title": "Vitamin D3 + K2 Drops",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "19.7"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011645771"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.68"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 31.5,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "21.51"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-277",
+          "title": "Vitamin B12 Junior Spray",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "12.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011547467"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "3.48"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 25,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15057",
+    "createdAt": "2026-05-01T12:47:57Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "67.52"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "6.14"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "67.52"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "26.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-86",
+          "title": "MSM Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "16.72"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779000111435"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 281.05,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-320",
+          "title": "Vollagen + Hyaluronic Acid Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "23.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011940683"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.37"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 46.08,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15058",
+    "createdAt": "2026-05-01T12:51:48Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "39.04"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "43.94"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-158",
+          "title": "Glucosamine Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "25.52"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996080971"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.76"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 146.16,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-409",
+          "title": "Magnesium Citrate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "13.52"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/15465197306187"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": null,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15059",
+    "createdAt": "2026-05-01T12:56:28Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "33.8"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "38.7"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-93",
+          "title": "Vitamin B12 Spray",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "33.8"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011383627"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "3.85"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 25,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15060",
+    "createdAt": "2026-05-01T13:24:18Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "23.64"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "28.54"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-379",
+          "title": "Glucosamine Plus Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "28.64"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778995949899"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "4.97"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 109.8,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15061",
+    "createdAt": "2026-05-01T13:29:23Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "99.6"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "5.0"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "9.05"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "99.6"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-231",
+          "title": "Myo-Inositol Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "29.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779001061707"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.05"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 103.2,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-303",
+          "title": "Drenaflux Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "22.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778992836939"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.71"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 86.4,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-136",
+          "title": "Light Legs Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "22.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778998866251"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.26"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 66,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-276",
+          "title": "Venaflux Complex Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "28.9"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779011088715"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "7.95"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 94.92,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15062",
+    "createdAt": "2026-05-01T13:38:32Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "59.74"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "2.38"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "59.74"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-223",
+          "title": "Omega 3 Oil Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "45.42"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10779002765643"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "8.63"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 54.45,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        },
+        {
+          "sku": "VV-VITA-370",
+          "title": "Magnesium Bisglycinate Capsules",
+          "quantity": 1,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "14.32"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778999488843"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.01"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 108,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15063",
+    "createdAt": "2026-05-01T13:40:27Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "paypal"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "114.12"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "37.98"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "114.12"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-363",
+          "title": "Apple Cider Vinegar Complex Capsules",
+          "quantity": 9,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "114.12"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778987495755"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "5.11"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 92.52,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  },
+  {
+    "name": "#15064",
+    "createdAt": "2026-05-01T13:51:12Z",
+    "displayFinancialStatus": "PAID",
+    "paymentGatewayNames": [
+      "shopify_payments"
+    ],
+    "currentSubtotalPriceSet": {
+      "shopMoney": {
+        "amount": "35.92"
+      }
+    },
+    "totalDiscountsSet": {
+      "shopMoney": {
+        "amount": "1.88"
+      }
+    },
+    "totalShippingPriceSet": {
+      "shopMoney": {
+        "amount": "4.9"
+      }
+    },
+    "totalTaxSet": {
+      "shopMoney": {
+        "amount": "0.0"
+      }
+    },
+    "totalPriceSet": {
+      "shopMoney": {
+        "amount": "40.82"
+      }
+    },
+    "lineItems": {
+      "nodes": [
+        {
+          "sku": "VV-VITA-49",
+          "title": "Iron Bisglycinate Capsules",
+          "quantity": 2,
+          "discountedTotalSet": {
+            "shopMoney": {
+              "amount": "35.92"
+            }
+          },
+          "product": {
+            "id": "gid://shopify/Product/10778996900171"
+          },
+          "variant": {
+            "inventoryItem": {
+              "unitCost": {
+                "amount": "6.48"
+              },
+              "measurement": {
+                "weight": {
+                  "value": 89.16,
+                  "unit": "GRAMS"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "refunds": []
+  }
+]

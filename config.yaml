@@ -1,0 +1,83 @@
+# =============================================================================
+# Shopify Margin Dashboard — cost assumptions
+# -----------------------------------------------------------------------------
+# This file holds ALL cost/fee assumptions. The calculation logic in margin.py
+# never hard-codes a number — it reads everything from here. Every value can
+# also be overridden at runtime from the dashboard sidebar (sidebar wins).
+#
+# CM ladder (kept consistent with the Amazon "Margin Analytics" workbook):
+#   CM1 = Net revenue - COGS
+#   CM2 = CM1 - logistics/3PL - payment fees - packaging
+#   CM3 = CM2 - allocated marketing / ad spend
+# =============================================================================
+
+currency: EUR
+
+# --- Revenue definition (drives CM1) ----------------------------------------
+revenue:
+  net_of_discounts: true     # use line discountedTotal (after discount codes / reductions)
+  net_of_refunds: true       # subtract refunded units & their refunded revenue
+  include_shipping: false    # exclude customer-paid shipping from revenue
+  # tax is always excluded (we work on net, pre-tax revenue — matches Klar "Net Revenue")
+
+# --- COGS (drives CM1) -------------------------------------------------------
+cogs:
+  source: shopify_unit_cost  # variant.inventoryItem.unitCost ("Cost per item")
+  # If a variant has no unit cost, its COGS is treated as 0 and the SKU is
+  # flagged as "cost missing" in the dashboard so CM1 isn't silently overstated.
+  default_unit_cost: null    # optional fallback € per unit when unitCost is null
+
+# --- Logistics / 3PL (CM2) ---------------------------------------------------
+# Chosen basis = AP26 plan, €4.84 per order (Everstock 3PL, Vegavero own e-shop).
+# Reconciles with Klar actuals (€5.43/order) within ~12%.
+logistics:
+  basis: per_order           # per_order | per_unit | per_kg | pct_revenue
+  per_order: 4.84            # AP26 FY plan: €224.4k / 46.4k orders
+  per_unit: 2.15             # Klar actual alt basis
+  per_kg: 22.43              # Klar actual alt basis (uses live variant weight)
+  pct_revenue: 0.1103        # Klar actual alt basis (11.03% of net revenue)
+  allocation: units          # split an order's logistics across its lines by: units | revenue
+
+# --- Packaging (CM2) ---------------------------------------------------------
+# Disabled per decision: Klar's logistics figure already covers fulfillment and
+# packaging is not tracked separately in the actuals we calibrate against.
+packaging:
+  enabled: false
+  per_unit: 0.72             # AP26 plan (€83.3k/yr) if ever re-enabled
+  per_order: 1.80
+
+# --- Payment / transaction fees (CM2) ---------------------------------------
+# Gateway-specific effective rates. Shopify Payments 1.6%, PayPal 2.98%.
+payment_fees:
+  basis: order_total         # apply rate to: order_total (incl. shipping paid) | net_revenue
+  allocation: revenue        # split an order's fee across its lines by: revenue | units
+  fixed_per_order: 0.0       # optional flat € component per order
+  gateways:
+    shopify_payments: 0.016  # 1.6%
+    paypal: 0.0298           # 2.98%
+  default_rate: 0.0298       # used for any other / unknown gateway
+
+# --- Marketing / ad spend (CM3) ---------------------------------------------
+# Source = per-channel/product spend file (provided separately). Until a file is
+# present the dashboard reports CM3 as "pending" (or falls back to pct_revenue
+# if you flip source to pct_revenue).
+marketing:
+  enabled: true
+  source: file               # file | pct_revenue
+  spend_file: data/klar_marketing.csv
+  pct_revenue: 0.10          # fallback TACoS (10% of net revenue) when source = pct_revenue
+  allocation: revenue        # map total/channel spend to products by: revenue | units
+
+# --- Scope & time ------------------------------------------------------------
+scope:
+  status: active             # active | any  (product status filter, applied in live mode)
+  grain: variant             # variant (per SKU) | product (roll variants into parent)
+date:
+  default_days: 90           # default rolling window
+cache_ttl_minutes: 60        # how long a Shopify pull is cached before re-querying
+
+# --- Targets (per-CM %, used for KPIs and red/green formatting) --------------
+targets:
+  cm1_pct: 71.0
+  cm2_pct: 33.0
+  cm3_pct: 20.0
