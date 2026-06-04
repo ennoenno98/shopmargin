@@ -25,6 +25,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 350   # order exports are slow + serialized; stay under GH's 6h ceiling
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

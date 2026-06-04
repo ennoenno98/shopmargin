@@ -58,19 +58,32 @@ ORDERS_GROUPS = {g: {"include": True} for g in
                  ("base", "customers", "line_type", "line_items", "refunds", "transactions")}
 PRODUCTS_GROUPS = {g: {"include": True} for g in ("base", "variants", "variant_cost")}
 
-# Safety margin below the hard 10k/job cap: if a chunk returns at least this many
-# orders we split it finer, so we never sit right on the limit.
-SPLIT_THRESHOLD = 9000
-POLL_SECONDS = 10
-JOB_TIMEOUT_SECONDS = 60 * 60
+# Months per order-export chunk. Each order export is slow (~30 min — the
+# transactions group scans every order), and the Big plan runs only ONE export
+# at a time, so keep the chunk COUNT low: quarterly (3) gives ~4 chunks/year,
+# each ~a few thousand orders — well under the 10k/job cap and inside CI limits.
+# Monthly would be ~12 chunks and overrun GitHub's 6h job ceiling.
+CHUNK_MONTHS = int(os.environ.get("CHUNK_MONTHS") or 3)
+POLL_SECONDS = 15
+# Generous: a chunk may sit "queued" a long time behind the store's own
+# recurring exports (only one export runs at a time). This bounds the wait,
+# not the run.
+JOB_TIMEOUT_SECONDS = 150 * 60
 
 
 # ---------------------------------------------------------------------------
 # Date chunking (pure, unit-testable)
 # ---------------------------------------------------------------------------
 
-def month_chunks(since: dt.date, until: dt.date) -> list[tuple[dt.date, dt.date]]:
-    """Inclusive [first-of-month, last-of-month] ranges covering since..until.
+def _add_months(d: dt.date, n: int) -> dt.date:
+    """First of the month n months after d's month."""
+    m = d.month - 1 + n
+    return dt.date(d.year + m // 12, m % 12 + 1, 1)
+
+
+def period_chunks(since: dt.date, until: dt.date,
+                  months: int = CHUNK_MONTHS) -> list[tuple[dt.date, dt.date]]:
+    """Inclusive [start, end] ranges of ``months`` each, covering since..until.
 
     Ranges are non-overlapping and contiguous, so stitched chunks neither
     duplicate nor drop orders. The final chunk's end is clamped to ``until``.
@@ -78,7 +91,7 @@ def month_chunks(since: dt.date, until: dt.date) -> list[tuple[dt.date, dt.date]
     out: list[tuple[dt.date, dt.date]] = []
     cur = since.replace(day=1)
     while cur <= until:
-        nxt = (cur.replace(day=28) + dt.timedelta(days=4)).replace(day=1)  # first of next month
+        nxt = _add_months(cur, months)
         end = min(nxt - dt.timedelta(days=1), until)
         out.append((max(cur, since), end))
         cur = nxt
@@ -190,12 +203,18 @@ class MatrixifyMCP:
 
     async def wait(self, job_id: int) -> dict:
         waited = 0
+        last_state = None
         while True:
             data = await self.call("matrixify_job_get", {"job_id": job_id})
             status = str(data.get("status", "")).lower()
             state = str(data.get("state", "")).lower()
             if status in ("finished", "failed", "cancelled") or "finished" in state:
+                if status == "failed":
+                    raise SystemExit(f"job {job_id} failed: {data.get('details')}")
                 return data
+            if state != last_state:  # log transitions (Queued -> In Progress -> ...)
+                print(f"    job {job_id}: {state or status} ({waited}s)", flush=True)
+                last_state = state
             if waited >= JOB_TIMEOUT_SECONDS:
                 raise SystemExit(f"job {job_id} timed out after {waited}s (state={state})")
             await asyncio.sleep(POLL_SECONDS)
@@ -213,10 +232,15 @@ class MatrixifyMCP:
             return resp.content
 
     @staticmethod
-    def order_count(job: dict) -> tuple[int, int]:
-        """(count, limited) for the orders entity of a finished job."""
+    def orders_limited(job: dict) -> int:
+        """Orders dropped by the per-job cap (0 if the chunk fit).
+
+        NB: the job's ``count`` field is the *store* order total, not the
+        chunk's exported count, so it can't gauge chunk size — only ``limited``
+        reliably signals the cap was hit.
+        """
         o = (job.get("details") or {}).get("orders") or {}
-        return int(o.get("count") or 0), int(o.get("limited") or 0)
+        return int(o.get("limited") or 0)
 
 
 async def export_orders_range(mcp: MatrixifyMCP, lo: dt.date, hi: dt.date) -> list[bytes]:
@@ -228,16 +252,16 @@ async def export_orders_range(mcp: MatrixifyMCP, lo: dt.date, hi: dt.date) -> li
     name = f"dashboard_orders_{lo.isoformat()}_{hi.isoformat()}"
     job_id = await mcp.export(details, name)
     job = await mcp.wait(job_id)
-    count, limited = mcp.order_count(job)
-    if limited > 0 or count >= SPLIT_THRESHOLD:
+    limited = mcp.orders_limited(job)
+    if limited > 0:
         if hi <= lo:
             raise SystemExit(f"single day {lo} exceeds the export cap; cannot split further")
-        print(f"  chunk {lo}..{hi}: count={count} limited={limited} -> splitting", flush=True)
+        print(f"  chunk {lo}..{hi}: cap hit (limited={limited}) -> splitting in half", flush=True)
         parts: list[bytes] = []
         for plo, phi in halve(lo, hi):
             parts += await export_orders_range(mcp, plo, phi)
         return parts
-    print(f"  chunk {lo}..{hi}: {count} orders OK", flush=True)
+    print(f"  chunk {lo}..{hi}: OK", flush=True)
     await asyncio.sleep(5)  # respect ~1 download / 5s throttle
     return [unzip_if_needed(await mcp.download(job_id), "order")]
 
@@ -254,8 +278,9 @@ async def run() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     today = dt.date.today()
     since = dt.date.fromisoformat(ORDERS_SINCE)
-    chunks = month_chunks(since, today)
-    print(f"Refreshing via {MCP_URL}: {len(chunks)} monthly order chunks {since}..{today}", flush=True)
+    chunks = period_chunks(since, today)
+    print(f"Refreshing via {MCP_URL}: {len(chunks)} order chunks "
+          f"({CHUNK_MONTHS}-month) {since}..{today}", flush=True)
 
     headers = {"Authorization": f"Bearer {token}"}
     async with streamablehttp_client(MCP_URL, headers=headers) as (read, write, _):
@@ -297,12 +322,15 @@ async def run() -> int:
 def self_test() -> int:
     import pandas as pd
 
-    cs = month_chunks(dt.date(2025, 7, 1), dt.date(2026, 6, 4))
-    assert cs[0] == (dt.date(2025, 7, 1), dt.date(2025, 7, 31)), cs[0]
-    assert cs[-1] == (dt.date(2026, 6, 1), dt.date(2026, 6, 4)), cs[-1]
+    cs = period_chunks(dt.date(2025, 7, 1), dt.date(2026, 6, 4), months=3)
+    assert cs[0] == (dt.date(2025, 7, 1), dt.date(2025, 9, 30)), cs[0]
+    assert cs[-1] == (dt.date(2026, 4, 1), dt.date(2026, 6, 4)), cs[-1]
+    assert len(cs) == 4, cs
     # contiguous, non-overlapping
     for (_, a_hi), (b_lo, _) in zip(cs, cs[1:]):
         assert b_lo == a_hi + dt.timedelta(days=1), (a_hi, b_lo)
+    # monthly still works (used if CHUNK_MONTHS=1)
+    assert len(period_chunks(dt.date(2025, 7, 1), dt.date(2026, 6, 4), months=1)) == 12
     h = halve(dt.date(2026, 1, 1), dt.date(2026, 1, 31))
     assert h[0][1] + dt.timedelta(days=1) == h[1][0] and h[1][1] == dt.date(2026, 1, 31), h
 
