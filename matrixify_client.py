@@ -41,7 +41,7 @@ def _read(path: Path | str) -> pd.DataFrame:
     p = Path(path)
     if p.suffix.lower() in (".xlsx", ".xls"):
         return pd.read_excel(p)
-    return pd.read_csv(p)
+    return pd.read_csv(p, low_memory=False)
 
 
 def _num(series: pd.Series) -> pd.Series:
