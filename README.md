@@ -20,30 +20,33 @@ streamlit run streamlit_app.py
 # → http://localhost:8501
 ```
 
-With no credentials it runs in **sample mode** against a committed real pull
-(`data/sample_orders.json`, May 2026). For **live** data, add Shopify Admin API
-credentials in `.streamlit/secrets.toml` (or env vars):
+**Data source: Matrixify exports — no Shopify API token needed.** The dashboard
+reads two Matrixify exports:
 
-```toml
-SHOPIFY_SHOP = "your-store.myshopify.com"
-SHOPIFY_ACCESS_TOKEN = "shpat_…"   # read scopes: orders, products, inventory
-```
+- `data/matrixify_orders.csv` — Orders (with line items, discounts, refunds, transaction gateway)
+- `data/matrixify_products.csv` — Products (with **Variant Cost** = COGS, weight)
 
-The app pages through the Admin GraphQL API for the selected date range and
-caches the pull (TTL / manual **Refresh** button). Every field the CM model
-needs is live: line-item revenue & discounts, `variant.inventoryItem.unitCost`
-(COGS), refunds, and the payment gateway.
+If those files aren't present it falls back to a committed JSON **sample**
+(`data/sample_orders.json`) so the demo runs with zero setup.
 
-> Note: a deployed Streamlit app can't use the Claude/MCP Shopify connector —
-> that's an authoring-time tool. Live mode therefore uses the Admin API
-> directly (same data, same store).
+### Matrixify export setup
+Create two scheduled exports in Matrixify and have them upload to a cloud
+destination (S3 / Google Drive / Dropbox / FTP):
+
+- **Products** — columns: `Variant SKU`, `Variant Cost`, `Variant Price`, `Variant Grams`, `Title`, `Status`, `Vendor`.
+- **Orders** — columns: `Name`, `Created At`, `Financial Status`, `Currency`, `Line: SKU`, `Line: Quantity`, `Line: Price`, `Line: Discount`, `Line: Total`, refund columns, `Transaction: Gateway`, `Transaction: Amount`.
+
+Then set repo secrets `MATRIXIFY_ORDERS_URL` and `MATRIXIFY_PRODUCTS_URL` to
+the upload links; the daily Action `refresh_matrixify.yml` downloads (unzips if
+needed) and commits the refreshed CSVs. Column names are matched tolerantly, so
+minor Matrixify naming differences are fine.
 
 ## Where the numbers come from
 
 | Layer | Source |
 |------|--------|
-| Revenue, units, discounts, refunds | Shopify orders (live) / sample |
-| COGS | Shopify `unitCost` per variant (live) |
+| Revenue, units, discounts, refunds | Matrixify **Orders** export |
+| COGS | Matrixify **Products** export (`Variant Cost`) |
 | Logistics / 3PL | **config** — €4.84/order (AP26 plan; reconciles with Klar actuals) |
 | Payment fees | **config** — Shopify Payments 1.6%, PayPal 2.98%, per order gateway |
 | Packaging | **config** — disabled by default |
@@ -56,23 +59,25 @@ sidebar (sidebar wins at runtime). Calculation logic is isolated in
 ## Layout
 
 ```
-streamlit_app.py        # UI (presentation only)
-margin.py               # pure CM1/CM2/CM3 engine (testable, no Streamlit)
-marketing.py            # Klar marketing ingestion & monthly aggregation
-shopify_client.py       # live Admin API pull + sample fallback
-config.py / config.yaml # cost assumptions + sidebar override merge
-fetch_klar_export.py    # automated Klar download (see below)
-data/                   # sample_orders.json, klar_marketing.csv
-marketing/              # spend file + docs
-.github/workflows/refresh_klar.yml  # daily Klar refresh
+streamlit_app.py         # UI (presentation only)
+margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
+matrixify_client.py      # reads Matrixify Orders + Products exports
+data_source.py           # picks Matrixify files, else the JSON sample
+marketing.py             # Klar marketing ingestion & monthly aggregation
+config.py / config.yaml  # cost assumptions + sidebar override merge
+fetch_matrixify_export.py / fetch_klar_export.py   # automated downloads
+data/                    # matrixify_*.csv, klar_marketing.csv, sample_orders.json
+.github/workflows/refresh_matrixify.yml + refresh_klar.yml   # daily refresh
 ```
 
-## Automating the Klar marketing pull
+## Automating the data pulls
 
-Set the repo secret `KLAR_MARKETING_EXPORT_URL` to a stable Klar export link
-(see `fetch_klar_export.py` for ways to get one). The daily Action
-`refresh_klar.yml` downloads, normalises, and commits
-`data/klar_marketing.csv` — no more manual uploads.
+- **Shopify data (Matrixify):** repo secrets `MATRIXIFY_ORDERS_URL` +
+  `MATRIXIFY_PRODUCTS_URL` → daily `refresh_matrixify.yml`.
+- **Marketing (Klar):** repo secret `KLAR_MARKETING_EXPORT_URL` → daily
+  `refresh_klar.yml` (see `fetch_klar_export.py` for how to get a stable link).
+
+Both commit refreshed CSVs to `data/`; the dashboard reads whatever is latest.
 
 ## Consistency with Klar
 

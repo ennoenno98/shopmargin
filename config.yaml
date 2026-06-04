@@ -13,6 +13,15 @@
 
 currency: EUR
 
+# --- Data source -------------------------------------------------------------
+# Fully Matrixify-driven (no Shopify API token needed). The dashboard reads
+# these two Matrixify exports; if they're absent it falls back to the committed
+# JSON sample so the demo still runs. The files are kept fresh by the scheduled
+# GitHub Action (fetch_matrixify_export.py + .github/workflows/refresh_matrixify.yml).
+source:
+  orders_file: data/matrixify_orders.csv
+  products_file: data/matrixify_products.csv
+
 # --- Revenue definition (drives CM1) ----------------------------------------
 revenue:
   net_of_discounts: true     # use line discountedTotal (after discount codes / reductions)

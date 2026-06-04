@@ -1,8 +1,9 @@
 """Shopify Product Margin Dashboard — CM1 / CM2 / CM3 per product.
 
-Live data via the Shopify Admin API (or a committed sample when no token is
-set). Cost assumptions come from config.yaml and can be overridden in the
-sidebar. Calculation logic lives in margin.py; this file is presentation only.
+Data comes from Matrixify exports (Orders + Products) — no Shopify API token
+needed — with a committed JSON sample as fallback. Cost assumptions come from
+config.yaml and can be overridden in the sidebar. Calculation logic lives in
+margin.py; this file is presentation only.
 """
 from __future__ import annotations
 
@@ -12,8 +13,10 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+import os
+
+import data_source
 import margin
-import shopify_client
 from config import deep_merge, load_config
 from marketing import channel_breakdown, load_marketing, monthly_marketing
 
@@ -22,17 +25,22 @@ st.set_page_config(page_title="Shopify Margin Dashboard", page_icon="📊", layo
 BASE_CFG = load_config()
 
 
-def _secrets() -> dict:
-    try:
-        return dict(st.secrets)
-    except Exception:
-        return {}
+def _file_sig(cfg: dict) -> str:
+    """Cache-busting signature from the Matrixify files' modification times."""
+    parts = []
+    for k in ("orders_file", "products_file"):
+        p = (cfg.get("source") or {}).get(k, "")
+        parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
+    return "|".join(parts)
 
 
-@st.cache_data(show_spinner="Pulling orders from Shopify…")
-def fetch_orders(since: date, until: date, live_key: str):
-    """Cached Shopify pull. ``live_key`` busts the cache when creds change."""
-    return shopify_client.load_orders(since, until, _secrets())
+@st.cache_data(show_spinner="Loading Matrixify data…")
+def fetch_lineitems(orders_file: str, products_file: str, tz: str,
+                    since: date, until: date, sig: str):
+    """Cached load of the flattened line items. ``sig`` busts the cache when
+    the underlying export files change (or the Refresh button clears it)."""
+    cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
+    return data_source.load_lineitems(cfg, since, until)
 
 
 @st.cache_data(show_spinner=False)
@@ -106,8 +114,7 @@ def sidebar_controls() -> tuple[dict, date, date, bool]:
         ov["scope"] = {"grain": grain}
 
     cfg = deep_merge(BASE_CFG, ov)
-    live = shopify_client.is_live(_secrets())
-    return cfg, since, until, live
+    return cfg, since, until
 
 
 def kpi_row(tot: dict, cfg: dict):
@@ -155,22 +162,25 @@ def render_table(agg: pd.DataFrame, cfg: dict):
 
 
 def main():
-    cfg, since, until, live = sidebar_controls()
+    cfg, since, until = sidebar_controls()
     st.title("📊 Shopify Product Margin Dashboard")
     st.caption("CM1 = Revenue − COGS · CM2 = − logistics/3PL − payment fees − packaging · "
                "CM3 = − allocated marketing")
 
-    nodes, mode = fetch_orders(since, until, "live" if live else "sample")
+    src = cfg["source"]
+    df, mode = fetch_lineitems(src["orders_file"], src["products_file"],
+                               cfg.get("timezone", "Europe/Berlin"), since, until,
+                               _file_sig(cfg))
     if mode == "sample":
-        st.warning("**Sample mode** — no Shopify token set, showing committed sample data. "
-                   "Set `SHOPIFY_SHOP` and `SHOPIFY_ACCESS_TOKEN` in secrets for live pulls.")
-    if not nodes:
+        st.warning("**Sample mode** — Matrixify exports not found, showing the committed "
+                   "sample. Drop `matrixify_orders.csv` + `matrixify_products.csv` in `data/` "
+                   "(or let the scheduled fetch populate them) for live numbers.")
+    elif mode == "matrixify":
+        st.success("Data source: **Matrixify exports** (Orders + Products).")
+    if df.empty:
         st.info("No orders in the selected window.")
         return
 
-    df = margin.flatten_orders(nodes)
-    df = df[(df["order_date"].dt.date >= since) & (df["order_date"].dt.date <= until)] \
-        if mode == "live" else df
     monthly_mkt, mkt_raw = fetch_marketing(cfg["marketing"]["spend_file"])
     d = margin.compute_costs(df, cfg, monthly_mkt)
     agg = margin.aggregate(d, cfg)

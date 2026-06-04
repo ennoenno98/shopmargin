@@ -1,0 +1,36 @@
+name: Refresh Matrixify exports
+
+# Downloads the scheduled Matrixify Orders + Products exports and commits the
+# refreshed data/ files. Needs repo secrets MATRIXIFY_ORDERS_URL and
+# MATRIXIFY_PRODUCTS_URL (the cloud links Matrixify uploads each export to).
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily 06:00 UTC (after Matrixify's scheduled run)
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-export.txt
+      - name: Download Matrixify exports
+        env:
+          MATRIXIFY_ORDERS_URL: ${{ secrets.MATRIXIFY_ORDERS_URL }}
+          MATRIXIFY_PRODUCTS_URL: ${{ secrets.MATRIXIFY_PRODUCTS_URL }}
+        run: python fetch_matrixify_export.py
+      - name: Commit if changed
+        run: |
+          git config user.name  "matrixify-export-bot"
+          git config user.email "bot@users.noreply.github.com"
+          if ! git diff --quiet -- data/matrixify_orders.csv data/matrixify_products.csv; then
+            git add data/matrixify_orders.csv data/matrixify_products.csv
+            git commit -m "chore: refresh Matrixify exports ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "No changes."
+          fi
