@@ -75,6 +75,7 @@ marketing:
   enabled: true
   source: file               # file | pct_revenue
   spend_file: data/klar_marketing.csv
+  grain: day                 # allocate spend by: day | month (day avoids partial-month over-allocation)
   pct_revenue: 0.10          # fallback TACoS (10% of net revenue) when source = pct_revenue
   allocation: revenue        # map total/channel spend to products by: revenue | units
 

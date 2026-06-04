@@ -1,103 +1,2079 @@
-channel,month,cost,channel_net_revenue
-Direct,2025-07-01,0.0,25.9
-Direct,2025-08-01,0.0,64.6
-Direct,2025-09-01,0.0,21395.59
-Direct,2025-10-01,0.0,31499.83
-Direct,2025-11-01,0.0,41901.58
-Direct,2025-12-01,0.0,34653.52
-Direct,2026-01-01,0.0,35777.92
-Direct,2026-02-01,0.0,51271.27
-Direct,2026-03-01,0.0,65640.82
-Direct,2026-04-01,0.0,56510.86
-Direct,2026-05-01,0.0,63367.39
-Direct,2026-06-01,0.0,7343.849999999999
-Draft Orders,2025-09-01,0.0,507.64
-Email,2025-09-01,297.86,268.40999999999997
-Email,2025-10-01,171.48000000000002,2601.39
-Email,2025-11-01,104.78,3882.5099999999998
-Email,2025-12-01,73.6,3157.73
-Email,2026-01-01,148.67,4865.13
-Email,2026-02-01,275.56,7093.55
-Email,2026-03-01,302.59,8176.3
-Email,2026-04-01,319.47,7055.09
-Email,2026-05-01,321.85,7095.3
-Email,2026-06-01,5.16,746.26
-Google Branded Paid Search,2025-10-01,1687.59,1755.14
-Google Branded Paid Search,2025-11-01,8640.91,2668.49
-Google Branded Paid Search,2025-12-01,16132.17,3564.74
-Google Branded Paid Search,2026-01-01,12742.16,2111.45
-Google Branded Paid Search,2026-02-01,14691.98,4451.18
-Google Branded Paid Search,2026-03-01,22679.41,5795.68
-Google Branded Paid Search,2026-04-01,21562.88,8018.81
-Google Branded Paid Search,2026-05-01,23971.87,10306.99
-Google Branded Paid Search,2026-06-01,2921.34,2360.54
-Google Generic Paid Search,2021-11-01,88.32000000000001,0.0
-Google Generic Paid Search,2021-12-01,300.89,0.0
-Google Generic Paid Search,2022-01-01,303.46,0.0
-Google Generic Paid Search,2022-02-01,260.08,0.0
-Google Generic Paid Search,2025-10-01,2011.4,1509.59
-Google Generic Paid Search,2025-11-01,8731.17,11713.02
-Google Generic Paid Search,2025-12-01,13377.460000000001,14644.380000000001
-Google Generic Paid Search,2026-01-01,10566.47,12788.25
-Google Generic Paid Search,2026-02-01,17793.95,28950.94
-Google Generic Paid Search,2026-03-01,21861.15,35903.82
-Google Generic Paid Search,2026-04-01,16983.44,31561.05
-Google Generic Paid Search,2026-05-01,13770.869999999999,28789.59
-Google Generic Paid Search,2026-06-01,1630.12,1900.17
-Influencer Brand,2025-05-01,2250.0,0.0
-Influencer Brand,2025-06-01,1900.0,0.0
-Influencer Brand,2025-10-01,0.0,259.56
-Influencer Brand,2025-11-01,0.0,1198.34
-Influencer Brand,2025-12-01,0.0,75.51
-Influencer Brand,2026-02-01,0.0,127.16
-Influencer Brand,2026-03-01,2000.0,161.77999999999997
-Influencer Brand,2026-04-01,24835.0,193.12
-Influencer Brand,2026-05-01,22910.0,444.15000000000003
-Influencer Brand,2026-06-01,4000.0,73.16
-Influencer Performance,2025-12-01,0.0,96.25
-Influencer Performance,2026-01-01,0.0,596.28
-Influencer Performance,2026-02-01,0.0,892.57
-Influencer Performance,2026-03-01,3000.0,1207.6
-Influencer Performance,2026-04-01,25560.0,399.15
-Influencer Performance,2026-05-01,13240.0,761.65
-Meta Paid,2025-10-01,0.0,44.17
-Meta Paid,2025-11-01,131.6,240.98000000000002
-Meta Paid,2025-12-01,3448.25,648.82
-Meta Paid,2026-01-01,6349.27,435.75
-Meta Paid,2026-02-01,8974.82,1683.41
-Meta Paid,2026-03-01,11709.84,1506.67
-Meta Paid,2026-04-01,11132.59,2356.29
-Meta Paid,2026-05-01,3661.69,1006.72
-Meta Paid,2026-06-01,1175.03,74.65
-Not Assigned,2025-09-01,0.0,1570.66
-Not Assigned,2025-10-01,0.0,3776.9900000000002
-Not Assigned,2025-11-01,0.0,5080.14
-Not Assigned,2025-12-01,0.0,3319.85
-Not Assigned,2026-01-01,0.0,2043.41
-Not Assigned,2026-02-01,0.0,3875.2799999999997
-Not Assigned,2026-03-01,0.0,5476.81
-Not Assigned,2026-04-01,0.0,6139.41
-Not Assigned,2026-05-01,0.0,5869.44
-Not Assigned,2026-06-01,0.0,983.98
-Organic Search,2025-09-01,0.0,8378.47
-Organic Search,2025-10-01,0.0,14193.54
-Organic Search,2025-11-01,0.0,13428.89
-Organic Search,2025-12-01,0.0,7731.24
-Organic Search,2026-01-01,0.0,9283.56
-Organic Search,2026-02-01,0.0,11001.33
-Organic Search,2026-03-01,0.0,12351.54
-Organic Search,2026-04-01,0.0,8987.44
-Organic Search,2026-05-01,0.0,9051.31
-Organic Search,2026-06-01,0.0,725.43
-Referral,2025-09-01,0.0,874.77
-Referral,2025-10-01,0.0,1503.6
-Referral,2025-11-01,0.0,1282.48
-Referral,2025-12-01,0.0,858.22
-Referral,2026-01-01,0.0,1130.03
-Referral,2026-02-01,0.0,817.4
-Referral,2026-03-01,0.0,1645.86
-Referral,2026-04-01,0.0,1602.88
-Referral,2026-05-01,0.0,1760.53
-Referral,2026-06-01,0.0,29.8
-TikTok Paid,2025-12-01,0.0,118.75
-TikTok Paid,2026-01-01,0.0,20.11
+channel,date,cost,channel_net_revenue
+Direct,2025-11-30,0.0,3596.65
+Direct,2025-12-01,0.0,3522.0
+Direct,2026-04-15,0.0,3514.06
+Direct,2026-05-06,0.0,3108.18
+Direct,2026-05-12,0.0,2877.29
+Direct,2026-03-30,0.0,2862.54
+Direct,2026-05-18,0.0,2840.27
+Direct,2026-05-26,0.0,2813.01
+Direct,2026-04-07,0.0,2810.95
+Direct,2026-03-26,0.0,2756.77
+Direct,2026-02-18,0.0,2702.06
+Direct,2026-05-04,0.0,2655.26
+Direct,2026-03-03,0.0,2631.3
+Direct,2026-06-01,0.0,2581.66
+Direct,2026-02-27,0.0,2581.56
+Direct,2026-02-24,0.0,2526.15
+Direct,2026-03-22,0.0,2514.72
+Direct,2026-03-27,0.0,2480.59
+Direct,2026-05-23,0.0,2447.01
+Direct,2026-04-10,0.0,2434.89
+Direct,2026-03-09,0.0,2419.55
+Direct,2026-04-09,0.0,2417.76
+Direct,2026-04-12,0.0,2409.07
+Direct,2026-04-19,0.0,2385.83
+Direct,2026-05-29,0.0,2382.12
+Direct,2026-05-14,0.0,2360.45
+Direct,2026-03-18,0.0,2350.09
+Direct,2026-03-11,0.0,2311.87
+Direct,2026-03-06,0.0,2311.09
+Direct,2026-04-08,0.0,2284.43
+Direct,2026-05-19,0.0,2283.92
+Direct,2026-03-16,0.0,2279.97
+Direct,2026-05-22,0.0,2272.66
+Direct,2026-06-02,0.0,2259.68
+Direct,2026-03-15,0.0,2248.18
+Direct,2026-04-04,0.0,2242.42
+Direct,2026-05-05,0.0,2239.65
+Direct,2026-04-16,0.0,2207.75
+Direct,2026-03-10,0.0,2195.37
+Direct,2026-03-17,0.0,2195.22
+Direct,2026-03-25,0.0,2173.71
+Direct,2026-05-03,0.0,2173.06
+Direct,2025-11-28,0.0,2167.48
+Direct,2026-05-15,0.0,2157.41
+Direct,2026-02-22,0.0,2147.14
+Direct,2026-05-27,0.0,2143.57
+Direct,2026-03-08,0.0,2138.5
+Direct,2026-03-31,0.0,2137.77
+Direct,2026-03-13,0.0,2135.36
+Direct,2025-11-24,0.0,2133.91
+Direct,2026-05-16,0.0,2119.89
+Direct,2026-02-02,0.0,2115.39
+Direct,2026-02-04,0.0,2110.2
+Direct,2026-02-10,0.0,2109.62
+Direct,2026-05-31,0.0,2105.78
+Direct,2026-05-11,0.0,2104.82
+Direct,2026-02-05,0.0,2096.91
+Direct,2026-03-23,0.0,2083.05
+Direct,2026-05-17,0.0,2057.25
+Direct,2026-02-09,0.0,2056.52
+Direct,2026-03-01,0.0,2050.75
+Direct,2026-03-24,0.0,2025.94
+Google Generic Paid Search,2026-03-11,512.53,2001.83
+Direct,2026-04-01,0.0,1999.82
+Direct,2026-02-26,0.0,1988.8
+Direct,2026-02-13,0.0,1976.2
+Direct,2026-03-28,0.0,1970.51
+Direct,2026-03-21,0.0,1963.25
+Direct,2026-02-11,0.0,1954.25
+Direct,2026-02-17,0.0,1952.46
+Direct,2026-04-24,0.0,1951.09
+Direct,2026-03-29,0.0,1922.63
+Direct,2026-02-14,0.0,1893.18
+Direct,2026-05-20,0.0,1885.45
+Direct,2026-01-11,0.0,1882.04
+Direct,2026-04-11,0.0,1876.68
+Direct,2026-05-13,0.0,1874.75
+Direct,2026-02-19,0.0,1873.05
+Direct,2026-04-06,0.0,1872.05
+Direct,2026-05-30,0.0,1865.85
+Direct,2026-04-14,0.0,1864.83
+Direct,2026-02-15,0.0,1856.75
+Direct,2025-09-10,0.0,1853.64
+Direct,2026-04-13,0.0,1839.37
+Direct,2026-02-28,0.0,1837.77
+Direct,2026-03-05,0.0,1830.97
+Direct,2025-11-11,0.0,1825.98
+Direct,2025-11-03,0.0,1815.83
+Direct,2026-03-19,0.0,1807.48
+Direct,2026-05-28,0.0,1806.15
+Direct,2026-02-03,0.0,1805.44
+Direct,2026-02-25,0.0,1803.88
+Direct,2026-04-02,0.0,1794.88
+Direct,2026-01-30,0.0,1770.77
+Google Generic Paid Search,2026-04-16,668.74,1769.68
+Direct,2026-03-02,0.0,1754.15
+Direct,2025-12-23,0.0,1735.24
+Google Generic Paid Search,2026-04-14,926.81,1701.66
+Direct,2026-05-07,0.0,1701.55
+Direct,2026-01-28,0.0,1697.51
+Direct,2026-05-25,0.0,1697.46
+Direct,2026-04-20,0.0,1683.92
+Direct,2026-04-29,0.0,1682.77
+Direct,2026-04-30,0.0,1682.65
+Direct,2026-01-25,0.0,1681.23
+Google Generic Paid Search,2026-03-20,772.72,1679.26
+Direct,2026-03-07,0.0,1675.56
+Direct,2026-04-18,0.0,1675.56
+Direct,2026-06-03,0.0,1672.85
+Direct,2026-04-27,0.0,1669.75
+Direct,2026-02-16,0.0,1665.62
+Direct,2026-04-21,0.0,1661.38
+Direct,2026-01-14,0.0,1652.52
+Direct,2026-03-20,0.0,1651.69
+Google Generic Paid Search,2026-04-08,629.15,1647.27
+Direct,2025-11-18,0.0,1626.98
+Direct,2026-01-19,0.0,1626.07
+Direct,2026-05-21,0.0,1623.81
+Direct,2025-11-15,0.0,1617.72
+Direct,2026-02-23,0.0,1611.55
+Direct,2026-03-14,0.0,1607.78
+Direct,2026-03-12,0.0,1603.98
+Direct,2025-11-02,0.0,1595.56
+Google Generic Paid Search,2026-02-07,514.52,1594.76
+Direct,2025-12-10,0.0,1588.83
+Direct,2025-11-23,0.0,1586.63
+Direct,2026-04-03,0.0,1584.18
+Direct,2026-01-27,0.0,1579.44
+Direct,2026-02-01,0.0,1574.23
+Direct,2026-05-10,0.0,1572.06
+Direct,2025-10-16,0.0,1568.66
+Google Generic Paid Search,2026-03-24,895.35,1567.28
+Direct,2026-01-23,0.0,1559.05
+Direct,2026-03-04,0.0,1550.48
+Direct,2025-11-04,0.0,1538.01
+Google Generic Paid Search,2026-02-23,740.62,1529.72
+Direct,2026-04-23,0.0,1528.58
+Direct,2026-04-17,0.0,1505.62
+Direct,2025-09-29,0.0,1504.18
+Direct,2025-12-04,0.0,1499.23
+Direct,2026-01-22,0.0,1495.11
+Direct,2025-10-15,0.0,1491.25
+Direct,2026-02-08,0.0,1490.4
+Direct,2025-12-02,0.0,1482.06
+Google Generic Paid Search,2026-03-18,842.38,1478.67
+Direct,2025-11-27,0.0,1472.72
+Direct,2025-09-30,0.0,1468.47
+Google Generic Paid Search,2026-05-04,378.92,1466.88
+Direct,2025-11-09,0.0,1464.26
+Google Generic Paid Search,2026-02-17,1013.7,1459.82
+Direct,2025-12-11,0.0,1450.55
+Google Generic Paid Search,2026-02-21,638.21,1434.0
+Direct,2025-11-16,0.0,1420.31
+Google Generic Paid Search,2026-05-07,621.77,1414.59
+Direct,2026-04-28,0.0,1398.45
+Direct,2025-11-13,0.0,1398.32
+Google Generic Paid Search,2026-03-23,976.95,1398.04
+Direct,2025-09-14,0.0,1395.38
+Direct,2026-05-24,0.0,1393.36
+Google Generic Paid Search,2026-04-13,865.05,1373.06
+Google Generic Paid Search,2026-03-15,572.15,1370.62
+Direct,2025-09-16,0.0,1363.16
+Google Generic Paid Search,2026-03-05,688.63,1362.17
+Google Generic Paid Search,2026-04-20,535.41,1359.48
+Google Generic Paid Search,2026-04-19,488.59,1355.2
+Google Generic Paid Search,2026-02-19,1017.02,1352.48
+Direct,2025-10-12,0.0,1349.78
+Direct,2026-05-02,0.0,1349.02
+Direct,2025-09-12,0.0,1346.04
+Google Generic Paid Search,2026-03-04,560.58,1341.87
+Google Generic Paid Search,2026-05-05,426.02,1341.54
+Google Generic Paid Search,2026-03-06,499.14,1339.25
+Direct,2025-11-19,0.0,1332.16
+Direct,2026-01-24,0.0,1331.15
+Direct,2025-12-07,0.0,1330.88
+Direct,2025-12-14,0.0,1322.4
+Direct,2025-11-12,0.0,1322.18
+Google Generic Paid Search,2026-03-01,888.37,1320.65
+Google Generic Paid Search,2026-04-01,648.28,1312.75
+Direct,2026-02-20,0.0,1310.86
+Direct,2025-10-21,0.0,1310.81
+Direct,2025-12-09,0.0,1307.08
+Direct,2025-11-29,0.0,1304.68
+Direct,2025-10-29,0.0,1302.99
+Direct,2025-12-22,0.0,1294.73
+Direct,2025-12-17,0.0,1294.21
+Direct,2025-10-01,0.0,1285.95
+Google Generic Paid Search,2026-04-17,399.16,1283.64
+Direct,2025-11-22,0.0,1282.6
+Direct,2025-10-28,0.0,1280.38
+Direct,2026-04-22,0.0,1280.12
+Google Generic Paid Search,2026-05-19,425.96,1273.01
+Direct,2025-12-13,0.0,1271.83
+Direct,2026-02-21,0.0,1269.67
+Google Generic Paid Search,2026-03-28,887.45,1264.51
+Google Generic Paid Search,2026-05-21,463.22,1263.63
+Direct,2025-10-22,0.0,1259.75
+Google Generic Paid Search,2026-03-12,505.35,1259.18
+Direct,2026-01-20,0.0,1257.47
+Direct,2025-10-24,0.0,1257.26
+Direct,2025-11-26,0.0,1253.48
+Direct,2026-05-08,0.0,1251.59
+Direct,2026-05-01,0.0,1250.8
+Direct,2026-01-12,0.0,1246.16
+Google Generic Paid Search,2025-11-30,565.88,1244.74
+Google Generic Paid Search,2026-02-11,631.09,1236.32
+Direct,2026-01-21,0.0,1236.26
+Direct,2025-12-03,0.0,1232.02
+Direct,2025-10-23,0.0,1225.53
+Google Generic Paid Search,2026-02-25,474.41,1225.12
+Google Generic Paid Search,2026-04-07,735.93,1223.36
+Google Generic Paid Search,2026-03-02,803.58,1210.12
+Direct,2025-11-17,0.0,1203.72
+Google Generic Paid Search,2026-03-30,878.26,1199.34
+Direct,2026-01-13,0.0,1196.5
+Google Generic Paid Search,2026-02-26,433.84,1192.79
+Direct,2025-10-19,0.0,1189.76
+Direct,2025-09-15,0.0,1185.68
+Google Generic Paid Search,2026-02-01,436.4,1185.26
+Direct,2026-01-18,0.0,1180.38
+Google Generic Paid Search,2026-02-16,876.4,1177.53
+Direct,2026-02-12,0.0,1176.24
+Google Generic Paid Search,2026-04-12,1045.3,1170.16
+Direct,2025-10-26,0.0,1169.69
+Google Generic Paid Search,2026-03-31,760.02,1168.95
+Google Generic Paid Search,2026-05-20,479.61,1163.24
+Direct,2025-12-20,0.0,1162.14
+Direct,2025-12-05,0.0,1162.01
+Google Generic Paid Search,2026-04-03,531.45,1154.59
+Direct,2026-01-26,0.0,1151.49
+Google Generic Paid Search,2026-03-22,843.35,1147.04
+Google Generic Paid Search,2026-03-29,861.0,1145.75
+Google Generic Paid Search,2026-04-11,798.85,1140.2
+Direct,2025-12-27,0.0,1140.18
+Google Generic Paid Search,2026-03-26,1021.04,1139.09
+Direct,2025-10-08,0.0,1136.3
+Google Generic Paid Search,2026-04-06,564.21,1135.91
+Google Generic Paid Search,2026-03-03,590.4,1133.11
+Direct,2025-09-11,0.0,1113.43
+Direct,2026-01-03,0.0,1106.38
+Direct,2025-10-20,0.0,1103.14
+Google Generic Paid Search,2026-05-15,490.76,1102.4
+Direct,2026-04-25,0.0,1100.66
+Direct,2025-10-13,0.0,1098.78
+Google Generic Paid Search,2026-03-10,521.75,1098.53
+Google Generic Paid Search,2026-05-12,609.49,1098.22
+Google Generic Paid Search,2026-02-03,441.11,1097.53
+Google Branded Paid Search,2026-06-02,901.05,1095.76
+Direct,2026-04-26,0.0,1090.68
+Email,2026-03-10,1.3,1088.74
+Direct,2026-01-29,0.0,1087.52
+Google Generic Paid Search,2026-02-28,499.21,1080.97
+Google Generic Paid Search,2026-02-18,908.1,1076.16
+Google Generic Paid Search,2026-04-10,755.21,1073.98
+Direct,2025-10-09,0.0,1073.03
+Direct,2025-10-06,0.0,1072.64
+Direct,2025-09-25,0.0,1068.13
+Google Generic Paid Search,2026-03-08,598.31,1066.26
+Direct,2026-04-05,0.0,1060.66
+Google Generic Paid Search,2026-02-27,581.9,1055.3
+Direct,2025-09-19,0.0,1049.21
+Direct,2025-11-10,0.0,1037.04
+Google Generic Paid Search,2026-05-08,508.32,1034.27
+Google Generic Paid Search,2026-04-22,426.07,1030.08
+Google Generic Paid Search,2026-02-22,862.67,1022.29
+Google Generic Paid Search,2026-04-28,344.19,1022.16
+Google Generic Paid Search,2026-05-27,332.65,1018.95
+Google Generic Paid Search,2026-03-27,856.78,1016.47
+Direct,2025-11-25,0.0,1015.19
+Direct,2025-11-08,0.0,1014.35
+Direct,2025-10-31,0.0,1010.7
+Google Generic Paid Search,2026-05-25,321.66,1009.72
+Email,2026-02-11,47.84,1005.9
+Direct,2026-01-31,0.0,1002.9
+Google Generic Paid Search,2026-05-10,666.46,999.48
+Direct,2025-12-16,0.0,998.89
+Direct,2025-09-21,0.0,996.96
+Direct,2025-12-12,0.0,992.72
+Google Generic Paid Search,2026-04-21,504.14,990.02
+Direct,2026-02-07,0.0,989.83
+Google Generic Paid Search,2026-02-20,746.49,988.62
+Google Branded Paid Search,2026-05-31,1064.3,985.92
+Google Generic Paid Search,2026-05-13,448.39,984.1
+Google Generic Paid Search,2026-03-17,655.95,983.06
+Direct,2025-11-05,0.0,980.78
+Organic Search,2025-12-01,0.0,980.35
+Google Generic Paid Search,2026-05-18,550.62,979.71
+Email,2026-05-01,0.53,972.38
+Google Generic Paid Search,2025-12-03,767.75,970.89
+Google Generic Paid Search,2026-04-02,485.15,968.77
+Google Generic Paid Search,2026-03-25,819.91,967.19
+Google Generic Paid Search,2026-01-30,356.37,959.12
+Google Generic Paid Search,2026-05-11,730.64,957.23
+Google Generic Paid Search,2026-05-22,378.09,956.11
+Direct,2025-11-14,0.0,955.34
+Google Generic Paid Search,2026-02-12,596.33,955.2
+Google Generic Paid Search,2026-04-05,452.45,954.51
+Direct,2026-05-09,0.0,953.94
+Direct,2025-10-27,0.0,949.8
+Direct,2025-12-30,0.0,948.17
+Google Generic Paid Search,2026-02-09,613.79,947.66
+Organic Search,2026-02-06,0.0,942.97
+Google Generic Paid Search,2026-04-24,408.89,942.88
+Direct,2026-01-05,0.0,938.3
+Direct,2026-01-09,0.0,931.0
+Google Generic Paid Search,2026-04-09,774.08,930.6
+Google Generic Paid Search,2026-02-10,662.82,925.49
+Direct,2026-01-15,0.0,921.4
+Google Generic Paid Search,2026-04-18,395.83,918.64
+Google Generic Paid Search,2026-02-15,714.88,911.93
+Google Generic Paid Search,2026-03-13,444.48,909.79
+Organic Search,2026-04-11,0.0,895.19
+Direct,2026-01-10,0.0,895.05
+Google Generic Paid Search,2026-01-31,275.97,891.29
+Google Generic Paid Search,2025-11-28,656.03,882.48
+Direct,2025-11-20,0.0,881.81
+Organic Search,2026-03-02,0.0,881.54
+Direct,2025-10-14,0.0,879.66
+Google Generic Paid Search,2026-04-29,321.18,876.96
+Google Generic Paid Search,2026-05-26,320.72,873.6
+Organic Search,2025-11-29,0.0,866.37
+Google Generic Paid Search,2026-02-08,653.48,864.97
+Organic Search,2025-11-16,0.0,864.56
+Google Generic Paid Search,2026-01-16,490.31,863.07
+Direct,2026-01-07,0.0,861.35
+Direct,2025-10-25,0.0,861.03
+Direct,2025-12-18,0.0,858.08
+Google Generic Paid Search,2026-05-28,274.2,856.0
+Google Generic Paid Search,2026-05-06,518.8,855.74
+Google Generic Paid Search,2026-03-21,680.08,849.73
+Organic Search,2025-10-06,0.0,842.45
+Google Generic Paid Search,2026-03-19,754.74,841.21
+Organic Search,2026-03-16,0.0,839.88
+Direct,2025-09-23,0.0,835.24
+Google Generic Paid Search,2026-02-06,478.7,831.01
+Direct,2026-06-04,0.0,829.66
+Direct,2025-09-17,0.0,826.8
+Direct,2026-01-06,0.0,824.93
+Direct,2025-11-21,0.0,823.26
+Organic Search,2025-09-16,0.0,822.65
+Organic Search,2026-01-30,0.0,820.43
+Direct,2025-10-17,0.0,815.82
+Google Generic Paid Search,2026-05-24,283.89,812.5
+Direct,2025-12-06,0.0,811.6
+Google Generic Paid Search,2026-02-24,548.01,806.21
+Organic Search,2025-11-02,0.0,803.07
+Google Generic Paid Search,2026-05-01,343.85,798.88
+Direct,2026-02-06,0.0,795.54
+Direct,2025-10-02,0.0,792.33
+Direct,2025-11-06,0.0,791.34
+Google Generic Paid Search,2025-11-29,526.35,790.54
+Google Generic Paid Search,2026-05-09,562.04,785.46
+Email,2025-12-01,0.73,783.46
+Direct,2025-10-30,0.0,782.38
+Google Generic Paid Search,2026-04-04,437.36,780.23
+Google Generic Paid Search,2025-12-06,463.73,770.21
+Google Generic Paid Search,2026-04-27,482.06,766.72
+Google Generic Paid Search,2026-05-31,515.81,763.61
+Google Generic Paid Search,2026-02-13,563.36,763.06
+Direct,2025-09-22,0.0,762.15
+Direct,2025-10-05,0.0,759.79
+Google Generic Paid Search,2026-03-09,543.57,759.18
+Organic Search,2025-11-18,0.0,758.1
+Organic Search,2025-11-13,0.0,757.34
+Email,2026-01-30,1.9,756.15
+Direct,2025-11-01,0.0,753.5
+Direct,2025-09-09,0.0,752.94
+Direct,2025-12-08,0.0,752.93
+Direct,2026-01-08,0.0,751.68
+Google Generic Paid Search,2026-05-16,420.26,751.62
+Google Generic Paid Search,2026-05-03,403.69,750.77
+Organic Search,2025-09-21,0.0,750.36
+Google Branded Paid Search,2026-06-01,958.34,748.08
+Google Generic Paid Search,2026-03-14,456.66,746.77
+Google Generic Paid Search,2026-06-03,501.51,745.27
+Email,2026-02-27,3.27,744.37
+Google Generic Paid Search,2025-12-10,698.58,742.33
+Direct,2025-12-29,0.0,737.5
+Direct,2025-12-21,0.0,728.87
+Organic Search,2025-10-02,0.0,728.64
+Organic Search,2025-11-20,0.0,726.85
+Direct,2025-10-03,0.0,719.54
+Google Generic Paid Search,2026-05-14,477.03,718.71
+Google Branded Paid Search,2026-05-29,934.86,715.23
+Direct,2025-12-19,0.0,708.32
+Direct,2025-12-15,0.0,706.84
+Email,2026-04-07,0.68,699.93
+Google Generic Paid Search,2025-12-08,540.59,698.74
+Direct,2025-11-07,0.0,689.79
+Direct,2026-01-17,0.0,688.42
+Organic Search,2025-11-04,0.0,688.12
+Organic Search,2025-10-29,0.0,686.34
+Organic Search,2026-02-16,0.0,685.55
+Organic Search,2026-02-25,0.0,681.99
+Google Generic Paid Search,2026-01-18,409.41,679.03
+Organic Search,2026-02-09,0.0,678.09
+Email,2026-05-06,0.82,678.04
+Google Generic Paid Search,2025-11-17,230.34,677.3
+Google Generic Paid Search,2026-01-29,484.56,675.62
+Organic Search,2025-11-25,0.0,671.98
+Direct,2025-12-28,0.0,670.37
+Email,2026-03-16,0.99,665.5
+Direct,2026-01-02,0.0,660.42
+Google Generic Paid Search,2026-04-15,785.93,656.18
+Google Generic Paid Search,2025-12-22,297.22,655.93
+Organic Search,2025-10-07,0.0,653.8
+Email,2025-11-28,19.74,653.01
+Organic Search,2025-10-24,0.0,652.69
+Google Generic Paid Search,2026-05-02,293.34,649.89
+Direct,2025-09-20,0.0,649.55
+Organic Search,2025-12-09,0.0,644.73
+Organic Search,2025-10-09,0.0,640.63
+Direct,2025-10-18,0.0,640.03
+Google Generic Paid Search,2026-03-16,623.82,639.26
+Organic Search,2025-10-22,0.0,638.06
+Organic Search,2025-11-30,0.0,637.9
+Email,2026-03-26,50.47,635.8
+Organic Search,2026-02-23,0.0,635.79
+Organic Search,2026-03-17,0.0,631.32
+Google Generic Paid Search,2026-05-17,425.8,628.38
+Direct,2025-09-28,0.0,627.22
+Organic Search,2026-03-05,0.0,626.95
+Organic Search,2026-05-13,0.0,624.41
+Direct,2025-10-07,0.0,622.75
+Organic Search,2025-10-03,0.0,621.8
+Organic Search,2025-10-26,0.0,616.62
+Organic Search,2025-09-29,0.0,616.49
+Google Generic Paid Search,2026-04-26,423.31,615.69
+Organic Search,2025-10-14,0.0,614.27
+Organic Search,2025-09-30,0.0,611.45
+Google Generic Paid Search,2025-12-02,574.76,606.52
+Organic Search,2025-10-04,0.0,604.84
+Google Generic Paid Search,2026-01-12,271.55,602.37
+Organic Search,2026-03-22,0.0,599.45
+Organic Search,2026-02-11,0.0,593.83
+Direct,2025-09-27,0.0,592.55
+Google Generic Paid Search,2026-02-14,578.27,591.69
+Google Generic Paid Search,2025-12-05,547.17,590.99
+Direct,2025-09-24,0.0,590.44
+Email,2026-04-09,39.58,588.98
+Organic Search,2025-10-12,0.0,587.45
+Email,2026-01-27,30.61,586.51
+Google Generic Paid Search,2026-04-25,396.51,584.99
+Direct,2025-10-10,0.0,583.78
+Direct,2026-01-16,0.0,583.28
+Google Generic Paid Search,2026-02-05,570.76,583.21
+Organic Search,2026-03-08,0.0,578.48
+Google Generic Paid Search,2026-02-02,420.93,578.23
+Organic Search,2025-09-13,0.0,577.03
+Google Generic Paid Search,2025-12-15,409.91,575.24
+Google Branded Paid Search,2026-04-21,732.83,569.79
+Google Generic Paid Search,2025-12-09,511.09,568.62
+Google Generic Paid Search,2025-11-20,445.65,565.3
+Organic Search,2025-10-16,0.0,563.96
+Google Generic Paid Search,2025-11-08,192.99,559.75
+Google Branded Paid Search,2026-05-06,844.46,559.6
+Organic Search,2025-11-22,0.0,559.41
+Google Generic Paid Search,2026-04-23,428.93,556.66
+Google Generic Paid Search,2026-05-23,372.16,555.5
+Organic Search,2026-03-03,0.0,553.33
+Meta Paid,2026-04-09,330.33,551.96
+Email,2026-04-20,0.7,540.07
+Google Generic Paid Search,2025-11-16,205.71,538.42
+Organic Search,2025-11-11,0.0,534.74
+Email,2026-05-05,42.16,534.66
+Organic Search,2026-05-21,0.0,533.62
+Google Generic Paid Search,2026-06-04,229.1,527.4
+Organic Search,2025-09-17,0.0,527.01
+Organic Search,2026-04-19,0.0,522.59
+Google Generic Paid Search,2026-05-30,404.63,522.54
+Google Branded Paid Search,2026-06-03,839.18,516.7
+Google Generic Paid Search,2025-12-24,172.68,514.85
+Organic Search,2025-10-15,0.0,513.04
+Google Branded Paid Search,2026-04-03,488.79,512.74
+Google Generic Paid Search,2025-12-28,552.27,510.64
+Organic Search,2026-02-19,0.0,509.22
+Organic Search,2026-01-13,0.0,508.74
+Draft Orders,2025-09-16,0.0,507.64
+Google Branded Paid Search,2026-05-11,1040.98,505.59
+Email,2026-02-19,2.1,505.06
+Google Branded Paid Search,2026-04-26,626.36,503.37
+Google Branded Paid Search,2026-05-17,711.19,502.37
+Google Generic Paid Search,2025-12-11,400.23,501.31
+Direct,2025-12-26,0.0,501.22
+Organic Search,2026-02-10,0.0,500.61
+Google Generic Paid Search,2026-03-07,545.85,499.64
+Not Assigned,2026-05-03,0.0,495.49
+Direct,2026-01-01,0.0,494.27
+Google Generic Paid Search,2025-12-17,483.79,493.72
+Organic Search,2026-01-21,0.0,493.12
+Email,2026-04-30,44.2,492.32
+Google Generic Paid Search,2026-01-22,247.72,488.7
+Organic Search,2025-11-12,0.0,488.4
+Direct,2026-01-04,0.0,487.87
+Not Assigned,2026-02-12,0.0,486.95
+Google Generic Paid Search,2026-01-11,304.72,486.71
+Google Generic Paid Search,2026-02-04,576.93,483.61
+Direct,2025-12-24,0.0,483.1
+Organic Search,2025-11-19,0.0,482.24
+Organic Search,2026-04-10,0.0,480.58
+Google Generic Paid Search,2025-12-04,757.1,480.08
+Direct,2025-12-31,0.0,480.05
+Direct,2025-12-25,0.0,479.47
+Google Branded Paid Search,2026-02-19,424.95,477.16
+Direct,2025-09-26,0.0,476.14
+Google Generic Paid Search,2025-11-27,495.29,475.72
+Organic Search,2026-05-11,0.0,474.45
+Email,2026-05-28,44.66,474.41
+Organic Search,2026-05-26,0.0,474.17
+Google Generic Paid Search,2025-12-30,236.32,472.91
+Organic Search,2026-04-29,0.0,472.46
+Organic Search,2025-10-25,0.0,472.13
+Organic Search,2026-01-06,0.0,471.67
+Google Generic Paid Search,2026-01-24,281.07,471.66
+Organic Search,2025-11-06,0.0,471.36
+Organic Search,2025-10-30,0.0,471.15
+Google Branded Paid Search,2026-04-06,707.88,470.32
+Google Branded Paid Search,2026-05-21,802.43,467.38
+Organic Search,2025-10-20,0.0,466.43
+Google Branded Paid Search,2026-05-30,868.09,465.1
+Organic Search,2025-10-13,0.0,464.38
+Google Branded Paid Search,2026-05-19,792.76,461.02
+Google Generic Paid Search,2025-12-07,690.72,459.73
+Not Assigned,2026-05-05,0.0,459.46
+Organic Search,2026-03-31,0.0,459.27
+Organic Search,2025-10-27,0.0,457.9
+Organic Search,2026-03-13,0.0,457.74
+Organic Search,2025-12-18,0.0,456.44
+Direct,2025-10-11,0.0,456.1
+Organic Search,2026-02-03,0.0,455.82
+Organic Search,2026-05-04,0.0,455.15
+Email,2026-04-22,1.41,454.79
+Not Assigned,2026-06-02,0.0,454.7
+Google Branded Paid Search,2026-04-15,984.28,454.56
+Organic Search,2026-04-07,0.0,454.44
+Organic Search,2025-09-18,0.0,453.93
+Organic Search,2026-02-18,0.0,453.46
+Organic Search,2026-01-27,0.0,452.21
+Google Generic Paid Search,2026-01-28,573.95,451.36
+Direct,2025-10-04,0.0,450.42
+Google Generic Paid Search,2025-12-26,342.6,449.36
+Organic Search,2025-12-03,0.0,445.69
+Direct,2025-09-18,0.0,445.17
+Organic Search,2025-10-28,0.0,442.94
+Organic Search,2025-09-26,0.0,442.79
+Organic Search,2026-03-11,0.0,441.83
+Organic Search,2026-04-13,0.0,441.15
+Google Generic Paid Search,2026-01-19,360.6,440.16
+Organic Search,2026-01-18,0.0,439.83
+Google Generic Paid Search,2025-11-19,542.43,438.21
+Organic Search,2026-04-14,0.0,437.61
+Organic Search,2026-03-28,0.0,437.43
+Google Generic Paid Search,2026-01-09,215.31,436.86
+Organic Search,2025-12-15,0.0,436.13
+Organic Search,2026-05-23,0.0,434.06
+Not Assigned,2026-04-08,0.0,433.07
+Organic Search,2025-12-07,0.0,432.96
+Organic Search,2026-04-01,0.0,431.27
+Organic Search,2026-02-07,0.0,431.1
+Google Branded Paid Search,2026-05-25,696.46,430.87
+Google Branded Paid Search,2026-04-11,740.92,429.15
+Organic Search,2026-03-25,0.0,427.45
+Organic Search,2026-04-08,0.0,424.92
+Google Branded Paid Search,2026-04-04,471.92,424.55
+Google Branded Paid Search,2026-05-07,870.82,423.28
+Organic Search,2025-09-27,0.0,423.26
+Organic Search,2026-01-03,0.0,418.0
+Google Branded Paid Search,2026-03-21,545.8,417.03
+Google Generic Paid Search,2025-12-29,433.18,416.87
+Google Generic Paid Search,2026-01-15,493.66,415.56
+Email,2026-03-30,0.82,414.82
+Organic Search,2026-03-10,0.0,414.58
+Google Generic Paid Search,2026-01-21,296.93,413.57
+Google Generic Paid Search,2025-11-23,312.1,413.29
+Organic Search,2026-01-17,0.0,411.85
+Google Generic Paid Search,2025-12-12,305.35,411.47
+Organic Search,2026-05-28,0.0,411.43
+Organic Search,2025-09-28,0.0,410.79
+Organic Search,2026-05-31,0.0,409.9
+Email,2026-03-08,0.84,409.69
+Google Generic Paid Search,2025-11-12,213.76,409.51
+Organic Search,2026-03-09,0.0,408.94
+Organic Search,2026-01-26,0.0,406.16
+Google Generic Paid Search,2026-05-29,322.07,403.31
+Not Assigned,2025-11-16,0.0,403.3
+Google Branded Paid Search,2026-02-12,300.58,400.58
+Email,2026-05-02,0.59,400.1
+Email,2025-10-08,53.74,399.34
+Organic Search,2026-04-02,0.0,399.2
+Google Generic Paid Search,2025-12-20,283.76,398.59
+Google Generic Paid Search,2025-11-26,500.1,398.46
+Google Branded Paid Search,2026-03-23,612.43,394.58
+Not Assigned,2025-12-08,0.0,394.48
+Organic Search,2026-03-18,0.0,392.89
+Organic Search,2026-04-04,0.0,392.79
+Organic Search,2025-12-14,0.0,392.76
+Google Generic Paid Search,2026-01-14,491.58,392.05
+Google Generic Paid Search,2025-12-13,385.44,390.3
+Google Branded Paid Search,2026-05-09,725.08,388.96
+Email,2026-02-20,1.35,388.92
+Google Generic Paid Search,2025-11-14,95.7,388.37
+Not Assigned,2025-11-27,0.0,388.13
+Not Assigned,2026-04-20,0.0,387.75
+Email,2026-01-31,0.67,386.97
+Google Branded Paid Search,2026-04-19,801.41,386.54
+Organic Search,2026-01-07,0.0,383.6
+Organic Search,2026-03-23,0.0,382.31
+Google Branded Paid Search,2026-05-05,716.37,381.77
+Organic Search,2025-12-08,0.0,381.22
+Organic Search,2026-01-23,0.0,381.17
+Google Generic Paid Search,2025-11-25,336.8,380.13
+Organic Search,2025-09-19,0.0,379.75
+Email,2025-11-27,1.05,379.26
+Google Branded Paid Search,2026-03-22,604.99,378.64
+Google Generic Paid Search,2025-12-18,476.58,378.27
+Google Generic Paid Search,2026-01-26,427.06,376.91
+Organic Search,2025-11-01,0.0,375.88
+Organic Search,2026-04-06,0.0,374.49
+Organic Search,2025-12-02,0.0,373.39
+Not Assigned,2026-05-31,0.0,372.89
+Organic Search,2026-05-07,0.0,372.0
+Not Assigned,2026-04-01,0.0,371.32
+Organic Search,2025-09-23,0.0,370.66
+Google Branded Paid Search,2026-04-13,1092.4,369.07
+Email,2026-04-23,0.82,368.98
+Organic Search,2026-02-21,0.0,368.96
+Organic Search,2025-11-21,0.0,368.96
+Organic Search,2025-11-28,0.0,368.31
+Email,2026-03-29,51.21,367.19
+Google Branded Paid Search,2026-04-29,704.13,366.96
+Organic Search,2026-05-08,0.0,366.38
+Organic Search,2026-05-10,0.0,366.13
+Email,2025-11-06,0.98,364.83
+Email,2026-01-28,0.91,364.67
+Not Assigned,2025-11-30,0.0,364.24
+Not Assigned,2026-04-30,0.0,363.11
+Not Assigned,2026-03-14,0.0,362.92
+Organic Search,2026-03-29,0.0,362.11
+Not Assigned,2025-11-20,0.0,360.69
+Google Generic Paid Search,2025-12-14,337.44,360.2
+Organic Search,2025-11-26,0.0,360.12
+Google Branded Paid Search,2026-05-24,766.45,359.2
+Organic Search,2025-09-22,0.0,359.03
+Google Branded Paid Search,2026-04-20,789.81,358.07
+Organic Search,2026-02-02,0.0,355.13
+Email,2026-02-12,1.09,353.3
+Organic Search,2025-10-19,0.0,352.65
+Organic Search,2026-03-30,0.0,349.76
+Organic Search,2026-01-15,0.0,349.23
+Not Assigned,2026-03-25,0.0,348.85
+Organic Search,2026-06-01,0.0,348.33
+Email,2026-05-14,0.9,348.14
+Google Generic Paid Search,2025-11-05,292.84,347.95
+Email,2026-04-10,0.8,347.93
+Google Generic Paid Search,2025-11-21,386.25,347.89
+Email,2026-02-15,1.13,347.31
+Google Branded Paid Search,2026-05-26,776.94,346.72
+Email,2026-03-05,42.63,346.54
+Not Assigned,2025-11-29,0.0,346.36
+Organic Search,2026-03-01,0.0,346.3
+Organic Search,2026-01-19,0.0,346.07
+Organic Search,2026-03-06,0.0,345.32
+Not Assigned,2026-04-03,0.0,344.87
+Organic Search,2025-10-05,0.0,344.76
+Organic Search,2025-09-25,0.0,343.26
+Google Branded Paid Search,2026-03-20,675.57,339.89
+Organic Search,2026-01-12,0.0,339.11
+Not Assigned,2025-10-18,0.0,338.65
+Organic Search,2025-11-15,0.0,338.5
+Email,2026-03-04,1.13,336.86
+Organic Search,2026-05-16,0.0,336.78
+Google Generic Paid Search,2025-12-21,312.08,336.44
+Google Generic Paid Search,2025-12-01,471.48,336.36
+Google Generic Paid Search,2026-06-01,454.59,336.1
+Organic Search,2026-02-08,0.0,335.82
+Google Branded Paid Search,2026-05-28,938.43,334.89
+Google Generic Paid Search,2025-11-04,227.83,334.37
+Email,2026-06-03,1.76,332.85
+Google Generic Paid Search,2025-12-16,445.19,331.98
+Organic Search,2026-02-22,0.0,331.74
+Organic Search,2025-12-26,0.0,331.22
+Google Branded Paid Search,2026-05-27,803.01,330.55
+Organic Search,2025-11-17,0.0,330.36
+Email,2026-02-16,1.49,330.35
+Organic Search,2026-03-14,0.0,329.59
+Google Generic Paid Search,2026-01-08,213.81,328.83
+Email,2026-04-29,1.5,328.58
+Organic Search,2025-09-12,0.0,326.5
+Not Assigned,2026-03-10,0.0,326.25
+Organic Search,2026-05-19,0.0,325.63
+Google Branded Paid Search,2026-04-01,650.5,325.49
+Email,2026-05-26,1.24,324.77
+Influencer Performance,2026-05-01,0.0,323.65
+Not Assigned,2026-05-13,0.0,320.13
+Google Generic Paid Search,2025-11-06,300.79,317.14
+Not Assigned,2026-05-24,0.0,316.03
+Google Generic Paid Search,2025-11-03,44.52,315.43
+Not Assigned,2026-05-22,0.0,314.51
+Google Branded Paid Search,2025-11-28,519.72,313.68
+Not Assigned,2026-04-15,0.0,313.52
+Google Branded Paid Search,2026-03-30,693.5,312.46
+Email,2026-01-23,0.9,309.93
+Google Generic Paid Search,2026-01-04,259.25,309.81
+Email,2026-03-25,1.28,309.16
+Google Generic Paid Search,2025-12-19,348.17,308.29
+Organic Search,2026-01-31,0.0,307.64
+Email,2026-05-19,0.85,307.63
+Organic Search,2026-02-24,0.0,306.89
+Organic Search,2026-02-26,0.0,303.64
+Google Branded Paid Search,2026-03-03,763.72,303.53
+Email,2026-01-19,30.47,301.86
+Direct,2025-09-13,0.0,301.66
+Organic Search,2026-05-20,0.0,301.29
+Email,2026-04-06,0.6,301.07
+Email,2026-04-15,1.27,300.3
+Not Assigned,2026-03-29,0.0,300.14
+Organic Search,2025-09-15,0.0,299.76
+Referral,2026-05-21,0.0,299.48
+Google Generic Paid Search,2025-12-27,494.84,298.75
+Organic Search,2026-05-22,0.0,298.36
+Email,2026-05-20,1.26,297.52
+Not Assigned,2026-04-10,0.0,295.93
+Email,2026-03-19,0.96,295.74
+Email,2026-05-11,0.79,295.42
+Not Assigned,2026-05-14,0.0,293.89
+Email,2025-12-29,0.24,293.69
+Not Assigned,2026-02-08,0.0,293.31
+Not Assigned,2025-11-09,0.0,293.19
+Email,2026-05-18,43.21,293.13
+Not Assigned,2026-03-27,0.0,291.76
+Google Generic Paid Search,2026-06-02,444.92,291.4
+Organic Search,2026-04-09,0.0,290.62
+Google Branded Paid Search,2026-03-07,693.77,290.25
+Influencer Brand,2026-05-09,0.0,289.35
+Organic Search,2026-02-05,0.0,289.28
+Organic Search,2026-02-27,0.0,289.04
+Google Generic Paid Search,2025-12-23,286.85,288.54
+Organic Search,2026-01-01,0.0,287.4
+Organic Search,2025-10-10,0.0,287.02
+Referral,2026-05-26,0.0,286.88
+Email,2026-02-25,54.4,286.79
+Email,2026-01-24,0.61,286.58
+Email,2026-05-07,0.85,286.21
+Organic Search,2026-04-28,0.0,285.76
+Not Assigned,2026-04-14,0.0,285.61
+Google Generic Paid Search,2026-01-23,263.46,284.93
+Organic Search,2025-09-20,0.0,284.66
+Not Assigned,2025-12-03,0.0,283.72
+Email,2026-02-02,42.75,283.5
+Not Assigned,2026-04-09,0.0,283.49
+Not Assigned,2026-03-26,0.0,282.69
+Google Generic Paid Search,2025-11-18,219.98,282.34
+Not Assigned,2025-11-01,0.0,280.83
+Organic Search,2025-11-10,0.0,280.76
+Google Branded Paid Search,2026-05-16,573.29,280.39
+Organic Search,2025-10-17,0.0,279.97
+Organic Search,2026-05-17,0.0,279.83
+Influencer Performance,2026-03-24,0.0,279.64
+Organic Search,2026-05-06,0.0,279.49
+Email,2026-02-14,1.34,279.13
+Not Assigned,2025-10-07,0.0,278.8
+Influencer Brand,2025-11-11,0.0,277.63
+Not Assigned,2026-03-30,0.0,277.1
+Organic Search,2026-03-04,0.0,276.87
+Meta Paid,2026-05-11,175.53,276.8
+Email,2025-11-23,1.09,275.07
+Organic Search,2026-01-08,0.0,274.65
+Google Branded Paid Search,2026-02-24,680.91,272.98
+Organic Search,2025-11-23,0.0,272.78
+Organic Search,2025-10-31,0.0,272.54
+Google Generic Paid Search,2026-01-02,304.85,272.29
+Not Assigned,2026-04-06,0.0,272.29
+Google Branded Paid Search,2026-05-20,845.83,271.75
+Organic Search,2026-02-17,0.0,271.66
+Google Branded Paid Search,2026-04-16,835.83,270.25
+Google Branded Paid Search,2025-12-10,515.79,268.42
+Influencer Performance,2026-02-24,0.0,267.33
+Google Generic Paid Search,2026-01-06,269.97,267.24
+Email,2025-10-15,72.36,267.06
+Google Branded Paid Search,2025-12-21,480.36,266.53
+Organic Search,2025-12-05,0.0,266.18
+Google Branded Paid Search,2026-03-02,681.99,265.65
+Organic Search,2026-04-03,0.0,265.57
+Organic Search,2026-02-01,0.0,265.31
+Not Assigned,2026-05-30,0.0,265.3
+Google Generic Paid Search,2026-04-30,325.22,265.02
+Not Assigned,2026-04-25,0.0,264.39
+Not Assigned,2025-12-01,0.0,264.23
+Meta Paid,2026-02-01,481.19,263.57
+Organic Search,2026-02-15,0.0,262.43
+Not Assigned,2026-02-23,0.0,262.33
+Not Assigned,2025-10-01,0.0,261.85
+Google Generic Paid Search,2026-01-17,461.2,261.58
+Google Branded Paid Search,2026-01-21,368.73,261.57
+Organic Search,2025-12-20,0.0,261.4
+Organic Search,2026-03-26,0.0,261.06
+Email,2025-11-30,20.09,260.94
+Google Generic Paid Search,2026-01-01,163.91,259.6
+Google Generic Paid Search,2025-11-13,190.46,259.44
+Google Branded Paid Search,2026-05-01,524.03,259.07
+Organic Search,2026-02-28,0.0,258.91
+Not Assigned,2026-02-18,0.0,257.99
+Organic Search,2026-03-15,0.0,257.61
+Not Assigned,2026-03-11,0.0,255.04
+Google Generic Paid Search,2025-11-15,160.51,254.35
+Google Branded Paid Search,2025-12-17,620.68,253.97
+Not Assigned,2025-11-06,0.0,253.94
+Not Assigned,2025-11-13,0.0,253.83
+Not Assigned,2026-02-01,0.0,253.54
+Email,2025-10-01,20.93,252.66
+Google Branded Paid Search,2026-03-24,578.6,252.11
+Google Generic Paid Search,2026-01-25,401.32,251.69
+Organic Search,2026-04-23,0.0,251.56
+Google Generic Paid Search,2026-01-27,510.62,250.33
+Organic Search,2026-04-21,0.0,249.35
+Organic Search,2026-03-07,0.0,248.59
+Organic Search,2025-11-27,0.0,248.43
+Google Branded Paid Search,2026-03-28,595.58,245.31
+Email,2025-10-20,0.32,244.01
+Organic Search,2026-05-14,0.0,243.69
+Not Assigned,2026-06-01,0.0,243.48
+Google Branded Paid Search,2026-05-18,753.04,242.91
+Google Generic Paid Search,2026-01-20,272.15,242.9
+Google Branded Paid Search,2026-02-13,278.34,242.79
+Referral,2025-09-25,0.0,242.34
+Google Branded Paid Search,2025-11-25,365.77,241.54
+Email,2026-05-21,43.93,241.52
+Google Branded Paid Search,2026-02-15,444.81,241.26
+Not Assigned,2025-12-09,0.0,240.54
+Not Assigned,2026-06-03,0.0,239.71
+Google Generic Paid Search,2026-01-13,370.13,239.11
+Email,2026-02-06,1.07,238.5
+Organic Search,2025-09-14,0.0,238.3
+Google Branded Paid Search,2026-05-08,777.96,238.23
+Organic Search,2025-11-24,0.0,237.88
+Not Assigned,2026-03-08,0.0,237.61
+Not Assigned,2026-02-05,0.0,237.27
+Google Generic Paid Search,2026-01-03,243.29,237.03
+Organic Search,2026-04-05,0.0,236.87
+Google Branded Paid Search,2025-10-16,65.75,236.81
+Email,2026-02-26,2.24,236.65
+Organic Search,2026-01-24,0.0,236.48
+Email,2026-03-21,1.26,236.47
+Email,2026-05-04,0.98,236.42
+Influencer Brand,2025-11-12,0.0,235.38
+Email,2026-02-18,50.9,234.44
+Google Branded Paid Search,2026-05-04,734.77,234.4
+Google Branded Paid Search,2025-11-17,382.05,234.16
+Not Assigned,2026-03-05,0.0,232.64
+Email,2026-03-02,0.92,232.47
+Not Assigned,2026-05-06,0.0,231.14
+Organic Search,2025-10-23,0.0,230.73
+Google Branded Paid Search,2026-02-01,438.72,229.45
+Google Branded Paid Search,2025-12-06,439.02,229.38
+Google Branded Paid Search,2026-02-22,935.08,229.15
+Google Branded Paid Search,2025-12-27,548.47,228.98
+Google Branded Paid Search,2026-04-08,816.53,228.65
+Organic Search,2025-12-28,0.0,228.04
+Not Assigned,2025-10-14,0.0,227.77
+Email,2026-02-01,1.09,227.59
+Not Assigned,2026-04-05,0.0,227.57
+Google Branded Paid Search,2026-03-16,638.89,227.36
+Not Assigned,2026-05-11,0.0,227.31
+Google Branded Paid Search,2025-12-03,488.27,226.96
+Not Assigned,2026-04-27,0.0,226.51
+Email,2026-04-13,12.09,226.35
+Not Assigned,2026-05-09,0.0,225.92
+Google Branded Paid Search,2026-05-10,885.48,225.77
+Google Branded Paid Search,2026-03-17,497.37,225.51
+Organic Search,2026-05-03,0.0,224.48
+Google Branded Paid Search,2026-04-24,623.96,224.18
+Google Generic Paid Search,2025-10-30,127.31,223.81
+Organic Search,2026-03-27,0.0,221.53
+Organic Search,2026-03-24,0.0,220.99
+Google Generic Paid Search,2025-10-28,205.17,220.24
+Google Generic Paid Search,2025-10-27,162.91,219.71
+Google Branded Paid Search,2025-10-19,68.21,219.65
+Influencer Performance,2026-01-27,0.0,219.08
+Email,2025-12-27,0.26,218.87
+Meta Paid,2026-04-08,292.24,218.09
+Email,2026-05-30,1.0,217.55
+Google Branded Paid Search,2026-04-28,623.53,217.17
+Organic Search,2026-03-12,0.0,216.1
+Google Generic Paid Search,2025-11-07,199.4,216.02
+Organic Search,2026-04-30,0.0,214.68
+Not Assigned,2026-04-16,0.0,213.73
+Meta Paid,2026-02-13,380.67,213.55
+Not Assigned,2025-12-16,0.0,213.08
+Google Branded Paid Search,2026-02-18,391.51,212.93
+Email,2026-04-17,0.78,212.61
+Google Branded Paid Search,2026-04-23,582.49,212.58
+Google Branded Paid Search,2026-04-17,835.15,211.41
+Google Branded Paid Search,2026-04-27,753.25,211.24
+Organic Search,2025-10-08,0.0,210.68
+Organic Search,2025-10-01,0.0,210.3
+Organic Search,2026-04-24,0.0,209.85
+Organic Search,2025-12-16,0.0,209.67
+Organic Search,2026-01-22,0.0,209.66
+Not Assigned,2025-10-31,0.0,209.43
+Email,2026-02-13,1.63,209.05
+Organic Search,2026-06-03,0.0,208.57
+Google Generic Paid Search,2025-12-25,210.26,208.47
+Google Branded Paid Search,2026-03-15,848.01,207.6
+Referral,2026-01-05,0.0,207.04
+Email,2026-03-24,1.29,206.72
+Google Branded Paid Search,2026-02-04,544.39,206.67
+Not Assigned,2026-02-27,0.0,206.31
+Email,2025-10-31,0.89,206.14
+Influencer Brand,2025-10-27,0.0,206.03
+Organic Search,2026-01-02,0.0,205.47
+Not Assigned,2026-04-13,0.0,204.04
+Organic Search,2026-01-10,0.0,203.88
+Google Branded Paid Search,2026-03-14,780.65,203.75
+Google Branded Paid Search,2025-12-31,385.98,203.7
+Organic Search,2026-01-04,0.0,203.66
+Google Branded Paid Search,2026-04-09,729.8,203.09
+Email,2026-02-08,1.01,202.76
+Not Assigned,2025-11-21,0.0,201.04
+Organic Search,2026-05-15,0.0,200.61
+Google Generic Paid Search,2025-10-21,35.19,200.08
+Email,2026-04-11,1.04,199.37
+Organic Search,2026-02-20,0.0,198.55
+Influencer Performance,2026-03-29,0.0,197.26
+Email,2026-04-01,1.56,196.66
+Google Branded Paid Search,2026-02-10,593.69,196.65
+Google Branded Paid Search,2026-04-12,791.72,196.27
+Email,2026-03-20,0.9,195.2
+Google Branded Paid Search,2025-12-13,532.44,195.04
+Google Branded Paid Search,2026-04-07,752.59,194.88
+Google Branded Paid Search,2026-05-02,464.88,194.65
+Google Branded Paid Search,2026-03-10,942.81,192.71
+Not Assigned,2026-05-02,0.0,192.57
+Not Assigned,2026-04-07,0.0,192.16
+Google Generic Paid Search,2025-11-11,231.42,192.14
+Email,2025-11-10,1.21,191.65
+Referral,2025-12-17,0.0,190.9
+Meta Paid,2026-04-24,235.77,190.83
+Not Assigned,2025-11-15,0.0,190.64
+Google Branded Paid Search,2025-12-04,397.36,190.55
+Organic Search,2026-05-27,0.0,190.31
+Google Generic Paid Search,2025-11-10,165.19,189.59
+Organic Search,2026-02-12,0.0,189.58
+Organic Search,2026-03-21,0.0,189.5
+Email,2026-03-14,1.31,188.71
+Email,2026-05-29,0.82,188.26
+Email,2026-03-31,1.34,187.16
+Organic Search,2026-05-25,0.0,187.15
+Not Assigned,2025-10-10,0.0,186.51
+Organic Search,2026-04-18,0.0,185.91
+Not Assigned,2026-05-26,0.0,185.51
+Not Assigned,2026-05-15,0.0,185.38
+Google Generic Paid Search,2026-01-10,355.46,184.88
+Email,2026-04-18,0.56,184.79
+Organic Search,2025-12-04,0.0,184.49
+Referral,2026-03-20,0.0,184.39
+Email,2026-02-04,1.63,184.29
+Email,2025-12-15,0.56,184.03
+Not Assigned,2025-10-19,0.0,182.99
+Email,2026-03-03,42.39,182.5
+Email,2026-01-01,0.18,182.38
+Email,2025-12-10,0.56,181.98
+Organic Search,2025-12-10,0.0,181.81
+Organic Search,2026-05-29,0.0,181.65
+Email,2026-01-18,0.2,180.69
+Not Assigned,2025-09-19,0.0,180.61
+Google Branded Paid Search,2026-02-23,1138.58,179.48
+Organic Search,2025-11-08,0.0,179.28
+Organic Search,2026-05-09,0.0,179.14
+Not Assigned,2026-04-18,0.0,179.12
+Google Generic Paid Search,2026-01-07,265.99,178.58
+Organic Search,2026-01-14,0.0,178.44
+Organic Search,2026-05-18,0.0,178.31
+Organic Search,2025-12-21,0.0,178.12
+Referral,2026-05-25,0.0,177.95
+Not Assigned,2026-05-07,0.0,177.26
+Google Branded Paid Search,2025-11-19,375.78,176.98
+Email,2026-06-02,1.86,176.91
+Google Branded Paid Search,2025-11-09,173.7,176.27
+Google Branded Paid Search,2026-03-31,593.62,175.82
+Google Generic Paid Search,2026-01-05,230.29,175.41
+Email,2026-01-07,13.46,175.17
+Google Branded Paid Search,2026-02-21,729.41,175.15
+Organic Search,2025-12-25,0.0,175.15
+Not Assigned,2025-10-29,0.0,175.12
+Not Assigned,2025-09-28,0.0,174.55
+Organic Search,2026-01-29,0.0,174.53
+Not Assigned,2025-11-25,0.0,174.33
+Google Branded Paid Search,2025-12-14,548.32,174.23
+Not Assigned,2026-04-24,0.0,174.23
+Organic Search,2026-01-16,0.0,173.99
+Not Assigned,2025-10-17,0.0,173.96
+Google Branded Paid Search,2026-02-14,330.25,173.79
+Not Assigned,2025-12-10,0.0,173.77
+Email,2025-11-18,1.09,173.38
+Referral,2026-03-09,0.0,173.26
+Google Branded Paid Search,2025-12-15,567.75,173.24
+Organic Search,2025-11-05,0.0,173.12
+Email,2026-03-09,44.22,172.82
+Google Branded Paid Search,2025-10-15,74.87,172.54
+Email,2026-05-23,1.02,172.14
+Influencer Performance,2026-02-22,0.0,171.87
+Not Assigned,2026-03-21,0.0,171.76
+Not Assigned,2026-03-18,0.0,171.52
+Email,2026-03-01,0.92,171.48
+Not Assigned,2025-10-26,0.0,171.36
+Influencer Brand,2025-11-19,0.0,171.08
+Not Assigned,2025-12-21,0.0,171.07
+Email,2026-01-10,0.33,171.0
+Email,2026-03-28,0.8,170.93
+Google Branded Paid Search,2025-11-18,328.42,170.66
+Not Assigned,2025-10-25,0.0,170.55
+Meta Paid,2026-03-31,318.69,170.22
+Google Branded Paid Search,2026-02-11,344.05,169.72
+Organic Search,2026-05-01,0.0,169.36
+Google Branded Paid Search,2025-10-22,26.95,168.87
+Google Branded Paid Search,2026-02-07,389.67,168.62
+Organic Search,2026-06-02,0.0,168.53
+Not Assigned,2026-03-01,0.0,168.37
+Referral,2026-03-11,0.0,168.32
+Organic Search,2026-04-26,0.0,167.94
+Not Assigned,2026-03-15,0.0,167.62
+Organic Search,2025-11-09,0.0,167.55
+Meta Paid,2026-04-19,589.42,167.08
+Referral,2026-04-29,0.0,166.25
+Not Assigned,2026-05-04,0.0,165.54
+Organic Search,2025-11-07,0.0,165.53
+Email,2026-03-15,0.82,165.52
+Google Branded Paid Search,2025-11-29,505.7,163.91
+Email,2025-11-05,1.21,163.87
+Not Assigned,2026-03-03,0.0,163.51
+Email,2026-04-28,1.03,163.5
+Google Branded Paid Search,2026-02-28,552.18,162.84
+Referral,2026-03-21,0.0,162.68
+Email,2025-12-31,0.2,162.5
+Organic Search,2026-05-02,0.0,162.32
+Google Branded Paid Search,2025-12-20,573.96,161.64
+Organic Search,2025-10-21,0.0,161.59
+Not Assigned,2026-01-28,0.0,161.45
+Organic Search,2025-11-03,0.0,161.36
+Email,2026-03-12,0.83,161.32
+Not Assigned,2025-12-18,0.0,160.69
+Not Assigned,2026-02-24,0.0,160.67
+Email,2026-03-17,1.48,160.49
+Google Branded Paid Search,2026-05-22,798.67,160.15
+Not Assigned,2025-12-06,0.0,160.04
+Organic Search,2026-01-25,0.0,159.93
+Email,2026-04-26,0.49,159.88
+Organic Search,2026-04-17,0.0,159.76
+Referral,2025-09-22,0.0,159.19
+Google Branded Paid Search,2025-11-27,451.26,158.96
+Not Assigned,2026-02-13,0.0,158.9
+Organic Search,2026-02-14,0.0,158.25
+Google Branded Paid Search,2026-01-02,569.07,158.12
+Meta Paid,2026-03-02,520.7,158.1
+Not Assigned,2025-11-12,0.0,157.8
+Email,2026-04-14,1.19,157.69
+Email,2025-11-29,1.17,157.48
+Email,2026-03-07,1.13,157.27
+Meta Paid,2026-02-28,365.53,157.06
+Organic Search,2026-01-09,0.0,157.0
+Not Assigned,2026-01-29,0.0,156.99
+Email,2026-03-11,1.45,156.91
+Email,2026-02-22,1.19,156.89
+Email,2026-01-04,0.17,156.7
+Organic Search,2025-12-17,0.0,156.68
+Email,2026-02-24,1.39,155.74
+Google Generic Paid Search,2025-11-24,308.32,153.55
+Not Assigned,2025-09-22,0.0,153.24
+Google Branded Paid Search,2026-04-22,723.19,153.22
+Meta Paid,2026-05-08,295.37,152.85
+Referral,2026-04-13,0.0,152.13
+Not Assigned,2026-04-23,0.0,151.94
+Google Branded Paid Search,2026-03-18,611.92,151.8
+Influencer Performance,2026-03-26,0.0,151.29
+Google Generic Paid Search,2025-10-22,54.94,150.1
+Google Generic Paid Search,2025-10-31,132.67,150.03
+Not Assigned,2026-04-02,0.0,149.67
+Referral,2026-01-06,0.0,149.4
+Referral,2025-11-08,0.0,149.36
+Not Assigned,2026-02-16,0.0,149.21
+Influencer Performance,2026-04-30,0.0,149.2
+Referral,2026-03-01,0.0,147.46
+Not Assigned,2025-10-23,0.0,147.23
+Referral,2025-10-23,0.0,146.95
+Referral,2026-04-07,0.0,146.22
+Not Assigned,2026-03-16,0.0,145.94
+Email,2026-06-01,1.54,145.61
+Organic Search,2026-01-05,0.0,145.49
+Google Branded Paid Search,2026-03-27,834.71,145.46
+Meta Paid,2026-03-15,576.48,145.44
+Meta Paid,2026-03-04,427.52,145.25
+Email,2026-05-03,0.66,145.24
+Google Branded Paid Search,2026-05-15,660.53,144.82
+Email,2026-04-08,1.15,144.59
+Referral,2026-05-14,0.0,144.54
+Not Assigned,2026-05-16,0.0,143.54
+Email,2026-01-06,0.33,143.32
+Not Assigned,2026-01-11,0.0,143.3
+Email,2025-11-26,0.96,142.63
+Not Assigned,2026-03-09,0.0,142.51
+Referral,2026-04-01,0.0,141.65
+Referral,2026-04-05,0.0,141.15
+Email,2026-04-12,0.65,141.15
+Organic Search,2026-03-19,0.0,140.97
+Organic Search,2025-09-24,0.0,140.79
+Not Assigned,2025-10-20,0.0,140.68
+Google Branded Paid Search,2025-11-23,342.23,140.67
+Google Generic Paid Search,2025-10-24,195.11,140.29
+Not Assigned,2026-01-05,0.0,140.04
+Not Assigned,2025-11-23,0.0,140.0
+Google Branded Paid Search,2025-12-01,443.74,139.92
+Organic Search,2025-12-11,0.0,139.86
+Not Assigned,2025-11-04,0.0,139.7
+Meta Paid,2026-02-03,329.06,139.54
+Email,2025-11-12,19.86,138.76
+Not Assigned,2025-09-15,0.0,138.36
+Google Branded Paid Search,2026-01-24,349.33,138.31
+Email,2026-01-26,0.47,138.3
+Google Branded Paid Search,2025-10-23,24.28,138.13
+Organic Search,2026-04-22,0.0,138.1
+Email,2025-11-09,1.23,137.97
+Meta Paid,2026-04-27,339.05,137.72
+Organic Search,2026-02-04,0.0,137.21
+Email,2026-04-27,43.13,137.16
+Meta Paid,2026-04-12,651.57,136.75
+Email,2025-12-02,0.69,136.4
+Email,2026-02-17,1.73,136.15
+Not Assigned,2026-01-14,0.0,135.94
+Meta Paid,2026-03-18,432.48,135.92
+Google Branded Paid Search,2026-03-13,811.23,135.78
+Not Assigned,2025-09-12,0.0,135.66
+Not Assigned,2026-03-17,0.0,135.55
+Not Assigned,2026-02-28,0.0,135.47
+Google Branded Paid Search,2025-10-12,6.3,135.36
+Not Assigned,2026-03-07,0.0,134.88
+Not Assigned,2026-03-12,0.0,134.85
+Organic Search,2026-05-30,0.0,134.68
+Email,2025-10-17,0.65,134.34
+Google Branded Paid Search,2026-01-29,349.4,133.87
+Email,2025-11-16,1.07,133.54
+Influencer Brand,2025-11-30,0.0,133.48
+Google Branded Paid Search,2026-01-11,467.59,133.2
+Email,2026-02-10,1.53,132.82
+Not Assigned,2026-02-17,0.0,132.5
+Google Branded Paid Search,2026-01-10,506.67,132.38
+Referral,2026-01-10,0.0,132.33
+Not Assigned,2026-03-19,0.0,132.04
+Google Branded Paid Search,2026-03-06,714.23,131.48
+Not Assigned,2026-05-19,0.0,131.36
+Email,2025-09-25,18.71,130.85
+Google Branded Paid Search,2026-03-12,1038.34,130.75
+Not Assigned,2025-11-17,0.0,130.62
+Email,2026-04-25,1.08,130.52
+Not Assigned,2025-11-28,0.0,130.5
+Not Assigned,2026-05-17,0.0,130.09
+Email,2026-03-18,45.2,129.95
+Email,2025-11-11,1.44,129.21
+Email,2026-02-21,1.62,129.06
+Not Assigned,2025-12-20,0.0,128.85
+Google Branded Paid Search,2025-12-28,580.94,128.81
+Not Assigned,2026-02-25,0.0,128.64
+Influencer Performance,2026-03-12,0.0,128.34
+Referral,2026-05-22,0.0,128.2
+Not Assigned,2026-05-01,0.0,127.72
+Meta Paid,2025-12-21,167.96,127.22
+Not Assigned,2026-03-06,0.0,126.95
+Email,2026-03-13,1.3,126.91
+Meta Paid,2026-03-01,451.94,126.03
+Not Assigned,2026-05-10,0.0,126.01
+Email,2025-10-16,0.48,125.85
+Organic Search,2025-12-19,0.0,125.71
+Not Assigned,2025-09-25,0.0,125.67
+Not Assigned,2026-02-03,0.0,125.27
+Referral,2025-10-13,0.0,125.14
+Not Assigned,2026-03-04,0.0,124.66
+Google Branded Paid Search,2026-04-18,746.49,124.5
+Google Branded Paid Search,2026-05-12,811.01,124.36
+Not Assigned,2026-04-22,0.0,123.6
+Google Branded Paid Search,2026-04-10,708.09,123.48
+Google Branded Paid Search,2026-03-08,898.02,123.28
+Referral,2025-10-25,0.0,123.22
+Not Assigned,2025-12-02,0.0,123.11
+Google Branded Paid Search,2025-10-18,60.03,122.67
+Not Assigned,2026-01-22,0.0,122.63
+Not Assigned,2026-05-12,0.0,122.29
+Referral,2026-05-13,0.0,122.22
+Not Assigned,2026-02-02,0.0,122.1
+Not Assigned,2026-05-28,0.0,120.26
+Google Branded Paid Search,2026-05-14,725.13,120.12
+Not Assigned,2026-04-21,0.0,119.9
+Email,2025-12-06,0.67,119.25
+Email,2026-04-16,40.82,119.15
+Not Assigned,2025-11-19,0.0,119.14
+Email,2026-02-23,1.14,118.85
+Email,2026-03-27,0.81,118.4
+Email,2026-05-10,0.35,118.15
+Not Assigned,2025-10-21,0.0,118.13
+Meta Paid,2025-12-17,169.23,118.04
+Google Generic Paid Search,2025-12-31,140.33,117.78
+Email,2026-01-29,0.72,117.55
+Organic Search,2025-12-22,0.0,117.21
+Organic Search,2025-12-23,0.0,117.03
+Referral,2026-03-23,0.0,115.4
+Meta Paid,2025-11-20,0.0,115.4
+Not Assigned,2026-02-10,0.0,114.85
+Not Assigned,2026-01-27,0.0,114.59
+Referral,2026-05-12,0.0,114.45
+Referral,2025-11-28,0.0,113.9
+Organic Search,2026-04-12,0.0,113.44
+Google Branded Paid Search,2025-11-01,90.62,113.4
+Organic Search,2026-01-11,0.0,113.35
+Meta Paid,2026-04-13,468.06,113.33
+Not Assigned,2026-02-04,0.0,113.2
+Not Assigned,2026-01-01,0.0,112.42
+Influencer Performance,2026-01-21,0.0,112.1
+Referral,2026-02-26,0.0,111.87
+Google Branded Paid Search,2025-10-25,55.97,111.68
+Organic Search,2026-04-25,0.0,111.59
+Google Generic Paid Search,2025-11-22,272.43,111.24
+Organic Search,2026-04-15,0.0,111.16
+Not Assigned,2026-03-22,0.0,110.84
+Organic Search,2026-02-13,0.0,110.5
+Influencer Brand,2025-11-02,0.0,110.42
+Meta Paid,2026-03-17,489.8,110.16
+Email,2026-01-15,0.35,109.75
+Organic Search,2026-04-20,0.0,109.21
+Google Branded Paid Search,2026-01-17,389.15,108.78
+Email,2026-01-21,0.68,108.67
+Referral,2025-10-28,0.0,108.63
+Not Assigned,2026-03-24,0.0,108.62
+Not Assigned,2025-10-09,0.0,108.59
+Meta Paid,2026-02-16,372.85,108.42
+Google Branded Paid Search,2025-11-20,358.42,108.21
+Referral,2025-09-18,0.0,108.02
+Email,2025-10-09,0.49,107.88
+Not Assigned,2025-10-28,0.0,107.4
+Influencer Performance,2026-02-01,0.0,107.34
+Google Branded Paid Search,2026-01-25,344.11,107.32
+Not Assigned,2025-11-26,0.0,107.21
+Referral,2025-10-26,0.0,106.79
+Not Assigned,2025-10-13,0.0,106.56
+Email,2025-10-28,8.34,106.21
+Referral,2026-03-15,0.0,106.11
+Referral,2026-05-11,0.0,105.89
+Meta Paid,2026-02-04,327.85,105.14
+Influencer Performance,2026-04-26,0.0,104.62
+Not Assigned,2026-04-11,0.0,104.61
+Not Assigned,2025-11-11,0.0,104.2
+Referral,2025-11-29,0.0,104.11
+Organic Search,2025-10-11,0.0,103.78
+Google Branded Paid Search,2026-01-13,510.97,103.67
+Organic Search,2025-12-06,0.0,103.61
+Not Assigned,2026-02-15,0.0,103.2
+Influencer Performance,2026-02-18,0.0,103.06
+Google Branded Paid Search,2026-04-02,567.9,102.98
+Google Branded Paid Search,2026-02-26,603.81,102.43
+Google Branded Paid Search,2025-10-17,61.47,102.34
+Email,2026-05-27,1.09,102.25
+Not Assigned,2025-09-17,0.0,102.18
+Meta Paid,2026-04-26,297.01,101.92
+Email,2025-12-28,0.32,101.0
+Referral,2026-02-15,0.0,100.42
+Meta Paid,2026-03-26,407.78,100.41
+Meta Paid,2026-04-21,335.56,100.41
+Not Assigned,2026-01-30,0.0,100.3
+Google Branded Paid Search,2025-12-18,658.53,99.95
+Email,2026-04-04,0.41,99.81
+Not Assigned,2026-03-13,0.0,99.58
+Google Branded Paid Search,2026-01-01,443.34,99.58
+Influencer Brand,2026-04-07,0.0,99.54
+Not Assigned,2026-03-20,0.0,99.49
+Google Branded Paid Search,2026-02-17,407.85,99.2
+Google Branded Paid Search,2025-10-13,32.27,98.86
+Google Branded Paid Search,2026-03-29,618.1,98.61
+Influencer Performance,2026-01-26,0.0,97.4
+Organic Search,2025-12-24,0.0,97.15
+Google Generic Paid Search,2025-11-01,146.58,96.51
+Influencer Performance,2026-03-27,0.0,96.51
+Google Branded Paid Search,2025-11-03,78.31,96.41
+Referral,2025-12-03,0.0,96.26
+Not Assigned,2025-11-07,0.0,95.81
+Not Assigned,2026-02-11,0.0,95.54
+Not Assigned,2025-09-26,0.0,95.5
+Referral,2025-11-12,0.0,95.44
+Referral,2025-10-10,0.0,95.36
+Google Branded Paid Search,2026-03-04,634.02,95.33
+Email,2026-05-08,1.02,95.0
+Not Assigned,2026-04-29,0.0,94.7
+Organic Search,2026-05-05,0.0,94.34
+Google Branded Paid Search,2025-11-16,345.85,93.86
+Not Assigned,2026-04-17,0.0,93.66
+Meta Paid,2026-02-10,201.28,93.51
+Influencer Brand,2026-03-02,0.0,93.46
+Not Assigned,2025-09-29,0.0,93.46
+Organic Search,2026-04-27,0.0,92.78
+Google Branded Paid Search,2026-04-30,583.75,92.77
+Meta Paid,2026-04-14,429.59,92.41
+Influencer Performance,2026-01-28,0.0,92.35
+Organic Search,2026-05-12,0.0,92.15
+Not Assigned,2025-10-06,0.0,92.07
+Not Assigned,2026-05-27,0.0,92.03
+Referral,2025-10-14,0.0,91.02
+Influencer Brand,2025-11-20,0.0,90.94
+Email,2026-06-04,0.0,90.89
+Referral,2025-12-11,0.0,90.74
+Google Branded Paid Search,2025-11-30,458.56,90.59
+Influencer Performance,2026-05-06,0.0,90.55
+Email,2026-01-22,30.49,90.13
+Referral,2025-12-02,0.0,89.92
+Google Branded Paid Search,2026-02-20,557.5,89.71
+Email,2025-12-12,14.52,89.64
+Organic Search,2025-11-14,0.0,89.63
+Not Assigned,2025-12-13,0.0,89.4
+Referral,2026-04-10,0.0,88.97
+Email,2026-05-17,0.64,88.85
+Referral,2026-04-04,0.0,88.54
+Not Assigned,2025-09-14,0.0,88.5
+Google Branded Paid Search,2026-01-08,408.02,88.3
+Referral,2025-09-27,0.0,88.26
+Not Assigned,2025-10-24,0.0,87.36
+Email,2026-01-20,0.73,87.27
+Influencer Performance,2026-05-20,0.0,87.22
+Email,2025-12-19,0.53,87.15
+Not Assigned,2026-01-04,0.0,87.07
+Organic Search,2025-12-30,0.0,86.96
+Referral,2025-09-12,0.0,86.85
+Meta Paid,2026-04-28,398.82,86.69
+Meta Paid,2026-05-29,91.49,86.47
+Email,2025-12-22,0.26,86.33
+Email,2026-04-19,0.59,86.19
+Referral,2025-10-21,0.0,86.0
+Not Assigned,2026-01-08,0.0,85.91
+Email,2025-12-14,0.42,85.64
+Referral,2026-01-08,0.0,85.6
+Meta Paid,2026-02-25,323.61,85.12
+Organic Search,2025-12-29,0.0,84.51
+Email,2025-10-05,1.02,84.15
+Referral,2025-11-30,0.0,83.71
+Google Branded Paid Search,2025-12-30,504.09,83.6
+Referral,2026-02-18,0.0,83.5
+Not Assigned,2025-11-03,0.0,83.5
+Referral,2025-12-08,0.0,83.01
+Google Generic Paid Search,2025-10-14,40.21,82.5
+Email,2026-03-06,0.93,82.06
+Referral,2026-01-12,0.0,82.02
+Google Generic Paid Search,2025-11-02,144.51,81.78
+Not Assigned,2025-09-30,0.0,81.6
+Referral,2026-04-26,0.0,81.41
+Not Assigned,2026-01-07,0.0,81.34
+Google Branded Paid Search,2025-12-19,510.39,81.15
+Google Branded Paid Search,2026-02-09,454.98,81.05
+Not Assigned,2026-04-28,0.0,80.56
+Referral,2026-03-24,0.0,79.59
+Not Assigned,2025-12-12,0.0,79.5
+Not Assigned,2026-03-23,0.0,79.4
+Not Assigned,2026-05-25,0.0,78.98
+Not Assigned,2026-01-21,0.0,78.92
+Referral,2026-05-08,0.0,78.83
+Not Assigned,2025-12-04,0.0,78.4
+Referral,2026-02-07,0.0,78.37
+Email,2026-04-21,42.3,78.3
+Referral,2025-11-27,0.0,78.24
+Meta Paid,2025-12-28,142.51,77.97
+Google Branded Paid Search,2025-12-07,734.36,76.59
+Not Assigned,2025-10-12,0.0,76.5
+Not Assigned,2025-12-19,0.0,76.4
+Not Assigned,2026-01-15,0.0,76.14
+Google Branded Paid Search,2026-02-08,473.43,76.11
+Not Assigned,2026-05-20,0.0,76.04
+Not Assigned,2025-12-14,0.0,75.99
+Google Branded Paid Search,2026-01-26,345.13,75.69
+Not Assigned,2025-12-15,0.0,75.6
+Not Assigned,2025-10-16,0.0,75.54
+Influencer Performance,2026-01-20,0.0,75.35
+Influencer Brand,2026-05-19,0.0,75.28
+Referral,2026-01-07,0.0,74.96
+Referral,2025-10-05,0.0,74.57
+Referral,2026-03-08,0.0,74.54
+Google Branded Paid Search,2026-03-01,791.95,74.46
+Meta Paid,2025-11-06,0.0,74.43
+Email,2025-12-17,0.42,74.43
+Google Branded Paid Search,2026-02-27,571.97,74.42
+Not Assigned,2025-12-17,0.0,74.4
+Not Assigned,2025-09-11,0.0,74.33
+Influencer Performance,2026-04-24,3700.0,74.2
+Email,2025-10-21,0.65,74.08
+Not Assigned,2026-02-06,0.0,73.77
+Meta Paid,2026-04-04,290.43,73.44
+Email,2025-11-08,1.0,73.24
+Influencer Brand,2026-06-03,0.0,73.16
+Google Branded Paid Search,2026-03-26,908.39,73.11
+Google Branded Paid Search,2026-05-03,639.63,72.78
+Influencer Brand,2026-04-26,3100.0,72.78
+Meta Paid,2026-02-08,316.96,72.65
+Not Assigned,2025-10-03,0.0,72.46
+Meta Paid,2026-05-02,380.81,72.44
+Not Assigned,2026-05-29,0.0,72.43
+Not Assigned,2026-03-31,0.0,71.88
+Not Assigned,2026-03-28,0.0,71.84
+Not Assigned,2026-02-07,0.0,71.82
+Meta Paid,2026-01-31,371.8,71.81
+Influencer Performance,2026-05-29,1500.0,71.79
+Not Assigned,2026-02-14,0.0,71.72
+Email,2025-12-20,0.41,71.72
+Email,2025-11-20,1.34,71.51
+Not Assigned,2026-02-26,0.0,71.12
+Referral,2026-01-16,0.0,71.06
+Email,2025-10-19,1.0,70.6
+Email,2026-02-28,1.71,70.52
+Not Assigned,2025-11-10,0.0,70.5
+Not Assigned,2026-05-21,0.0,70.28
+Organic Search,2026-05-24,0.0,70.04
+Referral,2025-11-20,0.0,69.84
+Not Assigned,2026-05-08,0.0,69.66
+Google Branded Paid Search,2026-03-25,708.47,69.32
+Referral,2025-11-06,0.0,68.91
+Google Branded Paid Search,2026-03-05,755.61,68.87
+Direct,2025-09-06,0.0,68.8
+Referral,2025-12-01,0.0,68.7
+Meta Paid,2026-04-01,265.58,68.61
+Not Assigned,2025-12-31,0.0,68.5
+Email,2025-10-25,0.38,68.4
+Influencer Brand,2026-03-01,0.0,68.32
+Referral,2026-03-14,0.0,68.02
+Referral,2026-04-30,0.0,67.79
+Influencer Performance,2026-03-30,0.0,67.72
+Email,2025-10-07,1.15,67.6
+TikTok Paid,2025-12-29,0.0,67.45
+Organic Search,2025-12-13,0.0,67.4
+Influencer Performance,2026-05-05,0.0,66.99
+Referral,2026-02-13,0.0,66.8
+Meta Paid,2026-05-17,0.0,66.6
+Organic Search,2026-04-16,0.0,66.6
+Referral,2025-12-23,0.0,66.48
+Email,2025-12-18,16.61,66.33
+Google Branded Paid Search,2025-10-24,39.33,65.7
+Referral,2025-10-27,0.0,65.7
+Referral,2025-11-02,0.0,65.7
+Not Assigned,2025-10-15,0.0,65.67
+Referral,2026-04-23,0.0,65.47
+Referral,2026-02-06,0.0,65.39
+Google Branded Paid Search,2026-03-11,1152.77,65.23
+Referral,2025-11-05,0.0,64.71
+Email,2026-04-02,38.1,64.66
+Influencer Performance,2026-03-17,0.0,64.65
+Referral,2025-12-16,0.0,64.53
+Email,2026-04-05,0.45,64.53
+Email,2025-11-03,0.82,64.17
+Referral,2026-02-22,0.0,64.17
+Referral,2026-03-10,0.0,63.97
+Email,2025-09-11,9.85,63.8
+Google Branded Paid Search,2025-10-06,49.74,63.7
+Email,2025-10-27,0.04,63.7
+Google Branded Paid Search,2026-02-02,438.26,63.7
+Meta Paid,2026-03-29,257.0,63.6
+Referral,2026-05-06,0.0,63.51
+Referral,2025-10-31,0.0,63.5
+Meta Paid,2026-02-17,366.33,63.44
+Email,2026-05-15,42.95,63.31
+Email,2026-05-22,0.79,63.29
+Referral,2026-01-02,0.0,63.06
+Referral,2026-03-17,0.0,63.04
+Google Branded Paid Search,2025-11-10,329.8,62.7
+Meta Paid,2025-12-18,162.08,62.6
+Google Branded Paid Search,2025-12-22,482.74,62.5
+Google Branded Paid Search,2025-12-26,480.04,62.45
+Email,2025-10-29,0.72,61.85
+Influencer Performance,2026-05-27,0.0,61.82
+Not Assigned,2025-12-28,0.0,61.79
+Influencer Brand,2026-05-12,0.0,61.74
+Referral,2026-04-21,0.0,61.7
+Google Branded Paid Search,2025-11-12,151.23,61.35
+Meta Paid,2026-05-07,232.57,60.95
+Google Branded Paid Search,2025-12-12,475.55,60.93
+Meta Paid,2026-02-26,326.84,60.79
+Not Assigned,2026-01-31,0.0,59.72
+Email,2025-11-01,0.59,59.71
+Influencer Performance,2026-05-16,200.0,59.63
+Not Assigned,2025-10-30,0.0,59.6
+Referral,2026-04-19,0.0,59.6
+Referral,2026-03-16,0.0,59.49
+Email,2026-05-16,0.74,59.35
+Google Branded Paid Search,2026-05-13,705.04,59.34
+Email,2025-12-03,0.54,58.75
+Not Assigned,2026-05-23,0.0,58.6
+Not Assigned,2025-11-05,0.0,58.44
+Referral,2026-03-26,0.0,58.41
+Meta Paid,2026-03-13,484.38,58.32
+Referral,2025-10-01,0.0,57.35
+Email,2025-12-21,0.36,57.33
+Meta Paid,2026-03-07,408.29,57.27
+Referral,2025-10-09,0.0,57.25
+Not Assigned,2026-01-20,0.0,57.25
+Meta Paid,2026-02-14,414.93,57.25
+Influencer Performance,2026-03-11,0.0,57.12
+Email,2025-11-15,1.17,57.0
+Google Branded Paid Search,2025-11-13,202.47,56.7
+Google Branded Paid Search,2026-01-05,482.07,56.7
+Referral,2025-10-29,0.0,56.6
+Not Assigned,2025-11-18,0.0,56.6
+Not Assigned,2025-12-07,0.0,56.6
+Not Assigned,2026-04-19,0.0,56.54
+Email,2026-03-23,0.83,56.44
+Referral,2026-01-25,0.0,56.34
+Referral,2026-04-12,0.0,56.24
+Influencer Performance,2026-02-04,0.0,55.95
+Referral,2026-04-09,0.0,55.86
+Meta Paid,2026-04-23,267.49,55.74
+Direct,2025-09-03,0.0,55.6
+Not Assigned,2026-01-26,0.0,55.6
+Email,2025-10-12,0.9,55.53
+Email,2025-10-14,0.5,55.43
+Google Generic Paid Search,2025-10-23,232.31,55.43
+Google Branded Paid Search,2025-11-24,539.47,55.43
+Referral,2026-04-03,0.0,55.35
+Email,2026-02-05,45.6,55.28
+Email,2026-01-13,0.56,54.79
+Google Branded Paid Search,2026-01-23,357.63,54.62
+Not Assigned,2025-11-24,0.0,54.6
+Google Branded Paid Search,2026-01-16,376.09,54.53
+Meta Paid,2026-01-13,206.59,54.52
+Meta Paid,2026-02-22,534.01,54.39
+Referral,2026-01-27,0.0,54.27
+Meta Paid,2025-12-15,176.31,53.8
+Meta Paid,2026-01-02,115.61,53.8
+Meta Paid,2026-02-15,410.78,53.8
+Referral,2025-11-14,0.0,53.7
+Referral,2026-01-28,0.0,53.7
+Google Branded Paid Search,2025-12-23,500.32,53.6
+Influencer Brand,2025-10-28,0.0,53.53
+Meta Paid,2026-01-27,284.88,53.32
+Meta Paid,2026-04-06,335.18,53.32
+Google Branded Paid Search,2026-02-25,686.06,53.1
+Influencer Performance,2026-02-17,0.0,52.7
+Referral,2026-02-25,0.0,52.05
+Not Assigned,2025-12-05,0.0,51.99
+Organic Search,2026-03-20,0.0,51.85
+Influencer Performance,2025-12-20,0.0,51.81
+Meta Paid,2026-02-23,323.68,51.81
+Referral,2025-11-18,0.0,51.8
+Referral,2025-12-14,0.0,51.8
+Not Assigned,2025-10-27,0.0,51.7
+Referral,2026-02-27,0.0,51.68
+Not Assigned,2025-12-11,0.0,51.6
+Referral,2026-05-03,0.0,51.43
+Referral,2026-04-15,0.0,51.36
+TikTok Paid,2025-12-31,0.0,51.3
+Meta Paid,2026-04-15,512.42,51.29
+Email,2026-02-09,1.05,51.22
+Meta Paid,2025-11-28,45.62,51.15
+Google Generic Paid Search,2025-11-09,121.01,51.06
+Referral,2026-01-18,0.0,50.9
+Google Branded Paid Search,2026-01-22,328.68,50.89
+Email,2025-10-02,0.63,50.88
+Influencer Brand,2025-11-10,0.0,50.8
+Email,2026-01-02,0.18,50.71
+Meta Paid,2026-04-02,306.62,50.13
+Referral,2026-04-28,0.0,50.05
+Meta Paid,2026-06-03,527.83,49.98
+Influencer Performance,2026-03-08,0.0,49.98
+Not Assigned,2026-04-26,0.0,49.94
+Google Branded Paid Search,2025-12-09,667.51,49.94
+Referral,2025-11-11,0.0,49.9
+Referral,2025-11-07,0.0,49.89
+Influencer Brand,2026-02-16,0.0,49.8
+Meta Paid,2026-05-25,0.0,49.68
+Google Branded Paid Search,2026-01-06,451.02,49.6
+Influencer Brand,2026-02-19,0.0,49.54
+Meta Paid,2026-05-04,275.99,49.38
+Email,2025-10-10,0.46,49.26
+Email,2025-12-09,0.62,49.07
+Email,2025-12-23,0.3,49.06
+Email,2025-11-21,1.09,48.93
+Not Assigned,2026-01-02,0.0,48.93
+Referral,2025-11-17,0.0,48.65
+Influencer Performance,2026-03-23,0.0,48.48
+Referral,2026-04-25,0.0,48.34
+Email,2025-09-15,4.36,48.25
+Not Assigned,2025-12-23,0.0,47.43
+Not Assigned,2026-01-06,0.0,47.25
+Email,2026-05-09,42.27,47.13
+Meta Paid,2026-02-19,115.43,47.12
+Referral,2026-02-04,0.0,47.11
+Referral,2026-05-28,0.0,47.06
+Meta Paid,2025-12-13,145.73,47.02
+Meta Paid,2026-01-25,279.33,47.02
+Google Branded Paid Search,2025-12-05,455.62,46.6
+Email,2026-03-22,0.83,46.53
+Not Assigned,2026-06-04,0.0,46.09
+Google Branded Paid Search,2025-12-16,540.51,46.06
+Referral,2026-05-27,0.0,46.03
+Meta Paid,2026-05-26,174.89,45.85
+Google Branded Paid Search,2025-11-11,304.03,45.81
+Email,2025-11-13,1.4,45.81
+Meta Paid,2026-03-16,482.29,45.8
+Influencer Performance,2026-03-02,0.0,45.7
+Organic Search,2025-12-31,0.0,45.55
+Email,2025-12-16,0.52,45.55
+Referral,2025-10-19,0.0,45.54
+Not Assigned,2025-10-04,0.0,45.44
+Google Branded Paid Search,2026-02-16,474.27,45.44
+Referral,2025-10-07,0.0,45.27
+Not Assigned,2025-12-24,0.0,45.27
+Influencer Brand,2025-12-01,0.0,45.24
+Not Assigned,2025-11-02,0.0,44.6
+Email,2025-11-25,1.26,44.51
+Influencer Performance,2025-12-17,0.0,44.44
+Email,2026-05-13,0.9,44.43
+Google Branded Paid Search,2026-01-04,624.04,44.32
+Meta Paid,2025-10-28,0.0,44.17
+Google Branded Paid Search,2026-04-14,980.36,43.45
+Influencer Brand,2025-11-28,0.0,42.9
+Google Branded Paid Search,2026-01-20,435.63,42.52
+Meta Paid,2026-03-09,555.21,42.44
+Not Assigned,2026-04-04,0.0,41.98
+Not Assigned,2026-01-13,0.0,41.8
+Not Assigned,2026-01-16,0.0,41.71
+Email,2025-10-30,0.89,41.62
+Email,2025-12-07,0.57,41.47
+Email,2025-11-24,1.02,40.22
+Referral,2025-09-14,0.0,39.94
+Email,2026-04-03,39.4,39.72
+Not Assigned,2026-04-12,0.0,39.6
+Meta Paid,2026-03-21,276.84,39.32
+Email,2025-11-14,1.04,39.11
+Influencer Performance,2026-02-23,0.0,38.7
+Google Branded Paid Search,2026-04-25,629.8,38.08
+Google Branded Paid Search,2025-10-30,65.83,38.02
+Email,2026-01-09,0.43,38.02
+Referral,2025-10-02,0.0,36.74
+Email,2025-11-07,1.0,36.7
+Influencer Performance,2026-02-16,0.0,36.7
+Direct,2025-09-07,0.0,36.25
+Meta Paid,2025-12-08,44.76,36.22
+Influencer Performance,2026-02-05,0.0,36.11
+Google Generic Paid Search,2025-10-26,110.28,35.6
+Meta Paid,2025-12-25,162.01,35.35
+Meta Paid,2026-05-05,251.13,34.82
+Referral,2026-03-13,0.0,34.48
+Direct,2025-08-06,0.0,33.8
+Google Branded Paid Search,2026-01-31,327.58,32.8
+Referral,2025-10-06,0.0,32.63
+Referral,2025-09-26,0.0,31.8
+Referral,2025-10-22,0.0,31.8
+Google Generic Paid Search,2025-10-25,167.88,31.8
+Influencer Brand,2025-11-04,0.0,31.8
+Not Assigned,2025-11-08,0.0,31.8
+Meta Paid,2026-01-05,118.94,31.8
+Meta Paid,2026-01-24,334.42,31.8
+Meta Paid,2026-01-29,389.72,31.8
+Meta Paid,2026-01-30,401.71,31.8
+Meta Paid,2026-02-02,325.79,31.8
+Meta Paid,2026-03-05,371.47,31.8
+Meta Paid,2026-03-10,490.45,31.8
+Meta Paid,2025-12-14,235.72,31.72
+Direct,2025-08-28,0.0,30.8
+Referral,2025-09-23,0.0,30.8
+Not Assigned,2025-09-23,0.0,30.8
+Meta Paid,2025-12-11,107.76,30.8
+Organic Search,2026-01-20,0.0,30.8
+Direct,2025-09-01,0.0,30.8
+Influencer Brand,2025-12-10,0.0,30.27
+Referral,2025-11-23,0.0,30.14
+Email,2026-01-11,0.31,29.9
+Organic Search,2025-12-27,0.0,29.82
+Google Branded Paid Search,2025-11-22,356.24,29.8
+Not Assigned,2026-01-17,0.0,29.8
+Referral,2026-06-02,0.0,29.8
+Referral,2025-09-13,0.0,29.78
+Influencer Brand,2025-11-17,0.0,29.11
+Email,2026-02-07,1.37,29.11
+Referral,2025-09-07,0.0,28.99
+Referral,2025-09-15,0.0,28.8
+Google Branded Paid Search,2026-01-09,392.88,28.8
+Referral,2025-10-20,0.0,28.74
+Google Branded Paid Search,2025-10-14,38.69,28.21
+Referral,2025-11-03,0.0,28.08
+Meta Paid,2025-12-16,178.6,28.08
+Referral,2025-12-21,0.0,28.08
+Meta Paid,2026-01-09,109.89,28.08
+Influencer Brand,2026-02-27,0.0,27.82
+Referral,2025-12-06,0.0,27.8
+Google Branded Paid Search,2026-01-18,367.37,27.8
+Meta Paid,2026-04-29,388.27,27.31
+Google Branded Paid Search,2026-01-27,306.66,27.17
+Referral,2026-05-01,0.0,27.09
+Google Branded Paid Search,2025-10-11,0.33,26.8
+Referral,2025-11-01,0.0,26.8
+Google Branded Paid Search,2025-11-06,77.85,26.8
+Not Assigned,2025-12-27,0.0,26.8
+Google Branded Paid Search,2026-02-03,522.39,26.8
+Referral,2026-02-09,0.0,26.64
+Referral,2026-01-23,0.0,26.55
+Meta Paid,2026-03-03,390.73,26.42
+Meta Paid,2026-04-11,531.23,26.42
+Meta Paid,2026-04-16,355.7,26.42
+Meta Paid,2026-04-18,395.92,26.42
+Email,2025-12-13,0.39,26.41
+Direct,2025-07-17,0.0,25.9
+Not Assigned,2025-09-24,0.0,25.8
+Google Branded Paid Search,2025-10-20,21.62,25.8
+Google Branded Paid Search,2025-11-26,485.34,25.8
+Google Branded Paid Search,2026-01-30,372.27,25.8
+Not Assigned,2026-02-22,0.0,25.8
+Email,2025-09-24,21.13,25.51
+Google Branded Paid Search,2026-01-19,326.29,25.51
+Email,2026-04-24,1.09,25.51
+Referral,2026-05-20,0.0,25.45
+Not Assigned,2025-10-05,0.0,25.27
+Not Assigned,2025-09-16,0.0,24.8
+Referral,2025-10-04,0.0,24.8
+Not Assigned,2025-11-14,0.0,24.8
+Referral,2025-11-15,0.0,24.8
+Google Branded Paid Search,2025-11-21,398.68,24.8
+Influencer Brand,2025-11-24,0.0,24.8
+Referral,2025-11-25,0.0,24.8
+Not Assigned,2025-12-25,0.0,24.8
+Google Branded Paid Search,2026-01-14,394.34,24.8
+Google Branded Paid Search,2026-01-15,335.04,24.8
+Referral,2026-02-12,0.0,24.8
+Referral,2026-02-28,0.0,24.8
+Influencer Performance,2026-04-06,3000.0,24.8
+Referral,2026-04-24,0.0,24.8
+Meta Paid,2026-06-02,475.01,24.67
+Email,2025-12-04,0.58,24.61
+Email,2025-12-05,13.76,24.61
+Meta Paid,2026-02-07,249.21,24.45
+Meta Paid,2026-05-22,0.0,24.14
+Not Assigned,2026-02-19,0.0,23.8
+Not Assigned,2026-01-18,0.0,23.71
+Meta Paid,2026-05-13,30.68,23.71
+Influencer Performance,2026-04-07,0.0,23.52
+Meta Paid,2026-05-18,0.0,23.19
+Influencer Performance,2026-02-27,0.0,22.81
+Referral,2026-03-05,0.0,22.81
+Influencer Performance,2026-04-10,0.0,22.81
+Referral,2026-05-10,0.0,22.81
+Not Assigned,2025-09-18,0.0,22.8
+Not Assigned,2025-09-21,0.0,22.8
+Not Assigned,2026-01-03,0.0,22.8
+Referral,2026-01-14,0.0,22.8
+Referral,2026-03-18,0.0,22.8
+Not Assigned,2026-05-18,0.0,21.82
+Not Assigned,2025-12-30,0.0,21.8
+Referral,2026-03-02,0.0,21.29
+Influencer Performance,2026-03-15,3000.0,20.91
+Influencer Brand,2026-04-02,0.0,20.8
+TikTok Paid,2026-01-10,0.0,20.11
+Meta Paid,2026-05-19,0.0,20.04
+Not Assigned,2025-10-11,0.0,19.8
+Not Assigned,2025-11-22,0.0,19.8
+Email,2025-12-25,0.18,19.8
+Email,2026-01-08,0.68,19.8
+Referral,2026-02-02,0.0,19.8
+Referral,2026-03-25,0.0,19.8
+Google Branded Paid Search,2026-05-23,719.95,19.8
+Meta Paid,2026-05-28,82.08,19.8
+Referral,2026-05-07,0.0,18.71
+Email,2025-12-08,0.58,18.65
+Meta Paid,2026-03-08,459.31,18.37
+Email,2026-01-12,0.31,18.31
+Not Assigned,2026-01-12,0.0,17.8
+Influencer Brand,2026-05-17,0.0,17.78
+Email,2025-10-11,0.32,14.8
+Google Generic Paid Search,2021-11-22,11.25,0.0
+Google Generic Paid Search,2021-11-23,9.88,0.0
+Google Generic Paid Search,2021-11-24,4.44,0.0
+Google Generic Paid Search,2021-11-25,8.02,0.0
+Google Generic Paid Search,2021-11-26,16.98,0.0
+Google Generic Paid Search,2021-11-27,10.9,0.0
+Google Generic Paid Search,2021-11-28,8.3,0.0
+Google Generic Paid Search,2021-11-29,12.11,0.0
+Google Generic Paid Search,2021-11-30,6.44,0.0
+Google Generic Paid Search,2021-12-01,9.22,0.0
+Google Generic Paid Search,2021-12-02,12.76,0.0
+Google Generic Paid Search,2021-12-03,7.75,0.0
+Google Generic Paid Search,2021-12-04,9.41,0.0
+Google Generic Paid Search,2021-12-05,9.93,0.0
+Google Generic Paid Search,2021-12-06,13.13,0.0
+Google Generic Paid Search,2021-12-07,12.72,0.0
+Google Generic Paid Search,2021-12-08,12.95,0.0
+Google Generic Paid Search,2021-12-09,12.39,0.0
+Google Generic Paid Search,2021-12-10,11.19,0.0
+Google Generic Paid Search,2021-12-11,10.09,0.0
+Google Generic Paid Search,2021-12-12,8.35,0.0
+Google Generic Paid Search,2021-12-13,10.36,0.0
+Google Generic Paid Search,2021-12-14,8.42,0.0
+Google Generic Paid Search,2021-12-15,10.62,0.0
+Google Generic Paid Search,2021-12-16,7.88,0.0
+Google Generic Paid Search,2021-12-17,10.71,0.0
+Google Generic Paid Search,2021-12-18,8.08,0.0
+Google Generic Paid Search,2021-12-19,9.75,0.0
+Google Generic Paid Search,2021-12-20,10.4,0.0
+Google Generic Paid Search,2021-12-21,11.16,0.0
+Google Generic Paid Search,2021-12-22,9.93,0.0
+Google Generic Paid Search,2021-12-23,7.32,0.0
+Google Generic Paid Search,2021-12-24,7.59,0.0
+Google Generic Paid Search,2021-12-25,10.07,0.0
+Google Generic Paid Search,2021-12-26,10.46,0.0
+Google Generic Paid Search,2021-12-27,8.84,0.0
+Google Generic Paid Search,2021-12-28,8.5,0.0
+Google Generic Paid Search,2021-12-29,7.85,0.0
+Google Generic Paid Search,2021-12-30,7.74,0.0
+Google Generic Paid Search,2021-12-31,5.32,0.0
+Google Generic Paid Search,2022-01-01,11.1,0.0
+Google Generic Paid Search,2022-01-02,11.23,0.0
+Google Generic Paid Search,2022-01-03,9.66,0.0
+Google Generic Paid Search,2022-01-04,11.18,0.0
+Google Generic Paid Search,2022-01-05,8.65,0.0
+Google Generic Paid Search,2022-01-06,9.7,0.0
+Google Generic Paid Search,2022-01-07,11.15,0.0
+Google Generic Paid Search,2022-01-08,9.14,0.0
+Google Generic Paid Search,2022-01-09,10.45,0.0
+Google Generic Paid Search,2022-01-10,8.64,0.0
+Google Generic Paid Search,2022-01-11,11.22,0.0
+Google Generic Paid Search,2022-01-12,8.5,0.0
+Google Generic Paid Search,2022-01-13,9.81,0.0
+Google Generic Paid Search,2022-01-14,8.43,0.0
+Google Generic Paid Search,2022-01-15,10.9,0.0
+Google Generic Paid Search,2022-01-16,9.96,0.0
+Google Generic Paid Search,2022-01-17,9.99,0.0
+Google Generic Paid Search,2022-01-18,9.36,0.0
+Google Generic Paid Search,2022-01-19,8.42,0.0
+Google Generic Paid Search,2022-01-20,9.57,0.0
+Google Generic Paid Search,2022-01-21,11.02,0.0
+Google Generic Paid Search,2022-01-22,9.59,0.0
+Google Generic Paid Search,2022-01-23,8.86,0.0
+Google Generic Paid Search,2022-01-24,11.51,0.0
+Google Generic Paid Search,2022-01-25,11.22,0.0
+Google Generic Paid Search,2022-01-26,9.45,0.0
+Google Generic Paid Search,2022-01-27,8.63,0.0
+Google Generic Paid Search,2022-01-28,8.59,0.0
+Google Generic Paid Search,2022-01-29,8.62,0.0
+Google Generic Paid Search,2022-01-30,10.5,0.0
+Google Generic Paid Search,2022-01-31,8.41,0.0
+Google Generic Paid Search,2022-02-01,9.29,0.0
+Google Generic Paid Search,2022-02-02,7.28,0.0
+Google Generic Paid Search,2022-02-03,16.24,0.0
+Google Generic Paid Search,2022-02-04,13.02,0.0
+Google Generic Paid Search,2022-02-05,12.69,0.0
+Google Generic Paid Search,2022-02-06,12.47,0.0
+Google Generic Paid Search,2022-02-07,12.55,0.0
+Google Generic Paid Search,2022-02-08,12.27,0.0
+Google Generic Paid Search,2022-02-09,8.79,0.0
+Google Generic Paid Search,2022-02-10,7.14,0.0
+Google Generic Paid Search,2022-02-11,8.84,0.0
+Google Generic Paid Search,2022-02-12,9.41,0.0
+Google Generic Paid Search,2022-02-13,10.04,0.0
+Google Generic Paid Search,2022-02-14,11.85,0.0
+Google Generic Paid Search,2022-02-15,13.43,0.0
+Google Generic Paid Search,2022-02-16,13.12,0.0
+Google Generic Paid Search,2022-02-17,12.3,0.0
+Google Generic Paid Search,2022-02-18,11.92,0.0
+Google Generic Paid Search,2022-02-19,9.89,0.0
+Google Generic Paid Search,2022-02-20,10.94,0.0
+Google Generic Paid Search,2022-02-21,11.28,0.0
+Google Generic Paid Search,2022-02-22,10.33,0.0
+Google Generic Paid Search,2022-02-23,10.14,0.0
+Google Generic Paid Search,2022-02-24,4.85,0.0
+Influencer Brand,2025-05-11,1900.0,0.0
+Influencer Brand,2025-05-25,250.0,0.0
+Influencer Brand,2025-05-31,100.0,0.0
+Influencer Brand,2025-06-07,1900.0,0.0
+Email,2025-09-01,0.37,0.0
+Email,2025-09-03,0.37,0.0
+Email,2025-09-06,2.19,0.0
+Email,2025-09-08,1.82,0.0
+Email,2025-09-09,7.68,0.0
+Email,2025-09-10,5.12,0.0
+Email,2025-09-12,13.85,0.0
+Email,2025-09-13,19.32,0.0
+Email,2025-09-14,9.49,0.0
+Email,2025-09-16,16.22,0.0
+Email,2025-09-17,14.47,0.0
+Email,2025-09-18,21.41,0.0
+Email,2025-09-19,18.58,0.0
+Email,2025-09-20,9.84,0.0
+Email,2025-09-21,4.01,0.0
+Email,2025-09-22,6.53,0.0
+Email,2025-09-23,25.71,0.0
+Email,2025-09-26,17.18,0.0
+Email,2025-09-27,15.72,0.0
+Email,2025-09-28,8.04,0.0
+Email,2025-09-29,10.58,0.0
+Email,2025-09-30,15.31,0.0
+Google Branded Paid Search,2025-10-01,54.52,0.0
+Google Branded Paid Search,2025-10-02,57.09,0.0
+Email,2025-10-03,0.63,0.0
+Google Branded Paid Search,2025-10-03,49.26,0.0
+Email,2025-10-04,0.55,0.0
+Google Branded Paid Search,2025-10-04,57.52,0.0
+Google Branded Paid Search,2025-10-05,55.19,0.0
+Email,2025-10-06,0.88,0.0
+Google Branded Paid Search,2025-10-07,50.54,0.0
+Google Branded Paid Search,2025-10-08,49.79,0.0
+Google Branded Paid Search,2025-10-09,14.53,0.0
+Google Branded Paid Search,2025-10-10,100.09,0.0
+Google Generic Paid Search,2025-10-12,32.25,0.0
+Email,2025-10-13,0.43,0.0
+Google Generic Paid Search,2025-10-13,64.81,0.0
+Google Generic Paid Search,2025-10-15,32.17,0.0
+Google Generic Paid Search,2025-10-16,86.87,0.0
+Google Generic Paid Search,2025-10-17,20.62,0.0
+Google Generic Paid Search,2025-10-18,58.69,0.0
+Email,2025-10-18,0.44,0.0
+Google Generic Paid Search,2025-10-19,58.42,0.0
+Google Generic Paid Search,2025-10-20,41.76,0.0
+Google Branded Paid Search,2025-10-21,15.15,0.0
+Email,2025-10-22,0.44,0.0
+Email,2025-10-23,0.49,0.0
+Email,2025-10-24,0.41,0.0
+Email,2025-10-26,0.35,0.0
+Google Branded Paid Search,2025-10-26,42.39,0.0
+Google Branded Paid Search,2025-10-27,81.2,0.0
+Google Branded Paid Search,2025-10-28,85.97,0.0
+Google Branded Paid Search,2025-10-29,52.92,0.0
+Google Generic Paid Search,2025-10-29,151.83,0.0
+Google Branded Paid Search,2025-10-31,229.79,0.0
+Google Branded Paid Search,2025-11-02,104.57,0.0
+Email,2025-11-02,0.72,0.0
+Google Branded Paid Search,2025-11-04,94.06,0.0
+Email,2025-11-04,0.95,0.0
+Google Branded Paid Search,2025-11-05,100.78,0.0
+Google Branded Paid Search,2025-11-07,82.03,0.0
+Google Branded Paid Search,2025-11-08,108.67,0.0
+Google Branded Paid Search,2025-11-14,239.97,0.0
+Google Branded Paid Search,2025-11-15,289.33,0.0
+Email,2025-11-17,1.05,0.0
+Email,2025-11-19,17.02,0.0
+Email,2025-11-22,1.12,0.0
+Meta Paid,2025-11-29,42.85,0.0
+Meta Paid,2025-11-30,43.13,0.0
+Meta Paid,2025-12-01,45.38,0.0
+Google Branded Paid Search,2025-12-02,482.05,0.0
+Google Branded Paid Search,2025-12-08,684.29,0.0
+Meta Paid,2025-12-09,138.86,0.0
+Meta Paid,2025-12-10,84.83,0.0
+Email,2025-12-11,0.54,0.0
+Google Branded Paid Search,2025-12-11,440.96,0.0
+Meta Paid,2025-12-12,185.62,0.0
+Meta Paid,2025-12-19,132.07,0.0
+Meta Paid,2025-12-20,146.61,0.0
+Meta Paid,2025-12-22,149.48,0.0
+Meta Paid,2025-12-23,152.22,0.0
+Meta Paid,2025-12-24,145.1,0.0
+Google Branded Paid Search,2025-12-24,378.59,0.0
+Email,2025-12-24,16.72,0.0
+Google Branded Paid Search,2025-12-25,459.91,0.0
+Meta Paid,2025-12-26,123.8,0.0
+Email,2025-12-26,0.26,0.0
+Meta Paid,2025-12-27,109.32,0.0
+Google Branded Paid Search,2025-12-29,553.63,0.0
+Meta Paid,2025-12-29,118.35,0.0
+Email,2025-12-30,0.28,0.0
+Meta Paid,2025-12-30,120.47,0.0
+Meta Paid,2025-12-31,103.47,0.0
+Meta Paid,2026-01-01,125.19,0.0
+Google Branded Paid Search,2026-01-03,467.76,0.0
+Email,2026-01-03,0.26,0.0
+Meta Paid,2026-01-03,113.42,0.0
+Meta Paid,2026-01-04,137.34,0.0
+Email,2026-01-05,0.19,0.0
+Meta Paid,2026-01-06,123.17,0.0
+Google Branded Paid Search,2026-01-07,405.13,0.0
+Meta Paid,2026-01-07,124.79,0.0
+Meta Paid,2026-01-08,113.1,0.0
+Meta Paid,2026-01-10,110.22,0.0
+Meta Paid,2026-01-11,144.45,0.0
+Google Branded Paid Search,2026-01-12,495.75,0.0
+Meta Paid,2026-01-12,143.8,0.0
+Email,2026-01-14,30.34,0.0
+Meta Paid,2026-01-14,219.04,0.0
+Meta Paid,2026-01-15,243.73,0.0
+Meta Paid,2026-01-16,236.54,0.0
+Email,2026-01-16,0.45,0.0
+Email,2026-01-17,0.36,0.0
+Meta Paid,2026-01-17,222.58,0.0
+Meta Paid,2026-01-18,232.18,0.0
+Meta Paid,2026-01-19,161.85,0.0
+Meta Paid,2026-01-20,158.15,0.0
+Meta Paid,2026-01-21,56.2,0.0
+Meta Paid,2026-01-22,57.79,0.0
+Meta Paid,2026-01-23,331.43,0.0
+Email,2026-01-25,0.42,0.0
+Meta Paid,2026-01-26,271.48,0.0
+Meta Paid,2026-01-28,409.93,0.0
+Google Branded Paid Search,2026-01-28,444.42,0.0
+Email,2026-02-03,0.9,0.0
+Meta Paid,2026-02-05,355.69,0.0
+Google Branded Paid Search,2026-02-05,514.81,0.0
+Google Branded Paid Search,2026-02-06,469.53,0.0
+Meta Paid,2026-02-06,311.89,0.0
+Meta Paid,2026-02-09,271.87,0.0
+Meta Paid,2026-02-11,175.41,0.0
+Meta Paid,2026-02-12,171.05,0.0
+Meta Paid,2026-02-18,326.37,0.0
+Meta Paid,2026-02-20,216.99,0.0
+Meta Paid,2026-02-21,330.2,0.0
+Meta Paid,2026-02-24,250.49,0.0
+Meta Paid,2026-02-27,398.86,0.0
+Meta Paid,2026-03-06,340.77,0.0
+Google Branded Paid Search,2026-03-09,853.79,0.0
+Meta Paid,2026-03-11,399.3,0.0
+Meta Paid,2026-03-12,378.68,0.0
+Meta Paid,2026-03-14,494.66,0.0
+Influencer Brand,2026-03-19,2000.0,0.0
+Google Branded Paid Search,2026-03-19,600.56,0.0
+Meta Paid,2026-03-19,412.51,0.0
+Meta Paid,2026-03-20,243.36,0.0
+Meta Paid,2026-03-22,322.88,0.0
+Meta Paid,2026-03-23,270.0,0.0
+Meta Paid,2026-03-25,141.65,0.0
+Meta Paid,2026-03-27,238.16,0.0
+Meta Paid,2026-03-28,378.74,0.0
+Meta Paid,2026-03-30,287.77,0.0
+Meta Paid,2026-04-03,321.52,0.0
+Google Branded Paid Search,2026-04-05,487.22,0.0
+Meta Paid,2026-04-05,354.99,0.0
+Meta Paid,2026-04-07,302.22,0.0
+Influencer Performance,2026-04-08,6000.0,0.0
+Meta Paid,2026-04-10,440.18,0.0
+Influencer Brand,2026-04-12,1900.0,0.0
+Influencer Performance,2026-04-12,1900.0,0.0
+Influencer Performance,2026-04-15,200.0,0.0
+Meta Paid,2026-04-17,331.56,0.0
+Influencer Performance,2026-04-19,4400.0,0.0
+Meta Paid,2026-04-20,469.06,0.0
+Influencer Brand,2026-04-20,900.0,0.0
+Influencer Performance,2026-04-21,1560.0,0.0
+Meta Paid,2026-04-22,248.01,0.0
+Influencer Brand,2026-04-22,400.0,0.0
+Influencer Brand,2026-04-23,1000.0,0.0
+Influencer Brand,2026-04-24,9200.0,0.0
+Meta Paid,2026-04-25,247.12,0.0
+Influencer Brand,2026-04-25,2760.0,0.0
+Influencer Performance,2026-04-25,2700.0,0.0
+Influencer Performance,2026-04-27,1500.0,0.0
+Influencer Brand,2026-04-27,2000.0,0.0
+Influencer Performance,2026-04-28,600.0,0.0
+Influencer Brand,2026-04-28,600.0,0.0
+Influencer Brand,2026-04-29,2400.0,0.0
+Meta Paid,2026-04-30,401.67,0.0
+Influencer Brand,2026-04-30,575.0,0.0
+Meta Paid,2026-05-01,404.2,0.0
+Meta Paid,2026-05-03,357.52,0.0
+Influencer Performance,2026-05-03,1500.0,0.0
+Influencer Brand,2026-05-04,3000.0,0.0
+Influencer Brand,2026-05-05,6000.0,0.0
+Meta Paid,2026-05-06,290.28,0.0
+Influencer Brand,2026-05-07,3500.0,0.0
+Influencer Performance,2026-05-08,1600.0,0.0
+Meta Paid,2026-05-09,133.9,0.0
+Meta Paid,2026-05-10,214.14,0.0
+Influencer Performance,2026-05-10,2200.0,0.0
+Meta Paid,2026-05-12,80.46,0.0
+Email,2026-05-12,42.73,0.0
+Influencer Performance,2026-05-13,1560.0,0.0
+Influencer Brand,2026-05-13,1560.0,0.0
+Meta Paid,2026-05-14,8.89,0.0
+Influencer Brand,2026-05-16,1600.0,0.0
+Influencer Performance,2026-05-17,250.0,0.0
+Influencer Performance,2026-05-19,1465.0,0.0
+Influencer Brand,2026-05-21,2000.0,0.0
+Influencer Performance,2026-05-21,1500.0,0.0
+Email,2026-05-24,0.7,0.0
+Influencer Brand,2026-05-24,1000.0,0.0
+Email,2026-05-25,0.71,0.0
+Influencer Performance,2026-05-25,1465.0,0.0
+Influencer Brand,2026-05-26,4000.0,0.0
+Meta Paid,2026-05-27,91.59,0.0
+Meta Paid,2026-05-30,52.54,0.0
+Influencer Brand,2026-05-30,250.0,0.0
+Meta Paid,2026-05-31,37.63,0.0
+Email,2026-05-31,0.69,0.0
+Meta Paid,2026-06-01,9.4,0.0
+Google Branded Paid Search,2026-06-04,222.77,0.0
+Meta Paid,2026-06-04,162.79,0.0
+Influencer Brand,2026-06-04,4000.0,0.0

@@ -112,11 +112,11 @@ def flatten_orders(orders: list[dict], tz: str = "Europe/Berlin") -> pd.DataFram
 # 2. Apply the cost model to compute per-line CM1 / CM2 / CM3
 # ---------------------------------------------------------------------------
 
-def compute_costs(df: pd.DataFrame, cfg: dict, monthly_mkt: pd.DataFrame | None = None) -> pd.DataFrame:
+def compute_costs(df: pd.DataFrame, cfg: dict, spend: pd.DataFrame | None = None) -> pd.DataFrame:
     """Add cost and CM columns to the flattened line-item frame.
 
-    ``monthly_mkt`` is the output of marketing.monthly_marketing(): columns
-    month / cost / net_revenue. Optional — when absent CM3 marketing is 0.
+    ``spend`` is marketing.spend_table() output: columns key / cost / net_revenue,
+    keyed by day (Timestamp) or month (Period[M]) per cfg['marketing']['grain'].
     """
     if df.empty:
         return df
@@ -212,31 +212,32 @@ def compute_costs(df: pd.DataFrame, cfg: dict, monthly_mkt: pd.DataFrame | None 
         source = mk.get("source", "file")
         if source == "pct_revenue":
             d["marketing"] = mk.get("pct_revenue", 0.0) * d["net_revenue"]
-        elif monthly_mkt is not None and not monthly_mkt.empty:
-            mkt = monthly_mkt.set_index("month")
+        elif spend is not None and not spend.empty:
+            grain = mk.get("grain", "day")
             alloc = mk.get("allocation", "revenue")
-            # denominator: full-month store net revenue from Klar (fallback to
-            # the window's own revenue if Klar didn't report it).
-            window_rev = d.groupby("month")["net_revenue"].sum()
-            window_units = d.groupby("month")["net_qty"].sum()
+            d["_key"] = d["order_date"].dt.normalize() if grain == "day" else d["order_date"].dt.to_period("M")
+            sp = spend.set_index("key")
+            # denominator: Klar's store-wide net revenue for the period (fallback
+            # to this window's own revenue if Klar didn't report it).
+            window_rev = d.groupby("_key")["net_revenue"].sum()
+            window_units = d.groupby("_key")["net_qty"].sum()
             def _line_mkt(row):
-                m = row["month"]
-                if m not in mkt.index:
+                kk = row["_key"]
+                if kk not in sp.index:
                     return 0.0
-                cost = mkt.loc[m, "cost"]
+                cost = sp.loc[kk, "cost"]
+                # Denominator = the export's own period revenue/units, so each
+                # period's spend sums exactly to that period's cost (self-
+                # consistent; avoids basis mismatch with Klar's net-revenue).
                 if alloc == "units":
-                    denom = window_units.get(m, 0.0)
+                    denom = window_units.get(kk, 0.0)
                     num = row["net_qty"]
                 else:
-                    denom = mkt.loc[m, "net_revenue"]
-                    if not denom or pd.isna(denom) or denom <= 0:
-                        denom = window_rev.get(m, 0.0)
+                    denom = window_rev.get(kk, 0.0)
                     num = row["net_revenue"]
                 return float(cost) * (num / denom) if denom and denom > 0 else 0.0
             d["marketing"] = d.apply(_line_mkt, axis=1)
-            # flag months with revenue but no marketing data
-            missing_months = set(d["month"].unique()) - set(mkt.index)
-            d["cm3_pending"] = d["month"].isin(missing_months)
+            d = d.drop(columns=["_key"])
         else:
             d["cm3_pending"] = True  # no marketing source available
 

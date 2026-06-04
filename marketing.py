@@ -1,15 +1,16 @@
 """Marketing spend ingestion for CM3.
 
-Reads a Klar "Marketing Overview" export and reduces it to what the margin
-engine needs:
+Reads a Klar "Marketing Overview" export (monthly ``Calendar Month`` or daily
+``Date``; CSV or XLSX) and exposes it at the grain the engine needs:
 
-    month (Period 'M') -> {cost, net_revenue}
+    spend_table(df, grain) -> key | cost | net_revenue
+        grain="day"   -> key = daily Timestamp
+        grain="month" -> key = Period[M]
 
-The export comes in two shapes — monthly (``Calendar Month`` column) or daily
-(``Date`` column). Both are handled: dates are bucketed to month and summed.
-CM3 allocation (margin.py) then spreads each month's total marketing cost
-across products in proportion to net revenue, using the FULL month's net
-revenue (from Klar) as the denominator.
+CM3 allocation (margin.py) spreads each period's marketing cost across that
+period's products in proportion to net revenue, using Klar's store-wide net
+revenue for the period as the denominator. Daily grain avoids over-allocating a
+full month's spend onto a partial end-month.
 """
 from __future__ import annotations
 
@@ -33,18 +34,17 @@ def _find(df: pd.DataFrame, *candidates: str) -> str | None:
 
 
 def load_marketing(path: Path | str) -> pd.DataFrame:
-    """Load a Klar marketing export (CSV or XLSX), monthly or daily.
-
-    Returns long-form columns: channel, month (Period[M]), cost, channel_net_revenue.
-    """
+    """Load a Klar marketing export. Returns: channel, date (datetime64), cost,
+    channel_net_revenue. ``date`` keeps day precision (month exports land on the
+    first of the month)."""
     p = Path(path)
-    cols = ["channel", "month", "cost", "channel_net_revenue"]
+    cols = ["channel", "date", "cost", "channel_net_revenue"]
     if not p.exists():
         return pd.DataFrame(columns=cols)
     raw = pd.read_excel(p) if p.suffix.lower() in (".xlsx", ".xls") else pd.read_csv(p)
 
     c_chan = _find(raw, "channel", "Channel Name", "Channel")
-    c_when = _find(raw, "month", "Calendar Month", "Date")
+    c_when = _find(raw, "date", "Date", "month", "Calendar Month")
     c_cost = _find(raw, "cost", "Cost")
     c_net = _find(raw, "channel_net_revenue", "Revenue KPIs Net Revenue", "Net Revenue")
     if not c_when:
@@ -52,32 +52,28 @@ def load_marketing(path: Path | str) -> pd.DataFrame:
 
     df = pd.DataFrame({
         "channel": raw[c_chan].astype(str) if c_chan else "All",
-        "month": pd.to_datetime(raw[c_when], errors="coerce").dt.to_period("M"),
+        "date": pd.to_datetime(raw[c_when], errors="coerce"),
         "cost": pd.to_numeric(raw[c_cost], errors="coerce") if c_cost else 0.0,
         "channel_net_revenue": pd.to_numeric(raw[c_net], errors="coerce") if c_net else pd.NA,
     })
-    # drop Klar's "Totals" rows (would double-count) and undated rows
     df = df[df["channel"].str.strip().str.lower() != "totals"]
-    df = df.dropna(subset=["month"])
-    return df
+    return df.dropna(subset=["date"])
 
 
-def monthly_marketing(df: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate to one row per month: cost, net_revenue (store-wide, the
-    allocation denominator). Works for both daily and monthly inputs."""
+def spend_table(df: pd.DataFrame, grain: str = "day") -> pd.DataFrame:
+    """Aggregate to one row per period: key, cost, net_revenue."""
     if df.empty:
-        return pd.DataFrame(columns=["month", "cost", "net_revenue"])
-    return df.groupby("month", as_index=False).agg(
-        cost=("cost", "sum"),
-        net_revenue=("channel_net_revenue", "sum"),
-    )
+        return pd.DataFrame(columns=["key", "cost", "net_revenue"])
+    key = df["date"].dt.normalize() if grain == "day" else df["date"].dt.to_period("M")
+    out = (df.assign(key=key).groupby("key", as_index=False)
+           .agg(cost=("cost", "sum"), net_revenue=("channel_net_revenue", "sum")))
+    return out
 
 
 def channel_breakdown(df: pd.DataFrame) -> pd.DataFrame:
-    """Per-channel spend (summed across the file's dates) for display."""
+    """Per-channel spend (summed across dates) for display."""
     if df.empty:
         return df
     out = df.groupby("channel", as_index=False).agg(
         cost=("cost", "sum"), net_revenue=("channel_net_revenue", "sum"))
-    out = out[out["cost"].fillna(0) > 0]
-    return out.sort_values("cost", ascending=False)
+    return out[out["cost"].fillna(0) > 0].sort_values("cost", ascending=False)

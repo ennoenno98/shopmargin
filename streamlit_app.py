@@ -22,7 +22,7 @@ import streamlit as st
 import data_source
 import margin
 from config import deep_merge, load_config
-from marketing import channel_breakdown, load_marketing, monthly_marketing
+from marketing import channel_breakdown, load_marketing, spend_table
 
 st.set_page_config(page_title="Shopify Margin Analytics", page_icon="📈", layout="wide")
 BASE_CFG = load_config()
@@ -53,8 +53,7 @@ def _file_sig(cfg: dict) -> str:
 def load_all(orders_file: str, products_file: str, tz: str, spend_file: str, sig: str):
     cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
     df, mode = data_source.load_lineitems(cfg)
-    mkt_raw = load_marketing(spend_file)
-    return df, mode, monthly_marketing(mkt_raw), mkt_raw
+    return df, mode, load_marketing(spend_file)
 
 
 # --------------------------------------------------------------------------- #
@@ -209,9 +208,10 @@ def render_table(view: pd.DataFrame, cfg: dict, key: str = "tbl"):
 def main():
     cfg = sidebar_controls()
     src = cfg["source"]
-    df_all, mode, monthly_mkt, mkt_raw = load_all(
+    df_all, mode, mkt_raw = load_all(
         src["orders_file"], src["products_file"], cfg.get("timezone", "Europe/Berlin"),
         cfg["marketing"]["spend_file"], _file_sig(cfg))
+    spend = spend_table(mkt_raw, cfg["marketing"].get("grain", "day"))
 
     # ---- Header + source line ----
     st.markdown("## 📈 Shopify Margin Analytics")
@@ -256,12 +256,12 @@ def main():
         st.warning("No orders match the current filters.")
         return
 
-    computed = margin.compute_costs(d, cfg, monthly_mkt)
+    computed = margin.compute_costs(d, cfg, spend)
     agg = margin.aggregate(computed, cfg)
     agg = add_clusters(agg)
 
     # Δ CM3 vs the equivalent prior set of buckets (same count, immediately before)
-    agg = _add_delta_cm3(agg, df_b, sel_periods, cfg, monthly_mkt)
+    agg = _add_delta_cm3(agg, df_b, sel_periods, cfg, spend)
 
     # row-level filters
     if search.strip():
@@ -325,7 +325,7 @@ def main():
         render_table(view, cfg, key="overview")
 
     with tab_tr:
-        render_trend(df_b, country, cfg, monthly_mkt, tgt3)
+        render_trend(df_b, country, cfg, spend, tgt3)
 
     with tab_sm:
         st.markdown("**Slow movers** — lowest-selling SKUs in the current selection.")
@@ -342,7 +342,7 @@ def main():
                          use_container_width=True, hide_index=True)
 
 
-def _add_delta_cm3(agg, df_b, sel_periods, cfg, monthly_mkt):
+def _add_delta_cm3(agg, df_b, sel_periods, cfg, spend):
     """Δ CM3 pp vs the equivalent prior set of buckets (same count, immediately before)."""
     agg = agg.copy()
     agg["delta_cm3"] = np.nan
@@ -359,18 +359,18 @@ def _add_delta_cm3(agg, df_b, sel_periods, cfg, monthly_mkt):
     pd_ = df_b[df_b["bucket"].isin(prior)]
     if pd_.empty:
         return agg
-    pcomp = margin.compute_costs(pd_, cfg, monthly_mkt)
+    pcomp = margin.compute_costs(pd_, cfg, spend)
     pagg = margin.aggregate(pcomp, cfg).set_index("sku")["cm3_pct"]
     agg["delta_cm3"] = agg["cm3_pct"] - agg["sku"].map(pagg)
     return agg
 
 
-def render_trend(df_b, country, cfg, monthly_mkt, tgt3):
+def render_trend(df_b, country, cfg, spend, tgt3):
     d = df_b if country == "All countries" else df_b[df_b["country"] == country]
     if d.empty:
         st.info("No data.")
         return
-    comp = margin.compute_costs(d, cfg, monthly_mkt)
+    comp = margin.compute_costs(d, cfg, spend)
     ts = (comp.groupby(["bucket", "bucket_start"], as_index=False)
           .agg(cm3=("cm3", "sum"), sales=("net_revenue", "sum")))
     ts["CM3 %"] = ts["cm3"] / ts["sales"].where(ts["sales"] > 0) * 100
