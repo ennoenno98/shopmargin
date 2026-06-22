@@ -99,7 +99,15 @@ def load_inventory(path: Path | str) -> pd.DataFrame:
     product_status (Active/Draft/Archived/...), title, price, unit_cost,
     handle, url, product_id. Consumed by ``inventory.build_oos_view``.
     """
-    df = _read(path)
+    return inventory_from_frame(_read(path))
+
+
+def inventory_from_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """The body of :func:`load_inventory`, but on an already-read frame.
+
+    Split out so the stock-history backfill can reuse it on a Products CSV
+    pulled straight from a past git revision (``git show <rev>:<file>``).
+    """
     sku = _col(df, "Variant SKU", "SKU")
     if not sku:
         raise ValueError("Products export has no 'Variant SKU' column.")

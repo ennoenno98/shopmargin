@@ -25,8 +25,11 @@ import data_source
 import inventory
 import margin
 import matrixify_client
+import stock_history
 from config import deep_merge, load_config
 from marketing import channel_breakdown, load_marketing, spend_table
+
+STOCK_HISTORY_FILE = "data/stock_history.csv"
 
 st.set_page_config(page_title="Shopify Margin Analytics", page_icon="📈", layout="wide")
 BASE_CFG = load_config()
@@ -48,8 +51,8 @@ def _file_sig(cfg: dict) -> str:
     for k in ("orders_file", "products_file"):
         p = (cfg.get("source") or {}).get(k, "")
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
-    mp = cfg["marketing"]["spend_file"]
-    parts.append(f"{mp}:{os.path.getmtime(mp)}" if os.path.exists(mp) else f"{mp}:0")
+    for extra in (cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE):
+        parts.append(f"{extra}:{os.path.getmtime(extra)}" if os.path.exists(extra) else f"{extra}:0")
     return "|".join(parts)
 
 
@@ -63,7 +66,8 @@ def load_all(orders_file: str, products_file: str, tz: str, spend_file: str, sig
             inv = matrixify_client.load_inventory(products_file)
         except Exception:
             inv = pd.DataFrame()
-    return df, mode, load_marketing(spend_file), inv
+    hist = stock_history.load_stock_history(STOCK_HISTORY_FILE)
+    return df, mode, load_marketing(spend_file), inv, hist
 
 
 # --------------------------------------------------------------------------- #
@@ -218,7 +222,7 @@ def render_table(view: pd.DataFrame, cfg: dict, key: str = "tbl"):
 def main():
     cfg = sidebar_controls()
     src = cfg["source"]
-    df_all, mode, mkt_raw, inv = load_all(
+    df_all, mode, mkt_raw, inv, hist = load_all(
         src["orders_file"], src["products_file"], cfg.get("timezone", "Europe/Berlin"),
         cfg["marketing"]["spend_file"], _file_sig(cfg))
     spend = spend_table(mkt_raw, cfg["marketing"].get("grain", "day"))
@@ -345,7 +349,7 @@ def main():
         render_table(slow, cfg, key="slow")
 
     with tab_oos:
-        render_oos(df_all, inv, agg, cfg)
+        render_oos(df_all, inv, agg, cfg, hist)
 
     with st.expander("📣 Marketing spend (Klar)"):
         if mkt_raw.empty:
@@ -427,7 +431,8 @@ def render_trend(df_b, country, cfg, spend, tgt3):
 OOS_BG = {inventory.OOS: BAD, inventory.LOW: MIDC, inventory.OOS_BACKORDER: "#FCE4D6"}
 
 
-def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: dict):
+def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: dict,
+               hist: pd.DataFrame | None = None):
     st.markdown(
         "**Out of stock & low stock** — products that have run out or will run "
         "out soon, ranked by lost-sales risk. On-hand is the current Matrixify "
@@ -478,6 +483,15 @@ def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: 
     if agg is not None and not agg.empty and "sku" in agg.columns:
         view = view.assign(cm3_pct=view["sku"].map(agg.set_index("sku")["cm3_pct"]))
 
+    # Enrich with "Days OOS" from the committed stock history (how long the SKU
+    # has been at ≤ 0). Missing SKUs / no history → NaN (shown as —).
+    has_hist = hist is not None and not hist.empty
+    if has_hist:
+        dos_hist = stock_history.days_out_of_stock(hist)
+        view = view.assign(
+            days_oos=view["sku"].map(dos_hist["days_oos"]),
+            oos_since=view["sku"].map(dos_hist["oos_since"]))
+
     ref_date = pd.to_datetime(df_all["order_date"], errors="coerce").max()
     n_oos = int((view["status"] == inventory.OOS).sum())
     n_low = int((view["status"] == inventory.LOW).sum())
@@ -502,7 +516,8 @@ def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: 
 
     cols = {
         "sku": "SKU", "title": "Product", "status": "Status", "on_hand": "On hand",
-        "inv_policy": "Policy", "velocity": "Velocity/d", "days_of_supply": "Days of Supply",
+        "days_oos": "Days OOS", "inv_policy": "Policy", "velocity": "Velocity/d",
+        "days_of_supply": "Days of Supply",
         "win_units": f"Units ({int(window)}d)", "win_revenue": f"Sales {int(window)}d (€)",
         "unit_price": "Avg price (€)", "revenue_at_risk": "Rev. at risk (€)",
         "cm3_pct": "CM3 %", "product_status": "Product status",
@@ -511,7 +526,8 @@ def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: 
     disp = view[present].rename(columns=cols)
 
     fmt = {
-        "On hand": "{:,.0f}", "Velocity/d": "{:.2f}", "Days of Supply": "{:.0f}",
+        "On hand": "{:,.0f}", "Days OOS": "{:.0f}", "Velocity/d": "{:.2f}",
+        "Days of Supply": "{:.0f}",
         f"Units ({int(window)}d)": "{:,.0f}", f"Sales {int(window)}d (€)": "€{:,.0f}",
         "Avg price (€)": "€{:,.2f}", "Rev. at risk (€)": "€{:,.0f}", "CM3 %": "{:.1f}%",
     }
@@ -532,11 +548,73 @@ def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: 
         "**Status** — 🔴 *Out of stock* (tracked, on-hand ≤ 0, policy *deny*: sales blocked) · "
         "🟠 *Low stock* (Days of Supply below your threshold) · *OOS · backorder* "
         "(on-hand ≤ 0 but policy *continue*, still sellable) · *Not tracked* "
-        "(Shopify isn't tracking the variant). **Days of Supply** = on-hand ÷ velocity; "
-        "blank when there were no sales in the window. **Rev. at risk** = velocity × avg "
-        "price × restock lead — sales missed before stock returns. CM3 % is from the "
-        "current selection above, where the SKU sold."
+        "(Shopify isn't tracking the variant). **Days of Supply** = on-hand ÷ velocity "
+        "(forward-looking); **Days OOS** = how long it's *already* been at ≤ 0 (from stock "
+        "history). **Rev. at risk** = velocity × avg price × restock lead. CM3 % is from "
+        "the current selection above, where the SKU sold."
     )
+
+    render_stock_history(hist, view, cfg)
+
+
+# --------------------------------------------------------------------------- #
+# Stock-history deep dive (depletion chart + out-of-stock events)
+# --------------------------------------------------------------------------- #
+def render_stock_history(hist: pd.DataFrame, view: pd.DataFrame, cfg: dict):
+    with st.expander("📉 Stock history — depletion trend & out-of-stock events", expanded=False):
+        if hist is None or hist.empty:
+            st.info(
+                "No stock history yet. Build it with `python build_stock_history.py "
+                "--backfill` (reconstructs ~3 weeks from the committed daily products "
+                "snapshots) — it then extends one day per refresh. For deeper history, "
+                "export Shopify Analytics' `inventory` dataset "
+                "(`FROM inventory SHOW ending_inventory_units GROUP BY product_variant_sku "
+                "TIMESERIES day`) to `data/stock_overview_seed.csv` and re-run with "
+                "`--backfill`."
+            )
+            return
+
+        span = f"{hist['date'].min():%Y-%m-%d} → {hist['date'].max():%Y-%m-%d}"
+        srcs = ", ".join(sorted(hist["source"].dropna().unique()))
+        st.caption(f"History: {hist['sku'].nunique():,} SKUs · {hist['date'].nunique()} daily "
+                   f"snapshots ({span}) · source: {srcs}.")
+
+        # Per-SKU depletion chart — default to the most urgent flagged SKU.
+        flagged = view[view["status"].isin([inventory.OOS, inventory.LOW,
+                                            inventory.OOS_BACKORDER])]
+        options = (flagged if not flagged.empty else view)["sku"].tolist()
+        options = [s for s in options if s in set(hist["sku"])]
+        if options:
+            labels = view.set_index("sku")["title"].astype(str).to_dict()
+            sku = st.selectbox("SKU", options,
+                               format_func=lambda s: f"{s} — {labels.get(s, '')[:40]}")
+            s = stock_history.series_for(hist, sku)
+            if not s.empty:
+                fig = px.area(s, x="date", y="on_hand", markers=True,
+                              title=f"On-hand units — {sku}")
+                fig.add_hline(y=0, line_dash="dot", line_color="#d32f2f")
+                fig.update_layout(height=300, xaxis_title="", yaxis_title="On hand",
+                                  margin=dict(t=40, b=0, l=0, r=0))
+                st.plotly_chart(fig, use_container_width=True)
+
+        # Recent out-of-stock events across the SKUs currently in view.
+        ev = stock_history.oos_events(hist)
+        if not ev.empty:
+            ev = ev[ev["sku"].isin(set(view["sku"]))]
+        if ev.empty:
+            st.caption("No stock-out transitions recorded in the available history window.")
+        else:
+            ev = ev.merge(view[["sku", "title"]].drop_duplicates("sku"), on="sku", how="left")
+            show = ev[["sku", "title", "went_oos_on", "last_in_stock_on",
+                       "qty_before", "depletion_per_day"]].rename(columns={
+                "sku": "SKU", "title": "Product", "went_oos_on": "Went OOS",
+                "last_in_stock_on": "Last in stock", "qty_before": "Qty before",
+                "depletion_per_day": "Depletion/day"})
+            st.markdown(f"**{len(show):,} stock-out events** (newest first)")
+            st.dataframe(
+                show.style.format({"Went OOS": "{:%Y-%m-%d}", "Last in stock": "{:%Y-%m-%d}",
+                                   "Qty before": "{:,.0f}", "Depletion/day": "{:.1f}"}, na_rep="—"),
+                use_container_width=True, hide_index=True, height=240)
 
 
 main()

@@ -37,11 +37,15 @@ jobs:
           MATRIXIFY_MCP_TOKEN: ${{ secrets.MATRIXIFY_MCP_TOKEN }}
           ORDERS_SINCE: ${{ vars.ORDERS_SINCE }}
         run: python refresh_matrixify_mcp.py
+      - name: Append stock-history snapshot
+        # Appends today's on-hand from the refreshed products export to
+        # data/stock_history.csv (no git walk → fine on a shallow clone).
+        run: python build_stock_history.py
       - name: Commit if changed
         run: |
           git config user.name  "matrixify-export-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/matrixify_orders.csv.gz data/matrixify_products.csv
+          git add data/matrixify_orders.csv.gz data/matrixify_products.csv data/stock_history.csv
           if git diff --cached --quiet; then
             echo "No changes."
           else

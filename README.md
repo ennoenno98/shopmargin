@@ -102,19 +102,48 @@ Window, low-stock threshold and restock lead default from the `inventory:`
 section of `config.yaml` and are overridable from the tab's controls. The engine
 is pure/testable in **`inventory.py`** (`python inventory.py` runs a self-test).
 
+### Stock history (Days OOS · depletion trend · stock-out events)
+
+The Products export is overwritten daily, so it only carries the *current*
+on-hand. **`build_stock_history.py`** assembles a real per-SKU daily series into
+`data/stock_history.csv` (long format: `date, sku, on_hand, source`), which powers
+the tab's **Days OOS** column (how long a SKU has already been at ≤ 0) and the
+**📉 Stock history** deep-dive (per-SKU depletion chart + detected stock-out
+events with depletion/day). Sources, merged newest-wins per `(date, sku)`:
+
+1. **git** — every committed daily products snapshot is a dated reading.
+   `python build_stock_history.py --backfill` reconstructs the series from git
+   history (all SKUs, ~3 weeks deep today); the daily Action then **appends** one
+   reading/SKU per refresh (`python build_stock_history.py`), so it deepens for
+   free over time. No credentials.
+2. **Shopify (deep backfill, optional)** — Shopify Analytics keeps ~10 months of
+   per-SKU daily stock. Export the `inventory` dataset to `data/stock_overview_seed.csv`
+   and re-run `--backfill` to ingest it (column names matched tolerantly):
+
+   ```sql
+   FROM inventory SHOW ending_inventory_units
+   GROUP BY product_variant_sku TIMESERIES day SINCE -300d UNTIL today
+   ```
+
+   This lifts the `Days OOS` window cap for SKUs that have been out longer than
+   the git history reaches. The pure analytics live in **`stock_history.py`**
+   (`python stock_history.py` runs a self-test).
+
 ## Layout
 
 ```
 streamlit_app.py         # UI (presentation only)
 margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
 inventory.py             # pure out-of-stock / Days-of-Supply engine (run it for a self-test)
+stock_history.py         # pure stock-history engine: Days OOS, sparkline, stock-out events
+build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
 data_source.py           # picks Matrixify files, else the JSON sample
 marketing.py             # Klar marketing ingestion & monthly aggregation
 config.py / config.yaml  # cost assumptions + sidebar override merge
 refresh_matrixify_mcp.py # refresh orders+products via the Matrixify MCP (chunked, stitched)
 fetch_matrixify_export.py / fetch_klar_export.py   # legacy URL fetch (Matrixify) / Klar download
-data/                    # matrixify_*.csv, klar_marketing.csv, sample_orders.json
+data/                    # matrixify_*.csv, klar_marketing.csv, stock_history.csv, sample_orders.json
 .github/workflows/refresh_matrixify.yml + refresh_klar.yml   # daily refresh
 ```
 
