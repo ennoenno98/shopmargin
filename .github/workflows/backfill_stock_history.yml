@@ -1,0 +1,54 @@
+name: Backfill stock history (one-off)
+
+# Manual, one-shot deep backfill of data/stock_history.csv straight from the
+# Shopify Admin API (ShopifyQL `inventory` dataset). Run it once to fill the OOS
+# Impact Analytics dashboard with ~10 months of per-SKU daily stock; afterwards
+# the daily refresh_matrixify.yml keeps it current for free. No recurring creds —
+# you can remove the secrets again once this has run.
+#
+# One-time setup (repo → Settings → Secrets and variables → Actions):
+#   SHOPIFY_SHOP          e.g. vegavero.myshopify.com
+#   SHOPIFY_ADMIN_TOKEN   Admin API access token with the read_reports scope
+# Then: Actions → "Backfill stock history (one-off)" → Run workflow (pick this branch).
+
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "First day to pull (YYYY-MM-DD)"
+        default: "2025-09-01"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history so --backfill can also fold in git snapshots
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-export.txt
+      - name: Pull deep stock history from Shopify
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: python refresh_stock_history.py --since "${{ inputs.since }}"
+      - name: Merge seed + git snapshots into data/stock_history.csv
+        run: python build_stock_history.py --backfill
+      - name: Commit if changed
+        run: |
+          git config user.name  "stock-history-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/stock_history.csv data/stock_overview_seed.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: deep stock-history backfill from Shopify (since ${{ inputs.since }})"
+            git push
+          fi

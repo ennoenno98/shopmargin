@@ -120,18 +120,32 @@ Sources, merged newest-wins per `(date, sku)`:
    history (all SKUs, ~3 weeks deep today); the daily Action then **appends** one
    reading/SKU per refresh (`python build_stock_history.py`), so it deepens for
    free over time. No credentials.
-2. **Shopify (deep backfill, optional)** — Shopify Analytics keeps ~10 months of
-   per-SKU daily stock. Export the `inventory` dataset to `data/stock_overview_seed.csv`
-   and re-run `--backfill` to ingest it (column names matched tolerantly):
+2. **Shopify (deep backfill — fills the dashboard to ~10 months)** — Shopify
+   Analytics keeps per-SKU daily stock. **`refresh_stock_history.py`** pulls it
+   straight from the Admin API (ShopifyQL `inventory` dataset) into
+   `data/stock_overview_seed.csv`, which `--backfill` then merges. The easiest
+   way is the one-off **`backfill_stock_history.yml`** GitHub Action: add repo
+   secrets `SHOPIFY_SHOP` + `SHOPIFY_ADMIN_TOKEN` (Admin token, `read_reports`
+   scope), run it once, done — no recurring credentials (the daily refresh keeps
+   it current afterwards). Locally:
+
+   ```bash
+   export SHOPIFY_SHOP=vegavero.myshopify.com SHOPIFY_ADMIN_TOKEN=shpat_...
+   python refresh_stock_history.py --since 2025-09-01   # writes the seed CSV
+   python build_stock_history.py --backfill             # merge into stock_history.csv
+   ```
+
+   The validated query it runs (also paste-able into Shopify's report editor to
+   export the seed by hand):
 
    ```sql
    FROM inventory SHOW ending_inventory_units
    GROUP BY product_variant_sku TIMESERIES day SINCE -300d UNTIL today
    ```
 
-   This extends the impact dashboard back ~10 months; without it the series only
-   spans as far as the committed daily git history reaches. The pure history
-   analytics live in **`stock_history.py`** (`python stock_history.py` self-tests).
+   Without this, the impact dashboard only spans as far as the committed daily
+   git history reaches. The pure history analytics live in **`stock_history.py`**
+   (`python stock_history.py` self-tests).
 
 ## Layout
 
@@ -143,6 +157,7 @@ oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) en
 inventory.py             # pure current-stock / Days-of-Supply engine (reusable)
 stock_history.py         # pure stock-history engine: series, days-OOS, stock-out events
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
+refresh_stock_history.py # one-off deep backfill from the Shopify Admin API (ShopifyQL)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
 data_source.py           # picks Matrixify files, else the JSON sample
 marketing.py             # Klar marketing ingestion & monthly aggregation
