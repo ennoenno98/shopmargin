@@ -88,6 +88,61 @@ def load_products(path: Path | str) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Products -> stock snapshot by SKU (for the out-of-stock dashboard)
+# ---------------------------------------------------------------------------
+
+def load_inventory(path: Path | str) -> pd.DataFrame:
+    """Per-SKU stock snapshot from the Matrixify Products export.
+
+    Indexed by sku, columns: on_hand (Variant Inventory Qty), inv_policy
+    (deny/continue), inv_tracked (bool — is Shopify tracking this variant),
+    product_status (Active/Draft/Archived/...), title, price, unit_cost,
+    handle, url, product_id. Consumed by ``inventory.build_oos_view``.
+    """
+    df = _read(path)
+    sku = _col(df, "Variant SKU", "SKU")
+    if not sku:
+        raise ValueError("Products export has no 'Variant SKU' column.")
+    qty = _col(df, "Variant Inventory Qty", "Variant Inventory Quantity", "Inventory Qty")
+    policy = _col(df, "Variant Inventory Policy", "Inventory Policy")
+    tracker = _col(df, "Variant Inventory Tracker", "Inventory Tracker")
+    pstatus = _col(df, "Status", "Product Status")
+    title = _col(df, "Title")
+    price = _col(df, "Variant Price", "Price")
+    cost = _col(df, "Variant Cost", "Cost per item", "Cost")
+    handle = _col(df, "Handle")
+    url = _col(df, "URL")
+    pid = _col(df, "ID", "Product ID")
+
+    # Matrixify blanks product-level fields on a product's continuation
+    # (extra-variant) rows; forward-fill them so every variant keeps its
+    # parent's descriptive fields. Per-variant fields (qty/policy/price) stay.
+    for c in (pstatus, title, handle, url, pid):
+        if c:
+            df[c] = df[c].ffill()
+
+    out = pd.DataFrame({"sku": df[sku].astype(str).str.strip()})
+    out["on_hand"] = _num(df[qty]) if qty else pd.NA
+    out["inv_policy"] = (df[policy].astype(str).str.strip().str.lower()
+                         if policy else "")
+    if tracker:
+        trk = df[tracker].astype(str).str.strip().str.lower()
+        out["inv_tracked"] = ~trk.isin(["", "nan", "none"])
+    else:
+        out["inv_tracked"] = False
+    out["product_status"] = df[pstatus].astype(str).str.strip() if pstatus else ""
+    out["title"] = df[title] if title else ""
+    out["price"] = _num(df[price]) if price else pd.NA
+    out["unit_cost"] = _num(df[cost]) if cost else pd.NA
+    out["handle"] = df[handle].astype(str) if handle else ""
+    out["url"] = df[url].astype(str) if url else ""
+    out["product_id"] = df[pid].astype(str) if pid else ""
+
+    out = out[~out["sku"].isin(["", "nan"])].drop_duplicates("sku").set_index("sku")
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Orders -> flattened line items (same schema as margin.flatten_orders)
 # ---------------------------------------------------------------------------
 

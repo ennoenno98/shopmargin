@@ -75,12 +75,40 @@ All cost assumptions live in **`config.yaml`** and are overridable from the
 sidebar (sidebar wins at runtime). Calculation logic is isolated in
 `margin.py` and contains no hard-coded rates.
 
+## Out-of-stock tab 🚨
+
+The **Out of stock** tab is the Shopify counterpart of the Amazon dashboard's
+FBA *Days-of-Supply* monitor — the inverse of overstock/slow-movers. It joins
+the current stock snapshot from the Matrixify **Products** export
+(`Variant Inventory Qty` / `Variant Inventory Policy` / `Variant Inventory
+Tracker`) with **sales velocity** computed from the **Orders** export, and flags:
+
+| Status | Rule |
+|--------|------|
+| 🔴 **Out of stock** | tracked, on-hand ≤ 0, policy `deny` (sales blocked) |
+| 🟠 **Low stock** | on-hand > 0 but Days of Supply < threshold |
+| **OOS · backorder** | on-hand ≤ 0 but policy `continue` (still sellable) |
+| **Not tracked** | Shopify isn't tracking the variant's inventory |
+
+- **Days of Supply** = on-hand ÷ velocity (units/day over a trailing window).
+- **Revenue at risk** = velocity × avg price × restock lead — the sales missed
+  before stock returns; it ranks the OOS list so the highest-velocity sell-outs
+  surface first.
+- Velocity spans **all countries** (Shopify stock is one global pool) and is
+  independent of the page's country/period filters. Defaults to **Active**
+  products (toggle to include Draft / Archived / Unlisted).
+
+Window, low-stock threshold and restock lead default from the `inventory:`
+section of `config.yaml` and are overridable from the tab's controls. The engine
+is pure/testable in **`inventory.py`** (`python inventory.py` runs a self-test).
+
 ## Layout
 
 ```
 streamlit_app.py         # UI (presentation only)
 margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
-matrixify_client.py      # reads Matrixify Orders + Products exports
+inventory.py             # pure out-of-stock / Days-of-Supply engine (run it for a self-test)
+matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
 data_source.py           # picks Matrixify files, else the JSON sample
 marketing.py             # Klar marketing ingestion & monthly aggregation
 config.py / config.yaml  # cost assumptions + sidebar override merge

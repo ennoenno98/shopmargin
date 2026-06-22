@@ -3,7 +3,9 @@
 Modelled on the Amazon "Margin Analytics" dashboard: source header, filter
 card (country · granularity · period · search · top-sellers · min-sales),
 five KPIs, a margin×volume cluster grid, a conditionally-formatted per-product
-table, and Overview / Margin Trend / Slow movers tabs.
+table, and Overview / Margin Trend / Slow movers / Out-of-stock tabs. The
+Out-of-stock tab is the Shopify analogue of the Amazon dashboard's FBA
+Days-of-Supply monitor (logic in inventory.py).
 
 Data comes from Matrixify exports (Orders + Products) — no Shopify API token —
 with a committed JSON sample as fallback. Cost assumptions live in config.yaml
@@ -20,7 +22,9 @@ import plotly.express as px
 import streamlit as st
 
 import data_source
+import inventory
 import margin
+import matrixify_client
 from config import deep_merge, load_config
 from marketing import channel_breakdown, load_marketing, spend_table
 
@@ -53,7 +57,13 @@ def _file_sig(cfg: dict) -> str:
 def load_all(orders_file: str, products_file: str, tz: str, spend_file: str, sig: str):
     cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
     df, mode = data_source.load_lineitems(cfg)
-    return df, mode, load_marketing(spend_file)
+    inv = pd.DataFrame()
+    if products_file and os.path.exists(products_file):
+        try:
+            inv = matrixify_client.load_inventory(products_file)
+        except Exception:
+            inv = pd.DataFrame()
+    return df, mode, load_marketing(spend_file), inv
 
 
 # --------------------------------------------------------------------------- #
@@ -208,7 +218,7 @@ def render_table(view: pd.DataFrame, cfg: dict, key: str = "tbl"):
 def main():
     cfg = sidebar_controls()
     src = cfg["source"]
-    df_all, mode, mkt_raw = load_all(
+    df_all, mode, mkt_raw, inv = load_all(
         src["orders_file"], src["products_file"], cfg.get("timezone", "Europe/Berlin"),
         cfg["marketing"]["spend_file"], _file_sig(cfg))
     spend = spend_table(mkt_raw, cfg["marketing"].get("grain", "day"))
@@ -292,7 +302,8 @@ def main():
         st.info(f"{int(agg['cost_missing'].sum())} SKU(s) missing a unit cost (COGS treated as €0). "
                 "Add `Variant Cost` to the Matrixify Products export.")
 
-    tab_ov, tab_tr, tab_sm = st.tabs(["Overview", "Margin Trend", "Slow movers"])
+    tab_ov, tab_tr, tab_sm, tab_oos = st.tabs(
+        ["Overview", "Margin Trend", "Slow movers", "🚨 Out of stock"])
 
     with tab_ov:
         # Per-country breakdown
@@ -332,6 +343,9 @@ def main():
         n = st.slider("Show N", 5, 50, 20)
         slow = agg.sort_values("net_revenue").head(n)
         render_table(slow, cfg, key="slow")
+
+    with tab_oos:
+        render_oos(df_all, inv, agg, cfg)
 
     with st.expander("📣 Marketing spend (Klar)"):
         if mkt_raw.empty:
@@ -405,6 +419,124 @@ def render_trend(df_b, country, cfg, spend, tgt3):
     st.dataframe(tr.drop(columns="_slope").sort_values("Change pp")
                  .style.format({"Start CM3 %": "{:.1f}%", "End CM3 %": "{:.1f}%", "Change pp": "{:+.1f}"}),
                  use_container_width=True, hide_index=True)
+
+
+# --------------------------------------------------------------------------- #
+# Out-of-stock tab — the Shopify analogue of the Amazon Days-of-Supply monitor
+# --------------------------------------------------------------------------- #
+OOS_BG = {inventory.OOS: BAD, inventory.LOW: MIDC, inventory.OOS_BACKORDER: "#FCE4D6"}
+
+
+def render_oos(df_all: pd.DataFrame, inv: pd.DataFrame, agg: pd.DataFrame, cfg: dict):
+    st.markdown(
+        "**Out of stock & low stock** — products that have run out or will run "
+        "out soon, ranked by lost-sales risk. On-hand is the current Matrixify "
+        "snapshot; velocity is recent demand across **all countries** (Shopify "
+        "stock is one global pool)."
+    )
+    if inv is None or inv.empty:
+        st.info(
+            "No inventory data. Add a Matrixify **Products** export to `data/` "
+            "with `Variant Inventory Qty`, `Variant Inventory Policy` and "
+            "`Variant Inventory Tracker`. (The JSON sample carries no stock, so "
+            "this tab is empty in sample mode.)"
+        )
+        return
+
+    ic = cfg.get("inventory", {}) or {}
+    win_opts = [14, 30, 60, 90]
+    win_default = int(ic.get("velocity_window_days", 30))
+    c = st.columns([1, 1, 1, 1.4])
+    window = c[0].selectbox(
+        "Velocity window", win_opts,
+        index=win_opts.index(win_default) if win_default in win_opts else 1,
+        help="Trailing days of orders used to estimate units sold per day.")
+    low_days = c[1].number_input(
+        "Low-stock < days", min_value=1, value=int(ic.get("low_stock_days", 21)), step=7,
+        help="Days of Supply below this is flagged 'Low stock'.")
+    lead = c[2].number_input(
+        "Restock lead (days)", min_value=1, value=int(ic.get("restock_lead_days", 30)), step=5,
+        help="Assumed restock lead time — drives 'revenue at risk'.")
+    include_inactive = c[3].toggle(
+        "Include inactive products", value=False,
+        help="Off = Active products only (excludes Draft / Archived / Unlisted).")
+
+    view = inventory.build_oos_view(
+        inv, df_all, window_days=int(window), low_stock_days=int(low_days),
+        restock_lead_days=int(lead))
+    if view.empty:
+        st.info("No inventory rows to show.")
+        return
+    if not include_inactive and "product_status" in view.columns:
+        view = view[view["product_status"].astype(str).str.lower().eq("active")]
+    if view.empty:
+        st.info("No active products in the inventory snapshot. "
+                "Toggle 'Include inactive products' to see Draft / Archived SKUs.")
+        return
+
+    # Enrich with CM3 % from the current selection (where the SKU sold).
+    if agg is not None and not agg.empty and "sku" in agg.columns:
+        view = view.assign(cm3_pct=view["sku"].map(agg.set_index("sku")["cm3_pct"]))
+
+    ref_date = pd.to_datetime(df_all["order_date"], errors="coerce").max()
+    n_oos = int((view["status"] == inventory.OOS).sum())
+    n_low = int((view["status"] == inventory.LOW).sum())
+    n_back = int((view["status"] == inventory.OOS_BACKORDER).sum())
+
+    k = st.columns(5)
+    k[0].metric("🔴 Out of stock", f"{n_oos:,}",
+                help="Tracked, on-hand ≤ 0, policy = deny (sales blocked).")
+    k[1].metric("🟠 Low stock", f"{n_low:,}",
+                help=f"On-hand > 0 but Days of Supply < {int(low_days)}.")
+    k[2].metric("Backorderable OOS", f"{n_back:,}",
+                help="On-hand ≤ 0 but policy = continue (still sellable).")
+    k[3].metric("Est. lost sales / day", f"€{view['lost_sales_per_day'].sum():,.0f}",
+                help="Σ velocity × avg price over the truly out-of-stock sellers.")
+    k[4].metric(f"Revenue at risk ({int(lead)}d)", f"€{view['revenue_at_risk'].sum():,.0f}",
+                help="Lost sales/day × restock lead time.")
+
+    scope = "active " if not include_inactive else ""
+    ref_txt = f"{ref_date:%Y-%m-%d}" if pd.notna(ref_date) else "—"
+    st.caption(f"Velocity over the last **{int(window)} days** to {ref_txt} · "
+               f"{n_oos + n_low + n_back} flagged of {len(view):,} {scope}SKUs.")
+
+    cols = {
+        "sku": "SKU", "title": "Product", "status": "Status", "on_hand": "On hand",
+        "inv_policy": "Policy", "velocity": "Velocity/d", "days_of_supply": "Days of Supply",
+        "win_units": f"Units ({int(window)}d)", "win_revenue": f"Sales {int(window)}d (€)",
+        "unit_price": "Avg price (€)", "revenue_at_risk": "Rev. at risk (€)",
+        "cm3_pct": "CM3 %", "product_status": "Product status",
+    }
+    present = [c for c in cols if c in view.columns]
+    disp = view[present].rename(columns=cols)
+
+    fmt = {
+        "On hand": "{:,.0f}", "Velocity/d": "{:.2f}", "Days of Supply": "{:.0f}",
+        f"Units ({int(window)}d)": "{:,.0f}", f"Sales {int(window)}d (€)": "€{:,.0f}",
+        "Avg price (€)": "€{:,.2f}", "Rev. at risk (€)": "€{:,.0f}", "CM3 %": "{:.1f}%",
+    }
+
+    def _row_style(r):
+        bg = OOS_BG.get(r.get("Status"), "")
+        return [f"background-color:{bg};color:#111" if bg else "" for _ in r]
+
+    sty = (disp.style
+           .format({k: v for k, v in fmt.items() if k in disp.columns}, na_rep="—")
+           .apply(_row_style, axis=1))
+    st.dataframe(sty, use_container_width=True, height=560, hide_index=True)
+    st.download_button("⬇️ Download out-of-stock (CSV)",
+                       disp.to_csv(index=False).encode("utf-8"),
+                       "shopify_out_of_stock.csv", "text/csv", key="dl_oos")
+
+    st.caption(
+        "**Status** — 🔴 *Out of stock* (tracked, on-hand ≤ 0, policy *deny*: sales blocked) · "
+        "🟠 *Low stock* (Days of Supply below your threshold) · *OOS · backorder* "
+        "(on-hand ≤ 0 but policy *continue*, still sellable) · *Not tracked* "
+        "(Shopify isn't tracking the variant). **Days of Supply** = on-hand ÷ velocity; "
+        "blank when there were no sales in the window. **Rev. at risk** = velocity × avg "
+        "price × restock lead — sales missed before stock returns. CM3 % is from the "
+        "current selection above, where the SKU sold."
+    )
 
 
 main()

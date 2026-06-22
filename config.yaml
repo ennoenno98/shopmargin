@@ -79,6 +79,16 @@ marketing:
   pct_revenue: 0.10          # fallback TACoS (10% of net revenue) when source = pct_revenue
   allocation: revenue        # map total/channel spend to products by: revenue | units
 
+# --- Inventory / out-of-stock monitoring -------------------------------------
+# Drives the "🚨 Out of stock" tab (the Shopify analogue of the Amazon dashboard's
+# FBA Days-of-Supply monitor). Stock = current Matrixify Products snapshot
+# (Variant Inventory Qty / Policy / Tracker); velocity = recent demand from the
+# Orders export. All values are overridable from the tab's own controls.
+inventory:
+  velocity_window_days: 30   # trailing days of orders used to estimate units/day
+  low_stock_days: 21         # Days of Supply below this is flagged "Low stock"
+  restock_lead_days: 30      # assumed restock lead time -> drives "revenue at risk"
+
 # --- Scope & time ------------------------------------------------------------
 scope:
   status: active             # active | any  (product status filter, applied in live mode)
