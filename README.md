@@ -16,9 +16,14 @@ CM3 = CM2 − allocated marketing / ad spend
 
 ```bash
 pip install -r requirements.txt
-streamlit run streamlit_app.py
-# → http://localhost:8501
+streamlit run streamlit_app.py    # margin dashboard      → http://localhost:8501
+streamlit run oos_app.py          # OOS Impact Analytics   → http://localhost:8501
 ```
+
+These are **two separate dashboards** sharing this repo's data and engines. On
+Streamlit Community Cloud, deploy each as its own app from the same repo/branch —
+just set the **Main file path** to `streamlit_app.py` for one and `oos_app.py`
+for the other.
 
 **Data source: Matrixify exports — no Shopify API token needed.** The dashboard
 reads two Matrixify exports:
@@ -75,41 +80,40 @@ All cost assumptions live in **`config.yaml`** and are overridable from the
 sidebar (sidebar wins at runtime). Calculation logic is isolated in
 `margin.py` and contains no hard-coded rates.
 
-## Out-of-stock tab 🚨
+## OOS Impact Analytics 📦 (separate dashboard — `oos_app.py`)
 
-The **Out of stock** tab is the Shopify counterpart of the Amazon dashboard's
-FBA *Days-of-Supply* monitor — the inverse of overstock/slow-movers. It joins
-the current stock snapshot from the Matrixify **Products** export
-(`Variant Inventory Qty` / `Variant Inventory Policy` / `Variant Inventory
-Tracker`) with **sales velocity** computed from the **Orders** export, and flags:
+A **second Streamlit app**, deployed independently of the margin dashboard
+(main-file path = `oos_app.py`). It's the Shopify analogue of the Amazon
+**OOS Impact Analytics** board: estimated **lost revenue & lost contribution
+margin (CM3)** from being out of stock, over time and per SKU. Sections — an
+out-of-stock **impact time chart** (lost €/CM3 bars + OOS-rate line) with KPIs,
+then **Most affected SKUs** (top-N by lost CM3 + per-SKU depletion timeline),
+**Stock-out calendar**, and **Stock-out events**. No country split and no
+cooling-down / heating-up (stock is one global pool).
 
-| Status | Rule |
-|--------|------|
-| 🔴 **Out of stock** | tracked, on-hand ≤ 0, policy `deny` (sales blocked) |
-| 🟠 **Low stock** | on-hand > 0 but Days of Supply < threshold |
-| **OOS · backorder** | on-hand ≤ 0 but policy `continue` (still sellable) |
-| **Not tracked** | Shopify isn't tracking the variant's inventory |
+It joins the committed daily **stock history** (when each SKU was out of stock)
+with realised sales priced by `margin.py`. Per SKU and time-bucket (month /
+quarter):
 
-- **Days of Supply** = on-hand ÷ velocity (units/day over a trailing window).
-- **Revenue at risk** = velocity × avg price × restock lead — the sales missed
-  before stock returns; it ranks the OOS list so the highest-velocity sell-outs
-  surface first.
-- Velocity spans **all countries** (Shopify stock is one global pool) and is
-  independent of the page's country/period filters. Defaults to **Active**
-  products (toggle to include Draft / Archived / Unlisted).
+```
+demand_rate  = units sold ÷ in-stock days        (falls back to all-history rate)
+lost_units   = demand_rate × out-of-stock days
+lost_revenue = lost_units × avg selling price
+lost_cm3     = lost_units × CM3 per unit
+OOS rate     = lost ÷ (sold + lost) units
+```
 
-Window, low-stock threshold and restock lead default from the `inventory:`
-section of `config.yaml` and are overridable from the tab's controls. The engine
-is pure/testable in **`inventory.py`** (`python inventory.py` runs a self-test).
+A `Min demand (units/day)` floor focuses on SKUs that actually sell. The pure
+engine is **`oos_impact.py`** (`python oos_impact.py` runs a self-test);
+`inventory.py` holds a separate current-stock / Days-of-Supply engine.
 
-### Stock history (Days OOS · depletion trend · stock-out events)
+### Stock history — the time series both rely on
 
 The Products export is overwritten daily, so it only carries the *current*
 on-hand. **`build_stock_history.py`** assembles a real per-SKU daily series into
-`data/stock_history.csv` (long format: `date, sku, on_hand, source`), which powers
-the tab's **Days OOS** column (how long a SKU has already been at ≤ 0) and the
-**📉 Stock history** deep-dive (per-SKU depletion chart + detected stock-out
-events with depletion/day). Sources, merged newest-wins per `(date, sku)`:
+`data/stock_history.csv` (long format: `date, sku, on_hand, source`), which feeds
+the impact engine (out-of-stock days, depletion timelines, stock-out events).
+Sources, merged newest-wins per `(date, sku)`:
 
 1. **git** — every committed daily products snapshot is a dated reading.
    `python build_stock_history.py --backfill` reconstructs the series from git
@@ -125,17 +129,19 @@ events with depletion/day). Sources, merged newest-wins per `(date, sku)`:
    GROUP BY product_variant_sku TIMESERIES day SINCE -300d UNTIL today
    ```
 
-   This lifts the `Days OOS` window cap for SKUs that have been out longer than
-   the git history reaches. The pure analytics live in **`stock_history.py`**
-   (`python stock_history.py` runs a self-test).
+   This extends the impact dashboard back ~10 months; without it the series only
+   spans as far as the committed daily git history reaches. The pure history
+   analytics live in **`stock_history.py`** (`python stock_history.py` self-tests).
 
 ## Layout
 
 ```
-streamlit_app.py         # UI (presentation only)
+streamlit_app.py         # margin dashboard UI — CM1/CM2/CM3 (presentation only)
+oos_app.py               # OOS Impact Analytics dashboard UI (deploy as a 2nd app)
 margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
-inventory.py             # pure out-of-stock / Days-of-Supply engine (run it for a self-test)
-stock_history.py         # pure stock-history engine: Days OOS, sparkline, stock-out events
+oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) engine
+inventory.py             # pure current-stock / Days-of-Supply engine (reusable)
+stock_history.py         # pure stock-history engine: series, days-OOS, stock-out events
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
 data_source.py           # picks Matrixify files, else the JSON sample
