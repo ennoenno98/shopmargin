@@ -156,12 +156,14 @@ def from_seed(path: str) -> pd.DataFrame:
 # --------------------------------------------------------------------------- #
 def build(repo=".", products=DEFAULT_PRODUCTS, out=DEFAULT_OUT, seed=DEFAULT_SEED,
           backfill=False, when=None) -> pd.DataFrame:
-    # Lowest priority first so newer/live readings win on a (date, SKU) collision:
-    #   seed  <  git backfill  <  existing committed history  <  today's snapshot
-    frames = [from_seed(seed)]
+    # Lowest priority first (assemble keeps the LAST writer on a (date,SKU)
+    # collision). On --backfill the git reconstruction outranks the existing
+    # committed CSV, so a rerun can *correct* stale/wrong rows; committed-only
+    # dates git can't reach survive (no collision). Today's snapshot always wins.
+    #   seed  <  existing committed  <  git backfill  <  today's snapshot
+    frames = [from_seed(seed), stock_history.load_stock_history(out)]
     if backfill:
         frames.append(from_git(repo, products))
-    frames.append(stock_history.load_stock_history(out))   # keep what's already committed
     frames.append(from_products_file(products, when))      # today
     built = stock_history.assemble(frames)
     Path(out).parent.mkdir(parents=True, exist_ok=True)
