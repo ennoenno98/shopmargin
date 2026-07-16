@@ -14,23 +14,11 @@ full month's spend onto a partial end-month.
 """
 from __future__ import annotations
 
-import re
 from pathlib import Path
 
 import pandas as pd
 
-
-def _norm(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", str(s).lower())
-
-
-def _find(df: pd.DataFrame, *candidates: str) -> str | None:
-    norm_map = {_norm(c): c for c in df.columns}
-    for cand in candidates:
-        hit = norm_map.get(_norm(cand))
-        if hit:
-            return hit
-    return None
+from tabular import pick as _find
 
 
 def load_marketing(path: Path | str) -> pd.DataFrame:

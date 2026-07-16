@@ -41,6 +41,7 @@ import pandas as pd
 
 import matrixify_client
 import stock_history
+from tabular import pick
 
 DEFAULT_PRODUCTS = "data/matrixify_products.csv"
 DEFAULT_OUT = "data/stock_history.csv"
@@ -128,18 +129,9 @@ def from_seed(path: str) -> pd.DataFrame:
     if not p.exists():
         return pd.DataFrame(columns=stock_history.HISTORY_COLS)
     df = pd.read_csv(p)
-    norm = {matrixify_client._norm(c): c for c in df.columns}
-
-    def pick(*cands):
-        for c in cands:
-            hit = norm.get(matrixify_client._norm(c))
-            if hit:
-                return hit
-        return None
-
-    c_date = pick("day", "date", "month")
-    c_sku = pick("product_variant_sku", "variant sku", "sku")
-    c_qty = pick("ending_inventory_units", "ending inventory units", "on_hand",
+    c_date = pick(df, "day", "date", "month")
+    c_sku = pick(df, "product_variant_sku", "variant sku", "sku")
+    c_qty = pick(df, "ending_inventory_units", "ending inventory units", "on_hand",
                  "variant inventory qty", "inventory", "qty", "quantity", "units")
     if not (c_date and c_sku and c_qty):
         raise ValueError(

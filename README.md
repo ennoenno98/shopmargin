@@ -104,8 +104,7 @@ OOS rate     = lost ÷ (sold + lost) units
 ```
 
 A `Min demand (units/day)` floor focuses on SKUs that actually sell. The pure
-engine is **`oos_impact.py`** (`python oos_impact.py` runs a self-test);
-`inventory.py` holds a separate current-stock / Days-of-Supply engine.
+engine is **`oos_impact.py`** (`python oos_impact.py` runs a self-test).
 
 ### Stock history — the time series both rely on
 
@@ -144,8 +143,9 @@ Sources, merged newest-wins per `(date, sku)`:
    ```
 
    Without this, the impact dashboard only spans as far as the committed daily
-   git history reaches. The pure history analytics live in **`stock_history.py`**
-   (`python stock_history.py` self-tests).
+   git history reaches. **`stock_history.py`** provides the series (assemble /
+   load / per-SKU `series_for`); the out-of-stock analytics live in
+   **`oos_impact.py`**. (`python stock_history.py` self-tests.)
 
 ## Layout
 
@@ -154,16 +154,16 @@ streamlit_app.py         # margin dashboard UI — CM1/CM2/CM3 (presentation onl
 oos_app.py               # OOS Impact Analytics dashboard UI (deploy as a 2nd app)
 margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
 oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) engine
-inventory.py             # pure current-stock / Days-of-Supply engine (reusable)
-stock_history.py         # pure stock-history engine: series, days-OOS, stock-out events
+stock_history.py         # pure stock-history engine: assemble / load / per-SKU series
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 refresh_stock_history.py # one-off deep backfill from the Shopify Admin API (ShopifyQL)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
+tabular.py               # shared column-matching / numeric / tz-normalize helpers
 data_source.py           # picks Matrixify files, else the JSON sample
 marketing.py             # Klar marketing ingestion & monthly aggregation
 config.py / config.yaml  # cost assumptions + sidebar override merge
 refresh_matrixify_mcp.py # refresh orders+products via the Matrixify MCP (chunked, stitched)
-fetch_matrixify_export.py / fetch_klar_export.py   # legacy URL fetch (Matrixify) / Klar download
+fetch_klar_export.py     # Klar marketing CSV download (daily Action)
 data/                    # matrixify_*.csv, klar_marketing.csv, stock_history.csv, sample_orders.json
 .github/workflows/refresh_matrixify.yml + refresh_klar.yml   # daily refresh
 ```

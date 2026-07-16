@@ -8,7 +8,6 @@ runs with no setup. Always returns the flattened line-item frame
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -19,8 +18,8 @@ import matrixify_client
 SAMPLE_JSON = Path(__file__).with_name("data") / "sample_orders.json"
 
 
-def load_lineitems(cfg: dict, since: date | None = None, until: date | None = None) -> tuple[pd.DataFrame, str]:
-    """Load the full flattened line-item frame. Optionally filter to a window."""
+def load_lineitems(cfg: dict) -> tuple[pd.DataFrame, str]:
+    """Load the full flattened line-item frame (Matrixify if present, else sample)."""
     src = cfg.get("source", {})
     orders_p = Path(src.get("orders_file", ""))
     products_p = Path(src.get("products_file", ""))
@@ -35,7 +34,4 @@ def load_lineitems(cfg: dict, since: date | None = None, until: date | None = No
         mode = "sample"
     else:
         return pd.DataFrame(), "empty"
-
-    if not df.empty and since and until:
-        df = df[(df["order_date"].dt.date >= since) & (df["order_date"].dt.date <= until)]
     return df, mode

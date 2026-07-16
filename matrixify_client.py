@@ -17,35 +17,11 @@ items / transactions / refunds). We forward-fill those within each order block.
 """
 from __future__ import annotations
 
-import re
 from pathlib import Path
 
 import pandas as pd
 
-
-def _norm(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", str(s).lower())
-
-
-def _col(df: pd.DataFrame, *candidates: str) -> str | None:
-    """Return the real column whose normalised name matches any candidate."""
-    norm_map = {_norm(c): c for c in df.columns}
-    for cand in candidates:
-        hit = norm_map.get(_norm(cand))
-        if hit:
-            return hit
-    return None
-
-
-def _read(path: Path | str) -> pd.DataFrame:
-    p = Path(path)
-    if p.suffix.lower() in (".xlsx", ".xls"):
-        return pd.read_excel(p)
-    return pd.read_csv(p, low_memory=False)
-
-
-def _num(series: pd.Series) -> pd.Series:
-    return pd.to_numeric(series, errors="coerce")
+from tabular import norm as _norm, pick as _col, read_table as _read, to_num as _num, to_local_month
 
 
 # ---------------------------------------------------------------------------
@@ -97,7 +73,7 @@ def load_inventory(path: Path | str) -> pd.DataFrame:
     Indexed by sku, columns: on_hand (Variant Inventory Qty), inv_policy
     (deny/continue), inv_tracked (bool — is Shopify tracking this variant),
     product_status (Active/Draft/Archived/...), title, price, unit_cost,
-    handle, url, product_id. Consumed by ``inventory.build_oos_view``.
+    handle, url, product_id. Feeds the stock-history backfill and OOS dashboard.
     """
     return inventory_from_frame(_read(path))
 
@@ -174,7 +150,6 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     l_total = _col(df, "Line: Total", "Lineitem total")
     l_price = _col(df, "Line: Price", "Lineitem price")
     l_disc = _col(df, "Line: Discount")
-    l_title = _col(df, "Line: Title", "Line: Name")
     # gateway: prefer an explicit gateway column, else payment method
     t_gateway = _col(df, "Transaction: Gateway")
     t_method = _col(df, "Transaction: Payment Method")
@@ -250,13 +225,7 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     # title fallback to SKU where product not found
     out["title"] = out["title"].where(out["title"].notna(), out["sku"])
 
-    parsed = pd.to_datetime(out["order_date"], errors="coerce", utc=True)
-    try:
-        local = parsed.dt.tz_convert(tz)
-    except Exception:
-        local = parsed
-    out["order_date"] = local.dt.tz_localize(None)
-    out["month"] = out["order_date"].dt.to_period("M")
+    out["order_date"], out["month"] = to_local_month(out["order_date"], tz)
     return out
 
 

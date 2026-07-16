@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import pandas as pd
 
+from tabular import to_local_month
+
 # ---------------------------------------------------------------------------
 # 1. Flatten raw Shopify order nodes into a line-item-level frame
 # ---------------------------------------------------------------------------
@@ -98,13 +100,7 @@ def flatten_orders(orders: list[dict], tz: str = "Europe/Berlin") -> pd.DataFram
         return df
     if "country" not in df.columns:
         df["country"] = "Unknown"
-    parsed = pd.to_datetime(df["order_date"], errors="coerce", utc=True)
-    try:
-        local = parsed.dt.tz_convert(tz)
-    except Exception:
-        local = parsed  # fall back to UTC if tz database is unavailable
-    df["order_date"] = local.dt.tz_localize(None)
-    df["month"] = df["order_date"].dt.to_period("M")
+    df["order_date"], df["month"] = to_local_month(df["order_date"], tz)
     return df
 
 
@@ -284,26 +280,3 @@ def aggregate(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
     out["orders"] = df.groupby(key)["order_name"].nunique().reindex(out[key]).values \
         if key in out.columns else 0
     return out.sort_values("net_revenue", ascending=False).reset_index(drop=True)
-
-
-def summary_totals(df: pd.DataFrame) -> dict:
-    """Portfolio totals + blended CM%s for the KPI row."""
-    if df.empty:
-        return {}
-    rev = df["net_revenue"].sum()
-    out = {
-        "net_revenue": rev,
-        "cogs": df["cogs"].sum(),
-        "logistics": df["logistics"].sum(),
-        "payment_fee": df["payment_fee"].sum(),
-        "packaging": df["packaging"].sum(),
-        "marketing": df["marketing"].sum(),
-        "cm1": df["cm1"].sum(),
-        "cm2": df["cm2"].sum(),
-        "cm3": df["cm3"].sum(),
-        "orders": df["order_name"].nunique() if "order_name" in df.columns else None,
-        "units": df["net_qty"].sum() if "net_qty" in df.columns else None,
-    }
-    for cm in ("cm1", "cm2", "cm3"):
-        out[f"{cm}_pct"] = (out[cm] / rev * 100) if rev else float("nan")
-    return out
