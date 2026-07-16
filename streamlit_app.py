@@ -246,27 +246,30 @@ def main():
         r2 = st.columns([2, 5])
         min_sales = r2[0].number_input("Min sales in selection (€)", value=0.0, step=100.0, min_value=0.0)
 
-    # ---- Apply filters to line items, then aggregate ----
-    d = df_b
-    if country != "All countries":
-        d = d[d["country"] == country]
-    if sel_periods:
-        d = d[d["bucket"].isin(sel_periods)]
-    if d.empty:
+    # ---- Cost the FULL frame first, THEN filter ----
+    # Marketing spend is allocated across each period's whole-store revenue, so
+    # costing must see every line; filtering line items *before* costing would
+    # dump a whole period's spend onto the slice (CM3 wrong). Every other cost is
+    # per-line, so filtering the costed frame afterwards is exact.
+    computed_all = margin.compute_costs(df_b, cfg, spend)
+    computed_country = (computed_all if country == "All countries"
+                        else computed_all[computed_all["country"] == country])
+    computed = (computed_country[computed_country["bucket"].isin(sel_periods)]
+                if sel_periods else computed_country)
+    if computed.empty:
         st.warning("No orders match the current filters.")
         return
 
-    computed = margin.compute_costs(d, cfg, spend)
     agg = margin.aggregate(computed, cfg)
     agg = add_clusters(agg)
-
-    # Δ CM3 vs the equivalent prior set of buckets (same count, immediately before)
-    agg = _add_delta_cm3(agg, df_b, sel_periods, cfg, spend)
+    # Δ CM3 vs the equivalent prior set of buckets (same country, immediately before)
+    agg = _add_delta_cm3(agg, computed_country, sel_periods, cfg)
 
     # row-level filters
     if search.strip():
         s = search.strip().lower()
-        agg = agg[agg["sku"].str.lower().str.contains(s) | agg["title"].astype(str).str.lower().str.contains(s)]
+        agg = agg[agg["sku"].str.lower().str.contains(s, regex=False)
+                  | agg["title"].astype(str).str.lower().str.contains(s, regex=False)]
     if min_sales > 0:
         agg = agg[agg["net_revenue"] >= min_sales]
     if top_only:
@@ -296,7 +299,7 @@ def main():
 
     with tab_ov:
         # Per-country breakdown
-        if d["country"].nunique() > 1 or (d["country"].iloc[0] != "Unknown"):
+        if computed["country"].nunique() > 1 or (computed["country"].iloc[0] != "Unknown"):
             st.markdown("**Per-country breakdown** — Country CM3 % = total CM3 € / total Sales € for that country.")
             pc = (computed.groupby("country", as_index=False)
                   .agg(SKUs=("sku", "nunique"), Sales=("net_revenue", "sum"), Units=("net_qty", "sum"),
@@ -325,7 +328,7 @@ def main():
         render_table(view, cfg, key="overview")
 
     with tab_tr:
-        render_trend(df_b, country, cfg, spend, tgt3)
+        render_trend(computed_country, tgt3)
 
     with tab_sm:
         st.markdown("**Slow movers** — lowest-selling SKUs in the current selection.")
@@ -342,13 +345,15 @@ def main():
                          use_container_width=True, hide_index=True)
 
 
-def _add_delta_cm3(agg, df_b, sel_periods, cfg, spend):
-    """Δ CM3 pp vs the equivalent prior set of buckets (same count, immediately before)."""
+def _add_delta_cm3(agg, costed_country, sel_periods, cfg):
+    """Δ CM3 pp vs the equivalent prior set of buckets (same count, immediately
+    before) — from the already-costed, same-country frame (no re-costing, so the
+    baseline uses the same marketing denominator and the same country as `agg`)."""
     agg = agg.copy()
     agg["delta_cm3"] = np.nan
     if not sel_periods:
         return agg
-    allb = ordered_buckets(df_b)
+    allb = ordered_buckets(costed_country)
     idx = [allb.index(b) for b in sel_periods if b in allb]
     if not idx:
         return agg
@@ -356,21 +361,19 @@ def _add_delta_cm3(agg, df_b, sel_periods, cfg, spend):
     prior = allb[max(0, min(idx) - k):min(idx)]
     if not prior:
         return agg
-    pd_ = df_b[df_b["bucket"].isin(prior)]
-    if pd_.empty:
+    pcomp = costed_country[costed_country["bucket"].isin(prior)]
+    if pcomp.empty:
         return agg
-    pcomp = margin.compute_costs(pd_, cfg, spend)
     pagg = margin.aggregate(pcomp, cfg).set_index("sku")["cm3_pct"]
     agg["delta_cm3"] = agg["cm3_pct"] - agg["sku"].map(pagg)
     return agg
 
 
-def render_trend(df_b, country, cfg, spend, tgt3):
-    d = df_b if country == "All countries" else df_b[df_b["country"] == country]
-    if d.empty:
+def render_trend(costed_country, tgt3):
+    if costed_country is None or costed_country.empty:
         st.info("No data.")
         return
-    comp = margin.compute_costs(d, cfg, spend)
+    comp = costed_country
     ts = (comp.groupby(["bucket", "bucket_start"], as_index=False)
           .agg(cm3=("cm3", "sum"), sales=("net_revenue", "sum")))
     ts["CM3 %"] = ts["cm3"] / ts["sales"].where(ts["sales"] > 0) * 100

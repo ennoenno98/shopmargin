@@ -32,6 +32,11 @@ PER_SKU_BUCKET_COLS = [
 ]
 
 
+def _f(x) -> float:
+    """Coerce NaN/None to 0.0 (``x or 0.0`` fails here because NaN is truthy)."""
+    return 0.0 if x is None or pd.isna(x) else float(x)
+
+
 def bucketize(dates: pd.Series, gran: str):
     """Return (period_start, label) for Month or Quarter buckets."""
     d = pd.to_datetime(dates, errors="coerce")
@@ -65,7 +70,11 @@ def compute_impact(history: pd.DataFrame, costed: pd.DataFrame, *, gran: str = "
 
     h = history.copy()
     h["day"] = pd.to_datetime(h["date"], errors="coerce").dt.normalize()
-    h["oos"] = pd.to_numeric(h["on_hand"], errors="coerce") <= 0
+    # Days with unknown (blank/unparseable) stock are neither in-stock nor OOS,
+    # so drop them — otherwise NaN <= 0 is False and they inflate stock_days.
+    h["on_hand_num"] = pd.to_numeric(h["on_hand"], errors="coerce")
+    h = h.dropna(subset=["on_hand_num"])
+    h["oos"] = h["on_hand_num"] <= 0
     h["bucket_start"], h["bucket"] = bucketize(h["day"], gran)
     sb = h.groupby(["sku", "bucket", "bucket_start"], as_index=False).agg(
         oos_days=("oos", "sum"), days=("oos", "size"))
@@ -176,14 +185,14 @@ def stockout_events(history: pd.DataFrame, impact: pd.DataFrame | None = None) -
                 j = i
                 while j + 1 < n and (not np.isnan(q[j + 1])) and q[j + 1] <= 0:
                     j += 1
-                days = (d[j] - d[i]).days + 1
-                r = float(rate.get(sku, 0.0) or 0.0)
+                days = j - i + 1  # OOS snapshot count — matches compute_impact's oos_days
+                r = _f(rate.get(sku))
                 lu = r * days
                 rows.append({
                     "sku": sku, "start": d[i], "end": d[j], "days": days,
                     "lost_units": lu,
-                    "lost_revenue": lu * float(price.get(sku, np.nan) or 0.0),
-                    "lost_cm3": lu * float(cm3u.get(sku, np.nan) or 0.0),
+                    "lost_revenue": lu * _f(price.get(sku)),
+                    "lost_cm3": lu * _f(cm3u.get(sku)),
                 })
                 i = j + 1
             else:

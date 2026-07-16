@@ -70,6 +70,10 @@ def flatten_orders(orders: list[dict], tz: str = "Europe/Berlin") -> pd.DataFram
                 refunded_qty[sku] = refunded_qty.get(sku, 0.0) + (rli.get("quantity") or 0)
                 refunded_rev[sku] = refunded_rev.get(sku, 0.0) + _money(rli.get("subtotalSet"))
 
+        # A SKU's refund total is applied once per order; without this guard a
+        # SKU spread over several line-item nodes subtracts the full refund on
+        # each node (double-counting).
+        refund_seen: set[str] = set()
         for li in (o.get("lineItems") or {}).get("nodes", []):
             sku = li.get("sku") or ""
             qty = li.get("quantity") or 0
@@ -77,8 +81,12 @@ def flatten_orders(orders: list[dict], tz: str = "Europe/Berlin") -> pd.DataFram
             inv = (li.get("variant") or {}).get("inventoryItem") or {}
             unit_cost_node = inv.get("unitCost")
             unit_cost = float(unit_cost_node["amount"]) if unit_cost_node else None
-            r_qty = refunded_qty.get(sku, 0.0)
-            r_rev = refunded_rev.get(sku, 0.0)
+            if sku in refund_seen:
+                r_qty = r_rev = 0.0
+            else:
+                r_qty = refunded_qty.get(sku, 0.0)
+                r_rev = refunded_rev.get(sku, 0.0)
+                refund_seen.add(sku)
             rows.append({
                 "order_name": o.get("name"),
                 "order_date": created,
@@ -211,29 +219,18 @@ def compute_costs(df: pd.DataFrame, cfg: dict, spend: pd.DataFrame | None = None
         elif spend is not None and not spend.empty:
             grain = mk.get("grain", "day")
             alloc = mk.get("allocation", "revenue")
-            d["_key"] = d["order_date"].dt.normalize() if grain == "day" else d["order_date"].dt.to_period("M")
-            sp = spend.set_index("key")
-            # denominator: Klar's store-wide net revenue for the period (fallback
-            # to this window's own revenue if Klar didn't report it).
-            window_rev = d.groupby("_key")["net_revenue"].sum()
-            window_units = d.groupby("_key")["net_qty"].sum()
-            def _line_mkt(row):
-                kk = row["_key"]
-                if kk not in sp.index:
-                    return 0.0
-                cost = sp.loc[kk, "cost"]
-                # Denominator = the export's own period revenue/units, so each
-                # period's spend sums exactly to that period's cost (self-
-                # consistent; avoids basis mismatch with Klar's net-revenue).
-                if alloc == "units":
-                    denom = window_units.get(kk, 0.0)
-                    num = row["net_qty"]
-                else:
-                    denom = window_rev.get(kk, 0.0)
-                    num = row["net_revenue"]
-                return float(cost) * (num / denom) if denom and denom > 0 else 0.0
-            d["marketing"] = d.apply(_line_mkt, axis=1)
-            d = d.drop(columns=["_key"])
+            key = d["order_date"].dt.normalize() if grain == "day" else d["order_date"].dt.to_period("M")
+            cost_by_key = spend.set_index("key")["cost"]
+            # Spread each period's spend across that period's lines in proportion
+            # to revenue (or units), so a period's marketing sums to exactly its
+            # spend. The denominator is the period's total over *this* frame, so
+            # callers must cost the whole store BEFORE filtering — a filtered
+            # slice would otherwise absorb the full period's spend. (Vectorised;
+            # no per-row apply.)
+            num = d["net_qty"] if alloc == "units" else d["net_revenue"]
+            denom = num.groupby(key).transform("sum")
+            share = num / denom.where(denom > 0)
+            d["marketing"] = (key.map(cost_by_key) * share).fillna(0.0)
         else:
             d["cm3_pending"] = True  # no marketing source available
 
@@ -270,13 +267,13 @@ def aggregate(df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
         "cost_missing": "max",   # True if any line lacked a unit cost
         "cm3_pending": "max",
     })
-    out = df.groupby(key, as_index=False).agg(agg)
+    out = df.groupby(key, as_index=False, dropna=False).agg(agg)
 
     # Derive percentages from totals (Amazon-file convention).
     rev = out["net_revenue"].where(out["net_revenue"] > 0)
     for cm in ("cm1", "cm2", "cm3"):
         out[f"{cm}_pct"] = (out[cm] / rev * 100)
 
-    out["orders"] = df.groupby(key)["order_name"].nunique().reindex(out[key]).values \
+    out["orders"] = df.groupby(key, dropna=False)["order_name"].nunique().reindex(out[key]).values \
         if key in out.columns else 0
     return out.sort_values("net_revenue", ascending=False).reset_index(drop=True)

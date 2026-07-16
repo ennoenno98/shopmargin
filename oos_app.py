@@ -37,7 +37,7 @@ def _sig(cfg: dict) -> str:
     parts = []
     for p in ((cfg.get("source") or {}).get("orders_file", ""),
               (cfg.get("source") or {}).get("products_file", ""),
-              cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE):
+              cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE, "config.yaml"):
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
     return "|".join(parts)
 

@@ -74,8 +74,12 @@ def _git(args: list[str], repo: str) -> str:
 def iter_git_snapshots(repo: str, relpath: str):
     """Yield (date, csv_text) for the newest commit of ``relpath`` on each date,
     across all refs, oldest date first."""
-    out = _git(["log", "--all", "--follow", "--date=short",
-                "--format=%H\t%ad", "--", relpath], repo)
+    try:
+        out = _git(["log", "--all", "--follow", "--date=short",
+                    "--format=%H\t%ad", "--", relpath], repo)
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        print(f"  · git log failed ({exc}); skipping git backfill", file=sys.stderr)
+        return
     seen: dict[str, str] = {}
     # git log is newest-first; keep the first (newest) commit we see per date
     for line in out.splitlines():

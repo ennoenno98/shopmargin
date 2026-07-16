@@ -99,11 +99,14 @@ def backfill(shop: str, token: str, since: date, until: date, window: int = 4,
             frames = []
             for s0, s1 in _windows(w0, w1, win):
                 df = run_shopifyql(QUERY.format(since=s0, until=s1), shop, token, session)
-                if len(df) >= ROW_CAP:
+                if len(df) >= ROW_CAP and win > 1:
                     win = max(1, win // 2)
-                    print(f"  cap hit {s0}..{s1} ({len(df)} rows) → window {win}d", file=sys.stderr)
+                    print(f"  cap hit {s0}..{s1} ({len(df)} rows) → shrink to {win}d", file=sys.stderr)
                     frames = None
                     break
+                if len(df) >= ROW_CAP:  # already a 1-day window: can't shrink further
+                    print(f"  ⚠️ {s0}: {len(df)} rows ≥ cap {ROW_CAP}; day may be truncated "
+                          f"(store has >{ROW_CAP} SKUs)", file=sys.stderr)
                 frames.append(df)
                 time.sleep(pause)
             ok = frames is not None

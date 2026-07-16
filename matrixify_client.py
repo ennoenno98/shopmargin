@@ -162,8 +162,13 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     ltype = df[l_type].astype(str).str.strip() if l_type else pd.Series([""] * len(df))
     sku = df[l_sku].astype(str).str.strip()
     qty = _num(df[l_qty]) if l_qty else pd.Series(0.0, index=df.index)
+    l_tax = _col(df, "Line: Tax Total", "Line: Tax")
     if l_total:
         tot = _num(df[l_total])
+        # Vegavero prices are tax-inclusive (Tax: Included=True); net revenue is
+        # pre-tax to match Klar Net Revenue, so strip the line's VAT.
+        if l_tax:
+            tot = tot - _num(df[l_tax]).fillna(0.0)
     else:
         tot = (_num(df[l_price]) if l_price else 0) * qty - (_num(df[l_disc]) if l_disc else 0)
 
@@ -185,11 +190,13 @@ def load_orders(path: Path | str, products: pd.DataFrame, tz: str = "Europe/Berl
     if items.empty:
         return items
 
-    # order-level attributes
+    # order-level attributes: take each order's own top-row value via groupby
+    # .first() (which skips NaN within the order) rather than a global ffill,
+    # which would leak the previous order's value onto an order with a blank cell.
     odf = pd.DataFrame({"order": order.values})
-    odf["created"] = df[c_created].ffill().values if c_created else None
-    odf["order_total"] = (_num(df[c_total]).ffill().values if c_total else 0.0)
-    odf["country"] = (df[c_country].ffill().astype(str).values if c_country else "Unknown")
+    odf["created"] = df[c_created].values if c_created else None
+    odf["order_total"] = (_num(df[c_total]).values if c_total else 0.0)
+    odf["country"] = (df[c_country].values if c_country else "Unknown")
     olevel = odf.groupby("order", as_index=False).first()
 
     # gateway per order from transaction rows
