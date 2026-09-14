@@ -86,6 +86,24 @@ def ordered_buckets(df: pd.DataFrame) -> list[str]:
             .sort_values("bucket_start")["bucket"].tolist())
 
 
+def _apply_period(df: pd.DataFrame, period: str) -> pd.DataFrame:
+    """Narrow the line-item frame to the chosen time window (the Period filter).
+    Presets are relative to the latest order date; "Custom range" renders two
+    date pickers. Whole days (edges are day-normalised)."""
+    if df.empty or period == "Full range":
+        return df
+    dmin, dmax = df["order_date"].min(), df["order_date"].max()
+    if period == "Custom range":
+        cc = st.columns([1, 1, 3])
+        d0 = cc[0].date_input("From", value=dmin.date(), min_value=dmin.date(), max_value=dmax.date())
+        d1 = cc[1].date_input("To", value=dmax.date(), min_value=dmin.date(), max_value=dmax.date())
+        start, end_excl = pd.Timestamp(d0), pd.Timestamp(d1) + pd.Timedelta(days=1)
+    else:
+        days = {"Last 30 days": 30, "Last 90 days": 90, "Last 180 days": 180, "Last 365 days": 365}[period]
+        start, end_excl = dmax.normalize() - pd.Timedelta(days=days), dmax + pd.Timedelta(seconds=1)
+    return df[(df["order_date"] >= start) & (df["order_date"] < end_excl)]
+
+
 # --------------------------------------------------------------------------- #
 # Clusters (margin × volume terciles)
 # --------------------------------------------------------------------------- #
@@ -233,18 +251,30 @@ def main():
 
     # ---- Filter card ----
     with st.container(border=True):
-        r1 = st.columns([1.4, 1.2, 2.2, 2, 1])
+        r1 = st.columns([1.4, 1.1, 1.5, 2.2, 1])
         countries = ["All countries"] + sorted(c for c in df_all["country"].dropna().unique()
                                                if c and c != "Unknown")
         country = r1[0].selectbox("Country (shipping)", countries)
         gran = r1[1].radio("Granularity", ["Day", "Week", "Month", "Quarter"], index=1)
-        df_b = add_buckets(df_all, gran)
-        buckets = ordered_buckets(df_b)
-        sel_periods = r1[2].multiselect(f"{gran}(s)", buckets, default=buckets[-1:] if buckets else [])
+        period = r1[2].selectbox("Period", ["Full range", "Last 30 days", "Last 90 days",
+                                            "Last 180 days", "Last 365 days", "Custom range"])
         search = r1[3].text_input("SKU or Product contains", "")
         top_only = r1[4].toggle("Top sellers only", value=False)
-        r2 = st.columns([2, 5])
-        min_sales = r2[0].number_input("Min sales in selection (€)", value=0.0, step=100.0, min_value=0.0)
+
+        df_win = _apply_period(df_all, period)
+        if df_win.empty:
+            st.warning("No orders in the selected period.")
+            return
+        df_b = add_buckets(df_win, gran)
+        buckets = ordered_buckets(df_b)
+        # A specific period shows all its buckets; Full range keeps the recent-snapshot default.
+        default_sel = buckets if period != "Full range" else buckets[-1:]
+        r2 = st.columns([3, 2])
+        sel_periods = r2[0].multiselect(f"{gran}(s) to include", buckets,
+                                        default=default_sel if buckets else [])
+        min_sales = r2[1].number_input("Min sales in selection (€)", value=0.0, step=100.0, min_value=0.0)
+        st.caption(f"Period: **{df_win['order_date'].min():%Y-%m-%d} → "
+                   f"{df_win['order_date'].max():%Y-%m-%d}** · {df_win['order_name'].nunique():,} orders")
 
     # ---- Cost the FULL frame first, THEN filter ----
     # Marketing spend is allocated across each period's whole-store revenue, so

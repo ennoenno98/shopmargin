@@ -154,18 +154,28 @@ def main():
     with st.container(border=True):
         c = st.columns([1.5, 1.3, 1.6, 2])
         period = c[0].selectbox("Period", ["Full range", "Last 365 days", "Last 180 days",
-                                           "Last 90 days", "Last 30 days"], index=0)
+                                           "Last 90 days", "Last 30 days", "Custom range"], index=0)
         gran = c[1].radio("Bucket", ["Month", "Quarter"], horizontal=True)
         min_demand = c[2].slider("Min demand (units/day)", 0.0, 10.0, 3.0, 0.5,
                                  help="Keep only SKUs whose all-history sales rate clears this floor.")
         search = c[3].text_input("SKU or Product contains", "")
+        custom = None
+        if period == "Custom range":
+            dmin, dmax = hist["date"].min(), hist["date"].max()
+            cc = st.columns([1, 1, 4])
+            custom = (cc[0].date_input("From", value=dmin.date(), min_value=dmin.date(), max_value=dmax.date()),
+                      cc[1].date_input("To", value=dmax.date(), min_value=dmin.date(), max_value=dmax.date()))
 
     hist_f, costed_f = hist, costed
-    if period != "Full range":
+    cdate = pd.to_datetime(costed["order_date"], errors="coerce")
+    if period == "Custom range" and custom:
+        start, end_excl = pd.Timestamp(custom[0]), pd.Timestamp(custom[1]) + pd.Timedelta(days=1)
+        hist_f = hist[(hist["date"] >= start) & (hist["date"] < end_excl)]
+        costed_f = costed[(cdate >= start) & (cdate < end_excl)]
+    elif period != "Full range":
         days = {"Last 365 days": 365, "Last 180 days": 180, "Last 90 days": 90, "Last 30 days": 30}[period]
         cutoff = hist["date"].max() - pd.Timedelta(days=days)
         hist_f = hist[hist["date"] >= cutoff]
-        cdate = pd.to_datetime(costed["order_date"], errors="coerce")
         costed_f = costed[cdate >= cutoff]
 
     imp = oos_impact.compute_impact(hist_f, costed_f, gran=gran, min_demand=min_demand)
