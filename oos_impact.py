@@ -10,7 +10,9 @@ Model, per (SKU, time-bucket):
     oos_days     = history days with on_hand <= 0
     demand_rate  = units sold / stock_days        (units/day while sellable;
                    falls back to the SKU's all-history rate when a bucket has
-                   no in-stock days)
+                   no in-stock days). Only sales on days that HAVE a stock
+                   reading for the SKU count, so a gap in the stock history
+                   can't divide many days of sales by a few observed days.
     lost_units   = demand_rate * oos_days
     lost_revenue = lost_units * avg selling price
     lost_cm3     = lost_units * CM3 per unit
@@ -81,6 +83,9 @@ def compute_impact(history: pd.DataFrame, costed: pd.DataFrame, *, gran: str = "
     sb["stock_days"] = sb["days"] - sb["oos_days"]
 
     sales = daily_sales(costed)
+    # Count only sales on observed (sku, day)s — the numerator must cover the
+    # same days as the stock_days denominator, or history gaps inflate demand.
+    sales = sales.merge(h[["sku", "day"]].drop_duplicates(), on=["sku", "day"], how="inner")
     if not sales.empty:
         sales["bucket_start"], sales["bucket"] = bucketize(sales["day"], gran)
         salesb = sales.groupby(["sku", "bucket"], as_index=False).agg(
@@ -237,5 +242,10 @@ if __name__ == "__main__":
     assert len(ev) == 1 and ev.iloc[0]["days"] == 31, ev
     assert abs(ev.iloc[0]["lost_cm3"] - 248.0) < 1e-6, ev.iloc[0]["lost_cm3"]
     assert by_sku(imp).iloc[0]["sku"] == "A"
+    # Gap in the stock history: sales on unobserved days must not inflate demand.
+    gap_hist = hist[hist["date"].dt.month != 4]                 # April unobserved
+    gap = compute_impact(gap_hist, costed, gran="Month", min_demand=0.5)
+    assert abs(gap.groupby("sku")["units"].sum().iloc[0] - 62.0) < 1e-6   # March only
+    assert abs(gap[gap["bucket"] == "May 2026"].iloc[0]["lost_units"] - 62.0) < 1e-6
     print("oos_impact self-test OK")
     print(bb.to_string(index=False))
