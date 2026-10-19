@@ -106,6 +106,14 @@ OOS rate     = lost ÷ (sold + lost) units
 A `Min demand (units/day)` floor focuses on SKUs that actually sell. The pure
 engine is **`oos_impact.py`** (`python oos_impact.py` runs a self-test).
 
+**Clusters.** SKUs carry their JTL `ABCD-Cluster` (A–D, plus NPL = new launch,
+EOL = end of life; SKUs without one — e.g. bundle sets — are *Unclustered*).
+They drive a **Cluster** filter and the **🧩 Clusters** tab: a 4×4 matrix of ABCD
+cluster × OOS severity (share of demand lost: in stock · <10% · 10–30% · ≥30%),
+coloured by lost CM3 / lost revenue / SKU count, with per-cluster totals and a
+cell drill-down. To refresh the mapping, export *Eigene Felder Artikel* from JTL
+and run `python clusters.py --import <export.csv>` (writes `data/sku_clusters.csv`).
+
 ### Stock history — the time series both rely on
 
 The Products export is overwritten daily, so it only carries the *current*
@@ -155,6 +163,7 @@ oos_app.py               # OOS Impact Analytics dashboard UI (deploy as a 2nd ap
 margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
 oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) engine
 stock_history.py         # pure stock-history engine: assemble / load / per-SKU series
+clusters.py              # JTL ABCD-Cluster import + cluster × OOS-severity matrix
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 refresh_stock_history.py # one-off deep backfill from the Shopify Admin API (ShopifyQL)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)

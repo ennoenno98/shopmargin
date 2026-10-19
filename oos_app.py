@@ -19,6 +19,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+import clusters
 import data_source
 import margin
 import matrixify_client
@@ -31,13 +32,16 @@ st.set_page_config(page_title="Shopify OOS Impact Analytics", page_icon="📦", 
 CFG = load_config()
 STOCK_HISTORY_FILE = "data/stock_history.csv"
 ORANGE, RED, NAVY, GREY = "#F4A259", "#E76F51", "#1F3864", "#B7B7B7"
+CLUSTER_COLORS = {"A": NAVY, "B": "#3D6AA8", "C": "#8FB0D9", "D": "#C9D6E8",
+                  "NPL": "#2A9D8F", "EOL": "#9B5DE5", clusters.UNCLUSTERED: GREY}
 
 
 def _sig(cfg: dict) -> str:
     parts = []
     for p in ((cfg.get("source") or {}).get("orders_file", ""),
               (cfg.get("source") or {}).get("products_file", ""),
-              cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE, "config.yaml"):
+              cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE, "config.yaml",
+              clusters.CLUSTER_FILE):
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
     return "|".join(parts)
 
@@ -55,7 +59,7 @@ def load(orders_file: str, products_file: str, tz: str, spend_file: str, sig: st
     hist = stock_history.load_stock_history(STOCK_HISTORY_FILE)
     spend = spend_table(load_marketing(spend_file), CFG["marketing"].get("grain", "day"))
     costed = margin.compute_costs(df, CFG, spend) if not df.empty else df
-    return mode, inv, hist, costed
+    return mode, inv, hist, costed, clusters.load_clusters(clusters.CLUSTER_FILE)
 
 
 # --------------------------------------------------------------------------- #
@@ -108,12 +112,117 @@ def oos_calendar(hist_f: pd.DataFrame, skus: list[str]):
     return fig
 
 
+METRICS = {"Lost CM3 (€)": "lost_cm3", "Lost revenue (€)": "lost_revenue", "SKU count": "skus"}
+
+
+def cluster_heatmap(mx: pd.DataFrame, metric: str):
+    """4×4 matrix: ABCD cluster (rows) × OOS severity (cols), coloured by `metric`."""
+    rows, cols = clusters.ABCD, clusters.TIERS
+    val = mx.pivot(index="cluster", columns="tier", values=metric).reindex(index=rows, columns=cols)
+    cnt = mx.pivot(index="cluster", columns="tier", values="skus").reindex(index=rows, columns=cols).fillna(0)
+    n = cnt.astype(int).map(lambda k: f"{k} SKU" if k == 1 else f"{k} SKUs")
+    text = n if metric == "skus" else "<b>€" + val.map(lambda v: f"{v:,.0f}") + "</b><br>" + n
+    # empty cells stay blank (transparent, no text) so the populated ones stand out
+    val, text = val.where(cnt > 0), text.where(cnt > 0, "")
+    scale = ([[0, "#F2F5FA"], [1, "#7FA0CF"]] if metric == "skus"
+             else [[0, "#FBF5EF"], [0.5, ORANGE], [1, RED]])
+    fig = go.Figure(go.Heatmap(
+        z=val.values, x=cols, y=[f"Cluster {r}" for r in rows], text=text.values,
+        texttemplate="%{text}", textfont=dict(size=15, color="#1a1a1a"),
+        colorscale=scale, showscale=False, xgap=6, ygap=6,
+        hovertemplate="%{y} · %{x}<br>%{text}<extra></extra>"))
+    fig.update_layout(height=430, margin=dict(t=10, b=0, l=0, r=0),
+                      xaxis=dict(side="top", title="OOS severity — share of demand lost",
+                                 tickfont=dict(size=13)),
+                      yaxis=dict(autorange="reversed", tickfont=dict(size=14)),
+                      plot_bgcolor="rgba(0,0,0,0)")
+    return fig
+
+
+def cluster_bar(sm: pd.DataFrame):
+    """Lost CM3 per cluster (all clusters incl. lifecycle / unclustered)."""
+    fig = go.Figure(go.Bar(
+        x=sm["lost_cm3"], y=sm["cluster"], orientation="h",
+        marker_color=[CLUSTER_COLORS.get(c, GREY) for c in sm["cluster"]],
+        text=[f"€{v:,.0f}" for v in sm["lost_cm3"]], textposition="outside", cliponaxis=False,
+        hovertemplate="%{y}<br>Lost CM3 €%{x:,.0f}<extra></extra>"))
+    top = float(sm["lost_cm3"].max() or 1)
+    fig.update_layout(height=430, margin=dict(t=10, b=0, l=0, r=10),
+                      xaxis=dict(title="Lost CM3 (€)", range=[0, top * 1.3]),
+                      yaxis=dict(autorange="reversed"))
+    return fig
+
+
+def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.DataFrame):
+    if not cmap:
+        st.info("No cluster mapping found. Import a JTL 'Eigene Felder Artikel' export with "
+                "`python clusters.py --import <file.csv>` (writes `data/sku_clusters.csv`).")
+        return
+    view = clusters.sku_view(sku_tot, cmap)
+    sm = clusters.summary(view)
+
+    st.markdown("**ABCD × OOS severity** — each cell holds the SKUs of that cluster whose share "
+                "of demand lost to stock-outs falls in that band.")
+    metric_lbl = st.radio("Colour by", list(METRICS), horizontal=True, key="cl_metric")
+    left, right = st.columns([3, 2])
+    left.plotly_chart(cluster_heatmap(clusters.matrix(view), METRICS[metric_lbl]),
+                      use_container_width=True)
+    with right:
+        st.markdown("**Lost CM3 by cluster**")
+        st.plotly_chart(cluster_bar(sm), use_container_width=True)
+
+    life = sm.set_index("cluster")
+    cards = st.columns(3)
+    for col, name, desc in zip(cards, ["NPL", "EOL", clusters.UNCLUSTERED],
+                               ["new launches", "end of life", "no JTL cluster (e.g. sets)"]):
+        if name in life.index:
+            r = life.loc[name]
+            col.metric(f"{name} · {desc}", f"€{r['lost_cm3']:,.0f} lost CM3")
+            col.caption(f"{int(r['skus_oos'])} of {int(r['skus'])} SKUs went OOS")
+        else:
+            col.metric(f"{name} · {desc}", "—")
+            col.caption("no SKUs in view")
+
+    st.markdown("**Cluster summary**")
+    tbl = sm[["cluster", "skus", "skus_oos", "oos_rate", "lost_revenue", "lost_cm3",
+              "share_lost_cm3"]].rename(columns={
+        "cluster": "Cluster", "skus": "SKUs", "skus_oos": "SKUs went OOS", "oos_rate": "OOS rate",
+        "lost_revenue": "Lost rev (€)", "lost_cm3": "Lost CM3 (€)", "share_lost_cm3": "Share of lost CM3"})
+    st.dataframe(tbl.style.format({"OOS rate": "{:.1f}%", "Lost rev (€)": "€{:,.0f}",
+                                   "Lost CM3 (€)": "€{:,.0f}", "Share of lost CM3": "{:.1f}%"}),
+                 use_container_width=True, hide_index=True)
+
+    st.markdown("**Drill into a cell**")
+    d1, d2 = st.columns(2)
+    present = [c for c in clusters.CLUSTER_ORDER if c in set(view["cluster"])]
+    cl = d1.selectbox("Cluster", present, key="cl_pick")
+    tr = d2.selectbox("OOS severity", ["All"] + clusters.TIERS, key="cl_tier")
+    sub = view[view["cluster"] == cl]
+    if tr != "All":
+        sub = sub[sub["tier"] == tr]
+    on_hand = inv["on_hand"] if inv is not None and "on_hand" in getattr(inv, "columns", []) else pd.Series(dtype=float)
+    cell = pd.DataFrame({
+        "SKU": sub["sku"], "Product": sub["sku"].map(lambda s: str(titles.get(s, ""))),
+        "OOS severity": sub["tier"], "OOS rate": sub["oos_rate"], "OOS days": sub["oos_days"],
+        "Lost units": sub["lost_units"], "Lost rev (€)": sub["lost_revenue"],
+        "Lost CM3 (€)": sub["lost_cm3"], "On hand now": sub["sku"].map(on_hand),
+    }).sort_values("Lost CM3 (€)", ascending=False)
+    st.caption(f"{len(cell):,} SKUs in {cl} · {tr}")
+    st.dataframe(cell.style.format({"OOS rate": "{:.1f}%", "OOS days": "{:,.0f}", "Lost units": "{:,.0f}",
+                                    "Lost rev (€)": "€{:,.0f}", "Lost CM3 (€)": "€{:,.0f}",
+                                    "On hand now": "{:,.0f}"}, na_rep="—"),
+                 use_container_width=True, hide_index=True, height=360)
+    st.download_button("⬇️ Download cluster view (CSV)",
+                       view.assign(product=view["sku"].map(lambda s: str(titles.get(s, ""))))
+                       .to_csv(index=False).encode("utf-8"), "shopify_oos_clusters.csv", "text/csv")
+
+
 # --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
 def main():
     src = CFG["source"]
-    mode, inv, hist, costed = load(
+    mode, inv, hist, costed, cmap = load(
         src["orders_file"], src["products_file"], CFG.get("timezone", "Europe/Berlin"),
         CFG["marketing"]["spend_file"], _sig(CFG))
 
@@ -171,6 +280,10 @@ def main():
         r2 = st.columns([2, 3])
         min_demand = r2[0].slider("Min demand (units/day)", 0.0, 10.0, 3.0, 0.5,
                                   help="Keep only SKUs whose all-history sales rate clears this floor.")
+        sel_clusters = r2[1].multiselect(
+            "Cluster", clusters.CLUSTER_ORDER, placeholder="All clusters",
+            help="JTL ABCD-Cluster (A–D), plus NPL = new product launch, EOL = end of life. "
+                 "SKUs with no JTL cluster (e.g. bundle sets) are 'Unclustered'.") if cmap else []
 
     if start > end:
         start, end = end, start
@@ -187,6 +300,9 @@ def main():
         keep = {sku for sku in imp["sku"].unique()
                 if s in sku.lower() or s in str(titles.get(sku, "")).lower()}
         imp = imp[imp["sku"].isin(keep)]
+    if sel_clusters:
+        imp = imp[clusters.assign(imp["sku"], cmap).isin(sel_clusters)]
+    cluster_of = lambda s: cmap.get(s, clusters.UNCLUSTERED)  # noqa: E731
 
     # ---- KPIs ----
     t = oos_impact.totals(imp)
@@ -209,13 +325,18 @@ def main():
 
     sku_tot = oos_impact.by_sku(imp)
     events = oos_impact.stockout_events(hist_f, imp)
+    events = events[events["sku"].isin(set(imp["sku"]))]   # honour search / cluster filters
 
-    tab_aff, tab_cal, tab_ev = st.tabs(["Most affected SKUs", "Stock-out calendar", "Stock-out events"])
+    tab_cl, tab_aff, tab_cal, tab_ev = st.tabs(
+        ["🧩 Clusters", "Most affected SKUs", "Stock-out calendar", "Stock-out events"])
+
+    with tab_cl:
+        render_clusters(sku_tot, cmap, titles, inv)
 
     with tab_aff:
         n = st.slider("Show top N SKUs by lost CM3", 5, 50, min(15, max(5, len(sku_tot))))
         top = sku_tot.head(n).copy()
-        top["label"] = top["sku"].map(lambda s: f"{s} · {str(titles.get(s, ''))[:32]}")
+        top["label"] = top["sku"].map(lambda s: f"[{cluster_of(s)}] {s} · {str(titles.get(s, ''))[:32]}")
         bar = go.Figure(go.Bar(
             x=top["lost_cm3"], y=top["label"], orientation="h", marker_color=RED,
             hovertemplate="%{y}<br>Lost CM3 €%{x:,.0f}<extra></extra>"))
@@ -251,7 +372,8 @@ def main():
         else:
             ev = events.copy()
             ev["Product"] = ev["sku"].map(lambda s: str(titles.get(s, "")))
-            show = ev[["sku", "Product", "start", "end", "days", "lost_units",
+            ev["Cluster"] = ev["sku"].map(cluster_of)
+            show = ev[["sku", "Product", "Cluster", "start", "end", "days", "lost_units",
                        "lost_revenue", "lost_cm3"]].rename(columns={
                 "sku": "SKU", "start": "Out since", "end": "Until", "days": "Days OOS",
                 "lost_units": "Lost units", "lost_revenue": "Lost rev (€)", "lost_cm3": "Lost CM3 (€)"})
