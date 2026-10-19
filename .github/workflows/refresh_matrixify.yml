@@ -50,5 +50,8 @@ jobs:
             echo "No changes."
           else
             git commit -m "chore: refresh Matrixify exports ($(date -u +%Y-%m-%d))"
+            # The export takes hours; the branch may have moved meanwhile, so
+            # rebase onto it before pushing (data files only, no conflicts).
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
