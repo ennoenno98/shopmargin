@@ -49,6 +49,7 @@ date,sku,on_hand,source
 2026-07-14,2R-49NC-R697,1015,git
 2026-07-15,2R-49NC-R697,1014,git
 2026-07-16,2R-49NC-R697,1008,matrixify
+2026-10-19,2R-49NC-R697,4473,matrixify
 2026-06-04,Active_Lifestyle_Set_3,687,git
 2026-06-05,Active_Lifestyle_Set_3,681,git
 2026-06-06,Active_Lifestyle_Set_3,680,git
@@ -92,6 +93,7 @@ date,sku,on_hand,source
 2026-07-14,Active_Lifestyle_Set_3,804,git
 2026-07-15,Active_Lifestyle_Set_3,800,git
 2026-07-16,Active_Lifestyle_Set_3,791,matrixify
+2026-10-19,Active_Lifestyle_Set_3,-4,matrixify
 2026-06-04,Agility_Set_3,962,git
 2026-06-05,Agility_Set_3,961,git
 2026-06-06,Agility_Set_3,961,git
@@ -135,6 +137,7 @@ date,sku,on_hand,source
 2026-07-14,Agility_Set_3,284,git
 2026-07-15,Agility_Set_3,280,git
 2026-07-16,Agility_Set_3,279,matrixify
+2026-10-19,Agility_Set_3,77,matrixify
 2026-06-04,BJ-E223-8EKW,3068,git
 2026-06-05,BJ-E223-8EKW,3067,git
 2026-06-06,BJ-E223-8EKW,3066,git
@@ -178,6 +181,7 @@ date,sku,on_hand,source
 2026-07-14,BJ-E223-8EKW,18757,git
 2026-07-15,BJ-E223-8EKW,18757,git
 2026-07-16,BJ-E223-8EKW,18757,matrixify
+2026-10-19,BJ-E223-8EKW,20678,matrixify
 2026-06-04,Beauty_Set_3-0,384,git
 2026-06-05,Beauty_Set_3-0,383,git
 2026-06-06,Beauty_Set_3-0,383,git
@@ -221,6 +225,7 @@ date,sku,on_hand,source
 2026-07-14,Beauty_Set_3-0,145,git
 2026-07-15,Beauty_Set_3-0,143,git
 2026-07-16,Beauty_Set_3-0,141,matrixify
+2026-10-19,Beauty_Set_3-0,0,matrixify
 2026-06-04,CP-DQMG-RVN9,1166,git
 2026-06-05,CP-DQMG-RVN9,1166,git
 2026-06-06,CP-DQMG-RVN9,1164,git
@@ -264,6 +269,7 @@ date,sku,on_hand,source
 2026-07-14,CP-DQMG-RVN9,566,git
 2026-07-15,CP-DQMG-RVN9,564,git
 2026-07-16,CP-DQMG-RVN9,564,matrixify
+2026-10-19,CP-DQMG-RVN9,502,matrixify
 2026-06-04,CW-KVIN-V39Y,166,git
 2026-06-05,CW-KVIN-V39Y,126,git
 2026-06-06,CW-KVIN-V39Y,126,git
@@ -307,6 +313,7 @@ date,sku,on_hand,source
 2026-07-14,CW-KVIN-V39Y,0,git
 2026-07-15,CW-KVIN-V39Y,-2,git
 2026-07-16,CW-KVIN-V39Y,-2,matrixify
+2026-10-19,CW-KVIN-V39Y,8,matrixify
 2026-06-04,Daily_Vegan_Set,25,git
 2026-06-05,Daily_Vegan_Set,23,git
 2026-06-06,Daily_Vegan_Set,21,git
@@ -350,6 +357,7 @@ date,sku,on_hand,source
 2026-07-14,Daily_Vegan_Set,-5,git
 2026-07-15,Daily_Vegan_Set,-5,git
 2026-07-16,Daily_Vegan_Set,-5,matrixify
+2026-10-19,Daily_Vegan_Set,1799,matrixify
 2026-06-04,Detox_Set_3,191,git
 2026-06-05,Detox_Set_3,11,git
 2026-06-06,Detox_Set_3,10,git
@@ -393,6 +401,7 @@ date,sku,on_hand,source
 2026-07-14,Detox_Set_3,16,git
 2026-07-15,Detox_Set_3,15,git
 2026-07-16,Detox_Set_3,12,matrixify
+2026-10-19,Detox_Set_3,-1,matrixify
 2026-06-04,Digestion_Health_Set_3,141,git
 2026-06-05,Digestion_Health_Set_3,130,git
 2026-06-06,Digestion_Health_Set_3,130,git
@@ -436,6 +445,7 @@ date,sku,on_hand,source
 2026-07-14,Digestion_Health_Set_3,211,git
 2026-07-15,Digestion_Health_Set_3,211,git
 2026-07-16,Digestion_Health_Set_3,211,matrixify
+2026-10-19,Digestion_Health_Set_3,35,matrixify
 2026-06-04,Dreamcatcher_Set_3,0,git
 2026-06-05,Dreamcatcher_Set_3,-10,git
 2026-06-06,Dreamcatcher_Set_3,-10,git
@@ -479,6 +489,7 @@ date,sku,on_hand,source
 2026-07-14,Dreamcatcher_Set_3,131,git
 2026-07-15,Dreamcatcher_Set_3,131,git
 2026-07-16,Dreamcatcher_Set_3,129,matrixify
+2026-10-19,Dreamcatcher_Set_3,13,matrixify
 2026-06-04,Emotional_Balance_Set_3,0,git
 2026-06-05,Emotional_Balance_Set_3,-10,git
 2026-06-06,Emotional_Balance_Set_3,-10,git
@@ -522,6 +533,7 @@ date,sku,on_hand,source
 2026-07-14,Emotional_Balance_Set_3,219,git
 2026-07-15,Emotional_Balance_Set_3,216,git
 2026-07-16,Emotional_Balance_Set_3,215,matrixify
+2026-10-19,Emotional_Balance_Set_3,777,matrixify
 2026-06-04,Energy_Set_3,-5,git
 2026-06-05,Energy_Set_3,-5,git
 2026-06-06,Energy_Set_3,-5,git
@@ -565,6 +577,7 @@ date,sku,on_hand,source
 2026-07-14,Energy_Set_3,1069,git
 2026-07-15,Energy_Set_3,1069,git
 2026-07-16,Energy_Set_3,1069,matrixify
+2026-10-19,Energy_Set_3,0,matrixify
 2026-06-04,Everyday_Essentials_Set,0,git
 2026-06-05,Everyday_Essentials_Set,0,git
 2026-06-06,Everyday_Essentials_Set,0,git
@@ -608,6 +621,7 @@ date,sku,on_hand,source
 2026-07-14,Everyday_Essentials_Set,339,git
 2026-07-15,Everyday_Essentials_Set,335,git
 2026-07-16,Everyday_Essentials_Set,313,matrixify
+2026-10-19,Everyday_Essentials_Set,1857,matrixify
 2026-06-04,General_Health_Set_3,0,git
 2026-06-05,General_Health_Set_3,0,git
 2026-06-06,General_Health_Set_3,0,git
@@ -651,6 +665,7 @@ date,sku,on_hand,source
 2026-07-14,General_Health_Set_3,0,git
 2026-07-15,General_Health_Set_3,0,git
 2026-07-16,General_Health_Set_3,0,matrixify
+2026-10-19,General_Health_Set_3,1508,matrixify
 2026-06-04,Gut_Flora_Set,141,git
 2026-06-05,Gut_Flora_Set,130,git
 2026-06-06,Gut_Flora_Set,130,git
@@ -694,6 +709,7 @@ date,sku,on_hand,source
 2026-07-14,Gut_Flora_Set,211,git
 2026-07-15,Gut_Flora_Set,211,git
 2026-07-16,Gut_Flora_Set,211,matrixify
+2026-10-19,Gut_Flora_Set,35,matrixify
 2026-06-04,Hormonal_Blanace_Set_3,-1,git
 2026-06-05,Hormonal_Blanace_Set_3,-1,git
 2026-06-06,Hormonal_Blanace_Set_3,-1,git
@@ -737,6 +753,7 @@ date,sku,on_hand,source
 2026-07-14,Hormonal_Blanace_Set_3,-10,git
 2026-07-15,Hormonal_Blanace_Set_3,-10,git
 2026-07-16,Hormonal_Blanace_Set_3,-10,matrixify
+2026-10-19,Hormonal_Blanace_Set_3,820,matrixify
 2026-06-04,Immune_System_Set_3,1412,git
 2026-06-05,Immune_System_Set_3,1412,git
 2026-06-06,Immune_System_Set_3,1412,git
@@ -780,6 +797,7 @@ date,sku,on_hand,source
 2026-07-14,Immune_System_Set_3,339,git
 2026-07-15,Immune_System_Set_3,335,git
 2026-07-16,Immune_System_Set_3,313,matrixify
+2026-10-19,Immune_System_Set_3,1071,matrixify
 2026-06-04,Menopause_Set,356,git
 2026-06-05,Menopause_Set,100,git
 2026-06-06,Menopause_Set,100,git
@@ -823,6 +841,7 @@ date,sku,on_hand,source
 2026-07-14,Menopause_Set,284,git
 2026-07-15,Menopause_Set,280,git
 2026-07-16,Menopause_Set,279,matrixify
+2026-10-19,Menopause_Set,64,matrixify
 2026-06-04,Mental_Focus_Set_3,381,git
 2026-06-05,Mental_Focus_Set_3,381,git
 2026-06-06,Mental_Focus_Set_3,381,git
@@ -866,6 +885,7 @@ date,sku,on_hand,source
 2026-07-14,Mental_Focus_Set_3,339,git
 2026-07-15,Mental_Focus_Set_3,335,git
 2026-07-16,Mental_Focus_Set_3,313,matrixify
+2026-10-19,Mental_Focus_Set_3,12,matrixify
 2026-06-04,NX-CVPF-VCEZ,120,git
 2026-06-05,NX-CVPF-VCEZ,116,git
 2026-06-06,NX-CVPF-VCEZ,116,git
@@ -909,6 +929,7 @@ date,sku,on_hand,source
 2026-07-14,NX-CVPF-VCEZ,141,git
 2026-07-15,NX-CVPF-VCEZ,137,git
 2026-07-16,NX-CVPF-VCEZ,137,matrixify
+2026-10-19,NX-CVPF-VCEZ,2441,matrixify
 2026-06-04,Performance_Push_Set_3,-11,git
 2026-06-05,Performance_Push_Set_3,-11,git
 2026-06-06,Performance_Push_Set_3,-11,git
@@ -952,6 +973,7 @@ date,sku,on_hand,source
 2026-07-14,Performance_Push_Set_3,-10,git
 2026-07-15,Performance_Push_Set_3,-11,git
 2026-07-16,Performance_Push_Set_3,-12,matrixify
+2026-10-19,Performance_Push_Set_3,-10,matrixify
 2026-06-04,Regeneration_Set_3,337,git
 2026-06-05,Regeneration_Set_3,13,git
 2026-06-06,Regeneration_Set_3,12,git
@@ -995,6 +1017,7 @@ date,sku,on_hand,source
 2026-07-14,Regeneration_Set_3,495,git
 2026-07-15,Regeneration_Set_3,494,git
 2026-07-16,Regeneration_Set_3,493,matrixify
+2026-10-19,Regeneration_Set_3,53,matrixify
 2026-06-04,Sunkissed-Set,139,git
 2026-06-05,Sunkissed-Set,135,git
 2026-06-06,Sunkissed-Set,133,git
@@ -1038,6 +1061,7 @@ date,sku,on_hand,source
 2026-07-14,Sunkissed-set,14,git
 2026-07-15,Sunkissed-set,14,git
 2026-07-16,Sunkissed-set,13,matrixify
+2026-10-19,Sunkissed-set,0,matrixify
 2026-06-04,TU-QNYD-JRRX,0,git
 2026-06-05,TU-QNYD-JRRX,0,git
 2026-06-06,TU-QNYD-JRRX,0,git
@@ -1081,6 +1105,7 @@ date,sku,on_hand,source
 2026-07-14,TU-QNYD-JRRX,672,git
 2026-07-15,TU-QNYD-JRRX,670,git
 2026-07-16,TU-QNYD-JRRX,670,matrixify
+2026-10-19,TU-QNYD-JRRX,2375,matrixify
 2026-06-04,VI-ZU99-SZ0B,397,git
 2026-06-05,VI-ZU99-SZ0B,140,git
 2026-06-06,VI-ZU99-SZ0B,139,git
@@ -1124,6 +1149,7 @@ date,sku,on_hand,source
 2026-07-14,VI-ZU99-SZ0B,311,git
 2026-07-15,VI-ZU99-SZ0B,310,git
 2026-07-16,VI-ZU99-SZ0B,310,matrixify
+2026-10-19,VI-ZU99-SZ0B,954,matrixify
 2026-06-04,VV-ALO-06,1792,git
 2026-06-05,VV-ALO-06,1792,git
 2026-06-06,VV-ALO-06,1792,git
@@ -1167,6 +1193,7 @@ date,sku,on_hand,source
 2026-07-14,VV-ALO-06,1025,git
 2026-07-15,VV-ALO-06,1023,git
 2026-07-16,VV-ALO-06,1021,matrixify
+2026-10-19,VV-ALO-06,8,matrixify
 2026-06-04,VV-VITA-02,337,git
 2026-06-05,VV-VITA-02,165,git
 2026-06-06,VV-VITA-02,165,git
@@ -1210,6 +1237,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-02,51,git
 2026-07-15,VV-VITA-02,51,git
 2026-07-16,VV-VITA-02,50,matrixify
+2026-10-19,VV-VITA-02,340,matrixify
 2026-06-04,VV-VITA-101,388,git
 2026-06-05,VV-VITA-101,384,git
 2026-06-06,VV-VITA-101,380,git
@@ -1253,6 +1281,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-101,70,git
 2026-07-15,VV-VITA-101,70,git
 2026-07-16,VV-VITA-101,69,matrixify
+2026-10-19,VV-VITA-101,2169,matrixify
 2026-06-04,VV-VITA-102,322,git
 2026-06-05,VV-VITA-102,319,git
 2026-06-06,VV-VITA-102,319,git
@@ -1296,6 +1325,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-102,846,git
 2026-07-15,VV-VITA-102,846,git
 2026-07-16,VV-VITA-102,846,matrixify
+2026-10-19,VV-VITA-102,88,matrixify
 2026-06-04,VV-VITA-104,640,git
 2026-06-05,VV-VITA-104,640,git
 2026-06-06,VV-VITA-104,640,git
@@ -1339,6 +1369,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-104,1066,git
 2026-07-15,VV-VITA-104,1066,git
 2026-07-16,VV-VITA-104,1066,matrixify
+2026-10-19,VV-VITA-104,-361,matrixify
 2026-06-04,VV-VITA-105,447,git
 2026-06-05,VV-VITA-105,87,git
 2026-06-06,VV-VITA-105,87,git
@@ -1382,6 +1413,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-105,100,git
 2026-07-15,VV-VITA-105,99,git
 2026-07-16,VV-VITA-105,99,matrixify
+2026-10-19,VV-VITA-105,1685,matrixify
 2026-06-04,VV-VITA-106,0,git
 2026-06-05,VV-VITA-106,0,git
 2026-06-06,VV-VITA-106,0,git
@@ -1425,6 +1457,8 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-106,-10,git
 2026-07-15,VV-VITA-106,-10,git
 2026-07-16,VV-VITA-106,-10,matrixify
+2026-10-19,VV-VITA-106,-3,matrixify
+2026-10-19,VV-VITA-106-kopie,553,matrixify
 2026-06-04,VV-VITA-107,683,git
 2026-06-05,VV-VITA-107,104,git
 2026-06-06,VV-VITA-107,104,git
@@ -1468,6 +1502,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-107,312,git
 2026-07-15,VV-VITA-107,312,git
 2026-07-16,VV-VITA-107,312,matrixify
+2026-10-19,VV-VITA-107,34,matrixify
 2026-06-04,VV-VITA-109,191,git
 2026-06-05,VV-VITA-109,11,git
 2026-06-06,VV-VITA-109,10,git
@@ -1511,6 +1546,8 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-109,16,git
 2026-07-15,VV-VITA-109,15,git
 2026-07-16,VV-VITA-109,15,matrixify
+2026-10-19,VV-VITA-109,28,matrixify
+2026-10-19,VV-VITA-109-copy,0,matrixify
 2026-06-04,VV-VITA-111,539,git
 2026-06-05,VV-VITA-111,179,git
 2026-06-06,VV-VITA-111,179,git
@@ -1554,6 +1591,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-111,816,git
 2026-07-15,VV-VITA-111,816,git
 2026-07-16,VV-VITA-111,815,matrixify
+2026-10-19,VV-VITA-111,1183,matrixify
 2026-06-04,VV-VITA-115,-10,git
 2026-06-05,VV-VITA-115,-10,git
 2026-06-06,VV-VITA-115,-10,git
@@ -1597,6 +1635,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-115,-10,git
 2026-07-15,VV-VITA-115,-10,git
 2026-07-16,VV-VITA-115,-10,matrixify
+2026-10-19,VV-VITA-115,1273,matrixify
 2026-06-04,VV-VITA-116,326,git
 2026-06-05,VV-VITA-116,326,git
 2026-06-06,VV-VITA-116,326,git
@@ -1640,6 +1679,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-116,686,git
 2026-07-15,VV-VITA-116,684,git
 2026-07-16,VV-VITA-116,684,matrixify
+2026-10-19,VV-VITA-116,1532,matrixify
 2026-06-04,VV-VITA-119,57,git
 2026-06-05,VV-VITA-119,52,git
 2026-06-06,VV-VITA-119,48,git
@@ -1683,6 +1723,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-119,252,git
 2026-07-15,VV-VITA-119,249,git
 2026-07-16,VV-VITA-119,245,matrixify
+2026-10-19,VV-VITA-119,6866,matrixify
 2026-06-04,VV-VITA-121,461,git
 2026-06-05,VV-VITA-121,100,git
 2026-06-06,VV-VITA-121,100,git
@@ -1726,6 +1767,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-121,859,git
 2026-07-15,VV-VITA-121,858,git
 2026-07-16,VV-VITA-121,857,matrixify
+2026-10-19,VV-VITA-121,674,matrixify
 2026-06-04,VV-VITA-122,1412,git
 2026-06-05,VV-VITA-122,1412,git
 2026-06-06,VV-VITA-122,1412,git
@@ -1769,6 +1811,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-122,1172,git
 2026-07-15,VV-VITA-122,1172,git
 2026-07-16,VV-VITA-122,1172,matrixify
+2026-10-19,VV-VITA-122,4639,matrixify
 2026-06-04,VV-VITA-124,359,git
 2026-06-05,VV-VITA-124,358,git
 2026-06-06,VV-VITA-124,356,git
@@ -1812,6 +1855,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-124,277,git
 2026-07-15,VV-VITA-124,276,git
 2026-07-16,VV-VITA-124,275,matrixify
+2026-10-19,VV-VITA-124,7,matrixify
 2026-06-04,VV-VITA-127,-10,git
 2026-06-05,VV-VITA-127,-10,git
 2026-06-06,VV-VITA-127,-10,git
@@ -1855,6 +1899,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-127,3397,git
 2026-07-15,VV-VITA-127,3392,git
 2026-07-16,VV-VITA-127,3384,matrixify
+2026-10-19,VV-VITA-127,143,matrixify
 2026-06-04,VV-VITA-129,1524,git
 2026-06-05,VV-VITA-129,1523,git
 2026-06-06,VV-VITA-129,1523,git
@@ -1898,6 +1943,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-129,90,git
 2026-07-15,VV-VITA-129,88,git
 2026-07-16,VV-VITA-129,88,matrixify
+2026-10-19,VV-VITA-129,360,matrixify
 2026-06-04,VV-VITA-136,4269,git
 2026-06-05,VV-VITA-136,4268,git
 2026-06-06,VV-VITA-136,4268,git
@@ -1941,6 +1987,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-136,1261,git
 2026-07-15,VV-VITA-136,1260,git
 2026-07-16,VV-VITA-136,1259,matrixify
+2026-10-19,VV-VITA-136,3547,matrixify
 2026-06-04,VV-VITA-142,284,git
 2026-06-05,VV-VITA-142,284,git
 2026-06-06,VV-VITA-142,284,git
@@ -1984,6 +2031,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-142,0,git
 2026-07-15,VV-VITA-142,0,git
 2026-07-16,VV-VITA-142,0,matrixify
+2026-10-19,VV-VITA-142,2108,matrixify
 2026-06-04,VV-VITA-143,-10,git
 2026-06-05,VV-VITA-143,-10,git
 2026-06-06,VV-VITA-143,-10,git
@@ -2016,6 +2064,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-143,3507,git
 2026-07-15,VV-VITA-143,3502,git
 2026-07-16,VV-VITA-143,3500,matrixify
+2026-10-19,VV-VITA-143,1737,matrixify
 2026-06-04,VV-VITA-146,-10,git
 2026-06-05,VV-VITA-146,-10,git
 2026-06-06,VV-VITA-146,-10,git
@@ -2059,6 +2108,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-146,1861,git
 2026-07-15,VV-VITA-146,1859,git
 2026-07-16,VV-VITA-146,1858,matrixify
+2026-10-19,VV-VITA-146,4,matrixify
 2026-06-04,VV-VITA-151,6336,git
 2026-06-05,VV-VITA-151,6335,git
 2026-06-06,VV-VITA-151,6332,git
@@ -2102,6 +2152,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-151,5728,git
 2026-07-15,VV-VITA-151,5728,git
 2026-07-16,VV-VITA-151,5726,matrixify
+2026-10-19,VV-VITA-151,7551,matrixify
 2026-06-04,VV-VITA-153,700,git
 2026-06-05,VV-VITA-153,698,git
 2026-06-06,VV-VITA-153,696,git
@@ -2145,6 +2196,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-153,131,git
 2026-07-15,VV-VITA-153,131,git
 2026-07-16,VV-VITA-153,129,matrixify
+2026-10-19,VV-VITA-153,13,matrixify
 2026-06-04,VV-VITA-155,0,git
 2026-06-05,VV-VITA-155,0,git
 2026-06-06,VV-VITA-155,0,git
@@ -2188,6 +2240,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-155,714,git
 2026-07-15,VV-VITA-155,709,git
 2026-07-16,VV-VITA-155,709,matrixify
+2026-10-19,VV-VITA-155,1245,matrixify
 2026-06-04,VV-VITA-157,421,git
 2026-06-05,VV-VITA-157,414,git
 2026-06-06,VV-VITA-157,414,git
@@ -2231,6 +2284,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-157,798,git
 2026-07-15,VV-VITA-157,798,git
 2026-07-16,VV-VITA-157,797,matrixify
+2026-10-19,VV-VITA-157,5,matrixify
 2026-06-04,VV-VITA-158,1302,git
 2026-06-05,VV-VITA-158,1295,git
 2026-06-06,VV-VITA-158,1290,git
@@ -2274,6 +2328,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-158,804,git
 2026-07-15,VV-VITA-158,800,git
 2026-07-16,VV-VITA-158,791,matrixify
+2026-10-19,VV-VITA-158,77,matrixify
 2026-06-04,VV-VITA-159,718,git
 2026-06-05,VV-VITA-159,710,git
 2026-06-06,VV-VITA-159,704,git
@@ -2317,6 +2372,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-159,-3,git
 2026-07-15,VV-VITA-159,-3,git
 2026-07-16,VV-VITA-159,-3,matrixify
+2026-10-19,VV-VITA-159,5006,matrixify
 2026-06-04,VV-VITA-160,0,git
 2026-06-05,VV-VITA-160,0,git
 2026-06-06,VV-VITA-160,0,git
@@ -2359,6 +2415,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-160,0,git
 2026-07-15,VV-VITA-160,0,git
 2026-07-16,VV-VITA-160,0,matrixify
+2026-10-19,VV-VITA-160,0,matrixify
 2026-06-26,VV-VITA-160-0,0,git
 2026-06-04,VV-VITA-165,2549,git
 2026-06-05,VV-VITA-165,2549,git
@@ -2403,6 +2460,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-165,1128,git
 2026-07-15,VV-VITA-165,1126,git
 2026-07-16,VV-VITA-165,1126,matrixify
+2026-10-19,VV-VITA-165,2613,matrixify
 2026-06-04,VV-VITA-166,544,git
 2026-06-05,VV-VITA-166,544,git
 2026-06-06,VV-VITA-166,544,git
@@ -2446,6 +2504,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-166,836,git
 2026-07-15,VV-VITA-166,836,git
 2026-07-16,VV-VITA-166,836,matrixify
+2026-10-19,VV-VITA-166,909,matrixify
 2026-06-04,VV-VITA-168,139,git
 2026-06-05,VV-VITA-168,135,git
 2026-06-06,VV-VITA-168,133,git
@@ -2489,6 +2548,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-168,14,git
 2026-07-15,VV-VITA-168,14,git
 2026-07-16,VV-VITA-168,13,matrixify
+2026-10-19,VV-VITA-168,0,matrixify
 2026-06-04,VV-VITA-170,1439,git
 2026-06-05,VV-VITA-170,958,git
 2026-06-06,VV-VITA-170,956,git
@@ -2532,6 +2592,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-170,302,git
 2026-07-15,VV-VITA-170,301,git
 2026-07-16,VV-VITA-170,301,matrixify
+2026-10-19,VV-VITA-170,184,matrixify
 2026-06-04,VV-VITA-171,2666,git
 2026-06-05,VV-VITA-171,2665,git
 2026-06-06,VV-VITA-171,2664,git
@@ -2575,6 +2636,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-171,280,git
 2026-07-15,VV-VITA-171,286,git
 2026-07-16,VV-VITA-171,280,matrixify
+2026-10-19,VV-VITA-171,948,matrixify
 2026-06-04,VV-VITA-172,416,git
 2026-06-05,VV-VITA-172,416,git
 2026-06-06,VV-VITA-172,416,git
@@ -2618,6 +2680,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-172,152,git
 2026-07-15,VV-VITA-172,152,git
 2026-07-16,VV-VITA-172,152,matrixify
+2026-10-19,VV-VITA-172,457,matrixify
 2026-06-04,VV-VITA-173,3132,git
 2026-06-05,VV-VITA-173,3128,git
 2026-06-06,VV-VITA-173,3113,git
@@ -2661,6 +2724,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-173,2062,git
 2026-07-15,VV-VITA-173,2061,git
 2026-07-16,VV-VITA-173,2059,matrixify
+2026-10-19,VV-VITA-173,1126,matrixify
 2026-06-04,VV-VITA-174,318,git
 2026-06-05,VV-VITA-174,318,git
 2026-06-06,VV-VITA-174,318,git
@@ -2704,6 +2768,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-174,92,git
 2026-07-15,VV-VITA-174,92,git
 2026-07-16,VV-VITA-174,92,matrixify
+2026-10-19,VV-VITA-174,1284,matrixify
 2026-06-04,VV-VITA-181,37,git
 2026-06-05,VV-VITA-181,37,git
 2026-06-06,VV-VITA-181,37,git
@@ -2747,6 +2812,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-181,0,git
 2026-07-15,VV-VITA-181,0,git
 2026-07-16,VV-VITA-181,0,matrixify
+2026-10-19,VV-VITA-181,0,matrixify
 2026-06-04,VV-VITA-183,273,git
 2026-06-05,VV-VITA-183,273,git
 2026-06-06,VV-VITA-183,273,git
@@ -2790,6 +2856,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-183,71,git
 2026-07-15,VV-VITA-183,70,git
 2026-07-16,VV-VITA-183,69,matrixify
+2026-10-19,VV-VITA-183,43,matrixify
 2026-06-04,VV-VITA-186,-4,git
 2026-06-05,VV-VITA-186,-4,git
 2026-06-06,VV-VITA-186,-5,git
@@ -2833,6 +2900,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-186,-20,git
 2026-07-15,VV-VITA-186,-20,git
 2026-07-16,VV-VITA-186,-20,matrixify
+2026-10-19,VV-VITA-186,1261,matrixify
 2026-06-04,VV-VITA-188,370,git
 2026-06-05,VV-VITA-188,285,git
 2026-06-06,VV-VITA-188,285,git
@@ -2876,6 +2944,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-188,61,git
 2026-07-15,VV-VITA-188,60,git
 2026-07-16,VV-VITA-188,60,matrixify
+2026-10-19,VV-VITA-188,609,matrixify
 2026-06-04,VV-VITA-189,552,git
 2026-06-05,VV-VITA-189,552,git
 2026-06-06,VV-VITA-189,552,git
@@ -2919,6 +2988,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-189,263,git
 2026-07-15,VV-VITA-189,263,git
 2026-07-16,VV-VITA-189,263,matrixify
+2026-10-19,VV-VITA-189,42,matrixify
 2026-06-04,VV-VITA-190,163,git
 2026-06-05,VV-VITA-190,160,git
 2026-06-06,VV-VITA-190,160,git
@@ -2962,6 +3032,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-190,93,git
 2026-07-15,VV-VITA-190,93,git
 2026-07-16,VV-VITA-190,93,matrixify
+2026-10-19,VV-VITA-190,717,matrixify
 2026-06-04,VV-VITA-197,0,git
 2026-06-05,VV-VITA-197,0,git
 2026-06-06,VV-VITA-197,0,git
@@ -3005,6 +3076,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-197,36,git
 2026-07-15,VV-VITA-197,36,git
 2026-07-16,VV-VITA-197,36,matrixify
+2026-10-19,VV-VITA-197,782,matrixify
 2026-06-04,VV-VITA-198,469,git
 2026-06-05,VV-VITA-198,470,git
 2026-06-06,VV-VITA-198,466,git
@@ -3048,6 +3120,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-198,63,git
 2026-07-15,VV-VITA-198,61,git
 2026-07-16,VV-VITA-198,61,matrixify
+2026-10-19,VV-VITA-198,1192,matrixify
 2026-06-04,VV-VITA-199,338,git
 2026-06-05,VV-VITA-199,337,git
 2026-06-06,VV-VITA-199,335,git
@@ -3091,6 +3164,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-199,470,git
 2026-07-15,VV-VITA-199,470,git
 2026-07-16,VV-VITA-199,470,matrixify
+2026-10-19,VV-VITA-199,838,matrixify
 2026-06-04,VV-VITA-202,138,git
 2026-06-05,VV-VITA-202,138,git
 2026-06-06,VV-VITA-202,138,git
@@ -3134,6 +3208,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-202,578,git
 2026-07-15,VV-VITA-202,577,git
 2026-07-16,VV-VITA-202,577,matrixify
+2026-10-19,VV-VITA-202,139,matrixify
 2026-06-04,VV-VITA-203,0,git
 2026-06-05,VV-VITA-203,-10,git
 2026-06-06,VV-VITA-203,-10,git
@@ -3177,6 +3252,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-203,219,git
 2026-07-15,VV-VITA-203,216,git
 2026-07-16,VV-VITA-203,215,matrixify
+2026-10-19,VV-VITA-203,777,matrixify
 2026-06-04,VV-VITA-204,86,git
 2026-06-05,VV-VITA-204,-2,git
 2026-06-06,VV-VITA-204,-2,git
@@ -3220,6 +3296,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-204,53,git
 2026-07-15,VV-VITA-204,49,git
 2026-07-16,VV-VITA-204,46,matrixify
+2026-10-19,VV-VITA-204,422,matrixify
 2026-06-04,VV-VITA-206,311,git
 2026-06-05,VV-VITA-206,311,git
 2026-06-06,VV-VITA-206,310,git
@@ -3263,6 +3340,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-206,1698,git
 2026-07-15,VV-VITA-206,1698,git
 2026-07-16,VV-VITA-206,1696,matrixify
+2026-10-19,VV-VITA-206,233,matrixify
 2026-06-04,VV-VITA-207,2597,git
 2026-06-05,VV-VITA-207,2597,git
 2026-06-06,VV-VITA-207,2597,git
@@ -3306,6 +3384,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-207,2009,git
 2026-07-15,VV-VITA-207,2007,git
 2026-07-16,VV-VITA-207,2004,matrixify
+2026-10-19,VV-VITA-207,1015,matrixify
 2026-06-04,VV-VITA-208,940,git
 2026-06-05,VV-VITA-208,936,git
 2026-06-06,VV-VITA-208,935,git
@@ -3349,6 +3428,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-208,-6,git
 2026-07-15,VV-VITA-208,-6,git
 2026-07-16,VV-VITA-208,-6,matrixify
+2026-10-19,VV-VITA-208,562,matrixify
 2026-06-04,VV-VITA-215,271,git
 2026-06-05,VV-VITA-215,265,git
 2026-06-06,VV-VITA-215,265,git
@@ -3392,6 +3472,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-215,62,git
 2026-07-15,VV-VITA-215,57,git
 2026-07-16,VV-VITA-215,56,matrixify
+2026-10-19,VV-VITA-215,0,matrixify
 2026-06-04,VV-VITA-216,313,git
 2026-06-05,VV-VITA-216,308,git
 2026-06-06,VV-VITA-216,303,git
@@ -3435,6 +3516,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-216,99,git
 2026-07-15,VV-VITA-216,98,git
 2026-07-16,VV-VITA-216,97,matrixify
+2026-10-19,VV-VITA-216,8423,matrixify
 2026-06-04,VV-VITA-222,2532,git
 2026-06-05,VV-VITA-222,2529,git
 2026-06-06,VV-VITA-222,2527,git
@@ -3478,6 +3560,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-222,665,git
 2026-07-15,VV-VITA-222,664,git
 2026-07-16,VV-VITA-222,664,matrixify
+2026-10-19,VV-VITA-222,2047,matrixify
 2026-06-04,VV-VITA-223,4744,git
 2026-06-05,VV-VITA-223,4034,git
 2026-06-06,VV-VITA-223,4028,git
@@ -3521,6 +3604,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-223,339,git
 2026-07-15,VV-VITA-223,335,git
 2026-07-16,VV-VITA-223,313,matrixify
+2026-10-19,VV-VITA-223,5718,matrixify
 2026-06-04,VV-VITA-224,25,git
 2026-06-05,VV-VITA-224,23,git
 2026-06-06,VV-VITA-224,21,git
@@ -3564,6 +3648,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-224,-5,git
 2026-07-15,VV-VITA-224,-5,git
 2026-07-16,VV-VITA-224,-5,matrixify
+2026-10-19,VV-VITA-224,1799,matrixify
 2026-06-04,VV-VITA-225,368,git
 2026-06-05,VV-VITA-225,368,git
 2026-06-06,VV-VITA-225,368,git
@@ -3607,6 +3692,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-225,1395,git
 2026-07-15,VV-VITA-225,1395,git
 2026-07-16,VV-VITA-225,1395,matrixify
+2026-10-19,VV-VITA-225,1574,matrixify
 2026-06-04,VV-VITA-227,356,git
 2026-06-05,VV-VITA-227,160,git
 2026-06-06,VV-VITA-227,160,git
@@ -3650,6 +3736,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-227,0,git
 2026-07-15,VV-VITA-227,0,git
 2026-07-16,VV-VITA-227,0,matrixify
+2026-10-19,VV-VITA-227,64,matrixify
 2026-06-04,VV-VITA-228,1280,git
 2026-06-05,VV-VITA-228,1271,git
 2026-06-06,VV-VITA-228,1268,git
@@ -3693,6 +3780,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-228,2957,git
 2026-07-15,VV-VITA-228,2954,git
 2026-07-16,VV-VITA-228,2951,matrixify
+2026-10-19,VV-VITA-228,2567,matrixify
 2026-06-04,VV-VITA-230,0,git
 2026-06-05,VV-VITA-230,0,git
 2026-06-06,VV-VITA-230,0,git
@@ -3736,6 +3824,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-230,0,git
 2026-07-15,VV-VITA-230,0,git
 2026-07-16,VV-VITA-230,0,matrixify
+2026-10-19,VV-VITA-230,1205,matrixify
 2026-06-04,VV-VITA-231,1092,git
 2026-06-05,VV-VITA-231,1086,git
 2026-06-06,VV-VITA-231,1083,git
@@ -3779,6 +3868,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-231,5357,git
 2026-07-15,VV-VITA-231,5352,git
 2026-07-16,VV-VITA-231,5337,matrixify
+2026-10-19,VV-VITA-231,7806,matrixify
 2026-06-04,VV-VITA-236,0,git
 2026-06-05,VV-VITA-236,0,git
 2026-06-06,VV-VITA-236,0,git
@@ -3822,6 +3912,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-236,0,git
 2026-07-15,VV-VITA-236,0,git
 2026-07-16,VV-VITA-236,0,matrixify
+2026-10-19,VV-VITA-236,0,matrixify
 2026-06-04,VV-VITA-237,266,git
 2026-06-05,VV-VITA-237,266,git
 2026-06-06,VV-VITA-237,266,git
@@ -3865,6 +3956,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-237,131,git
 2026-07-15,VV-VITA-237,128,git
 2026-07-16,VV-VITA-237,126,matrixify
+2026-10-19,VV-VITA-237,-10,matrixify
 2026-06-04,VV-VITA-243,4173,git
 2026-06-05,VV-VITA-243,4153,git
 2026-06-06,VV-VITA-243,4150,git
@@ -3908,6 +4000,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-243,8347,git
 2026-07-15,VV-VITA-243,8340,git
 2026-07-16,VV-VITA-243,8336,matrixify
+2026-10-19,VV-VITA-243,16984,matrixify
 2026-06-04,VV-VITA-247,269,git
 2026-06-05,VV-VITA-247,269,git
 2026-06-06,VV-VITA-247,267,git
@@ -3951,6 +4044,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-247,88,git
 2026-07-15,VV-VITA-247,83,git
 2026-07-16,VV-VITA-247,82,matrixify
+2026-10-19,VV-VITA-247,1544,matrixify
 2026-06-04,VV-VITA-248,5180,git
 2026-06-05,VV-VITA-248,5176,git
 2026-06-06,VV-VITA-248,5176,git
@@ -3994,6 +4088,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-248,8975,git
 2026-07-15,VV-VITA-248,8971,git
 2026-07-16,VV-VITA-248,8968,matrixify
+2026-10-19,VV-VITA-248,11012,matrixify
 2026-06-04,VV-VITA-249,854,git
 2026-06-05,VV-VITA-249,851,git
 2026-06-06,VV-VITA-249,851,git
@@ -4037,6 +4132,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-249,1308,git
 2026-07-15,VV-VITA-249,1306,git
 2026-07-16,VV-VITA-249,1303,matrixify
+2026-10-19,VV-VITA-249,1366,matrixify
 2026-06-04,VV-VITA-250,1222,git
 2026-06-05,VV-VITA-250,737,git
 2026-06-06,VV-VITA-250,737,git
@@ -4080,6 +4176,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-250,2704,git
 2026-07-15,VV-VITA-250,2704,git
 2026-07-16,VV-VITA-250,2702,matrixify
+2026-10-19,VV-VITA-250,1969,matrixify
 2026-06-04,VV-VITA-252,351,git
 2026-06-05,VV-VITA-252,351,git
 2026-06-06,VV-VITA-252,349,git
@@ -4123,6 +4220,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-252,107,git
 2026-07-15,VV-VITA-252,107,git
 2026-07-16,VV-VITA-252,106,matrixify
+2026-10-19,VV-VITA-252,280,matrixify
 2026-06-04,VV-VITA-256,5447,git
 2026-06-05,VV-VITA-256,4543,git
 2026-06-06,VV-VITA-256,4539,git
@@ -4166,6 +4264,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-256,3871,git
 2026-07-15,VV-VITA-256,3865,git
 2026-07-16,VV-VITA-256,3865,matrixify
+2026-10-19,VV-VITA-256,3321,matrixify
 2026-06-04,VV-VITA-257,3041,git
 2026-06-05,VV-VITA-257,3038,git
 2026-06-06,VV-VITA-257,3038,git
@@ -4209,6 +4308,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-257,627,git
 2026-07-15,VV-VITA-257,625,git
 2026-07-16,VV-VITA-257,625,matrixify
+2026-10-19,VV-VITA-257,2829,matrixify
 2026-06-04,VV-VITA-258,320,git
 2026-06-05,VV-VITA-258,320,git
 2026-06-06,VV-VITA-258,320,git
@@ -4252,6 +4352,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-258,77,git
 2026-07-15,VV-VITA-258,77,git
 2026-07-16,VV-VITA-258,77,matrixify
+2026-10-19,VV-VITA-258,-10,matrixify
 2026-06-04,VV-VITA-259,410,git
 2026-06-05,VV-VITA-259,410,git
 2026-06-06,VV-VITA-259,410,git
@@ -4295,6 +4396,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-259,126,git
 2026-07-15,VV-VITA-259,126,git
 2026-07-16,VV-VITA-259,123,matrixify
+2026-10-19,VV-VITA-259,52,matrixify
 2026-06-04,VV-VITA-262,330,git
 2026-06-05,VV-VITA-262,330,git
 2026-06-06,VV-VITA-262,330,git
@@ -4338,6 +4440,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-262,88,git
 2026-07-15,VV-VITA-262,88,git
 2026-07-16,VV-VITA-262,88,matrixify
+2026-10-19,VV-VITA-262,930,matrixify
 2026-06-04,VV-VITA-264,808,git
 2026-06-05,VV-VITA-264,616,git
 2026-06-06,VV-VITA-264,616,git
@@ -4381,6 +4484,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-264,160,git
 2026-07-15,VV-VITA-264,162,git
 2026-07-16,VV-VITA-264,162,matrixify
+2026-10-19,VV-VITA-264,1202,matrixify
 2026-06-13,VV-VITA-265,0,git
 2026-06-14,VV-VITA-265,0,git
 2026-06-15,VV-VITA-265,0,git
@@ -4415,6 +4519,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-265,170,git
 2026-07-15,VV-VITA-265,170,git
 2026-07-16,VV-VITA-265,169,matrixify
+2026-10-19,VV-VITA-265,0,matrixify
 2026-06-04,VV-VITA-266,29910,git
 2026-06-05,VV-VITA-266,29906,git
 2026-06-06,VV-VITA-266,29904,git
@@ -4451,6 +4556,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-266,-11,git
 2026-07-15,VV-VITA-266,-10,git
 2026-07-16,VV-VITA-266,-11,matrixify
+2026-10-19,VV-VITA-266,35959,matrixify
 2026-06-13,VV-VITA-274,0,git
 2026-06-14,VV-VITA-274,0,git
 2026-06-15,VV-VITA-274,0,git
@@ -4485,6 +4591,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-274,346,git
 2026-07-15,VV-VITA-274,346,git
 2026-07-16,VV-VITA-274,346,matrixify
+2026-10-19,VV-VITA-274,380,matrixify
 2026-06-04,VV-VITA-276,1043,git
 2026-06-05,VV-VITA-276,503,git
 2026-06-06,VV-VITA-276,500,git
@@ -4528,6 +4635,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-276,-3,git
 2026-07-15,VV-VITA-276,-3,git
 2026-07-16,VV-VITA-276,-2,matrixify
+2026-10-19,VV-VITA-276,3913,matrixify
 2026-06-04,VV-VITA-277,593,git
 2026-06-05,VV-VITA-277,593,git
 2026-06-06,VV-VITA-277,593,git
@@ -4571,6 +4679,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-277,549,git
 2026-07-15,VV-VITA-277,547,git
 2026-07-16,VV-VITA-277,538,matrixify
+2026-10-19,VV-VITA-277,0,matrixify
 2026-06-04,VV-VITA-284,1678,git
 2026-06-05,VV-VITA-284,1676,git
 2026-06-06,VV-VITA-284,1676,git
@@ -4614,6 +4723,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-284,107,git
 2026-07-15,VV-VITA-284,107,git
 2026-07-16,VV-VITA-284,107,matrixify
+2026-10-19,VV-VITA-284,466,matrixify
 2026-06-04,VV-VITA-286,-10,git
 2026-06-05,VV-VITA-286,-10,git
 2026-06-06,VV-VITA-286,-10,git
@@ -4657,6 +4767,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-286,53,git
 2026-07-15,VV-VITA-286,54,git
 2026-07-16,VV-VITA-286,50,matrixify
+2026-10-19,VV-VITA-286,2565,matrixify
 2026-06-04,VV-VITA-287,498,git
 2026-06-05,VV-VITA-287,493,git
 2026-06-06,VV-VITA-287,493,git
@@ -4700,6 +4811,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-287,1012,git
 2026-07-15,VV-VITA-287,1008,git
 2026-07-16,VV-VITA-287,1006,matrixify
+2026-10-19,VV-VITA-287,4766,matrixify
 2026-06-04,VV-VITA-294,0,git
 2026-06-05,VV-VITA-294,0,git
 2026-06-06,VV-VITA-294,0,git
@@ -4743,6 +4855,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-294,0,git
 2026-07-15,VV-VITA-294,0,git
 2026-07-16,VV-VITA-294,0,matrixify
+2026-10-19,VV-VITA-294,0,matrixify
 2026-06-04,VV-VITA-294 [TEST],0,git
 2026-06-05,VV-VITA-294 [TEST],0,git
 2026-06-06,VV-VITA-294 [TEST],0,git
@@ -4801,6 +4914,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-295,37,git
 2026-07-15,VV-VITA-295,34,git
 2026-07-16,VV-VITA-295,34,matrixify
+2026-10-19,VV-VITA-295,349,matrixify
 2026-06-04,VV-VITA-297,0,git
 2026-06-05,VV-VITA-297,0,git
 2026-06-06,VV-VITA-297,0,git
@@ -4844,6 +4958,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-297,0,git
 2026-07-15,VV-VITA-297,0,git
 2026-07-16,VV-VITA-297,0,matrixify
+2026-10-19,VV-VITA-297,778,matrixify
 2026-06-04,VV-VITA-298,952,git
 2026-06-05,VV-VITA-298,951,git
 2026-06-06,VV-VITA-298,949,git
@@ -4887,6 +5002,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-298,2046,git
 2026-07-15,VV-VITA-298,2046,git
 2026-07-16,VV-VITA-298,2045,matrixify
+2026-10-19,VV-VITA-298,1481,matrixify
 2026-06-04,VV-VITA-301,337,git
 2026-06-05,VV-VITA-301,336,git
 2026-06-06,VV-VITA-301,334,git
@@ -4930,6 +5046,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-301,495,git
 2026-07-15,VV-VITA-301,494,git
 2026-07-16,VV-VITA-301,493,matrixify
+2026-10-19,VV-VITA-301,1114,matrixify
 2026-06-04,VV-VITA-303,336,git
 2026-06-05,VV-VITA-303,336,git
 2026-06-06,VV-VITA-303,335,git
@@ -4973,6 +5090,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-303,18,git
 2026-07-15,VV-VITA-303,17,git
 2026-07-16,VV-VITA-303,12,matrixify
+2026-10-19,VV-VITA-303,188,matrixify
 2026-06-04,VV-VITA-304,4913,git
 2026-06-05,VV-VITA-304,4912,git
 2026-06-06,VV-VITA-304,4912,git
@@ -5016,6 +5134,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-304,4139,git
 2026-07-15,VV-VITA-304,4132,git
 2026-07-16,VV-VITA-304,4131,matrixify
+2026-10-19,VV-VITA-304,3856,matrixify
 2026-06-04,VV-VITA-307,1226,git
 2026-06-05,VV-VITA-307,1224,git
 2026-06-06,VV-VITA-307,1224,git
@@ -5059,6 +5178,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-307,319,git
 2026-07-15,VV-VITA-307,319,git
 2026-07-16,VV-VITA-307,317,matrixify
+2026-10-19,VV-VITA-307,387,matrixify
 2026-06-04,VV-VITA-308,743,git
 2026-06-05,VV-VITA-308,743,git
 2026-06-06,VV-VITA-308,743,git
@@ -5102,6 +5222,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-308,581,git
 2026-07-15,VV-VITA-308,580,git
 2026-07-16,VV-VITA-308,580,matrixify
+2026-10-19,VV-VITA-308,1196,matrixify
 2026-06-04,VV-VITA-31,234,git
 2026-06-05,VV-VITA-31,234,git
 2026-06-06,VV-VITA-31,234,git
@@ -5145,6 +5266,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-31,14,git
 2026-07-15,VV-VITA-31,10,git
 2026-07-16,VV-VITA-31,10,matrixify
+2026-10-19,VV-VITA-31,14,matrixify
 2026-06-04,VV-VITA-310,105,git
 2026-06-05,VV-VITA-310,103,git
 2026-06-06,VV-VITA-310,101,git
@@ -5188,6 +5310,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-310,84,git
 2026-07-15,VV-VITA-310,80,git
 2026-07-16,VV-VITA-310,80,matrixify
+2026-10-19,VV-VITA-310,90,matrixify
 2026-06-04,VV-VITA-311,126,git
 2026-06-05,VV-VITA-311,124,git
 2026-06-06,VV-VITA-311,121,git
@@ -5231,6 +5354,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-311,-9,git
 2026-07-15,VV-VITA-311,-9,git
 2026-07-16,VV-VITA-311,-9,matrixify
+2026-10-19,VV-VITA-311,9191,matrixify
 2026-06-04,VV-VITA-313,127,git
 2026-06-05,VV-VITA-313,67,git
 2026-06-06,VV-VITA-313,66,git
@@ -5274,6 +5398,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-313,3,git
 2026-07-15,VV-VITA-313,2,git
 2026-07-16,VV-VITA-313,2,matrixify
+2026-10-19,VV-VITA-313,440,matrixify
 2026-06-04,VV-VITA-314,766,git
 2026-06-05,VV-VITA-314,764,git
 2026-06-06,VV-VITA-314,763,git
@@ -5312,6 +5437,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-314,739,git
 2026-07-15,VV-VITA-314,738,git
 2026-07-16,VV-VITA-314,736,matrixify
+2026-10-19,VV-VITA-314,31,matrixify
 2026-06-04,VV-VITA-316,315,git
 2026-06-05,VV-VITA-316,315,git
 2026-06-06,VV-VITA-316,315,git
@@ -5355,6 +5481,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-316,209,git
 2026-07-15,VV-VITA-316,209,git
 2026-07-16,VV-VITA-316,209,matrixify
+2026-10-19,VV-VITA-316,2249,matrixify
 2026-06-04,VV-VITA-317,361,git
 2026-06-05,VV-VITA-317,361,git
 2026-06-06,VV-VITA-317,359,git
@@ -5398,6 +5525,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-317,3558,git
 2026-07-15,VV-VITA-317,3555,git
 2026-07-16,VV-VITA-317,3555,matrixify
+2026-10-19,VV-VITA-317,1707,matrixify
 2026-06-04,VV-VITA-318,286,git
 2026-06-05,VV-VITA-318,286,git
 2026-06-06,VV-VITA-318,286,git
@@ -5441,6 +5569,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-318,300,git
 2026-07-15,VV-VITA-318,300,git
 2026-07-16,VV-VITA-318,300,matrixify
+2026-10-19,VV-VITA-318,461,matrixify
 2026-06-04,VV-VITA-319,302,git
 2026-06-05,VV-VITA-319,302,git
 2026-06-06,VV-VITA-319,302,git
@@ -5484,6 +5613,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-319,686,git
 2026-07-15,VV-VITA-319,685,git
 2026-07-16,VV-VITA-319,685,matrixify
+2026-10-19,VV-VITA-319,77,matrixify
 2026-06-04,VV-VITA-320,8872,git
 2026-06-05,VV-VITA-320,8862,git
 2026-06-06,VV-VITA-320,8856,git
@@ -5527,6 +5657,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-320,6855,git
 2026-07-15,VV-VITA-320,6849,git
 2026-07-16,VV-VITA-320,6836,matrixify
+2026-10-19,VV-VITA-320,4814,matrixify
 2026-06-04,VV-VITA-322,0,git
 2026-06-05,VV-VITA-322,0,git
 2026-06-06,VV-VITA-322,0,git
@@ -5570,6 +5701,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-322,0,git
 2026-07-15,VV-VITA-322,0,git
 2026-07-16,VV-VITA-322,0,matrixify
+2026-10-19,VV-VITA-322,0,matrixify
 2026-06-04,VV-VITA-326,725,git
 2026-06-05,VV-VITA-326,145,git
 2026-06-06,VV-VITA-326,144,git
@@ -5613,6 +5745,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-326,408,git
 2026-07-15,VV-VITA-326,406,git
 2026-07-16,VV-VITA-326,406,matrixify
+2026-10-19,VV-VITA-326,104,matrixify
 2026-06-04,VV-VITA-327,0,git
 2026-06-05,VV-VITA-327,0,git
 2026-06-06,VV-VITA-327,0,git
@@ -5656,6 +5789,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-327,0,git
 2026-07-15,VV-VITA-327,0,git
 2026-07-16,VV-VITA-327,0,matrixify
+2026-10-19,VV-VITA-327,0,matrixify
 2026-06-04,VV-VITA-329,1940,git
 2026-06-05,VV-VITA-329,1938,git
 2026-06-06,VV-VITA-329,1937,git
@@ -5699,6 +5833,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-329,5027,git
 2026-07-15,VV-VITA-329,5026,git
 2026-07-16,VV-VITA-329,5025,matrixify
+2026-10-19,VV-VITA-329,1071,matrixify
 2026-06-04,VV-VITA-331,0,git
 2026-06-05,VV-VITA-331,0,git
 2026-06-06,VV-VITA-331,0,git
@@ -5742,6 +5877,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-331,0,git
 2026-07-15,VV-VITA-331,0,git
 2026-07-16,VV-VITA-331,0,matrixify
+2026-10-19,VV-VITA-331,0,matrixify
 2026-06-04,VV-VITA-332,0,git
 2026-06-05,VV-VITA-332,0,git
 2026-06-06,VV-VITA-332,0,git
@@ -5785,6 +5921,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-332,0,git
 2026-07-15,VV-VITA-332,0,git
 2026-07-16,VV-VITA-332,0,matrixify
+2026-10-19,VV-VITA-332,0,matrixify
 2026-06-04,VV-VITA-333,438,git
 2026-06-05,VV-VITA-333,13,git
 2026-06-06,VV-VITA-333,12,git
@@ -5828,6 +5965,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-333,0,git
 2026-07-15,VV-VITA-333,0,git
 2026-07-16,VV-VITA-333,0,matrixify
+2026-10-19,VV-VITA-333,676,matrixify
 2026-06-04,VV-VITA-335,0,git
 2026-06-05,VV-VITA-335,0,git
 2026-06-06,VV-VITA-335,0,git
@@ -5871,6 +6009,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-335,0,git
 2026-07-15,VV-VITA-335,0,git
 2026-07-16,VV-VITA-335,0,matrixify
+2026-10-19,VV-VITA-335,0,matrixify
 2026-06-04,VV-VITA-336,-10,git
 2026-06-05,VV-VITA-336,-10,git
 2026-06-06,VV-VITA-336,-10,git
@@ -5914,6 +6053,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-336,1167,git
 2026-07-15,VV-VITA-336,1167,git
 2026-07-16,VV-VITA-336,1163,matrixify
+2026-10-19,VV-VITA-336,1001,matrixify
 2026-06-04,VV-VITA-337,0,git
 2026-06-05,VV-VITA-337,0,git
 2026-06-06,VV-VITA-337,0,git
@@ -5957,6 +6097,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-337,0,git
 2026-07-15,VV-VITA-337,0,git
 2026-07-16,VV-VITA-337,0,matrixify
+2026-10-19,VV-VITA-337,0,matrixify
 2026-06-04,VV-VITA-338,939,git
 2026-06-05,VV-VITA-338,819,git
 2026-06-06,VV-VITA-338,819,git
@@ -6000,6 +6141,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-338,306,git
 2026-07-15,VV-VITA-338,306,git
 2026-07-16,VV-VITA-338,305,matrixify
+2026-10-19,VV-VITA-338,270,matrixify
 2026-06-04,VV-VITA-339,-10,git
 2026-06-05,VV-VITA-339,-10,git
 2026-06-06,VV-VITA-339,-10,git
@@ -6043,6 +6185,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-339,-10,git
 2026-07-15,VV-VITA-339,-10,git
 2026-07-16,VV-VITA-339,-10,matrixify
+2026-10-19,VV-VITA-339,332,matrixify
 2026-06-04,VV-VITA-340,-10,git
 2026-06-05,VV-VITA-340,-12,git
 2026-06-06,VV-VITA-340,-12,git
@@ -6086,6 +6229,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-340,0,git
 2026-07-15,VV-VITA-340,0,git
 2026-07-16,VV-VITA-340,0,matrixify
+2026-10-19,VV-VITA-340,0,matrixify
 2026-06-04,VV-VITA-341,0,git
 2026-06-05,VV-VITA-341,0,git
 2026-06-06,VV-VITA-341,0,git
@@ -6129,6 +6273,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-341,0,git
 2026-07-15,VV-VITA-341,0,git
 2026-07-16,VV-VITA-341,0,matrixify
+2026-10-19,VV-VITA-341,1508,matrixify
 2026-06-04,VV-VITA-342,222,git
 2026-06-05,VV-VITA-342,213,git
 2026-06-06,VV-VITA-342,210,git
@@ -6172,6 +6317,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-342,768,git
 2026-07-15,VV-VITA-342,770,git
 2026-07-16,VV-VITA-342,768,matrixify
+2026-10-19,VV-VITA-342,2793,matrixify
 2026-06-04,VV-VITA-343,0,git
 2026-06-05,VV-VITA-343,0,git
 2026-06-06,VV-VITA-343,0,git
@@ -6215,6 +6361,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-343,0,git
 2026-07-15,VV-VITA-343,0,git
 2026-07-16,VV-VITA-343,0,matrixify
+2026-10-19,VV-VITA-343,0,matrixify
 2026-06-04,VV-VITA-344,229,git
 2026-06-05,VV-VITA-344,225,git
 2026-06-06,VV-VITA-344,220,git
@@ -6258,6 +6405,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-344,154,git
 2026-07-15,VV-VITA-344,153,git
 2026-07-16,VV-VITA-344,150,matrixify
+2026-10-19,VV-VITA-344,3865,matrixify
 2026-06-04,VV-VITA-345,716,git
 2026-06-05,VV-VITA-345,714,git
 2026-06-06,VV-VITA-345,714,git
@@ -6301,6 +6449,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-345,237,git
 2026-07-15,VV-VITA-345,237,git
 2026-07-16,VV-VITA-345,236,matrixify
+2026-10-19,VV-VITA-345,1440,matrixify
 2026-06-04,VV-VITA-346,173,git
 2026-06-05,VV-VITA-346,173,git
 2026-06-06,VV-VITA-346,173,git
@@ -6344,6 +6493,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-346,96,git
 2026-07-15,VV-VITA-346,96,git
 2026-07-16,VV-VITA-346,96,matrixify
+2026-10-19,VV-VITA-346,565,matrixify
 2026-06-04,VV-VITA-347,0,git
 2026-06-05,VV-VITA-347,0,git
 2026-06-06,VV-VITA-347,0,git
@@ -6387,6 +6537,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-347,0,git
 2026-07-15,VV-VITA-347,0,git
 2026-07-16,VV-VITA-347,0,matrixify
+2026-10-19,VV-VITA-347,0,matrixify
 2026-06-04,VV-VITA-348,0,git
 2026-06-05,VV-VITA-348,0,git
 2026-06-06,VV-VITA-348,0,git
@@ -6430,6 +6581,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-348,0,git
 2026-07-15,VV-VITA-348,0,git
 2026-07-16,VV-VITA-348,0,matrixify
+2026-10-19,VV-VITA-348,0,matrixify
 2026-06-04,VV-VITA-349,858,git
 2026-06-05,VV-VITA-349,738,git
 2026-06-06,VV-VITA-349,738,git
@@ -6473,6 +6625,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-349,333,git
 2026-07-15,VV-VITA-349,333,git
 2026-07-16,VV-VITA-349,332,matrixify
+2026-10-19,VV-VITA-349,531,matrixify
 2026-06-04,VV-VITA-350,-3,git
 2026-06-05,VV-VITA-350,-3,git
 2026-06-06,VV-VITA-350,-3,git
@@ -6516,6 +6669,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-350,-3,git
 2026-07-15,VV-VITA-350,-3,git
 2026-07-16,VV-VITA-350,-3,matrixify
+2026-10-19,VV-VITA-350,0,matrixify
 2026-06-04,VV-VITA-351,139,git
 2026-06-05,VV-VITA-351,-10,git
 2026-06-06,VV-VITA-351,-10,git
@@ -6559,6 +6713,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-351,-10,git
 2026-07-15,VV-VITA-351,-10,git
 2026-07-16,VV-VITA-351,-10,matrixify
+2026-10-19,VV-VITA-351,220,matrixify
 2026-06-04,VV-VITA-352,-10,git
 2026-06-05,VV-VITA-352,-10,git
 2026-06-06,VV-VITA-352,-10,git
@@ -6602,6 +6757,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-352,837,git
 2026-07-15,VV-VITA-352,837,git
 2026-07-16,VV-VITA-352,836,matrixify
+2026-10-19,VV-VITA-352,719,matrixify
 2026-06-04,VV-VITA-354,588,git
 2026-06-05,VV-VITA-354,162,git
 2026-06-06,VV-VITA-354,162,git
@@ -6645,6 +6801,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-354,1069,git
 2026-07-15,VV-VITA-354,1069,git
 2026-07-16,VV-VITA-354,1069,matrixify
+2026-10-19,VV-VITA-354,1288,matrixify
 2026-06-04,VV-VITA-355,0,git
 2026-06-05,VV-VITA-355,0,git
 2026-06-06,VV-VITA-355,0,git
@@ -6688,6 +6845,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-355,6341,git
 2026-07-15,VV-VITA-355,6328,git
 2026-07-16,VV-VITA-355,6325,matrixify
+2026-10-19,VV-VITA-355,5275,matrixify
 2026-06-04,VV-VITA-356,-11,git
 2026-06-05,VV-VITA-356,-11,git
 2026-06-06,VV-VITA-356,-11,git
@@ -6731,6 +6889,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-356,-10,git
 2026-07-15,VV-VITA-356,-11,git
 2026-07-16,VV-VITA-356,-12,matrixify
+2026-10-19,VV-VITA-356,-10,matrixify
 2026-06-04,VV-VITA-357,-10,git
 2026-06-05,VV-VITA-357,-10,git
 2026-06-06,VV-VITA-357,-10,git
@@ -6774,6 +6933,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-357,-10,git
 2026-07-15,VV-VITA-357,-10,git
 2026-07-16,VV-VITA-357,-10,matrixify
+2026-10-19,VV-VITA-357,-10,matrixify
 2026-06-04,VV-VITA-358,-5,git
 2026-06-05,VV-VITA-358,-5,git
 2026-06-06,VV-VITA-358,-5,git
@@ -6817,6 +6977,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-358,-5,git
 2026-07-15,VV-VITA-358,-5,git
 2026-07-16,VV-VITA-358,-5,matrixify
+2026-10-19,VV-VITA-358,-5,matrixify
 2026-06-04,VV-VITA-359,407,git
 2026-06-05,VV-VITA-359,406,git
 2026-06-06,VV-VITA-359,406,git
@@ -6860,6 +7021,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-359,149,git
 2026-07-15,VV-VITA-359,148,git
 2026-07-16,VV-VITA-359,147,matrixify
+2026-10-19,VV-VITA-359,0,matrixify
 2026-06-04,VV-VITA-360,-5,git
 2026-06-05,VV-VITA-360,-5,git
 2026-06-06,VV-VITA-360,-5,git
@@ -6903,6 +7065,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-360,0,git
 2026-07-15,VV-VITA-360,0,git
 2026-07-16,VV-VITA-360,0,matrixify
+2026-10-19,VV-VITA-360,0,matrixify
 2026-06-04,VV-VITA-361,481,git
 2026-06-05,VV-VITA-361,479,git
 2026-06-06,VV-VITA-361,476,git
@@ -6946,6 +7109,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-361,1017,git
 2026-07-15,VV-VITA-361,1008,git
 2026-07-16,VV-VITA-361,1007,matrixify
+2026-10-19,VV-VITA-361,4948,matrixify
 2026-06-04,VV-VITA-362,559,git
 2026-06-05,VV-VITA-362,559,git
 2026-06-06,VV-VITA-362,559,git
@@ -6989,6 +7153,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-362,3044,git
 2026-07-15,VV-VITA-362,3044,git
 2026-07-16,VV-VITA-362,3044,matrixify
+2026-10-19,VV-VITA-362,1114,matrixify
 2026-06-04,VV-VITA-363,184,git
 2026-06-05,VV-VITA-363,183,git
 2026-06-06,VV-VITA-363,183,git
@@ -7032,6 +7197,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-363,688,git
 2026-07-15,VV-VITA-363,688,git
 2026-07-16,VV-VITA-363,688,matrixify
+2026-10-19,VV-VITA-363,-10,matrixify
 2026-06-04,VV-VITA-364,9077,git
 2026-06-05,VV-VITA-364,7337,git
 2026-06-06,VV-VITA-364,7334,git
@@ -7075,6 +7241,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-364,347,git
 2026-07-15,VV-VITA-364,337,git
 2026-07-16,VV-VITA-364,323,matrixify
+2026-10-19,VV-VITA-364,3355,matrixify
 2026-06-04,VV-VITA-365,812,git
 2026-06-05,VV-VITA-365,612,git
 2026-06-06,VV-VITA-365,612,git
@@ -7118,6 +7285,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-365,161,git
 2026-07-15,VV-VITA-365,161,git
 2026-07-16,VV-VITA-365,161,matrixify
+2026-10-19,VV-VITA-365,32,matrixify
 2026-06-04,VV-VITA-366,-10,git
 2026-06-05,VV-VITA-366,-10,git
 2026-06-06,VV-VITA-366,-10,git
@@ -7161,6 +7329,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-366,680,git
 2026-07-15,VV-VITA-366,681,git
 2026-07-16,VV-VITA-366,678,matrixify
+2026-10-19,VV-VITA-366,752,matrixify
 2026-06-04,VV-VITA-367,687,git
 2026-06-05,VV-VITA-367,681,git
 2026-06-06,VV-VITA-367,680,git
@@ -7204,6 +7373,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-367,1050,git
 2026-07-15,VV-VITA-367,1046,git
 2026-07-16,VV-VITA-367,1040,matrixify
+2026-10-19,VV-VITA-367,-4,matrixify
 2026-06-04,VV-VITA-368,284,git
 2026-06-05,VV-VITA-368,284,git
 2026-06-06,VV-VITA-368,283,git
@@ -7247,6 +7417,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-368,214,git
 2026-07-15,VV-VITA-368,214,git
 2026-07-16,VV-VITA-368,214,matrixify
+2026-10-19,VV-VITA-368,3,matrixify
 2026-06-04,VV-VITA-369,559,git
 2026-06-05,VV-VITA-369,553,git
 2026-06-06,VV-VITA-369,551,git
@@ -7290,6 +7461,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-369,655,git
 2026-07-15,VV-VITA-369,656,git
 2026-07-16,VV-VITA-369,653,matrixify
+2026-10-19,VV-VITA-369,423,matrixify
 2026-06-04,VV-VITA-370,190,git
 2026-06-05,VV-VITA-370,168,git
 2026-06-06,VV-VITA-370,162,git
@@ -7333,6 +7505,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-370,0,git
 2026-07-15,VV-VITA-370,0,git
 2026-07-16,VV-VITA-370,0,matrixify
+2026-10-19,VV-VITA-370,36062,matrixify
 2026-06-04,VV-VITA-371,997,git
 2026-06-05,VV-VITA-371,997,git
 2026-06-06,VV-VITA-371,997,git
@@ -7376,6 +7549,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-371,465,git
 2026-07-15,VV-VITA-371,464,git
 2026-07-16,VV-VITA-371,464,matrixify
+2026-10-19,VV-VITA-371,862,matrixify
 2026-06-04,VV-VITA-372,3639,git
 2026-06-05,VV-VITA-372,3638,git
 2026-06-06,VV-VITA-372,3638,git
@@ -7419,6 +7593,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-372,3096,git
 2026-07-15,VV-VITA-372,3096,git
 2026-07-16,VV-VITA-372,3095,matrixify
+2026-10-19,VV-VITA-372,4334,matrixify
 2026-06-04,VV-VITA-373,170,git
 2026-06-05,VV-VITA-373,-10,git
 2026-06-06,VV-VITA-373,-10,git
@@ -7462,6 +7637,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-373,-10,git
 2026-07-15,VV-VITA-373,-10,git
 2026-07-16,VV-VITA-373,-10,matrixify
+2026-10-19,VV-VITA-373,-10,matrixify
 2026-06-04,VV-VITA-374,642,git
 2026-06-05,VV-VITA-374,639,git
 2026-06-06,VV-VITA-374,639,git
@@ -7505,6 +7681,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-374,211,git
 2026-07-15,VV-VITA-374,211,git
 2026-07-16,VV-VITA-374,211,matrixify
+2026-10-19,VV-VITA-374,35,matrixify
 2026-06-04,VV-VITA-375,962,git
 2026-06-05,VV-VITA-375,961,git
 2026-06-06,VV-VITA-375,961,git
@@ -7548,6 +7725,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-375,284,git
 2026-07-15,VV-VITA-375,280,git
 2026-07-16,VV-VITA-375,279,matrixify
+2026-10-19,VV-VITA-375,1049,matrixify
 2026-06-04,VV-VITA-376,573,git
 2026-06-05,VV-VITA-376,574,git
 2026-06-06,VV-VITA-376,574,git
@@ -7591,6 +7769,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-376,658,git
 2026-07-15,VV-VITA-376,656,git
 2026-07-16,VV-VITA-376,656,matrixify
+2026-10-19,VV-VITA-376,829,matrixify
 2026-06-04,VV-VITA-377,460,git
 2026-06-05,VV-VITA-377,459,git
 2026-06-06,VV-VITA-377,458,git
@@ -7634,6 +7813,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-377,646,git
 2026-07-15,VV-VITA-377,645,git
 2026-07-16,VV-VITA-377,645,matrixify
+2026-10-19,VV-VITA-377,-1,matrixify
 2026-06-04,VV-VITA-378,367,git
 2026-06-05,VV-VITA-378,367,git
 2026-06-06,VV-VITA-378,367,git
@@ -7677,6 +7857,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-378,242,git
 2026-07-15,VV-VITA-378,242,git
 2026-07-16,VV-VITA-378,241,matrixify
+2026-10-19,VV-VITA-378,1408,matrixify
 2026-06-04,VV-VITA-379,1867,git
 2026-06-05,VV-VITA-379,1861,git
 2026-06-06,VV-VITA-379,1859,git
@@ -7720,6 +7901,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-379,1234,git
 2026-07-15,VV-VITA-379,1234,git
 2026-07-16,VV-VITA-379,1232,matrixify
+2026-10-19,VV-VITA-379,53,matrixify
 2026-06-04,VV-VITA-38,833,git
 2026-06-05,VV-VITA-38,825,git
 2026-06-06,VV-VITA-38,823,git
@@ -7763,6 +7945,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-38,656,git
 2026-07-15,VV-VITA-38,654,git
 2026-07-16,VV-VITA-38,654,matrixify
+2026-10-19,VV-VITA-38,2841,matrixify
 2026-06-04,VV-VITA-380,556,git
 2026-06-05,VV-VITA-380,556,git
 2026-06-06,VV-VITA-380,556,git
@@ -7806,6 +7989,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-380,626,git
 2026-07-15,VV-VITA-380,627,git
 2026-07-16,VV-VITA-380,627,matrixify
+2026-10-19,VV-VITA-380,677,matrixify
 2026-06-04,VV-VITA-381,-1,git
 2026-06-05,VV-VITA-381,-1,git
 2026-06-06,VV-VITA-381,-1,git
@@ -7849,6 +8033,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-381,-10,git
 2026-07-15,VV-VITA-381,-10,git
 2026-07-16,VV-VITA-381,-10,matrixify
+2026-10-19,VV-VITA-381,820,matrixify
 2026-06-04,VV-VITA-382,381,git
 2026-06-05,VV-VITA-382,381,git
 2026-06-06,VV-VITA-382,381,git
@@ -7892,6 +8077,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-382,371,git
 2026-07-15,VV-VITA-382,368,git
 2026-07-16,VV-VITA-382,366,matrixify
+2026-10-19,VV-VITA-382,12,matrixify
 2026-06-04,VV-VITA-383,372,git
 2026-06-05,VV-VITA-383,370,git
 2026-06-06,VV-VITA-383,370,git
@@ -7935,6 +8121,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-383,1707,git
 2026-07-15,VV-VITA-383,1707,git
 2026-07-16,VV-VITA-383,1707,matrixify
+2026-10-19,VV-VITA-383,1975,matrixify
 2026-06-04,VV-VITA-384,986,git
 2026-06-05,VV-VITA-384,-10,git
 2026-06-06,VV-VITA-384,-10,git
@@ -7978,6 +8165,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-384,0,git
 2026-07-15,VV-VITA-384,0,git
 2026-07-16,VV-VITA-384,0,matrixify
+2026-10-19,VV-VITA-384,0,matrixify
 2026-06-04,VV-VITA-385,875,git
 2026-06-05,VV-VITA-385,875,git
 2026-06-06,VV-VITA-385,875,git
@@ -8021,6 +8209,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-385,1361,git
 2026-07-15,VV-VITA-385,1361,git
 2026-07-16,VV-VITA-385,1360,matrixify
+2026-10-19,VV-VITA-385,-10,matrixify
 2026-06-04,VV-VITA-386,1299,git
 2026-06-05,VV-VITA-386,1299,git
 2026-06-06,VV-VITA-386,1299,git
@@ -8064,6 +8253,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-386,1070,git
 2026-07-15,VV-VITA-386,1070,git
 2026-07-16,VV-VITA-386,1070,matrixify
+2026-10-19,VV-VITA-386,2342,matrixify
 2026-06-04,VV-VITA-387,1164,git
 2026-06-05,VV-VITA-387,1164,git
 2026-06-06,VV-VITA-387,1162,git
@@ -8107,6 +8297,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-387,484,git
 2026-07-15,VV-VITA-387,485,git
 2026-07-16,VV-VITA-387,485,matrixify
+2026-10-19,VV-VITA-387,1462,matrixify
 2026-06-04,VV-VITA-388,23,git
 2026-06-05,VV-VITA-388,21,git
 2026-06-06,VV-VITA-388,20,git
@@ -8150,6 +8341,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-388,-4,git
 2026-07-15,VV-VITA-388,-4,git
 2026-07-16,VV-VITA-388,-4,matrixify
+2026-10-19,VV-VITA-388,0,matrixify
 2026-06-04,VV-VITA-389,287,git
 2026-06-05,VV-VITA-389,282,git
 2026-06-06,VV-VITA-389,282,git
@@ -8193,6 +8385,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-389,19,git
 2026-07-15,VV-VITA-389,18,git
 2026-07-16,VV-VITA-389,18,matrixify
+2026-10-19,VV-VITA-389,629,matrixify
 2026-06-04,VV-VITA-39,2948,git
 2026-06-05,VV-VITA-39,2948,git
 2026-06-06,VV-VITA-39,2948,git
@@ -8236,6 +8429,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-39,1725,git
 2026-07-15,VV-VITA-39,1725,git
 2026-07-16,VV-VITA-39,1725,matrixify
+2026-10-19,VV-VITA-39,1565,matrixify
 2026-06-04,VV-VITA-390,252,git
 2026-06-05,VV-VITA-390,252,git
 2026-06-06,VV-VITA-390,252,git
@@ -8279,6 +8473,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-390,379,git
 2026-07-15,VV-VITA-390,379,git
 2026-07-16,VV-VITA-390,379,matrixify
+2026-10-19,VV-VITA-390,313,matrixify
 2026-06-04,VV-VITA-391,606,git
 2026-06-05,VV-VITA-391,547,git
 2026-06-06,VV-VITA-391,546,git
@@ -8322,6 +8517,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-391,33,git
 2026-07-15,VV-VITA-391,33,git
 2026-07-16,VV-VITA-391,32,matrixify
+2026-10-19,VV-VITA-391,37,matrixify
 2026-06-13,VV-VITA-392,0,git
 2026-06-14,VV-VITA-392,0,git
 2026-06-15,VV-VITA-392,0,git
@@ -8356,6 +8552,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-392,164,git
 2026-07-15,VV-VITA-392,164,git
 2026-07-16,VV-VITA-392,164,matrixify
+2026-10-19,VV-VITA-392,788,matrixify
 2026-06-04,VV-VITA-393,732,git
 2026-06-05,VV-VITA-393,732,git
 2026-06-06,VV-VITA-393,732,git
@@ -8399,6 +8596,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-393,833,git
 2026-07-15,VV-VITA-393,833,git
 2026-07-16,VV-VITA-393,831,matrixify
+2026-10-19,VV-VITA-393,1532,matrixify
 2026-06-04,VV-VITA-394,894,git
 2026-06-05,VV-VITA-394,894,git
 2026-06-06,VV-VITA-394,894,git
@@ -8442,6 +8640,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-394,151,git
 2026-07-15,VV-VITA-394,153,git
 2026-07-16,VV-VITA-394,152,matrixify
+2026-10-19,VV-VITA-394,461,matrixify
 2026-06-04,VV-VITA-395,398,git
 2026-06-05,VV-VITA-395,392,git
 2026-06-06,VV-VITA-395,392,git
@@ -8485,6 +8684,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-395,1606,git
 2026-07-15,VV-VITA-395,1607,git
 2026-07-16,VV-VITA-395,1604,matrixify
+2026-10-19,VV-VITA-395,1620,matrixify
 2026-06-04,VV-VITA-398,845,git
 2026-06-05,VV-VITA-398,845,git
 2026-06-06,VV-VITA-398,840,git
@@ -8528,6 +8728,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-398,515,git
 2026-07-15,VV-VITA-398,513,git
 2026-07-16,VV-VITA-398,513,matrixify
+2026-10-19,VV-VITA-398,873,matrixify
 2026-06-04,VV-VITA-399,305,git
 2026-06-05,VV-VITA-399,305,git
 2026-06-06,VV-VITA-399,305,git
@@ -8571,6 +8772,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-399,129,git
 2026-07-15,VV-VITA-399,129,git
 2026-07-16,VV-VITA-399,129,matrixify
+2026-10-19,VV-VITA-399,154,matrixify
 2026-06-04,VV-VITA-400,725,git
 2026-06-05,VV-VITA-400,725,git
 2026-06-06,VV-VITA-400,725,git
@@ -8614,6 +8816,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-400,401,git
 2026-07-15,VV-VITA-400,401,git
 2026-07-16,VV-VITA-400,401,matrixify
+2026-10-19,VV-VITA-400,2128,matrixify
 2026-06-13,VV-VITA-401,0,git
 2026-06-14,VV-VITA-401,0,git
 2026-06-15,VV-VITA-401,0,git
@@ -8648,6 +8851,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-401,708,git
 2026-07-15,VV-VITA-401,708,git
 2026-07-16,VV-VITA-401,707,matrixify
+2026-10-19,VV-VITA-401,910,matrixify
 2026-06-04,VV-VITA-402,751,git
 2026-06-05,VV-VITA-402,749,git
 2026-06-06,VV-VITA-402,748,git
@@ -8691,6 +8895,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-402,438,git
 2026-07-15,VV-VITA-402,435,git
 2026-07-16,VV-VITA-402,434,matrixify
+2026-10-19,VV-VITA-402,1110,matrixify
 2026-06-04,VV-VITA-402-plytix,0,git
 2026-06-05,VV-VITA-402-plytix,0,git
 2026-06-06,VV-VITA-402-plytix,0,git
@@ -8746,6 +8951,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-403,0,git
 2026-07-15,VV-VITA-403,0,git
 2026-07-16,VV-VITA-403,0,matrixify
+2026-10-19,VV-VITA-403,1853,matrixify
 2026-06-04,VV-VITA-404,0,git
 2026-06-05,VV-VITA-404,0,git
 2026-06-06,VV-VITA-404,0,git
@@ -8789,6 +8995,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-404,229,git
 2026-07-15,VV-VITA-404,229,git
 2026-07-16,VV-VITA-404,228,matrixify
+2026-10-19,VV-VITA-404,1473,matrixify
 2026-06-04,VV-VITA-405,315,git
 2026-06-05,VV-VITA-405,315,git
 2026-06-06,VV-VITA-405,315,git
@@ -8832,6 +9039,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-405,116,git
 2026-07-15,VV-VITA-405,116,git
 2026-07-16,VV-VITA-405,115,matrixify
+2026-10-19,VV-VITA-405,0,matrixify
 2026-06-04,VV-VITA-406,6,git
 2026-06-05,VV-VITA-406,6,git
 2026-06-06,VV-VITA-406,6,git
@@ -8875,6 +9083,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-406,0,git
 2026-07-15,VV-VITA-406,0,git
 2026-07-16,VV-VITA-406,0,matrixify
+2026-10-19,VV-VITA-406,2323,matrixify
 2026-06-04,VV-VITA-407,346,git
 2026-06-05,VV-VITA-407,341,git
 2026-06-06,VV-VITA-407,339,git
@@ -8918,6 +9127,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-407,136,git
 2026-07-15,VV-VITA-407,136,git
 2026-07-16,VV-VITA-407,137,matrixify
+2026-10-19,VV-VITA-407,3643,matrixify
 2026-06-04,VV-VITA-408,324,git
 2026-06-05,VV-VITA-408,322,git
 2026-06-06,VV-VITA-408,322,git
@@ -8961,6 +9171,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-408,317,git
 2026-07-15,VV-VITA-408,314,git
 2026-07-16,VV-VITA-408,314,matrixify
+2026-10-19,VV-VITA-408,108,matrixify
 2026-06-04,VV-VITA-409,1170,git
 2026-06-05,VV-VITA-409,1168,git
 2026-06-06,VV-VITA-409,1168,git
@@ -9003,6 +9214,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-409,1424,git
 2026-07-15,VV-VITA-409,1425,git
 2026-07-16,VV-VITA-409,1425,matrixify
+2026-10-19,VV-VITA-409,7345,matrixify
 2026-06-04,VV-VITA-410,604,git
 2026-06-05,VV-VITA-410,604,git
 2026-06-06,VV-VITA-410,604,git
@@ -9046,6 +9258,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-410,1481,git
 2026-07-15,VV-VITA-410,1480,git
 2026-07-16,VV-VITA-410,1479,matrixify
+2026-10-19,VV-VITA-410,2305,matrixify
 2026-06-04,VV-VITA-411,313,git
 2026-06-05,VV-VITA-411,313,git
 2026-06-06,VV-VITA-411,313,git
@@ -9089,6 +9302,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-411,228,git
 2026-07-15,VV-VITA-411,227,git
 2026-07-16,VV-VITA-411,227,matrixify
+2026-10-19,VV-VITA-411,0,matrixify
 2026-06-04,VV-VITA-412,1406,git
 2026-06-05,VV-VITA-412,1406,git
 2026-06-06,VV-VITA-412,1406,git
@@ -9132,6 +9346,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-412,463,git
 2026-07-15,VV-VITA-412,463,git
 2026-07-16,VV-VITA-412,463,matrixify
+2026-10-19,VV-VITA-412,1131,matrixify
 2026-06-04,VV-VITA-413,1632,git
 2026-06-05,VV-VITA-413,1632,git
 2026-06-06,VV-VITA-413,1630,git
@@ -9175,6 +9390,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-413,423,git
 2026-07-15,VV-VITA-413,424,git
 2026-07-16,VV-VITA-413,424,matrixify
+2026-10-19,VV-VITA-413,162,matrixify
 2026-06-04,VV-VITA-414,0,git
 2026-06-05,VV-VITA-414,0,git
 2026-06-06,VV-VITA-414,0,git
@@ -9218,6 +9434,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-414,575,git
 2026-07-15,VV-VITA-414,574,git
 2026-07-16,VV-VITA-414,574,matrixify
+2026-10-19,VV-VITA-414,517,matrixify
 2026-06-04,VV-VITA-415,0,git
 2026-06-05,VV-VITA-415,0,git
 2026-06-06,VV-VITA-415,0,git
@@ -9261,6 +9478,8 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-415,355,git
 2026-07-15,VV-VITA-415,355,git
 2026-07-16,VV-VITA-415,355,matrixify
+2026-10-19,VV-VITA-415,2176,matrixify
+2026-10-19,VV-VITA-416,1147,matrixify
 2026-06-04,VV-VITA-417,990,git
 2026-06-05,VV-VITA-417,980,git
 2026-06-06,VV-VITA-417,980,git
@@ -9304,30 +9523,41 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-417,585,git
 2026-07-15,VV-VITA-417,591,git
 2026-07-16,VV-VITA-417,591,matrixify
+2026-10-19,VV-VITA-417,1785,matrixify
 2026-07-14,VV-VITA-418,0,git
 2026-07-15,VV-VITA-418,0,git
 2026-07-16,VV-VITA-418,0,matrixify
+2026-10-19,VV-VITA-418,2165,matrixify
+2026-10-19,VV-VITA-419,0,matrixify
 2026-07-14,VV-VITA-420,0,git
 2026-07-15,VV-VITA-420,0,git
 2026-07-16,VV-VITA-420,0,matrixify
+2026-10-19,VV-VITA-420,0,matrixify
 2026-07-14,VV-VITA-421,0,git
 2026-07-15,VV-VITA-421,0,git
 2026-07-16,VV-VITA-421,0,matrixify
+2026-10-19,VV-VITA-421,0,matrixify
 2026-07-14,VV-VITA-422,0,git
 2026-07-15,VV-VITA-422,0,git
 2026-07-16,VV-VITA-422,0,matrixify
+2026-10-19,VV-VITA-422,995,matrixify
 2026-07-14,VV-VITA-423,0,git
 2026-07-15,VV-VITA-423,0,git
 2026-07-16,VV-VITA-423,0,matrixify
+2026-10-19,VV-VITA-423,1064,matrixify
 2026-07-14,VV-VITA-424,0,git
 2026-07-15,VV-VITA-424,0,git
 2026-07-16,VV-VITA-424,0,matrixify
+2026-10-19,VV-VITA-424,343,matrixify
 2026-07-14,VV-VITA-425,0,git
 2026-07-15,VV-VITA-425,0,git
 2026-07-16,VV-VITA-425,0,matrixify
+2026-10-19,VV-VITA-425,0,matrixify
 2026-07-14,VV-VITA-426,0,git
 2026-07-15,VV-VITA-426,0,git
 2026-07-16,VV-VITA-426,0,matrixify
+2026-10-19,VV-VITA-426,0,matrixify
+2026-10-19,VV-VITA-427,2465,matrixify
 2026-06-04,VV-VITA-46,0,git
 2026-06-05,VV-VITA-46,0,git
 2026-06-06,VV-VITA-46,0,git
@@ -9371,6 +9601,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-46,3108,git
 2026-07-15,VV-VITA-46,3103,git
 2026-07-16,VV-VITA-46,3103,matrixify
+2026-10-19,VV-VITA-46,1857,matrixify
 2026-06-04,VV-VITA-49,439,git
 2026-06-05,VV-VITA-49,138,git
 2026-06-06,VV-VITA-49,137,git
@@ -9414,6 +9645,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-49,-1,git
 2026-07-15,VV-VITA-49,0,git
 2026-07-16,VV-VITA-49,-2,matrixify
+2026-10-19,VV-VITA-49,292,matrixify
 2026-06-04,VV-VITA-50,-10,git
 2026-06-05,VV-VITA-50,-10,git
 2026-06-06,VV-VITA-50,-10,git
@@ -9457,6 +9689,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-50,330,git
 2026-07-15,VV-VITA-50,329,git
 2026-07-16,VV-VITA-50,326,matrixify
+2026-10-19,VV-VITA-50,809,matrixify
 2026-06-04,VV-VITA-57-V,289,git
 2026-06-05,VV-VITA-57-V,287,git
 2026-06-06,VV-VITA-57-V,287,git
@@ -9500,6 +9733,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-57-V,546,git
 2026-07-15,VV-VITA-57-V,543,git
 2026-07-16,VV-VITA-57-V,541,matrixify
+2026-10-19,VV-VITA-57-V,25,matrixify
 2026-06-04,VV-VITA-57-V2,384,git
 2026-06-05,VV-VITA-57-V2,383,git
 2026-06-06,VV-VITA-57-V2,383,git
@@ -9543,6 +9777,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-57-V2,145,git
 2026-07-15,VV-VITA-57-V2,143,git
 2026-07-16,VV-VITA-57-V2,141,matrixify
+2026-10-19,VV-VITA-57-V2,0,matrixify
 2026-06-04,VV-VITA-63,446,git
 2026-06-05,VV-VITA-63,444,git
 2026-06-06,VV-VITA-63,444,git
@@ -9586,6 +9821,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-63,330,git
 2026-07-15,VV-VITA-63,330,git
 2026-07-16,VV-VITA-63,328,matrixify
+2026-10-19,VV-VITA-63,293,matrixify
 2026-06-04,VV-VITA-86,-10,git
 2026-06-05,VV-VITA-86,-10,git
 2026-06-06,VV-VITA-86,-10,git
@@ -9629,6 +9865,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-86,-10,git
 2026-07-15,VV-VITA-86,-10,git
 2026-07-16,VV-VITA-86,-12,matrixify
+2026-10-19,VV-VITA-86,11,matrixify
 2026-06-04,VV-VITA-88,1083,git
 2026-06-05,VV-VITA-88,1079,git
 2026-06-06,VV-VITA-88,1079,git
@@ -9672,6 +9909,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-88,136,git
 2026-07-15,VV-VITA-88,136,git
 2026-07-16,VV-VITA-88,136,matrixify
+2026-10-19,VV-VITA-88,568,matrixify
 2026-06-04,VV-VITA-90,600,git
 2026-06-05,VV-VITA-90,593,git
 2026-06-06,VV-VITA-90,588,git
@@ -9715,6 +9953,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-90,2061,git
 2026-07-15,VV-VITA-90,2062,git
 2026-07-16,VV-VITA-90,2062,matrixify
+2026-10-19,VV-VITA-90,5499,matrixify
 2026-06-04,VV-VITA-93,251,git
 2026-06-05,VV-VITA-93,250,git
 2026-06-06,VV-VITA-93,246,git
@@ -9758,6 +9997,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-93,107,git
 2026-07-15,VV-VITA-93,104,git
 2026-07-16,VV-VITA-93,103,matrixify
+2026-10-19,VV-VITA-93,-2,matrixify
 2026-06-04,VV-VITA-94,141,git
 2026-06-05,VV-VITA-94,130,git
 2026-06-06,VV-VITA-94,130,git
@@ -9801,6 +10041,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-94,406,git
 2026-07-15,VV-VITA-94,403,git
 2026-07-16,VV-VITA-94,401,matrixify
+2026-10-19,VV-VITA-94,847,matrixify
 2026-06-04,VV-VITA-99,0,git
 2026-06-05,VV-VITA-99,0,git
 2026-06-06,VV-VITA-99,0,git
@@ -9844,6 +10085,7 @@ date,sku,on_hand,source
 2026-07-14,VV-VITA-99,0,git
 2026-07-15,VV-VITA-99,0,git
 2026-07-16,VV-VITA-99,0,matrixify
+2026-10-19,VV-VITA-99,0,matrixify
 2026-06-04,Vegan_Basics_Set_3,25,git
 2026-06-05,Vegan_Basics_Set_3,23,git
 2026-06-06,Vegan_Basics_Set_3,21,git
@@ -9887,6 +10129,7 @@ date,sku,on_hand,source
 2026-07-14,Vegan_Basics_Set_3,-5,git
 2026-07-15,Vegan_Basics_Set_3,-5,git
 2026-07-16,Vegan_Basics_Set_3,-5,matrixify
+2026-10-19,Vegan_Basics_Set_3,1799,matrixify
 2026-06-04,Vitality_Set_3,0,git
 2026-06-05,Vitality_Set_3,0,git
 2026-06-06,Vitality_Set_3,0,git
@@ -9930,6 +10173,7 @@ date,sku,on_hand,source
 2026-07-14,Vitality_Set_3,347,git
 2026-07-15,Vitality_Set_3,337,git
 2026-07-16,Vitality_Set_3,323,matrixify
+2026-10-19,Vitality_Set_3,3355,matrixify
 2026-06-04,chiarasku-0-V001,0,git
 2026-06-05,chiarasku-0-V001,0,git
 2026-06-06,chiarasku-0-V001,0,git
@@ -10003,6 +10247,7 @@ date,sku,on_hand,source
 2026-07-14,femtastic_set,-1,git
 2026-07-15,femtastic_set,0,git
 2026-07-16,femtastic_set,-2,matrixify
+2026-10-19,femtastic_set,292,matrixify
 2026-07-13,kind-T01-V001,0,git
 2026-07-14,kind-T01-V001,0,git
 2026-07-15,kind-T01-V001,0,git
@@ -10080,3 +10325,4 @@ date,sku,on_hand,source
 2026-07-14,xxxxx-variant-test,0,git
 2026-07-15,xxxxx-variant-test,0,git
 2026-07-16,xxxxx-variant-test,0,matrixify
+2026-10-19,xxxxx-variant-test,0,matrixify
