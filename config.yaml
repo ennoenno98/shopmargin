@@ -22,6 +22,27 @@ source:
   orders_file: data/matrixify_orders.csv.gz
   products_file: data/matrixify_products.csv
 
+# --- Stores (OOS dashboard) --------------------------------------------------
+# The OOS Impact app (oos_app.py) can switch between stores; the first one is
+# the default. Each store has its own Matrixify exports + stock history, kept
+# fresh by its own job in .github/workflows/refresh_matrixify.yml. A store
+# without a spend_file reports lost CM3 before marketing (i.e. CM2). Cost
+# assumptions are shared; add `overrides:` under a store to change any of them
+# for that store only, e.g.  overrides: {logistics: {per_order: 5.20}}
+stores:
+  vegavero:
+    label: Vegavero
+    orders_file: data/matrixify_orders.csv.gz
+    products_file: data/matrixify_products.csv
+    stock_history_file: data/stock_history.csv
+    spend_file: data/klar_marketing.csv
+  wowtamins:
+    label: Wowtamins
+    orders_file: data/wowtamins/matrixify_orders.csv.gz
+    products_file: data/wowtamins/matrixify_products.csv
+    stock_history_file: data/wowtamins/stock_history.csv
+    spend_file: data/wowtamins/klar_marketing.csv   # optional — not provided yet
+
 # --- Revenue definition (drives CM1) ----------------------------------------
 revenue:
   net_of_discounts: true     # use line discountedTotal (after discount codes / reductions)

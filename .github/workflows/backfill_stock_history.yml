@@ -9,6 +9,8 @@ name: Backfill stock history (one-off)
 # One-time setup (repo → Settings → Secrets and variables → Actions):
 #   SHOPIFY_SHOP          e.g. vegavero.myshopify.com
 #   SHOPIFY_ADMIN_TOKEN   Admin API access token with the read_reports scope
+# For the Wowtamins store use SHOPIFY_SHOP_WOWTAMINS / SHOPIFY_ADMIN_TOKEN_WOWTAMINS
+# and pick store = wowtamins (run its Matrixify refresh once first).
 # Then: Actions → "Backfill stock history (one-off)" → Run workflow (pick this branch).
 
 on:
@@ -18,6 +20,11 @@ on:
         description: "First day to pull (YYYY-MM-DD)"
         default: "2025-09-01"
         required: true
+      store:
+        description: "Which store"
+        type: choice
+        options: [vegavero, wowtamins]
+        default: vegavero
 
 permissions:
   contents: write
@@ -26,6 +33,8 @@ jobs:
   backfill:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      DATA_DIR: ${{ inputs.store == 'wowtamins' && 'data/wowtamins' || 'data' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,19 +45,25 @@ jobs:
       - run: pip install -r requirements-export.txt
       - name: Pull deep stock history from Shopify
         env:
-          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
-          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
-        run: python refresh_stock_history.py --since "${{ inputs.since }}"
-      - name: Merge seed + git snapshots into data/stock_history.csv
-        run: python build_stock_history.py --backfill
+          # Each store reads only its own secrets (no fallback to the other store's).
+          SHOPIFY_SHOP: ${{ inputs.store == 'wowtamins' && secrets.SHOPIFY_SHOP_WOWTAMINS || '' }}${{ inputs.store != 'wowtamins' && secrets.SHOPIFY_SHOP || '' }}
+          SHOPIFY_ADMIN_TOKEN: ${{ inputs.store == 'wowtamins' && secrets.SHOPIFY_ADMIN_TOKEN_WOWTAMINS || '' }}${{ inputs.store != 'wowtamins' && secrets.SHOPIFY_ADMIN_TOKEN || '' }}
+        run: python refresh_stock_history.py --since "${{ inputs.since }}" --out "$DATA_DIR/stock_overview_seed.csv"
+      - name: Merge seed + git snapshots into the store's stock_history.csv
+        run: >
+          python build_stock_history.py --backfill
+          --products "$DATA_DIR/matrixify_products.csv"
+          --out "$DATA_DIR/stock_history.csv"
+          --seed "$DATA_DIR/stock_overview_seed.csv"
       - name: Commit if changed
         run: |
           git config user.name  "stock-history-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/stock_history.csv data/stock_overview_seed.csv
+          git add "$DATA_DIR/stock_history.csv" "$DATA_DIR/stock_overview_seed.csv"
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "data: deep stock-history backfill from Shopify (since ${{ inputs.since }})"
+            git commit -m "data: deep stock-history backfill from Shopify (${{ inputs.store }}, since ${{ inputs.since }})"
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi

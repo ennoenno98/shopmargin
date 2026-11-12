@@ -25,29 +25,30 @@ import margin
 import matrixify_client
 import oos_impact
 import stock_history
-from config import load_config
+from config import load_config, store_cost_config, stores
 from marketing import load_marketing, spend_table
 
 st.set_page_config(page_title="Shopify OOS Impact Analytics", page_icon="📦", layout="wide")
 CFG = load_config()
-STOCK_HISTORY_FILE = "data/stock_history.csv"
 ORANGE, RED, NAVY, GREY = "#F4A259", "#E76F51", "#1F3864", "#B7B7B7"
 CLUSTER_COLORS = {"A": NAVY, "B": "#3D6AA8", "C": "#8FB0D9", "D": "#C9D6E8",
                   "NPL": "#2A9D8F", "EOL": "#9B5DE5", clusters.UNCLUSTERED: GREY}
 
 
-def _sig(cfg: dict) -> str:
+def _sig(store: dict) -> str:
     parts = []
-    for p in ((cfg.get("source") or {}).get("orders_file", ""),
-              (cfg.get("source") or {}).get("products_file", ""),
-              cfg["marketing"]["spend_file"], STOCK_HISTORY_FILE, "config.yaml",
-              clusters.CLUSTER_FILE):
+    for p in (store.get("orders_file", ""), store.get("products_file", ""),
+              store.get("spend_file", ""), store.get("stock_history_file", ""),
+              "config.yaml", clusters.CLUSTER_FILE):
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
     return "|".join(parts)
 
 
 @st.cache_data(show_spinner="Loading & costing data…")
-def load(orders_file: str, products_file: str, tz: str, spend_file: str, sig: str):
+def load(store_key: str, tz: str, sig: str):
+    store = stores(CFG)[store_key]
+    cost_cfg = store_cost_config(CFG, store_key)
+    orders_file, products_file = store.get("orders_file", ""), store.get("products_file", "")
     cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
     df, mode = data_source.load_lineitems(cfg)
     inv = pd.DataFrame()
@@ -56,10 +57,12 @@ def load(orders_file: str, products_file: str, tz: str, spend_file: str, sig: st
             inv = matrixify_client.load_inventory(products_file)
         except Exception:
             inv = pd.DataFrame()
-    hist = stock_history.load_stock_history(STOCK_HISTORY_FILE)
-    spend = spend_table(load_marketing(spend_file), CFG["marketing"].get("grain", "day"))
-    costed = margin.compute_costs(df, CFG, spend) if not df.empty else df
-    return mode, inv, hist, costed, clusters.load_clusters(clusters.CLUSTER_FILE)
+    hist = stock_history.load_stock_history(store.get("stock_history_file", ""))
+    spend_file = store.get("spend_file") or ""
+    mkt = load_marketing(spend_file) if os.path.isfile(spend_file) else pd.DataFrame()
+    spend = spend_table(mkt, cost_cfg["marketing"].get("grain", "day"))
+    costed = margin.compute_costs(df, cost_cfg, spend) if not df.empty else df
+    return mode, inv, hist, costed, clusters.load_clusters(clusters.CLUSTER_FILE), not spend.empty
 
 
 # --------------------------------------------------------------------------- #
@@ -153,7 +156,8 @@ def cluster_bar(sm: pd.DataFrame):
     return fig
 
 
-def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.DataFrame):
+def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.DataFrame,
+                    store_key: str):
     if not cmap:
         st.info("No cluster mapping found. Import a JTL 'Eigene Felder Artikel' export with "
                 "`python clusters.py --import <file.csv>` (writes `data/sku_clusters.csv`).")
@@ -163,7 +167,7 @@ def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.Dat
 
     st.markdown("**ABCD × OOS severity** — each cell holds the SKUs of that cluster whose share "
                 "of demand lost to stock-outs falls in that band.")
-    metric_lbl = st.radio("Colour by", list(METRICS), horizontal=True, key="cl_metric")
+    metric_lbl = st.radio("Colour by", list(METRICS), horizontal=True, key=f"cl_metric_{store_key}")
     left, right = st.columns([3, 2])
     left.plotly_chart(cluster_heatmap(clusters.matrix(view), METRICS[metric_lbl]),
                       use_container_width=True)
@@ -195,8 +199,8 @@ def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.Dat
     st.markdown("**Drill into a cell**")
     d1, d2 = st.columns(2)
     present = [c for c in clusters.CLUSTER_ORDER if c in set(view["cluster"])]
-    cl = d1.selectbox("Cluster", present, key="cl_pick")
-    tr = d2.selectbox("OOS severity", ["All"] + clusters.TIERS, key="cl_tier")
+    cl = d1.selectbox("Cluster", present, key=f"cl_pick_{store_key}")
+    tr = d2.selectbox("OOS severity", ["All"] + clusters.TIERS, key=f"cl_tier_{store_key}")
     sub = view[view["cluster"] == cl]
     if tr != "All":
         sub = sub[sub["tier"] == tr]
@@ -214,19 +218,37 @@ def render_clusters(sku_tot: pd.DataFrame, cmap: dict, titles: dict, inv: pd.Dat
                  use_container_width=True, hide_index=True, height=360)
     st.download_button("⬇️ Download cluster view (CSV)",
                        view.assign(product=view["sku"].map(lambda s: str(titles.get(s, ""))))
-                       .to_csv(index=False).encode("utf-8"), "shopify_oos_clusters.csv", "text/csv")
+                       .to_csv(index=False).encode("utf-8"), f"{store_key}_oos_clusters.csv", "text/csv")
 
 
 # --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
 def main():
-    src = CFG["source"]
-    mode, inv, hist, costed, cmap = load(
-        src["orders_file"], src["products_file"], CFG.get("timezone", "Europe/Berlin"),
-        CFG["marketing"]["spend_file"], _sig(CFG))
-
+    all_stores = stores(CFG)
+    keys = list(all_stores)
     st.markdown("## 📦 OOS Impact Analytics")
+    store_key = keys[0]
+    if len(keys) > 1:
+        store_key = st.radio("Store", keys, horizontal=True, key="oos_store",
+                             format_func=lambda k: all_stores[k].get("label", k))
+    store = all_stores[store_key]
+    label = store.get("label", store_key)
+    stock_file = store.get("stock_history_file", "")
+
+    # Only the default store falls back to the bundled sample; any other store
+    # needs its own exports before it can show anything.
+    if store_key != keys[0] and not (os.path.isfile(store.get("orders_file", ""))
+                                     and os.path.isfile(store.get("products_file", ""))):
+        st.info(
+            f"No data for **{label}** yet. Its exports arrive with the "
+            "`Refresh Matrixify exports` GitHub Action — see *Adding a store* in the README "
+            f"(expected: `{store.get('orders_file')}` and `{store.get('products_file')}`)."
+        )
+        return
+
+    mode, inv, hist, costed, cmap, has_spend = load(
+        store_key, CFG.get("timezone", "Europe/Berlin"), _sig(store))
     st.caption(
         "Estimated **lost revenue & contribution margin (CM3)** from being out of stock, "
         "over time and per SKU. Stock is one global pool (no country split). Built from the "
@@ -236,10 +258,10 @@ def main():
 
     if hist is None or hist.empty:
         st.info(
-            "No stock history yet. Run `python build_stock_history.py --backfill` to "
-            "reconstruct it from the committed daily products snapshots (it then grows one "
-            "day per refresh). For a deeper backfill, drop a Shopify Analytics `inventory` "
-            "export into `data/stock_overview_seed.csv` and re-run with `--backfill`."
+            f"No stock history for {label} yet (`{stock_file}`). It is built by "
+            "`build_stock_history.py` from the daily products snapshots and grows one day "
+            "per refresh; a Shopify Analytics `inventory` export used as a seed gives a "
+            "deeper backfill (see the README)."
         )
         return
     if costed is None or costed.empty:
@@ -252,12 +274,15 @@ def main():
     span = f"{hist['date'].min():%Y-%m-%d} → {hist['date'].max():%Y-%m-%d}"
     srcs = ", ".join(sorted(hist["source"].dropna().unique())) or "—"
     try:
-        refreshed = pd.Timestamp(os.path.getmtime(STOCK_HISTORY_FILE), unit="s").tz_localize("UTC")
+        refreshed = pd.Timestamp(os.path.getmtime(stock_file), unit="s").tz_localize("UTC")
         refresh_txt = f"{refreshed:%Y-%m-%d %H:%M UTC}"
     except OSError:
         refresh_txt = "—"
     st.caption(f"Stock history `{span}` · {hist['sku'].nunique():,} SKUs · source: {srcs} · "
                f"refreshed **{refresh_txt}**" + ("  ·  ⚠️ sample data" if mode == "sample" else ""))
+    if not has_spend:
+        st.caption(f"⚠️ No ad-spend file for {label} — **lost CM3 here is before marketing** "
+                   "(equals CM2), so it overstates the P&L impact.")
 
     # ---- Filters ----
     with st.container(border=True):
@@ -273,8 +298,8 @@ def main():
         else:
             days = {"Last 30 days": 30, "Last 90 days": 90, "Last 180 days": 180, "Last 365 days": 365}[preset]
             f_def, t_def = max(dmin, dmax - timedelta(days=days)), dmax
-        start = c[1].date_input("From", value=f_def, min_value=dmin, max_value=dmax, key=f"oos_from_{preset}")
-        end = c[2].date_input("To", value=t_def, min_value=dmin, max_value=dmax, key=f"oos_to_{preset}")
+        start = c[1].date_input("From", value=f_def, min_value=dmin, max_value=dmax, key=f"oos_from_{store_key}_{preset}")
+        end = c[2].date_input("To", value=t_def, min_value=dmin, max_value=dmax, key=f"oos_to_{store_key}_{preset}")
         gran = c[3].radio("Bucket", ["Month", "Quarter"], horizontal=True)
         search = c[4].text_input("SKU or Product contains", "")
         r2 = st.columns([2, 3])
@@ -331,7 +356,7 @@ def main():
         ["🧩 Clusters", "Most affected SKUs", "Stock-out calendar", "Stock-out events"])
 
     with tab_cl:
-        render_clusters(sku_tot, cmap, titles, inv)
+        render_clusters(sku_tot, cmap, titles, inv, store_key)
 
     with tab_aff:
         n = st.slider("Show top N SKUs by lost CM3", 5, 50, min(15, max(5, len(sku_tot))))
@@ -384,7 +409,7 @@ def main():
                                    "Lost rev (€)": "€{:,.0f}", "Lost CM3 (€)": "€{:,.0f}"}, na_rep="—"),
                 use_container_width=True, hide_index=True, height=420)
             st.download_button("⬇️ Download events (CSV)", show.to_csv(index=False).encode("utf-8"),
-                               "shopify_oos_events.csv", "text/csv")
+                               f"{store_key}_oos_events.csv", "text/csv")
 
     st.caption(
         "**Lost units** = the SKU's demand rate (units sold ÷ in-stock days) × days out of stock; "

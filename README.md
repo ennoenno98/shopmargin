@@ -114,6 +114,37 @@ coloured by lost CM3 / lost revenue / SKU count, with per-cluster totals and a
 cell drill-down. To refresh the mapping, export *Eigene Felder Artikel* from JTL
 and run `python clusters.py --import <export.csv>` (writes `data/sku_clusters.csv`).
 
+### Stores — Vegavero and Wowtamins
+
+The OOS app has a **Store** switch (`stores:` in `config.yaml`; the first entry is
+the default). Each store has its own exports and stock history:
+
+| Store | Folder | Refresh job | Secret |
+|---|---|---|---|
+| Vegavero | `data/` | `refresh` | `MATRIXIFY_MCP_TOKEN` |
+| Wowtamins | `data/wowtamins/` | `refresh-wowtamins` | `MATRIXIFY_MCP_TOKEN_WOWTAMINS` |
+
+Both jobs live in `.github/workflows/refresh_matrixify.yml` and run the same
+script (`DATA_DIR` picks the folder, the token picks the store). **To switch
+Wowtamins on:** in the *Wowtamins* store open Matrixify → Settings → "AI Agent
+MCP Tokens" → Generate Token, save it as the repo secret
+`MATRIXIFY_MCP_TOKEN_WOWTAMINS`, then run the workflow. Until the secret exists
+the job skips itself and the app shows "No data for Wowtamins yet".
+
+- Orders are pulled from `WOWTAMINS_ORDERS_SINCE` (repo variable, default
+  `2026-08-01`) — only orders inside the stock history matter for OOS.
+- Stock history starts with the first refresh and grows one day per run. For
+  past months, run **Backfill stock history (one-off)** with `store = wowtamins`
+  (secrets `SHOPIFY_SHOP_WOWTAMINS`, `SHOPIFY_ADMIN_TOKEN_WOWTAMINS`).
+- No ad-spend file is configured for Wowtamins, so its lost CM3 is before
+  marketing (= CM2) and the app says so. Drop a Klar marketing export at
+  `data/wowtamins/klar_marketing.csv` to change that.
+- Cost assumptions are shared with Vegavero; add `overrides:` under the store in
+  `config.yaml` to change any of them for Wowtamins only.
+
+To add another store, add an entry under `stores:` and copy the
+`refresh-wowtamins` job with its own secret and folder.
+
 ### Stock history — the time series both rely on
 
 The Products export is overwritten daily, so it only carries the *current*

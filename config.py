@@ -35,3 +35,27 @@ def deep_merge(base: dict, overrides: dict) -> dict:
         else:
             out[key] = val
     return out
+
+
+def stores(cfg: dict) -> dict[str, dict]:
+    """Stores the OOS dashboard can show, keyed by id (first = default).
+
+    Each entry names its own data files. Falls back to the single top-level
+    ``source`` when no ``stores:`` section is configured.
+    """
+    if cfg.get("stores"):
+        return cfg["stores"]
+    src = cfg.get("source") or {}
+    return {"default": {
+        "label": "Shop",
+        "orders_file": src.get("orders_file", ""),
+        "products_file": src.get("products_file", ""),
+        "stock_history_file": "data/stock_history.csv",
+        "spend_file": (cfg.get("marketing") or {}).get("spend_file", ""),
+    }}
+
+
+def store_cost_config(cfg: dict, key: str) -> dict:
+    """Cost assumptions for one store: the base config with the store's optional
+    ``overrides`` deep-merged on top (e.g. a different logistics rate)."""
+    return deep_merge(cfg, (stores(cfg).get(key) or {}).get("overrides") or {})

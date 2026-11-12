@@ -50,8 +50,72 @@ jobs:
             echo "No changes."
           else
             git commit -m "chore: refresh Matrixify exports ($(date -u +%Y-%m-%d))"
-            # The export takes hours; the branch may have moved meanwhile, so
-            # rebase onto it before pushing (data files only, no conflicts).
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push
+            # The export takes hours; the branch may have moved meanwhile (incl.
+            # the other store's job), so rebase onto it before pushing — data
+            # files only, no conflicts. Retry in case both jobs push at once.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME" && git push && exit 0
+              sleep $((i * 15))
+            done
+            exit 1
+          fi
+
+  refresh-wowtamins:
+    # Second store (wowtamins.myshopify.com) for the OOS dashboard. Same script,
+    # its own token + data folder. Skipped until the secret exists.
+    #
+    # Required repo secret:
+    #   MATRIXIFY_MCP_TOKEN_WOWTAMINS — generated in the *Wowtamins* store:
+    #                          Matrixify app -> Settings -> "AI Agent MCP Tokens"
+    # Optional repo variable:
+    #   WOWTAMINS_ORDERS_SINCE — first order date, YYYY-MM-DD (default 2026-08-01;
+    #                          only orders inside the stock history matter for OOS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      MATRIXIFY_MCP_TOKEN: ${{ secrets.MATRIXIFY_MCP_TOKEN_WOWTAMINS }}
+      DATA_DIR: data/wowtamins
+      ORDERS_SINCE: ${{ vars.WOWTAMINS_ORDERS_SINCE || '2026-08-01' }}
+    steps:
+      - name: Check token
+        id: tok
+        run: |
+          if [ -n "$MATRIXIFY_MCP_TOKEN" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::MATRIXIFY_MCP_TOKEN_WOWTAMINS is not set - skipping the Wowtamins refresh."
+          fi
+      - uses: actions/checkout@v4
+        if: steps.tok.outputs.present == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.tok.outputs.present == 'true'
+        with:
+          python-version: "3.11"
+      - if: steps.tok.outputs.present == 'true'
+        run: pip install -r requirements-export.txt
+      - name: Refresh Wowtamins data from Matrixify MCP
+        if: steps.tok.outputs.present == 'true'
+        run: python refresh_matrixify_mcp.py
+      - name: Append stock-history snapshot
+        if: steps.tok.outputs.present == 'true'
+        run: >
+          python build_stock_history.py
+          --products data/wowtamins/matrixify_products.csv
+          --out data/wowtamins/stock_history.csv
+          --seed data/wowtamins/stock_overview_seed.csv
+      - name: Commit if changed
+        if: steps.tok.outputs.present == 'true'
+        run: |
+          git config user.name  "matrixify-export-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/wowtamins/matrixify_orders.csv.gz data/wowtamins/matrixify_products.csv data/wowtamins/stock_history.csv
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: refresh Wowtamins Matrixify exports ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin "$GITHUB_REF_NAME" && git push && exit 0
+              sleep $((i * 15))
+            done
+            exit 1
           fi

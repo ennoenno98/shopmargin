@@ -26,6 +26,7 @@ Environment:
     MATRIXIFY_MCP_TOKEN   (required)  token from Matrixify -> Settings ->
                                       "AI Agent MCP Tokens" -> Generate Token
     MATRIXIFY_MCP_URL     (optional)  default https://mcp.matrixify.app/mcp
+    DATA_DIR              (optional)  output folder, default data/ (one per store)
     ORDERS_SINCE          (optional)  first order month, YYYY-MM-DD (default 2025-07-01)
 
 Usage:
@@ -44,7 +45,9 @@ import sys
 import zipfile
 from pathlib import Path
 
-DATA = Path(__file__).with_name("data")
+# DATA_DIR selects the store's folder (default data/ = Vegavero; the Wowtamins
+# job sets data/wowtamins). The token decides which store is exported.
+DATA = Path(os.environ.get("DATA_DIR") or Path(__file__).with_name("data"))
 ORDERS_OUT = DATA / "matrixify_orders.csv.gz"
 PRODUCTS_OUT = DATA / "matrixify_products.csv"
 
