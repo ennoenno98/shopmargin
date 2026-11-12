@@ -42,6 +42,10 @@ stores:
     products_file: data/wowtamins/matrixify_products.csv
     stock_history_file: data/wowtamins/stock_history.csv
     spend_file: data/wowtamins/klar_marketing.csv   # optional — not provided yet
+    # Until the Matrixify Orders export exists, sales come from Shopify Analytics
+    # daily totals per SKU (see daily_sales.py). Ignored once orders_file is there.
+    daily_sales_file: data/wowtamins/daily_sales.csv
+    sku_meta_file: data/wowtamins/sku_meta.csv
 
 # --- Revenue definition (drives CM1) ----------------------------------------
 revenue:

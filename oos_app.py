@@ -20,12 +20,13 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import clusters
+import daily_sales
 import data_source
 import margin
 import matrixify_client
 import oos_impact
 import stock_history
-from config import load_config, store_cost_config, stores
+from config import deep_merge, load_config, store_cost_config, stores
 from marketing import load_marketing, spend_table
 
 st.set_page_config(page_title="Shopify OOS Impact Analytics", page_icon="📦", layout="wide")
@@ -39,9 +40,15 @@ def _sig(store: dict) -> str:
     parts = []
     for p in (store.get("orders_file", ""), store.get("products_file", ""),
               store.get("spend_file", ""), store.get("stock_history_file", ""),
+              store.get("daily_sales_file", ""), store.get("sku_meta_file", ""),
               "config.yaml", clusters.CLUSTER_FILE):
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
     return "|".join(parts)
+
+
+def _has_exports(store: dict) -> bool:
+    return (os.path.isfile(store.get("orders_file") or "")
+            and os.path.isfile(store.get("products_file") or ""))
 
 
 @st.cache_data(show_spinner="Loading & costing data…")
@@ -49,15 +56,25 @@ def load(store_key: str, tz: str, sig: str):
     store = stores(CFG)[store_key]
     cost_cfg = store_cost_config(CFG, store_key)
     orders_file, products_file = store.get("orders_file", ""), store.get("products_file", "")
-    cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
-    df, mode = data_source.load_lineitems(cfg)
+    hist = stock_history.load_stock_history(store.get("stock_history_file", ""))
     inv = pd.DataFrame()
-    if products_file and os.path.exists(products_file):
+    cfg = {"source": {"orders_file": orders_file, "products_file": products_file}, "timezone": tz}
+    if _has_exports(store):
+        df, mode = data_source.load_lineitems(cfg)
         try:
             inv = matrixify_client.load_inventory(products_file)
         except Exception:
             inv = pd.DataFrame()
-    hist = stock_history.load_stock_history(store.get("stock_history_file", ""))
+    elif os.path.isfile(store.get("daily_sales_file") or ""):
+        # No order lines yet: Shopify Analytics daily totals per SKU. There are no
+        # real orders behind them, so logistics is costed per unit.
+        df, mode = daily_sales.load_daily_sales(store["daily_sales_file"], store.get("sku_meta_file")), "daily"
+        cost_cfg = deep_merge(cost_cfg, {"logistics": {"basis": "per_unit"}})
+        inv = daily_sales.load_meta(store.get("sku_meta_file")).copy()
+        if hist is not None and not hist.empty:      # "on hand now" = latest stock reading
+            inv["on_hand"] = hist.sort_values("date").groupby("sku")["on_hand"].last()
+    else:
+        df, mode = data_source.load_lineitems(cfg)        # falls back to the bundled sample
     spend_file = store.get("spend_file") or ""
     mkt = load_marketing(spend_file) if os.path.isfile(spend_file) else pd.DataFrame()
     spend = spend_table(mkt, cost_cfg["marketing"].get("grain", "day"))
@@ -238,8 +255,8 @@ def main():
 
     # Only the default store falls back to the bundled sample; any other store
     # needs its own exports before it can show anything.
-    if store_key != keys[0] and not (os.path.isfile(store.get("orders_file", ""))
-                                     and os.path.isfile(store.get("products_file", ""))):
+    if (store_key != keys[0] and not _has_exports(store)
+            and not os.path.isfile(store.get("daily_sales_file") or "")):
         st.info(
             f"No data for **{label}** yet. Its exports arrive with the "
             "`Refresh Matrixify exports` GitHub Action — see *Adding a store* in the README "
@@ -280,6 +297,10 @@ def main():
         refresh_txt = "—"
     st.caption(f"Stock history `{span}` · {hist['sku'].nunique():,} SKUs · source: {srcs} · "
                f"refreshed **{refresh_txt}**" + ("  ·  ⚠️ sample data" if mode == "sample" else ""))
+    if mode == "daily":
+        st.caption(f"ℹ️ {label} sales come from **Shopify Analytics daily totals per SKU**, not "
+                   "order lines. The margin is an **estimate**: logistics per unit, the default "
+                   "payment rate on net sales, and SKUs without a Shopify cost carry no COGS.")
     if not has_spend:
         st.caption(f"⚠️ No ad-spend file for {label} — **lost CM3 here is before marketing** "
                    "(equals CM2), so it overstates the P&L impact.")

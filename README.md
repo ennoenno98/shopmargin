@@ -131,6 +131,20 @@ MCP Tokens" → Generate Token, save it as the repo secret
 `MATRIXIFY_MCP_TOKEN_WOWTAMINS`, then run the workflow. Until the secret exists
 the job skips itself and the app shows "No data for Wowtamins yet".
 
+**Until that export exists, Wowtamins runs on Shopify Analytics data** copied
+from the Shopify connector on 2026-11-12 (verified against Shopify's totals):
+
+- `data/wowtamins/stock_overview_seed.csv` → `stock_history.csv`: daily
+  `ending_inventory_units` for the 15 sellable SKUs, 2026-08-01 → 2026-11-11.
+- `data/wowtamins/daily_sales.csv` + `sku_meta.csv`: daily `net_items_sold` /
+  `net_sales` per SKU for the same window, product names and Shopify unit costs.
+  `daily_sales.py` turns these into the cost engine's input. With no order lines
+  behind them the margin is an estimate (logistics per unit, default payment
+  rate, no COGS for SKUs without a Shopify cost) and the app says so.
+
+These files are a one-off snapshot — they do not refresh. Once the Matrixify
+exports arrive the app uses those instead; the seeded stock history is kept.
+
 - Orders are pulled from `WOWTAMINS_ORDERS_SINCE` (repo variable, default
   `2026-08-01`) — only orders inside the stock history matter for OOS.
 - Stock history starts with the first refresh and grows one day per run. For
@@ -195,6 +209,7 @@ margin.py                # pure CM1/CM2/CM3 engine (testable, no Streamlit)
 oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) engine
 stock_history.py         # pure stock-history engine: assemble / load / per-SKU series
 clusters.py              # JTL ABCD-Cluster import + cluster × OOS-severity matrix
+daily_sales.py           # Shopify daily totals per SKU as an order source (no Matrixify export yet)
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 refresh_stock_history.py # one-off deep backfill from the Shopify Admin API (ShopifyQL)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)
