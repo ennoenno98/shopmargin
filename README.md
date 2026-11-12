@@ -106,6 +106,12 @@ OOS rate     = lost ÷ (sold + lost) units
 A `Min demand (units/day)` floor focuses on SKUs that actually sell. The pure
 engine is **`oos_impact.py`** (`python oos_impact.py` runs a self-test).
 
+**PDF report.** *Prepare PDF report* (under the KPIs) builds a PDF of exactly
+the current view — store, date window and filters: KPIs, lost revenue / margin
+and OOS rate per period, the most affected SKUs, the cluster matrix and the
+largest stock-out events. `oos_report.py` draws it (fpdf2 + matplotlib); change a
+filter and the prepared file is retired until you prepare it again.
+
 **Clusters.** SKUs carry their JTL `ABCD-Cluster` (A–D, plus NPL = new launch,
 EOL = end of life; SKUs without one — e.g. bundle sets — are *Unclustered*).
 They drive a **Cluster** filter and the **🧩 Clusters** tab: a 4×4 matrix of ABCD
@@ -210,6 +216,7 @@ oos_impact.py            # pure lost-revenue / lost-CM3 (out-of-stock impact) en
 stock_history.py         # pure stock-history engine: assemble / load / per-SKU series
 clusters.py              # JTL ABCD-Cluster import + cluster × OOS-severity matrix
 daily_sales.py           # Shopify daily totals per SKU as an order source (no Matrixify export yet)
+oos_report.py            # PDF report of the current OOS view (fpdf2 + matplotlib)
 build_stock_history.py   # builds data/stock_history.csv (git backfill + daily append + seed)
 refresh_stock_history.py # one-off deep backfill from the Shopify Admin API (ShopifyQL)
 matrixify_client.py      # reads Matrixify Orders + Products exports (incl. stock snapshot)

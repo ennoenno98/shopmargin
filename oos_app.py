@@ -25,6 +25,7 @@ import data_source
 import margin
 import matrixify_client
 import oos_impact
+import oos_report
 import stock_history
 from config import deep_merge, load_config, store_cost_config, stores
 from marketing import load_marketing, spend_table
@@ -364,14 +365,47 @@ def main():
                    "widening the period. (Lost sales need overlap between stock history and orders.)")
         return
 
-    # ---- Out-of-stock impact over time ----
-    st.markdown("### 🔴 Out-of-stock impact over time")
     bb = oos_impact.by_bucket(imp)
-    st.plotly_chart(impact_timechart(bb), use_container_width=True)
-
     sku_tot = oos_impact.by_sku(imp)
     events = oos_impact.stockout_events(hist_f, imp)
     events = events[events["sku"].isin(set(imp["sku"]))]   # honour search / cluster filters
+
+    # ---- PDF report of exactly this view ----
+    # Built on request (charts take a moment) and kept until the view changes.
+    view_sig = "|".join(map(str, (store_key, start, end, gran, min_demand, search.strip(),
+                                  ",".join(sel_clusters), _sig(store))))
+    pr = st.columns([1.3, 1.5, 4])
+    if pr[0].button("📄 Prepare PDF report", help="Builds a PDF of the current store, window and filters."):
+        with st.spinner("Building PDF…"):
+            notes = []
+            if mode == "daily":
+                notes.append(f"{label} sales come from Shopify Analytics daily totals per SKU, not "
+                             "order lines: the margin is an estimate (logistics per unit, default "
+                             "payment rate, no COGS for SKUs without a Shopify cost).")
+            if not has_spend:
+                notes.append(f"No ad-spend file for {label}: the margin shown is before marketing "
+                             "(equals CM2) and overstates the P&L impact.")
+            if mode == "sample":
+                notes.append("Sample data — not real figures.")
+            view = clusters.sku_view(sku_tot, cmap) if cmap else sku_tot
+            st.session_state["oos_pdf"] = (view_sig, oos_report.build_report(
+                store_label=label, window=(f"{start:%Y-%m-%d}", f"{end:%Y-%m-%d}"),
+                filters={"Bucket": gran, "Min demand": f"{min_demand:g} units/day",
+                         "Clusters": ", ".join(sel_clusters) or "all",
+                         "Search": search.strip() or "—"},
+                totals=t, by_bucket=bb, sku_view=view, titles=titles, events=events, notes=notes,
+                margin_label="Lost CM3" if has_spend else "Lost CM3 (before marketing)",
+                cluster_matrix=clusters.matrix(view) if cmap else None,
+                cluster_summary=clusters.summary(view) if cmap else None,
+                cluster_rows=clusters.ABCD, tier_cols=clusters.TIERS))
+    ready = st.session_state.get("oos_pdf")
+    if ready and ready[0] == view_sig:
+        pr[1].download_button("⬇️ Download PDF", ready[1], f"{store_key}_oos_report_{start:%Y%m%d}_{end:%Y%m%d}.pdf",
+                              "application/pdf")
+
+    # ---- Out-of-stock impact over time ----
+    st.markdown("### 🔴 Out-of-stock impact over time")
+    st.plotly_chart(impact_timechart(bb), use_container_width=True)
 
     tab_cl, tab_aff, tab_cal, tab_ev = st.tabs(
         ["🧩 Clusters", "Most affected SKUs", "Stock-out calendar", "Stock-out events"])

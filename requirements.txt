@@ -6,3 +6,5 @@ PyYAML>=6.0
 requests>=2.32
 openpyxl>=3.1
 tzdata>=2024.1
+fpdf2>=2.7
+matplotlib>=3.8

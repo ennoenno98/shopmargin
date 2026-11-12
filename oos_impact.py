@@ -163,20 +163,30 @@ def totals(impact: pd.DataFrame) -> dict:
 def stockout_events(history: pd.DataFrame, impact: pd.DataFrame | None = None) -> pd.DataFrame:
     """Contiguous out-of-stock runs per SKU with estimated lost units/revenue/CM3.
 
-    Uses each SKU's all-history demand_rate / price / cm3-per-unit (from
-    ``impact``) to value the run. Newest first.
+    Each out-of-stock day is valued at its own (SKU, bucket) figures from
+    ``impact`` — that bucket's lost units / revenue / CM3 spread evenly over its
+    OOS days — so a SKU's events add up exactly to its totals. Newest first.
     """
     if history is None or history.empty:
         return pd.DataFrame(columns=["sku", "start", "end", "days", "lost_units",
                                      "lost_revenue", "lost_cm3"])
-    # per-SKU rate/price/cm3-per-unit from the impact frame (all-history)
-    rate = price = cm3u = {}
+    # per-SKU list of (bucket_start, lost units / revenue / cm3 per OOS day), by bucket
+    per_day: dict[str, list[tuple]] = {}
     if impact is not None and not impact.empty:
-        agg = impact.groupby("sku").agg(u=("units", "sum"), sd=("stock_days", "sum"),
-                                        rev=("revenue", "sum"), c=("cm3", "sum"))
-        rate = (agg["u"] / agg["sd"].where(agg["sd"] > 0)).fillna(0).to_dict()
-        price = (agg["rev"] / agg["u"].where(agg["u"] > 0)).to_dict()
-        cm3u = (agg["c"] / agg["u"].where(agg["u"] > 0)).to_dict()
+        im = impact[impact["oos_days"] > 0].sort_values("bucket_start")
+        for r in im.itertuples():
+            per_day.setdefault(r.sku, []).append(
+                (pd.Timestamp(r.bucket_start), _f(r.lost_units) / r.oos_days,
+                 _f(r.lost_revenue) / r.oos_days, _f(r.lost_cm3) / r.oos_days))
+
+    def _day_value(sku, day):
+        hit = (0.0, 0.0, 0.0)
+        for start, lu, lr, lc in per_day.get(sku, ()):     # few buckets per SKU
+            if start <= day:
+                hit = (lu, lr, lc)
+            else:
+                break
+        return hit
 
     rows = []
     for sku, g in history.sort_values("date").groupby("sku", sort=False):
@@ -191,13 +201,12 @@ def stockout_events(history: pd.DataFrame, impact: pd.DataFrame | None = None) -
                 while j + 1 < n and (not np.isnan(q[j + 1])) and q[j + 1] <= 0:
                     j += 1
                 days = j - i + 1  # OOS snapshot count — matches compute_impact's oos_days
-                r = _f(rate.get(sku))
-                lu = r * days
+                vals = [_day_value(sku, pd.Timestamp(d[k]).normalize()) for k in range(i, j + 1)]
                 rows.append({
                     "sku": sku, "start": d[i], "end": d[j], "days": days,
-                    "lost_units": lu,
-                    "lost_revenue": lu * _f(price.get(sku)),
-                    "lost_cm3": lu * _f(cm3u.get(sku)),
+                    "lost_units": sum(v[0] for v in vals),
+                    "lost_revenue": sum(v[1] for v in vals),
+                    "lost_cm3": sum(v[2] for v in vals),
                 })
                 i = j + 1
             else:
@@ -247,5 +256,23 @@ if __name__ == "__main__":
     gap = compute_impact(gap_hist, costed, gran="Month", min_demand=0.5)
     assert abs(gap.groupby("sku")["units"].sum().iloc[0] - 62.0) < 1e-6   # March only
     assert abs(gap[gap["bucket"] == "May 2026"].iloc[0]["lost_units"] - 62.0) < 1e-6
+    # A run spanning two buckets with different demand: events must add up to the totals.
+    d2 = pd.date_range("2026-03-01", "2026-04-30", freq="D")
+    h2 = pd.DataFrame({"date": d2, "sku": "B", "source": "t",
+                       "on_hand": [5 if (x.month == 3 and x.day <= 20) or (x.month == 4 and x.day > 10)
+                                   else 0 for x in d2]})
+    c2 = pd.DataFrame({"order_date": d2, "sku": "B",
+                       "net_qty": [4.0 if x.month == 3 and x.day <= 20 else
+                                   (1.0 if x.month == 4 and x.day > 10 else 0.0) for x in d2],
+                       "net_revenue": [40.0 if x.month == 3 and x.day <= 20 else
+                                       (10.0 if x.month == 4 and x.day > 10 else 0.0) for x in d2],
+                       "cm3": [8.0 if x.month == 3 and x.day <= 20 else
+                               (2.0 if x.month == 4 and x.day > 10 else 0.0) for x in d2]})
+    i2 = compute_impact(h2, c2, gran="Month")
+    e2 = stockout_events(h2, i2)
+    assert len(e2) == 1 and e2.iloc[0]["days"] == 21                      # Mar 21 – Apr 10
+    assert abs(e2["lost_units"].sum() - i2["lost_units"].sum()) < 1e-6    # 11×4 + 10×1 = 54
+    assert abs(e2["lost_units"].sum() - 54.0) < 1e-6
+    assert abs(e2["lost_revenue"].sum() - i2["lost_revenue"].sum()) < 1e-6
     print("oos_impact self-test OK")
     print(bb.to_string(index=False))
