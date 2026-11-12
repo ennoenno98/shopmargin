@@ -13,6 +13,7 @@ calendar · Stock-out events. (No country view, no cooling-down / heating-up.)
 from __future__ import annotations
 
 import os
+import subprocess
 from datetime import timedelta, timezone
 
 import pandas as pd
@@ -25,7 +26,6 @@ import data_source
 import margin
 import matrixify_client
 import oos_impact
-import oos_report
 import stock_history
 from config import deep_merge, load_config, store_cost_config, stores
 from marketing import load_marketing, spend_table
@@ -45,6 +45,17 @@ def _sig(store: dict) -> str:
               "config.yaml", clusters.CLUSTER_FILE):
         parts.append(f"{p}:{os.path.getmtime(p)}" if p and os.path.exists(p) else f"{p}:0")
     return "|".join(parts)
+
+
+def _version() -> str:
+    """Short commit + date of the deployed code, so a stale deployment is obvious."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%h · %cd", "--date=format:%Y-%m-%d %H:%M"],
+                             capture_output=True, text=True, timeout=5,
+                             cwd=os.path.dirname(os.path.abspath(__file__)))
+        return out.stdout.strip() or "unknown"
+    except Exception:
+        return "unknown"
 
 
 def _has_exports(store: dict) -> bool:
@@ -246,6 +257,7 @@ def main():
     all_stores = stores(CFG)
     keys = list(all_stores)
     st.markdown("## 📦 OOS Impact Analytics")
+    st.caption(f"Version `{_version()}`")
     store_key = keys[0]
     if len(keys) > 1:
         store_key = st.radio("Store", keys, horizontal=True, key="oos_store",
@@ -375,7 +387,14 @@ def main():
     view_sig = "|".join(map(str, (store_key, start, end, gran, min_demand, search.strip(),
                                   ",".join(sel_clusters), _sig(store))))
     pr = st.columns([1.3, 1.5, 4])
+    oos_report = None
     if pr[0].button("📄 Prepare PDF report", help="Builds a PDF of the current store, window and filters."):
+        try:                         # imported on demand: a missing package must not take the page down
+            import oos_report
+        except ImportError as exc:
+            st.error(f"PDF export needs the `fpdf2` and `matplotlib` packages ({exc}). They are in "
+                     "requirements.txt — reboot the app so they get installed.")
+    if oos_report is not None:
         with st.spinner("Building PDF…"):
             notes = []
             if mode == "daily":
